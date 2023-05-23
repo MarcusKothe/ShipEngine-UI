@@ -819,7 +819,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1030, 619);
+            this.ClientSize = new System.Drawing.Size(1031, 619);
             this.Controls.Add(this.tracking_number_TextBox);
             this.Controls.Add(this.label_RichTextBox);
             this.Controls.Add(this.create_label_Button);
@@ -849,8 +849,10 @@
             this.Controls.Add(this.carrier_id_RichTextBox);
             this.Controls.Add(this.carrier_id_ComboBox);
             this.Controls.Add(this.service_code_ComboBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "shippingForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SHIPENGINE";
             this.Load += new System.EventHandler(this.shippingForm_Load);
             this.shipFromgroupBox.ResumeLayout(false);

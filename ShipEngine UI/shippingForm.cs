@@ -25,7 +25,6 @@ namespace ShipEngine_UI
             InitializeComponent();
         }
 
-
         private void shippingForm_Load(object sender, EventArgs e)
         {
 
