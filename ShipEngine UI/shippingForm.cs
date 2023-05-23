@@ -5,10 +5,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlTypes;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Net;
+using System.Security.Policy;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -924,13 +926,14 @@ namespace ShipEngine_UI
 
                 string imgURL3 = labelDownloadOBJ3.Substring(imgURL1, imgURL2 - imgURL1);
 
+                //Save image in logging
+                using (WebClient client = new WebClient())
+                {
+                    client.DownloadFileAsync(new Uri(imgURL3 + ".png"), @"..\..\Resources\LabelImages\Label-" + rateLogId + ".png");
+                }
+
                 labelImageBox.Load(imgURL3 + ".png");
-
-                //SAVE LOCAL LOG OF LABEL IMAGE @"..\..\Resources"
-
-                string labelFilepath = @"..\..\Resources\Labels";
-                // labelImageBox.Image.Save(labelFilepath, System.Drawing.Imaging.ImageFormat.Png);
-
+                
                 //CLOSE STREAM
                 parseResponse.Close();
                 stream.Close();
@@ -943,6 +946,34 @@ namespace ShipEngine_UI
 
             }
 
+        }
+
+        void LabelImage(object o, PrintPageEventArgs e)
+        {
+
+            Image image = this.labelImageBox.Image;
+
+            Point point = new Point(100, 100);
+
+            e.Graphics.DrawImage(image, point);
+
+        }
+        private void print_Button_Click(object sender, EventArgs e)
+        {
+            PrintDialog printDialog = new PrintDialog();
+
+            printDialog.PrinterSettings = new PrinterSettings();
+
+            if (DialogResult.OK == printDialog.ShowDialog(this))
+            {
+
+                PrintDocument pdoc = new PrintDocument();
+
+                pdoc.PrintPage += new PrintPageEventHandler(LabelImage);
+
+                pdoc.Print();
+
+            }
         }
     }
 }

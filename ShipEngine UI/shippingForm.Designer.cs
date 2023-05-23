@@ -101,7 +101,7 @@
             this.label24 = new System.Windows.Forms.Label();
             this.create_label_Button = new System.Windows.Forms.Button();
             this.label_RichTextBox = new System.Windows.Forms.RichTextBox();
-            this.tracking_number_TextBox = new System.Windows.Forms.TextBox();
+            this.print_Button = new System.Windows.Forms.Button();
             this.shipFromgroupBox.SuspendLayout();
             this.shipTogroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.labelImageBox)).BeginInit();
@@ -805,22 +805,22 @@
             this.label_RichTextBox.Text = "";
             this.label_RichTextBox.Visible = false;
             // 
-            // tracking_number_TextBox
+            // print_Button
             // 
-            this.tracking_number_TextBox.Location = new System.Drawing.Point(640, 594);
-            this.tracking_number_TextBox.Name = "tracking_number_TextBox";
-            this.tracking_number_TextBox.ReadOnly = true;
-            this.tracking_number_TextBox.Size = new System.Drawing.Size(382, 20);
-            this.tracking_number_TextBox.TabIndex = 83;
-            this.tracking_number_TextBox.Text = "Tracking number";
-            this.tracking_number_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.print_Button.Location = new System.Drawing.Point(640, 594);
+            this.print_Button.Name = "print_Button";
+            this.print_Button.Size = new System.Drawing.Size(382, 20);
+            this.print_Button.TabIndex = 83;
+            this.print_Button.Text = "Print";
+            this.print_Button.UseVisualStyleBackColor = true;
+            this.print_Button.Click += new System.EventHandler(this.print_Button_Click);
             // 
             // shippingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1031, 619);
-            this.Controls.Add(this.tracking_number_TextBox);
+            this.Controls.Add(this.print_Button);
             this.Controls.Add(this.label_RichTextBox);
             this.Controls.Add(this.create_label_Button);
             this.Controls.Add(this.label24);
@@ -942,7 +942,7 @@
         private System.Windows.Forms.ComboBox shipTo_address_residential_indicator_comboBox;
         private System.Windows.Forms.Button create_label_Button;
         private System.Windows.Forms.RichTextBox label_RichTextBox;
-        private System.Windows.Forms.TextBox tracking_number_TextBox;
+        private System.Windows.Forms.Button print_Button;
     }
 }
 
