@@ -1116,6 +1116,7 @@ namespace ShipEngine_UI
 
         private void sales_order_ListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            create_label_from_Order_Button.Enabled = true;
 
             try
             {
@@ -1166,7 +1167,7 @@ namespace ShipEngine_UI
 
                                 //add to textbox
 
-                                shipFrom_name_TextBox.Text = sales_order_Name;
+                                shipTo_name_TextBox.Text = sales_order_Name;
 
                             }
 
@@ -1179,7 +1180,7 @@ namespace ShipEngine_UI
 
                                 //add to textbox
 
-                                shipFrom_phone_TextBox.Text = sales_order_Phone;
+                                shipTo_phone_TextBox.Text = sales_order_Phone;
                             }
 
                             //Company
@@ -1191,7 +1192,7 @@ namespace ShipEngine_UI
 
                                 //add to textbox
 
-                                shipFrom_company_name_TextBox.Text = sales_order_CompanyName;
+                                shipTo_company_name_TextBox.Text = sales_order_CompanyName;
                             }
 
                             //AddressLine 1
@@ -1203,7 +1204,7 @@ namespace ShipEngine_UI
 
                                 //add to textbox
 
-                                shipFrom_address_line1_TextBox.Text = sales_order_AddressL;
+                                shipTo_address_line1_TextBox.Text = sales_order_AddressL;
                             }
 
                             //AddressLine 2
@@ -1215,7 +1216,7 @@ namespace ShipEngine_UI
 
                                 //add to textbox
 
-                                shipFrom_address_line2_TextBox.Text = sales_order_AddressL3;
+                                shipTo_address_line2_TextBox.Text = sales_order_AddressL3;
                             }
 
 
@@ -1228,7 +1229,7 @@ namespace ShipEngine_UI
 
                                 //add to textbox
 
-                                shipFrom_address_line3_TextBox.Text = sales_order_AddressL5;
+                                shipTo_address_line3_TextBox.Text = sales_order_AddressL5;
                             }
 
                             //City
@@ -1240,7 +1241,7 @@ namespace ShipEngine_UI
 
                                 //add to textbox
 
-                                shipFrom_city_locality_TextBox.Text = sales_order_City;
+                                shipTo_city_locality_TextBox.Text = sales_order_City;
                             }
 
                             //State Province
@@ -1252,7 +1253,7 @@ namespace ShipEngine_UI
 
                                 //add to textbox
 
-                                shipFrom_state_province_TextBox.Text = sales_order_StateProvince;
+                                shipTo_state_province_TextBox.Text = sales_order_StateProvince;
                             }
 
                             //Postal Code
@@ -1264,7 +1265,7 @@ namespace ShipEngine_UI
 
                                 //add to textbox
 
-                                shipFrom_postal_code_TextBox.Text = sales_order_PostalCode;
+                                shipTo_postal_code_TextBox.Text = sales_order_PostalCode;
                             }
 
                             //Country Code
@@ -1276,7 +1277,7 @@ namespace ShipEngine_UI
 
                                 //add to textbox
 
-                                shipFrom_country_code_TextBox.Text = sales_order_CountryCode;
+                                shipTo_country_code_TextBox.Text = sales_order_CountryCode;
 
                             }
 
@@ -1310,6 +1311,142 @@ namespace ShipEngine_UI
             {
                 MessageBox.Show(HTTPexception.ToString());
             }
+
+        }
+
+        private void create_label_from_Order_Button_Click(object sender, EventArgs e)
+        {
+
+            sales_order_RichTextBox.Clear();
+
+            try
+            {
+                string carrier_id1 = carrier_id_ComboBox.SelectedItem.ToString();
+                carrier_id1 = carrier_id1.Remove(carrier_id1.IndexOf("|") + 1);
+                string carrier_id = carrier_id1.Replace("|", "");
+
+                string service_code1 = service_code_ComboBox.SelectedItem.ToString();
+                service_code1 = service_code1.Remove(service_code1.IndexOf("|") + 1);
+                string service_code = service_code1.Replace("|", "");
+
+                //GET SALES ORDER ID
+                string sales_order_id1 = sales_order_ListBox.SelectedItem.ToString();
+                sales_order_id1 = sales_order_id1.Remove(sales_order_id1.IndexOf("|") + 1);
+                string sales_order_id = sales_order_id1.Replace("|", "");
+
+                //LOGID
+                Random logID = new Random();
+                string rateLogId = logID.Next(0, 1000000).ToString("D6");
+
+                //SHIP DATE
+                string ship_date = ship_date_TextBox.Text;
+
+
+                //URI - POST
+                WebRequest request = WebRequest.Create("https://api.shipengine.com/v-beta/labels/sales_order/" + sales_order_id);
+                request.Method = "POST";
+
+                //API Key
+                request.Headers.Add("API-key", ShipEngineUI.apiKey);
+
+
+                //POST REQUEST
+                string sales_order_LabelrequestBody =
+                    "{\r\n    \"label_format\": \"png\"," +
+                    "\r\n    \"shipment\": {" +
+                    "\r\n        \"carrier_id\": " + carrier_id + "," +
+                    "\r\n        \"service_code\": " + service_code + "," +
+                    "\r\n        \"ship_from\": {" +
+                    "\r\n            \"company_name\": " + ShipEngineUI.shipFrom_company_name + "," +
+                    "\r\n            \"name\": " + ShipEngineUI.shipFrom_name + "," +
+                    "\r\n            \"phone\": " + ShipEngineUI.shipFrom_phone + "," +
+                    "\r\n            \"address_line1\": " + ShipEngineUI.shipFrom_address_line1 + "," +
+                    "\r\n            \"address_line2\": " + ShipEngineUI.shipFrom_address_line2 + "," +
+                    "\r\n            \"city_locality\": " + ShipEngineUI.shipFrom_city_locality + "," +
+                    "\r\n            \"state_province\": " + ShipEngineUI.shipFrom_state_province + "," +
+                    "\r\n            \"postal_code\": " + ShipEngineUI.shipFrom_postal_code + "," +
+                    "\r\n            \"country_code\": " + ShipEngineUI.shipFrom_country_code + "," +
+                    "\r\n            \"address_residential_indicator\": " + ShipEngineUI.shipFrom_address_residential_indicator + "" +
+                    "\r\n        }," +
+                    "\r\n        \"packages\": [" +
+                    "\r\n            {" +
+                    "\r\n                \"package_code\": " + package_code_ComboBox.SelectedItem.ToString() + "," +
+                    "\r\n                \"weight\": {" +
+                    "\r\n                    \"value\": " + ShipEngineUI.packages_weight_value + "," +
+                    "\r\n                    \"unit\": \"pound\"" +
+                    "\r\n                }" +
+                    "\r\n            }" +
+                    "\r\n        ]" +
+                    "\r\n    }" +
+                    "\r\n}";
+
+                ASCIIEncoding encoding = new ASCIIEncoding();
+                byte[] data = encoding.GetBytes(sales_order_LabelrequestBody);
+
+                request.ContentType = "application/json";
+                request.ContentLength = data.Length;
+
+                Stream stream = request.GetRequestStream();
+
+                //Documents path REQUEST LOG
+                string docPath = @"..\..\Resources\Logs";
+                File.WriteAllText(Path.Combine(docPath, "LabelRequest - " + rateLogId + ".txt"), sales_order_LabelrequestBody);
+
+                stream.Write(data, 0, data.Length);
+                stream.Close();
+
+                WebResponse requestResponse = request.GetResponse();
+                stream = requestResponse.GetResponseStream();
+
+                StreamReader parseResponse = new StreamReader(stream);
+                sales_order_RichTextBox.Text = parseResponse.ReadToEnd();
+                string responseBodyText = sales_order_RichTextBox.Text;
+
+
+                // GET LABEL IMAGE
+                //LABEL_DOWNLOAD OBJECT
+                int labelDownloadOBJ1 = responseBodyText.IndexOf("\"label_download\"") + "\"label_download\"".Length;
+                int labelDownloadOBJ2 = responseBodyText.LastIndexOf("\"form_download\"");
+                stream.Close();
+
+                string labelDownloadOBJ3 = responseBodyText.Substring(labelDownloadOBJ1, labelDownloadOBJ2 - labelDownloadOBJ1);
+                //Needed to specify as UPS contains two Label download objects
+
+                int imgURL1 = labelDownloadOBJ3.IndexOf("\"png\": \"") + "\"png\": \"".Length;
+                int imgURL2 = labelDownloadOBJ3.LastIndexOf(".png");
+                stream.Close();
+
+                string imgURL3 = labelDownloadOBJ3.Substring(imgURL1, imgURL2 - imgURL1);
+
+                //Save image in logging
+                using (WebClient client = new WebClient())
+                {
+                    client.DownloadFileAsync(new Uri(imgURL3 + ".png"), @"..\..\Resources\LabelImages\Label-" + rateLogId + ".png");
+                }
+
+                labelImageBox.Load(imgURL3 + ".png");
+
+                //CLOSE STREAM
+                parseResponse.Close();
+                stream.Close();
+
+            }
+            catch (Exception crateLabelError)
+            {
+
+                if (crateLabelError.Message.Contains("400"))
+                {
+
+                    MessageBox.Show("ShipEngine returned a 400 Bad Request, please check your entries and retry.");
+
+                }
+                else
+                {
+                    MessageBox.Show("Unspecified Error, please try again and check your entries");
+                }
+
+            }
+
 
         }
     }

@@ -104,6 +104,8 @@
             this.print_Button = new System.Windows.Forms.Button();
             this.sales_order_RichTextBox = new System.Windows.Forms.RichTextBox();
             this.sales_order_ListBox = new System.Windows.Forms.ListBox();
+            this.create_label_from_Order_Button = new System.Windows.Forms.Button();
+            this.sales_order_label_RichTextBox = new System.Windows.Forms.RichTextBox();
             this.shipFromgroupBox.SuspendLayout();
             this.shipTogroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.labelImageBox)).BeginInit();
@@ -641,7 +643,7 @@
             this.labelImageBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.labelImageBox.Location = new System.Drawing.Point(640, 12);
             this.labelImageBox.Name = "labelImageBox";
-            this.labelImageBox.Size = new System.Drawing.Size(382, 576);
+            this.labelImageBox.Size = new System.Drawing.Size(382, 600);
             this.labelImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.labelImageBox.TabIndex = 61;
             this.labelImageBox.TabStop = false;
@@ -759,7 +761,7 @@
             // 
             this.rate_response_RichTextBox.Location = new System.Drawing.Point(326, 403);
             this.rate_response_RichTextBox.Name = "rate_response_RichTextBox";
-            this.rate_response_RichTextBox.Size = new System.Drawing.Size(308, 211);
+            this.rate_response_RichTextBox.Size = new System.Drawing.Size(308, 238);
             this.rate_response_RichTextBox.TabIndex = 77;
             this.rate_response_RichTextBox.Text = "";
             // 
@@ -812,7 +814,7 @@
             // 
             // print_Button
             // 
-            this.print_Button.Location = new System.Drawing.Point(640, 594);
+            this.print_Button.Location = new System.Drawing.Point(640, 618);
             this.print_Button.Name = "print_Button";
             this.print_Button.Size = new System.Drawing.Size(382, 20);
             this.print_Button.TabIndex = 83;
@@ -838,11 +840,33 @@
             this.sales_order_ListBox.TabIndex = 85;
             this.sales_order_ListBox.SelectedIndexChanged += new System.EventHandler(this.sales_order_ListBox_SelectedIndexChanged);
             // 
+            // create_label_from_Order_Button
+            // 
+            this.create_label_from_Order_Button.Enabled = false;
+            this.create_label_from_Order_Button.Location = new System.Drawing.Point(90, 618);
+            this.create_label_from_Order_Button.Name = "create_label_from_Order_Button";
+            this.create_label_from_Order_Button.Size = new System.Drawing.Size(127, 23);
+            this.create_label_from_Order_Button.TabIndex = 86;
+            this.create_label_from_Order_Button.Text = "Create Label for Order";
+            this.create_label_from_Order_Button.UseVisualStyleBackColor = true;
+            this.create_label_from_Order_Button.Click += new System.EventHandler(this.create_label_from_Order_Button_Click);
+            // 
+            // sales_order_label_RichTextBox
+            // 
+            this.sales_order_label_RichTextBox.Location = new System.Drawing.Point(1103, 649);
+            this.sales_order_label_RichTextBox.Name = "sales_order_label_RichTextBox";
+            this.sales_order_label_RichTextBox.Size = new System.Drawing.Size(100, 100);
+            this.sales_order_label_RichTextBox.TabIndex = 87;
+            this.sales_order_label_RichTextBox.Text = "";
+            this.sales_order_label_RichTextBox.Visible = false;
+            // 
             // shippingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1030, 619);
+            this.ClientSize = new System.Drawing.Size(1030, 644);
+            this.Controls.Add(this.sales_order_label_RichTextBox);
+            this.Controls.Add(this.create_label_from_Order_Button);
             this.Controls.Add(this.sales_order_ListBox);
             this.Controls.Add(this.sales_order_RichTextBox);
             this.Controls.Add(this.print_Button);
@@ -970,6 +994,8 @@
         private System.Windows.Forms.Button print_Button;
         private System.Windows.Forms.RichTextBox sales_order_RichTextBox;
         private System.Windows.Forms.ListBox sales_order_ListBox;
+        private System.Windows.Forms.Button create_label_from_Order_Button;
+        private System.Windows.Forms.RichTextBox sales_order_label_RichTextBox;
     }
 }
 
