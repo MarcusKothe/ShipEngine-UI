@@ -8,7 +8,7 @@ namespace ShipEngine_UI
 {
     public class ShipEngineUI
     {
-        
+        public static bool has_error = false;
         //API KEY
         public static string apiKey = "";
 

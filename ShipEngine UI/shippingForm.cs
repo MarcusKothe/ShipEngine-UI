@@ -104,7 +104,18 @@ namespace ShipEngine_UI
             }
             catch (Exception HTTPexception)
             {
-                MessageBox.Show(HTTPexception.Message);
+                this.Close();
+
+                if (HTTPexception.Message.Contains("401"))
+                {
+                    apiKeyPrompt ApiKeyForm = new apiKeyPrompt();
+                    MessageBox.Show("ShipEngine returned 401 Unauthorized, please check your API Key.");
+
+                    ShipEngineUI.has_error = true;
+
+                    ApiKeyForm.ShowDialog();
+                }
+
             }
 
 
@@ -170,7 +181,7 @@ namespace ShipEngine_UI
             }
             catch (Exception HTTPexception)
             {
-                MessageBox.Show(HTTPexception.ToString());
+                this.Close();
             }
 
         }
@@ -431,11 +442,12 @@ namespace ShipEngine_UI
                                 shipFrom_address_line2_TextBox.Text = Wh_AddressL3;
                             }
 
+
                             //AddressLine 3
-                            if (currentLine.Contains("\"address_line3\": ") == true)
+                            if (currentLine.Contains("\"address_line3\": \"") == true)
                             {
                                 //Replace "warehouse_id": " ",
-                                string Wh_AddressL4 = currentLine.Replace("\"address_line3\": ", "");
+                                string Wh_AddressL4 = currentLine.Replace("\"address_line3\": \"", "");
                                 string Wh_AddressL5 = Wh_AddressL4.Replace("\",", "");
 
                                 //add to textbox
@@ -772,7 +784,16 @@ namespace ShipEngine_UI
             }
             catch (Exception HTTPexception)
             {
-                MessageBox.Show(HTTPexception.ToString());
+                if (HTTPexception.Message.Contains("400"))
+                {
+                    
+                    MessageBox.Show("ShipEngine returned a 400 Bad Request, please check your entries.");
+
+                }
+                else
+                {
+                    MessageBox.Show("Unspecified Error, please try again and check your entries");
+                }
             }
         }
 
@@ -942,7 +963,16 @@ namespace ShipEngine_UI
             catch (Exception crateLabelError)
             {
 
-                MessageBox.Show(crateLabelError.ToString() + label_RichTextBox.Text);
+                if (crateLabelError.Message.Contains("400"))
+                {
+
+                    MessageBox.Show("ShipEngine returned a 400 Bad Request, please check your entries.");
+
+                }
+                else
+                {
+                    MessageBox.Show("Unspecified Error, please try again and check your entries");
+                }
 
             }
 

@@ -25,7 +25,7 @@ namespace ShipEngine_UI
        
         private void doneButton_Click(object sender, EventArgs e)
         {
-
+            //SET API KEY
             ShipEngineUI.apiKey = apiKeyTextBox.Text;
 
             this.Hide();
@@ -34,6 +34,5 @@ namespace ShipEngine_UI
             shippingForm.ShowDialog();
 
         }
-
     }
 }

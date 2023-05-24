@@ -118,6 +118,7 @@
             this.service_code_ComboBox.Name = "service_code_ComboBox";
             this.service_code_ComboBox.Size = new System.Drawing.Size(308, 21);
             this.service_code_ComboBox.TabIndex = 1;
+            this.service_code_ComboBox.Text = "Carrier Services";
             this.service_code_ComboBox.SelectedIndexChanged += new System.EventHandler(this.service_code_ComboBox_SelectedIndexChanged);
             // 
             // carrier_id_ComboBox
@@ -127,6 +128,7 @@
             this.carrier_id_ComboBox.Name = "carrier_id_ComboBox";
             this.carrier_id_ComboBox.Size = new System.Drawing.Size(308, 21);
             this.carrier_id_ComboBox.TabIndex = 2;
+            this.carrier_id_ComboBox.Text = "Carriers";
             this.carrier_id_ComboBox.SelectedIndexChanged += new System.EventHandler(this.carrier_id_ComboBox_SelectedIndexChanged);
             // 
             // carrier_id_RichTextBox
@@ -176,7 +178,7 @@
             this.shipFromgroupBox.Size = new System.Drawing.Size(308, 304);
             this.shipFromgroupBox.TabIndex = 55;
             this.shipFromgroupBox.TabStop = false;
-            this.shipFromgroupBox.Text = "Ship From Object";
+            this.shipFromgroupBox.Text = "Ship From";
             // 
             // shipFrom_address_residential_indicator_comboBox
             // 
@@ -402,7 +404,7 @@
             this.shipTogroupBox.Size = new System.Drawing.Size(308, 304);
             this.shipTogroupBox.TabIndex = 56;
             this.shipTogroupBox.TabStop = false;
-            this.shipTogroupBox.Text = "Ship To Object";
+            this.shipTogroupBox.Text = "Ship To";
             // 
             // shipTo_address_residential_indicator_comboBox
             // 
@@ -605,6 +607,7 @@
             this.warehouse_id_ComboBox.Name = "warehouse_id_ComboBox";
             this.warehouse_id_ComboBox.Size = new System.Drawing.Size(308, 21);
             this.warehouse_id_ComboBox.TabIndex = 57;
+            this.warehouse_id_ComboBox.Text = "Warehouses (Autofill ShipFrom)";
             this.warehouse_id_ComboBox.SelectedIndexChanged += new System.EventHandler(this.warehouse_id_ComboBox_SelectedIndexChanged);
             // 
             // warehouse_id_RichTextBox
