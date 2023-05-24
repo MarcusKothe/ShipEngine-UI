@@ -102,6 +102,8 @@
             this.create_label_Button = new System.Windows.Forms.Button();
             this.label_RichTextBox = new System.Windows.Forms.RichTextBox();
             this.print_Button = new System.Windows.Forms.Button();
+            this.sales_order_RichTextBox = new System.Windows.Forms.RichTextBox();
+            this.sales_order_ListBox = new System.Windows.Forms.ListBox();
             this.shipFromgroupBox.SuspendLayout();
             this.shipTogroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.labelImageBox)).BeginInit();
@@ -133,18 +135,18 @@
             // 
             // carrier_id_RichTextBox
             // 
-            this.carrier_id_RichTextBox.Location = new System.Drawing.Point(1103, 323);
+            this.carrier_id_RichTextBox.Location = new System.Drawing.Point(1103, 225);
             this.carrier_id_RichTextBox.Name = "carrier_id_RichTextBox";
-            this.carrier_id_RichTextBox.Size = new System.Drawing.Size(164, 149);
+            this.carrier_id_RichTextBox.Size = new System.Drawing.Size(100, 100);
             this.carrier_id_RichTextBox.TabIndex = 3;
             this.carrier_id_RichTextBox.Text = "";
             this.carrier_id_RichTextBox.Visible = false;
             // 
             // service_code_RichTextBox
             // 
-            this.service_code_RichTextBox.Location = new System.Drawing.Point(1103, 168);
+            this.service_code_RichTextBox.Location = new System.Drawing.Point(1103, 119);
             this.service_code_RichTextBox.Name = "service_code_RichTextBox";
-            this.service_code_RichTextBox.Size = new System.Drawing.Size(164, 149);
+            this.service_code_RichTextBox.Size = new System.Drawing.Size(100, 100);
             this.service_code_RichTextBox.TabIndex = 4;
             this.service_code_RichTextBox.Text = "";
             this.service_code_RichTextBox.Visible = false;
@@ -614,7 +616,7 @@
             // 
             this.warehouse_id_RichTextBox.Location = new System.Drawing.Point(1103, 13);
             this.warehouse_id_RichTextBox.Name = "warehouse_id_RichTextBox";
-            this.warehouse_id_RichTextBox.Size = new System.Drawing.Size(164, 149);
+            this.warehouse_id_RichTextBox.Size = new System.Drawing.Size(100, 100);
             this.warehouse_id_RichTextBox.TabIndex = 58;
             this.warehouse_id_RichTextBox.Text = "";
             this.warehouse_id_RichTextBox.Visible = false;
@@ -665,9 +667,9 @@
             // 
             // package_code_RichTextBox
             // 
-            this.package_code_RichTextBox.Location = new System.Drawing.Point(1103, 478);
+            this.package_code_RichTextBox.Location = new System.Drawing.Point(1103, 331);
             this.package_code_RichTextBox.Name = "package_code_RichTextBox";
-            this.package_code_RichTextBox.Size = new System.Drawing.Size(164, 149);
+            this.package_code_RichTextBox.Size = new System.Drawing.Size(100, 100);
             this.package_code_RichTextBox.TabIndex = 64;
             this.package_code_RichTextBox.Text = "";
             this.package_code_RichTextBox.Visible = false;
@@ -801,9 +803,9 @@
             // 
             // label_RichTextBox
             // 
-            this.label_RichTextBox.Location = new System.Drawing.Point(1103, 633);
+            this.label_RichTextBox.Location = new System.Drawing.Point(1103, 437);
             this.label_RichTextBox.Name = "label_RichTextBox";
-            this.label_RichTextBox.Size = new System.Drawing.Size(164, 149);
+            this.label_RichTextBox.Size = new System.Drawing.Size(100, 100);
             this.label_RichTextBox.TabIndex = 82;
             this.label_RichTextBox.Text = "";
             this.label_RichTextBox.Visible = false;
@@ -818,11 +820,31 @@
             this.print_Button.UseVisualStyleBackColor = true;
             this.print_Button.Click += new System.EventHandler(this.print_Button_Click);
             // 
+            // sales_order_RichTextBox
+            // 
+            this.sales_order_RichTextBox.Location = new System.Drawing.Point(1103, 543);
+            this.sales_order_RichTextBox.Name = "sales_order_RichTextBox";
+            this.sales_order_RichTextBox.Size = new System.Drawing.Size(100, 100);
+            this.sales_order_RichTextBox.TabIndex = 84;
+            this.sales_order_RichTextBox.Text = "";
+            this.sales_order_RichTextBox.Visible = false;
+            // 
+            // sales_order_ListBox
+            // 
+            this.sales_order_ListBox.FormattingEnabled = true;
+            this.sales_order_ListBox.Location = new System.Drawing.Point(12, 467);
+            this.sales_order_ListBox.Name = "sales_order_ListBox";
+            this.sales_order_ListBox.Size = new System.Drawing.Size(308, 147);
+            this.sales_order_ListBox.TabIndex = 85;
+            this.sales_order_ListBox.SelectedIndexChanged += new System.EventHandler(this.sales_order_ListBox_SelectedIndexChanged);
+            // 
             // shippingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1031, 619);
+            this.ClientSize = new System.Drawing.Size(1028, 618);
+            this.Controls.Add(this.sales_order_ListBox);
+            this.Controls.Add(this.sales_order_RichTextBox);
             this.Controls.Add(this.print_Button);
             this.Controls.Add(this.label_RichTextBox);
             this.Controls.Add(this.create_label_Button);
@@ -946,6 +968,8 @@
         private System.Windows.Forms.Button create_label_Button;
         private System.Windows.Forms.RichTextBox label_RichTextBox;
         private System.Windows.Forms.Button print_Button;
+        private System.Windows.Forms.RichTextBox sales_order_RichTextBox;
+        private System.Windows.Forms.ListBox sales_order_ListBox;
     }
 }
 

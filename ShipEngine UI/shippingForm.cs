@@ -118,7 +118,6 @@ namespace ShipEngine_UI
 
             }
 
-
             //GET WAREHOUSES
             try
             {
@@ -184,6 +183,81 @@ namespace ShipEngine_UI
                 this.Close();
             }
 
+            //GET SALES ORDERS
+            try
+            {
+                //URL SOURCE
+                string URLstring = "https://api.shipengine.com/v-beta/sales_orders";
+
+                //REQUEST
+                WebRequest requestObject = WebRequest.Create(URLstring);
+                requestObject.Method = "GET";
+
+                //SE AUTH
+                requestObject.Headers.Add("API-key", ShipEngineUI.apiKey);
+
+                //RESPONSE
+                HttpWebResponse responseObjectGet = null;
+                responseObjectGet = (HttpWebResponse)requestObject.GetResponse();
+                string streamResponse = null;
+
+
+                //Get all sales orders
+                using (Stream stream = responseObjectGet.GetResponseStream())
+                {
+                    StreamReader responseRead = new StreamReader(stream);
+                    streamResponse = responseRead.ReadToEnd();
+
+                    using (var reader = new StringReader(streamResponse))
+                    {
+
+                        for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                        {
+
+                            if (currentLine.Contains("external_order_number") == true)
+                            {
+
+                                string sales_order1 = currentLine.Replace("\"external_order_number\": \"", "");
+                                string sales_order = sales_order1.Replace("\",", "");
+
+                                //add to textbox
+                                sales_order_RichTextBox.Text = sales_order_RichTextBox.Text.Trim() + sales_order.Trim() + " - ";
+
+                            }
+                            if (currentLine.Contains("fulfillment_status") == true)
+                            {
+
+                                string fulfillment_status1 = currentLine.Replace("\"fulfillment_status\": \"", "");
+                                string fulfillment_status = fulfillment_status1.Replace("\",", "");
+
+                                //add to textbox
+                                sales_order_RichTextBox.Text = sales_order_RichTextBox.Text + fulfillment_status.Trim() + "," + Environment.NewLine;
+
+                            }
+                            else
+                            {
+                                currentLine.Replace(currentLine, "");
+                            }
+                        }
+
+                        //PARSE AND ADD CARRIER ID's
+                        string[] sales_order_list1 = sales_order_RichTextBox.Text.Split(',');
+                        string[] sales_order_list = sales_order_list1.Distinct().ToArray();
+                        foreach (string sales_order in sales_order_list)
+                        {
+                            if (sales_order.Trim() == "")
+                                continue;
+
+                            sales_order_ListBox.Items.Add(sales_order.Trim());
+                        }
+                    }
+                }
+            }
+            catch (Exception HTTPexception)
+            {
+                sales_order_ListBox.Items.Add("ShipEngine found no sales orders to import at this time.");
+            }
+
         }
 
         private void carrier_id_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -192,7 +266,7 @@ namespace ShipEngine_UI
             package_code_RichTextBox.Clear();
             service_code_ComboBox.Items.Clear();
             package_code_ComboBox.Items.Clear();
-        
+                    
             //GET CARRIER ID
             string carrier_id1 = carrier_id_ComboBox.SelectedItem.ToString();
             carrier_id1 = carrier_id1.Remove(carrier_id1.IndexOf("|") + 1);
@@ -262,6 +336,8 @@ namespace ShipEngine_UI
 
                             service_code_ComboBox.Items.Add(service_code.Trim());
                         }
+                        
+                        service_code_ComboBox.SelectedIndex = 0;
                     }
                 }
             }
@@ -645,25 +721,26 @@ namespace ShipEngine_UI
                     "\r\n            \"postal_code\": \"" + ShipEngineUI.shipFrom_postal_code + "\"," +
                     "\r\n            \"country_code\": \"" + ShipEngineUI.shipFrom_country_code + "\"," +
                     "\r\n            \"address_residential_indicator\": \"" + ShipEngineUI.shipFrom_address_residential_indicator + "\"\r\n        }," +
-                    "\r\n\r\n        \"confirmation\": \"" + delivery_confirmation_CheckBox.SelectedItem.ToString() + "\",\r\n\r\n        \"advanced_options\": {" +
-                    "\r\n            \"bill_to_account\": null," +
-                    "\r\n            \"bill_to_country_code\": null," +
-                    "\r\n            \"bill_to_party\": null," +
-                    "\r\n            \"bill_to_postal_code\": null," +
-                    "\r\n            \"canada_delivered_duty\": null," +
-                    "\r\n            \"contains_alcohol\": \"false\"," +
-                    "\r\n            \"delivered_duty_paid\": \"false\"," +
-                    "\r\n            \"non_machinable\": \"false\"," +
-                    "\r\n            \"saturday_delivery\": \"false\"," +
-                    "\r\n            \"third-party-consignee\": \"false\"," +
-                    "\r\n            \"ancillary_endorsements_option\": null," +
-                    "\r\n            \"freight_class\": null," +
-                    "\r\n            \"custom_field_1\": null," +
-                    "\r\n            \"custom_field_2\": null," +
-                    "\r\n            \"custom_field_3\": null," +
-                    "\r\n            \"return_pickup_attempts\": null," +
-                    "\r\n\r\n        \"dry_ice\": \"false\"," +
-                    "\r\n            \"dry_ice_weight\": {" +
+                    "\r\n\r\n        \"confirmation\": \"" + delivery_confirmation_CheckBox.SelectedItem.ToString() + 
+                    "\",\r\n\r\n        \"advanced_options\": {" +
+                    "\r\n                \"bill_to_account\": null," +
+                    "\r\n                \"bill_to_country_code\": null," +
+                    "\r\n                \"bill_to_party\": null," +
+                    "\r\n                \"bill_to_postal_code\": null," +
+                    "\r\n                \"canada_delivered_duty\": null," +
+                    "\r\n                \"contains_alcohol\": \"false\"," +
+                    "\r\n                \"delivered_duty_paid\": \"false\"," +
+                    "\r\n                \"non_machinable\": \"false\"," +
+                    "\r\n                \"saturday_delivery\": \"false\"," +
+                    "\r\n                \"third-party-consignee\": \"false\"," +
+                    "\r\n                \"ancillary_endorsements_option\": null," +
+                    "\r\n                \"freight_class\": null," +
+                    "\r\n                \"custom_field_1\": null," +
+                    "\r\n                \"custom_field_2\": null," +
+                    "\r\n                \"custom_field_3\": null," +
+                    "\r\n                \"return_pickup_attempts\": null," +
+                    "\r\n\r\n            \"dry_ice\": \"false\"," +
+                    "\r\n                \"dry_ice_weight\": {" +
                     "\r\n                \"value\": \"0.00\"," +
                     "\r\n                \"unit\": \"pound\"\r\n            }," +
                     "\r\n\r\n            \"collect_on_delivery\": {" +
@@ -787,7 +864,7 @@ namespace ShipEngine_UI
                 if (HTTPexception.Message.Contains("400"))
                 {
                     
-                    MessageBox.Show("ShipEngine returned a 400 Bad Request, please check your entries.");
+                    MessageBox.Show("ShipEngine returned a 400 Bad Request, please check your entries and retry.");
 
                 }
                 else
@@ -966,7 +1043,7 @@ namespace ShipEngine_UI
                 if (crateLabelError.Message.Contains("400"))
                 {
 
-                    MessageBox.Show("ShipEngine returned a 400 Bad Request, please check your entries.");
+                    MessageBox.Show("ShipEngine returned a 400 Bad Request, please check your entries and retry.");
 
                 }
                 else
@@ -1004,6 +1081,11 @@ namespace ShipEngine_UI
                 pdoc.Print();
 
             }
+        }
+
+        private void sales_order_ListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
