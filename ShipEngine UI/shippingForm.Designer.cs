@@ -842,7 +842,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1028, 618);
+            this.ClientSize = new System.Drawing.Size(1030, 619);
             this.Controls.Add(this.sales_order_ListBox);
             this.Controls.Add(this.sales_order_RichTextBox);
             this.Controls.Add(this.print_Button);

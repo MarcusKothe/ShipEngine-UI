@@ -210,20 +210,43 @@ namespace ShipEngine_UI
 
                     using (var reader = new StringReader(streamResponse))
                     {
-
+                        
                         for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
                         {
+
+                            if (currentLine.Contains("sales_order_id") == true)
+                            {
+
+                                string sales_order_id1 = currentLine.Replace("\"sales_order_id\": \"", "");
+                                string sales_order_id = sales_order_id1.Replace("\",", "");
+
+                                //add to textbox
+                                sales_order_RichTextBox.Text += sales_order_id.Trim() + " | ";
+
+                                //ShipEngineUI.sales_order_id = sales_order_id;
+
+                            }
+                            else
+                            {
+                                currentLine.Replace(currentLine, "");
+                            }
 
                             if (currentLine.Contains("external_order_number") == true)
                             {
 
-                                string sales_order1 = currentLine.Replace("\"external_order_number\": \"", "");
-                                string sales_order = sales_order1.Replace("\",", "");
+                                string external_order_number1 = currentLine.Replace("\"external_order_number\": \"", "");
+                                string external_order_number = external_order_number1.Replace("\",", "");
 
                                 //add to textbox
-                                sales_order_RichTextBox.Text = sales_order_RichTextBox.Text.Trim() + sales_order.Trim() + " - ";
+                                sales_order_RichTextBox.Text = sales_order_RichTextBox.Text.Trim() + external_order_number.Trim() + " - ";
 
+                                //ShipEngineUI.external_order_number = external_order_number;
                             }
+                            else
+                            {
+                                currentLine.Replace(currentLine, "");
+                            }
+
                             if (currentLine.Contains("fulfillment_status") == true)
                             {
 
@@ -231,13 +254,20 @@ namespace ShipEngine_UI
                                 string fulfillment_status = fulfillment_status1.Replace("\",", "");
 
                                 //add to textbox
-                                sales_order_RichTextBox.Text = sales_order_RichTextBox.Text + fulfillment_status.Trim() + "," + Environment.NewLine;
+                                sales_order_RichTextBox.Text += fulfillment_status.Trim() + Environment.NewLine + ",";
 
+                                //ShipEngineUI.fulfillment_status = fulfillment_status;
                             }
                             else
                             {
                                 currentLine.Replace(currentLine, "");
                             }
+
+                            //string line = ShipEngineUI.external_order_number.Trim() + " - " + ShipEngineUI.fulfillment_status.Trim() + " | " +
+                               // ShipEngineUI.sales_order_id.Trim() + Environment.NewLine + ",";
+
+                           // sales_order_RichTextBox.Text += line;
+
                         }
 
                         //PARSE AND ADD CARRIER ID's
@@ -256,6 +286,7 @@ namespace ShipEngine_UI
             catch (Exception HTTPexception)
             {
                 sales_order_ListBox.Items.Add("ShipEngine found no sales orders to import at this time.");
+                sales_order_ListBox.Enabled = false;
             }
 
         }
@@ -1085,6 +1116,200 @@ namespace ShipEngine_UI
 
         private void sales_order_ListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            try
+            {
+                //GET SALES ORDER ID
+                string sales_order_id1 = sales_order_ListBox.SelectedItem.ToString();
+                sales_order_id1 = sales_order_id1.Remove(sales_order_id1.IndexOf("|") + 1);
+                string sales_order_id = sales_order_id1.Replace("|", "");
+                
+                //URL SOURCE
+                string URLstring = "https://api.shipengine.com/v-beta/sales_orders/" + sales_order_id;
+
+                //REQUEST
+                WebRequest requestObject = WebRequest.Create(URLstring);
+                requestObject.Method = "GET"; ;
+
+                //SE AUTH
+                requestObject.Headers.Add("API-key", ShipEngineUI.apiKey);
+
+                //RESPONSE
+                HttpWebResponse responseObjectGet = null;
+                responseObjectGet = (HttpWebResponse)requestObject.GetResponse();
+                string streamResponse = null;
+
+                //Get Address
+                using (Stream stream = responseObjectGet.GetResponseStream())
+                {
+                    StreamReader responseRead = new StreamReader(stream);
+                    streamResponse = responseRead.ReadToEnd();
+
+                    //
+                    int originAddress1 = streamResponse.IndexOf("\"ship_to\": {") + "\"ship_to\": {".Length;
+                    int originAddress2 = streamResponse.LastIndexOf("\"sales_order_items\": ");
+
+                    string originAddress = streamResponse.Substring(originAddress1, originAddress2 - originAddress1);
+
+                    using (var reader = new StringReader(originAddress))
+                    {
+                        for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                        {
+
+                            //NAME
+                            if (currentLine.Contains(" \"name\": \"") == true)
+                            {
+
+                                
+                                string sales_order_Name1 = currentLine.Replace("\"name\": \"", "");
+                                string sales_order_Name = sales_order_Name1.Replace("\",", "");
+
+                                //add to textbox
+
+                                shipFrom_name_TextBox.Text = sales_order_Name;
+
+                            }
+
+                            //PHONE
+                            if (currentLine.Contains("\"phone\": \"") == true)
+                            {
+                                
+                                string sales_order_Phone1 = currentLine.Replace("\"phone\": \"", "");
+                                string sales_order_Phone = sales_order_Phone1.Replace("\",", "");
+
+                                //add to textbox
+
+                                shipFrom_phone_TextBox.Text = sales_order_Phone;
+                            }
+
+                            //Company
+                            if (currentLine.Contains("\"company_name\": \"") == true)
+                            {
+                                
+                                string sales_order_CompanyName1 = currentLine.Replace("\"company_name\": \"", "");
+                                string sales_order_CompanyName = sales_order_CompanyName1.Replace("\",", "");
+
+                                //add to textbox
+
+                                shipFrom_company_name_TextBox.Text = sales_order_CompanyName;
+                            }
+
+                            //AddressLine 1
+                            if (currentLine.Contains("\"address_line1\": \"") == true)
+                            {
+                                
+                                string sales_order_AddressL1 = currentLine.Replace("\"address_line1\": \"", "");
+                                string sales_order_AddressL = sales_order_AddressL1.Replace("\",", "");
+
+                                //add to textbox
+
+                                shipFrom_address_line1_TextBox.Text = sales_order_AddressL;
+                            }
+
+                            //AddressLine 2
+                            if (currentLine.Contains("\"address_line2\": \"") == true)
+                            {
+                                
+                                string sales_order_AddressL2 = currentLine.Replace("\"address_line2\": \"", "");
+                                string sales_order_AddressL3 = sales_order_AddressL2.Replace("\",", "");
+
+                                //add to textbox
+
+                                shipFrom_address_line2_TextBox.Text = sales_order_AddressL3;
+                            }
+
+
+                            //AddressLine 3
+                            if (currentLine.Contains("\"address_line3\": \"") == true)
+                            {
+                                
+                                string sales_order_AddressL4 = currentLine.Replace("\"address_line3\": \"", "");
+                                string sales_order_AddressL5 = sales_order_AddressL4.Replace("\",", "");
+
+                                //add to textbox
+
+                                shipFrom_address_line3_TextBox.Text = sales_order_AddressL5;
+                            }
+
+                            //City
+                            if (currentLine.Contains("\"city_locality\": \"") == true)
+                            {
+                                
+                                string sales_order_City1 = currentLine.Replace("\"city_locality\": \"", "");
+                                string sales_order_City = sales_order_City1.Replace("\",", "");
+
+                                //add to textbox
+
+                                shipFrom_city_locality_TextBox.Text = sales_order_City;
+                            }
+
+                            //State Province
+                            if (currentLine.Contains("\"state_province\": \"") == true)
+                            {
+                                
+                                string sales_order_StateProvince1 = currentLine.Replace("\"state_province\": \"", "");
+                                string sales_order_StateProvince = sales_order_StateProvince1.Replace("\",", "");
+
+                                //add to textbox
+
+                                shipFrom_state_province_TextBox.Text = sales_order_StateProvince;
+                            }
+
+                            //Postal Code
+                            if (currentLine.Contains("\"postal_code\": \"") == true)
+                            {
+                                
+                                string sales_order_PostalCode1 = currentLine.Replace("\"postal_code\": \"", "");
+                                string sales_order_PostalCode = sales_order_PostalCode1.Replace("\",", "");
+
+                                //add to textbox
+
+                                shipFrom_postal_code_TextBox.Text = sales_order_PostalCode;
+                            }
+
+                            //Country Code
+                            if (currentLine.Contains("\"country_code\": \"") == true)
+                            {
+                                
+                                string sales_order_CountryCode1 = currentLine.Replace("\"country_code\": \"", "");
+                                string sales_order_CountryCode = sales_order_CountryCode1.Replace("\",", "");
+
+                                //add to textbox
+
+                                shipFrom_country_code_TextBox.Text = sales_order_CountryCode;
+
+                            }
+
+                            //remove spaces
+                            //List Textboxes
+                            IList<T> GetAllControls<T>(Control control) where T : Control
+                            {
+                                var TextBoxes = new List<T>();
+                                foreach (Control item in control.Controls)
+                                {
+                                    var ctr = item as T;
+                                    if (ctr != null)
+                                        TextBoxes.Add(ctr);
+                                    else
+                                        TextBoxes.AddRange(GetAllControls<T>(item));
+                                }
+                                return TextBoxes;
+                            }
+
+                            //remove spaces loop
+                            var textBoxesList = GetAllControls<System.Windows.Forms.TextBox>(this);
+                            foreach (System.Windows.Forms.TextBox TextBoxes in textBoxesList)
+                            {
+                                TextBoxes.Text = TextBoxes.Text.Replace("    ", "");
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception HTTPexception)
+            {
+                MessageBox.Show(HTTPexception.ToString());
+            }
 
         }
     }

@@ -9,6 +9,12 @@ namespace ShipEngine_UI
     public class ShipEngineUI
     {
         public static bool has_error = false;
+
+        //Sales order ID
+        public static string external_order_number = "";
+        public static string sales_order_id = "";
+        public static string fulfillment_status = "";
+
         //API KEY
         public static string apiKey = "";
 
