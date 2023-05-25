@@ -10,6 +10,9 @@ namespace ShipEngine_UI
     {
         public static bool has_error = false;
 
+        public static string label_id = "";
+        public static string void_label_id_Response = "";
+
         //Sales order ID
         public static string external_order_number = "";
         public static string sales_order_id = "";

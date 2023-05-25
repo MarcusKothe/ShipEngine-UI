@@ -909,6 +909,7 @@ namespace ShipEngine_UI
         {
 
             label_RichTextBox.Clear();
+            void_label_id_TextBox.Text = string.Empty;
 
             try
             {
@@ -1040,6 +1041,26 @@ namespace ShipEngine_UI
                 string responseBodyText = label_RichTextBox.Text;
 
 
+                    using (var reader = new StringReader(responseBodyText))
+                    {
+
+                        for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                        {
+
+                            if (currentLine.Contains("label_id") == true)
+                            {
+
+                                string label_id1 = currentLine.Replace("\"label_id\": \"", "");
+                                string label_id = label_id1.Replace("\",", "");
+
+                                //DECLARE VARIABLE
+                                ShipEngineUI.label_id = label_id.Trim();
+
+                            }
+                        }  
+                    }
+                
+
                 // GET LABEL IMAGE
                 //LABEL_DOWNLOAD OBJECT
                 int labelDownloadOBJ1 = responseBodyText.IndexOf("\"label_download\"") + "\"label_download\"".Length;
@@ -1062,7 +1083,9 @@ namespace ShipEngine_UI
                 }
 
                 labelImageBox.Load(imgURL3 + ".png");
-                
+
+                void_label_id_TextBox.Text = ShipEngineUI.label_id;
+
                 //CLOSE STREAM
                 parseResponse.Close();
                 stream.Close();
@@ -1321,15 +1344,17 @@ namespace ShipEngine_UI
 
             try
             {
+                //PARSE CARRIER ID Get variable
                 string carrier_id1 = carrier_id_ComboBox.SelectedItem.ToString();
                 carrier_id1 = carrier_id1.Remove(carrier_id1.IndexOf("|") + 1);
                 string carrier_id = carrier_id1.Replace("|", "");
 
+                //PARSE SERVICE CODE Get variable
                 string service_code1 = service_code_ComboBox.SelectedItem.ToString();
                 service_code1 = service_code1.Remove(service_code1.IndexOf("|") + 1);
                 string service_code = service_code1.Replace("|", "");
 
-                //GET SALES ORDER ID
+                //PARSE SALES ORDER ID Get variable
                 string sales_order_id1 = sales_order_ListBox.SelectedItem.ToString();
                 sales_order_id1 = sales_order_id1.Remove(sales_order_id1.IndexOf("|") + 1);
                 string sales_order_id = sales_order_id1.Replace("|", "");
@@ -1447,6 +1472,128 @@ namespace ShipEngine_UI
 
             }
 
+
+        }
+
+        private void labelImageBox_Click(object sender, EventArgs e)
+        {
+            labelImageBox.Visible = false;
+
+            label_RichTextBox.Visible = true;
+
+
+        }
+
+        private void label_RichTextBox_Click(object sender, EventArgs e)
+        {
+
+            labelImageBox.Visible = true;
+
+            label_RichTextBox.Visible = false;
+        }
+
+        private void void_label_id_Button_Click(object sender, EventArgs e)
+        {
+
+            string label_id_entered = void_label_id_TextBox.Text;
+
+            try
+            {
+
+                if (label_id_entered == ShipEngineUI.label_id)
+                {
+
+                    DialogResult dialogResult = MessageBox.Show("Are you sure you would like to void " + ShipEngineUI.label_id + "?", "VOID LABEL", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        try
+                        {
+
+                            //URI - POST
+                            WebRequest request = WebRequest.Create("https://api.shipengine.com/v1/labels/" + ShipEngineUI.label_id + "/void");
+                            request.Method = "POST";
+
+                            //API Key
+                            request.Headers.Add("API-key", ShipEngineUI.apiKey);
+
+                            Stream stream = request.GetRequestStream();
+
+                            stream.Close();
+
+                            WebResponse requestResponse = request.GetResponse();
+                            stream = requestResponse.GetResponseStream();
+
+                            StreamReader parseResponse = new StreamReader(stream);
+                            void_label_id_RichTextBox.Text = parseResponse.ReadToEnd();
+                            string responseBodyText = void_label_id_RichTextBox.Text;
+
+                            //RESPONSE
+                            HttpWebResponse responseObjectGet = null;
+                            responseObjectGet = (HttpWebResponse)request.GetResponse();
+                            string streamResponse = null;
+
+                            //Get variables to declare globally
+                            using (Stream labelStream = responseObjectGet.GetResponseStream())
+                            {
+                                StreamReader responseRead = new StreamReader(stream);
+                                streamResponse = responseRead.ReadToEnd();
+
+                                using (var reader = new StringReader(streamResponse))
+                                {
+
+                                    for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                                    {
+
+                                        if (currentLine.Contains("message") == true)
+                                        {
+
+                                            string void_label_id_Response1 = currentLine.Replace("\"message\": \"", "");
+                                            string void_label_id_Response = void_label_id_Response1.Replace("\",", "");
+
+                                            //DECLARE VARIABLE
+                                            ShipEngineUI.void_label_id_Response = void_label_id_Response;
+
+                                        }
+                                    }
+                                }
+                            }
+
+                            MessageBox.Show(ShipEngineUI.void_label_id_Response);
+                            
+                            //CLOSE STREAM
+                            parseResponse.Close();
+                            stream.Close();
+
+                        }
+                        catch(Exception void_label_id_response_Error)
+                        {
+
+                            MessageBox.Show(void_label_id_response_Error + Environment.NewLine + "This label could not be voided.");
+
+                        }
+
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    {
+                        
+                        void_label_id_TextBox.Text = string.Empty;
+                        MessageBox.Show("You canceled the void request.");
+
+                    }
+
+                }
+                else if (label_id_entered != ShipEngineUI.label_id)
+                {
+
+                    MessageBox.Show("The Label ID you entered does not match the label you created. Please check your entry.");
+
+                }
+
+            }
+            catch(Exception voidlableexception)
+            {
+                MessageBox.Show(voidlableexception.ToString());
+            }
 
         }
     }
