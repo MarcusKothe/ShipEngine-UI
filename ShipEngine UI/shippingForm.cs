@@ -1427,6 +1427,25 @@ namespace ShipEngine_UI
                 sales_order_RichTextBox.Text = parseResponse.ReadToEnd();
                 string responseBodyText = sales_order_RichTextBox.Text;
 
+                using (var reader = new StringReader(responseBodyText))
+                {
+
+                    for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                    {
+
+                        if (currentLine.Contains("label_id") == true)
+                        {
+
+                            string label_id1 = currentLine.Replace("\"label_id\": \"", "");
+                            string label_id = label_id1.Replace("\",", "");
+
+                            //DECLARE VARIABLE
+                            ShipEngineUI.label_id = label_id.Trim();
+
+                        }
+                    }
+                }
+
 
                 // GET LABEL IMAGE
                 //LABEL_DOWNLOAD OBJECT

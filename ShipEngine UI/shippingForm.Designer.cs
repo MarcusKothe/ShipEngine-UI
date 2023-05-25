@@ -878,6 +878,7 @@
             // 
             // void_label_id_TextBox
             // 
+            this.void_label_id_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
             this.void_label_id_TextBox.Location = new System.Drawing.Point(854, 619);
             this.void_label_id_TextBox.Name = "void_label_id_TextBox";
             this.void_label_id_TextBox.Size = new System.Drawing.Size(100, 20);
@@ -907,7 +908,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1031, 649);
+            this.ClientSize = new System.Drawing.Size(1031, 645);
             this.Controls.Add(this.void_label_id_RichTextBox);
             this.Controls.Add(this.void_label_id_Button);
             this.Controls.Add(this.void_label_id_TextBox);
