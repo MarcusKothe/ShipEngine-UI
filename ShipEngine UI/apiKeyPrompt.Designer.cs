@@ -37,24 +37,26 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(80, 9);
+            this.label1.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(75, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(230, 20);
+            this.label1.Size = new System.Drawing.Size(233, 19);
             this.label1.TabIndex = 0;
             this.label1.Text = "Enter your API Key to begin";
             // 
             // apiKeyTextBox
             // 
+            this.apiKeyTextBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.apiKeyTextBox.Location = new System.Drawing.Point(12, 32);
             this.apiKeyTextBox.Name = "apiKeyTextBox";
-            this.apiKeyTextBox.Size = new System.Drawing.Size(356, 20);
+            this.apiKeyTextBox.Size = new System.Drawing.Size(356, 21);
             this.apiKeyTextBox.TabIndex = 1;
             this.apiKeyTextBox.Text = "ENTER  API KEY TO BEGIN";
             this.apiKeyTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // doneButton
             // 
+            this.doneButton.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.doneButton.Location = new System.Drawing.Point(157, 58);
             this.doneButton.Name = "doneButton";
             this.doneButton.Size = new System.Drawing.Size(75, 23);
@@ -75,6 +77,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "apiKeyPrompt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "SHIPENGINE";
             this.Load += new System.EventHandler(this.apiKeyPrompt_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

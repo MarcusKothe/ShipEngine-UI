@@ -723,7 +723,7 @@ namespace ShipEngine_UI
                 string rateRequestBody = "{\r\n\"rate_options\": {\r\n  \"carrier_ids\": [\r\n    \"" + carrier_id + "\"\r\n  ]\r\n}," +
                     "\r\n         \"shipment\": " +
                     "{\r\n        \"validate_address\": \"no_validation\"" +
-                    ",\r\n        \"carrier_id\": \"" + "" + "\"" +
+                    ",\r\n        \"carrier_id\": \"" + carrier_id + "\"" +
                     ",\r\n        \"warehouse_id\": \"" + "" + "\"" +
                     ",\r\n        \"service_code\": \"" + service_code + "\"" +
                     ",\r\n        \"external_order_id\": null," +
@@ -829,12 +829,7 @@ namespace ShipEngine_UI
                 string responseBodyText = rate_response_RichTextBox.Text;
                 File.WriteAllText(Path.Combine(docPath, "RateResponse - " + rateLogId + ".txt"), responseBodyText);
 
-                int getRates1 = responseBodyText.IndexOf("\"shipping_amount\"") + "\"shipping_amount\"".Length;
-                int getRates2 = responseBodyText.LastIndexOf("\"insurance_amount\"");
                 stream.Close();
-
-                string getRates3 = responseBodyText.Substring(getRates1, getRates2 - getRates1);
-
 
                 using (var reader = new StringReader(responseBodyText))
                 {
@@ -844,11 +839,10 @@ namespace ShipEngine_UI
                     for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
                     {
 
-                        //NAME
+
                         if (currentLine.Contains("\"amount\"") == true)
                         {
-                            //string carrier_code1 = currentLine.Replace("\"carrier_code\": \"", "");
-                            //string carrier_code = carrier_code1.Replace("\",", "");
+
                             ratesResponse += currentLine;
 
                         }
@@ -878,13 +872,13 @@ namespace ShipEngine_UI
                         {
                             currentLine.Replace(currentLine, "");
                         }
-
                     }
 
                     rate_response_RichTextBox.Text = ratesResponse;
                     rate_response_RichTextBox.Text = rate_response_RichTextBox.Text.Replace("\"amount\": 0.0", "");
                     rate_response_RichTextBox.Text = rate_response_RichTextBox.Text.Replace(" ", "");
                     rate_response_RichTextBox.Text = rate_response_RichTextBox.Text.Replace("\"", "");
+
                 }
 
                 stream.Close();
@@ -941,7 +935,7 @@ namespace ShipEngine_UI
                 string createLabelrequestBody = "{\r\n\"rate_options\": {\r\n  \"carrier_ids\": [\r\n    \"" + carrier_id + "\"\r\n  ]\r\n}," +
                     "\r\n         \"shipment\": " +
                     "{\r\n        \"validate_address\": \"no_validation\"" +
-                    ",\r\n        \"carrier_id\": \"" + "" + "\"" +
+                    ",\r\n        \"carrier_id\": \"" + carrier_id + "\"" +
                     ",\r\n        \"warehouse_id\": \"" + "" + "\"" +
                     ",\r\n        \"service_code\": \"" + service_code + "\"" +
                     ",\r\n        \"external_order_id\": null," +
@@ -1379,25 +1373,25 @@ namespace ShipEngine_UI
                 string sales_order_LabelrequestBody =
                     "{\r\n    \"label_format\": \"png\"," +
                     "\r\n    \"shipment\": {" +
-                    "\r\n        \"carrier_id\": " + carrier_id + "," +
-                    "\r\n        \"service_code\": " + service_code + "," +
+                    "\r\n        \"carrier_id\": \"" + carrier_id + "\"," +
+                    "\r\n        \"service_code\": \"" + service_code + "\"," +
                     "\r\n        \"ship_from\": {" +
-                    "\r\n            \"company_name\": " + ShipEngineUI.shipFrom_company_name + "," +
-                    "\r\n            \"name\": " + ShipEngineUI.shipFrom_name + "," +
-                    "\r\n            \"phone\": " + ShipEngineUI.shipFrom_phone + "," +
-                    "\r\n            \"address_line1\": " + ShipEngineUI.shipFrom_address_line1 + "," +
-                    "\r\n            \"address_line2\": " + ShipEngineUI.shipFrom_address_line2 + "," +
-                    "\r\n            \"city_locality\": " + ShipEngineUI.shipFrom_city_locality + "," +
-                    "\r\n            \"state_province\": " + ShipEngineUI.shipFrom_state_province + "," +
-                    "\r\n            \"postal_code\": " + ShipEngineUI.shipFrom_postal_code + "," +
-                    "\r\n            \"country_code\": " + ShipEngineUI.shipFrom_country_code + "," +
-                    "\r\n            \"address_residential_indicator\": " + ShipEngineUI.shipFrom_address_residential_indicator + "" +
+                    "\r\n            \"company_name\": \"" + ShipEngineUI.shipFrom_company_name + "\"," +
+                    "\r\n            \"name\": \"" + ShipEngineUI.shipFrom_name + "\"," +
+                    "\r\n            \"phone\": \"" + ShipEngineUI.shipFrom_phone + "\"," +
+                    "\r\n            \"address_line1\": \"" + ShipEngineUI.shipFrom_address_line1 + "\"," +
+                    "\r\n            \"address_line2\": \"" + ShipEngineUI.shipFrom_address_line2 + "\"," +
+                    "\r\n            \"city_locality\": \"" + ShipEngineUI.shipFrom_city_locality + "\"," +
+                    "\r\n            \"state_province\": \"" + ShipEngineUI.shipFrom_state_province + "\"," +
+                    "\r\n            \"postal_code\": \"" + ShipEngineUI.shipFrom_postal_code + "\"," +
+                    "\r\n            \"country_code\": \"" + ShipEngineUI.shipFrom_country_code + "\"," +
+                    "\r\n            \"address_residential_indicator\": \"" + ShipEngineUI.shipFrom_address_residential_indicator + "\"" +
                     "\r\n        }," +
                     "\r\n        \"packages\": [" +
                     "\r\n            {" +
-                    "\r\n                \"package_code\": " + package_code_ComboBox.SelectedItem.ToString() + "," +
+                    "\r\n                \"package_code\": \"" + package_code_ComboBox.SelectedItem.ToString() + "\"," +
                     "\r\n                \"weight\": {" +
-                    "\r\n                    \"value\": " + ShipEngineUI.packages_weight_value + "," +
+                    "\r\n                    \"value\": \"" + ShipEngineUI.packages_weight_value + "\"," +
                     "\r\n                    \"unit\": \"pound\"" +
                     "\r\n                }" +
                     "\r\n            }" +
@@ -1530,7 +1524,7 @@ namespace ShipEngine_UI
 
                             //URI - POST
                             WebRequest request = WebRequest.Create("https://api.shipengine.com/v1/labels/" + ShipEngineUI.label_id + "/void");
-                            request.Method = "POST";
+                            request.Method = "PUT";
 
                             //API Key
                             request.Headers.Add("API-key", ShipEngineUI.apiKey);

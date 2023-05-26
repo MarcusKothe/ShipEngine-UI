@@ -13,6 +13,8 @@ namespace ShipEngine_UI
         public static string label_id = "";
         public static string void_label_id_Response = "";
 
+        public static string RATE_AMOUNT = "";
+
         //Sales order ID
         public static string external_order_number = "";
         public static string sales_order_id = "";
