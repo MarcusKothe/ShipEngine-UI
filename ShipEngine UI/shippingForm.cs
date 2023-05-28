@@ -156,7 +156,7 @@ namespace ShipEngine_UI
                                 string warehouse_id = warehouse_id1.Replace("\",", "");
 
                                 //add to textbox
-                                warehouse_id_RichTextBox.Text = warehouse_id_RichTextBox.Text.Trim() + "," + Environment.NewLine + warehouse_id.Trim() + "|";
+                                warehouse_id_RichTextBox.Text = warehouse_id_RichTextBox.Text.Trim() + "~" + Environment.NewLine + warehouse_id.Trim() + "|";
 
                             }
                             else if (currentLine.Contains("name") == true)
@@ -164,7 +164,7 @@ namespace ShipEngine_UI
                                 string warehouse_name1 = currentLine.Replace("\"name\": \"", "");
                                 string warehouse_name = warehouse_name1.Replace("\",", "");
 
-                                warehouse_id_RichTextBox.Text = warehouse_id_RichTextBox.Text + warehouse_name.Trim() + "~";
+                                warehouse_id_RichTextBox.Text = warehouse_id_RichTextBox.Text + warehouse_name.Trim() + "]";
                             }
                             else
                             {
@@ -173,14 +173,14 @@ namespace ShipEngine_UI
                         }
 
                         //PARSE AND ADD CARRIER ID's
-                        string[] warehouse_id_list1 = warehouse_id_RichTextBox.Text.Split(',');
+                        string[] warehouse_id_list1 = warehouse_id_RichTextBox.Text.Split('~');
                         string[] warehouse_id_list = warehouse_id_list1.Distinct().ToArray();
                         foreach (string warehouse_id in warehouse_id_list)
                         {
                             if (warehouse_id.Trim() == "")
                                 continue;
 
-                            string fix = warehouse_id.Substring(0, warehouse_id.IndexOf("~"));
+                            string fix = warehouse_id.Substring(0, warehouse_id.IndexOf("]"));
                             warehouse_id_ComboBox.Items.Add(fix.Trim());
                             
                         }
