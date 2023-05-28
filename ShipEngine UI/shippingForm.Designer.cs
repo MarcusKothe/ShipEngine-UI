@@ -90,7 +90,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.delivery_confirmation_CheckBox = new System.Windows.Forms.ComboBox();
+            this.delivery_confirmation_ComboBox = new System.Windows.Forms.ComboBox();
             this.packages_dimensions_length_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.packages_dimensions_width_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.packages_dimensions_height_numericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -110,6 +110,7 @@
             this.void_label_id_TextBox = new System.Windows.Forms.TextBox();
             this.void_label_id_Button = new System.Windows.Forms.Button();
             this.void_label_id_RichTextBox = new System.Windows.Forms.RichTextBox();
+            this.label_webbrowser = new System.Windows.Forms.WebBrowser();
             this.shipFromgroupBox.SuspendLayout();
             this.shipTogroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.labelImageBox)).BeginInit();
@@ -761,10 +762,10 @@
             this.label3.TabIndex = 67;
             this.label3.Text = "H";
             // 
-            // delivery_confirmation_CheckBox
+            // delivery_confirmation_ComboBox
             // 
-            this.delivery_confirmation_CheckBox.FormattingEnabled = true;
-            this.delivery_confirmation_CheckBox.Items.AddRange(new object[] {
+            this.delivery_confirmation_ComboBox.FormattingEnabled = true;
+            this.delivery_confirmation_ComboBox.Items.AddRange(new object[] {
             "none",
             "delivery",
             "signature ",
@@ -772,11 +773,11 @@
             "direct_signature",
             "delivery_mailed",
             "verbal_confirmation"});
-            this.delivery_confirmation_CheckBox.Location = new System.Drawing.Point(326, 376);
-            this.delivery_confirmation_CheckBox.Name = "delivery_confirmation_CheckBox";
-            this.delivery_confirmation_CheckBox.Size = new System.Drawing.Size(308, 21);
-            this.delivery_confirmation_CheckBox.TabIndex = 71;
-            this.delivery_confirmation_CheckBox.Text = "Confirmation";
+            this.delivery_confirmation_ComboBox.Location = new System.Drawing.Point(326, 376);
+            this.delivery_confirmation_ComboBox.Name = "delivery_confirmation_ComboBox";
+            this.delivery_confirmation_ComboBox.Size = new System.Drawing.Size(308, 21);
+            this.delivery_confirmation_ComboBox.TabIndex = 71;
+            this.delivery_confirmation_ComboBox.Text = "Confirmation";
             // 
             // packages_dimensions_length_numericUpDown
             // 
@@ -919,7 +920,6 @@
             this.sales_order_label_RichTextBox.Size = new System.Drawing.Size(100, 100);
             this.sales_order_label_RichTextBox.TabIndex = 87;
             this.sales_order_label_RichTextBox.Text = "";
-            this.sales_order_label_RichTextBox.Visible = false;
             // 
             // label25
             // 
@@ -958,11 +958,20 @@
             this.void_label_id_RichTextBox.Text = "";
             this.void_label_id_RichTextBox.Visible = false;
             // 
+            // label_webbrowser
+            // 
+            this.label_webbrowser.Location = new System.Drawing.Point(1058, 559);
+            this.label_webbrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.label_webbrowser.Name = "label_webbrowser";
+            this.label_webbrowser.Size = new System.Drawing.Size(39, 37);
+            this.label_webbrowser.TabIndex = 92;
+            // 
             // shippingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1031, 645);
+            this.ClientSize = new System.Drawing.Size(1027, 641);
+            this.Controls.Add(this.label_webbrowser);
             this.Controls.Add(this.void_label_id_RichTextBox);
             this.Controls.Add(this.void_label_id_Button);
             this.Controls.Add(this.void_label_id_TextBox);
@@ -982,7 +991,7 @@
             this.Controls.Add(this.packages_dimensions_height_numericUpDown);
             this.Controls.Add(this.packages_dimensions_width_numericUpDown);
             this.Controls.Add(this.packages_dimensions_length_numericUpDown);
-            this.Controls.Add(this.delivery_confirmation_CheckBox);
+            this.Controls.Add(this.delivery_confirmation_ComboBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -1081,7 +1090,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox delivery_confirmation_CheckBox;
+        private System.Windows.Forms.ComboBox delivery_confirmation_ComboBox;
         private System.Windows.Forms.NumericUpDown packages_dimensions_length_numericUpDown;
         private System.Windows.Forms.NumericUpDown packages_dimensions_width_numericUpDown;
         private System.Windows.Forms.NumericUpDown packages_dimensions_height_numericUpDown;
@@ -1103,6 +1112,7 @@
         private System.Windows.Forms.TextBox void_label_id_TextBox;
         private System.Windows.Forms.Button void_label_id_Button;
         private System.Windows.Forms.RichTextBox void_label_id_RichTextBox;
+        private System.Windows.Forms.WebBrowser label_webbrowser;
     }
 }
 

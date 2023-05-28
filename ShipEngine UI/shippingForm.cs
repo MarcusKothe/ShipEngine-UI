@@ -752,7 +752,7 @@ namespace ShipEngine_UI
                     "\r\n            \"postal_code\": \"" + ShipEngineUI.shipFrom_postal_code + "\"," +
                     "\r\n            \"country_code\": \"" + ShipEngineUI.shipFrom_country_code + "\"," +
                     "\r\n            \"address_residential_indicator\": \"" + ShipEngineUI.shipFrom_address_residential_indicator + "\"\r\n        }," +
-                    "\r\n\r\n        \"confirmation\": \"" + delivery_confirmation_CheckBox.SelectedItem.ToString() + 
+                    "\r\n\r\n        \"confirmation\": \"" + delivery_confirmation_ComboBox.SelectedItem.ToString() + 
                     "\",\r\n\r\n        \"advanced_options\": {" +
                     "\r\n                \"bill_to_account\": null," +
                     "\r\n                \"bill_to_country_code\": null," +
@@ -964,7 +964,7 @@ namespace ShipEngine_UI
                     "\r\n            \"postal_code\": \"" + ShipEngineUI.shipFrom_postal_code + "\"," +
                     "\r\n            \"country_code\": \"" + ShipEngineUI.shipFrom_country_code + "\"," +
                     "\r\n            \"address_residential_indicator\": \"" + ShipEngineUI.shipFrom_address_residential_indicator + "\"\r\n        }," +
-                    "\r\n\r\n        \"confirmation\": \"" + delivery_confirmation_CheckBox.SelectedItem.ToString() + "\",\r\n\r\n        \"advanced_options\": {" +
+                    "\r\n\r\n        \"confirmation\": \"" + delivery_confirmation_ComboBox.SelectedItem.ToString() + "\",\r\n\r\n        \"advanced_options\": {" +
                     "\r\n            \"bill_to_account\": null," +
                     "\r\n            \"bill_to_country_code\": null," +
                     "\r\n            \"bill_to_party\": null," +
@@ -1333,7 +1333,6 @@ namespace ShipEngine_UI
 
         private void create_label_from_Order_Button_Click(object sender, EventArgs e)
         {
-
             sales_order_RichTextBox.Clear();
 
             try
@@ -1353,13 +1352,35 @@ namespace ShipEngine_UI
                 sales_order_id1 = sales_order_id1.Remove(sales_order_id1.IndexOf("|") + 1);
                 string sales_order_id = sales_order_id1.Replace("|", "");
 
-                //LOGID
-                Random logID = new Random();
-                string rateLogId = logID.Next(0, 1000000).ToString("D6");
-
                 //SHIP DATE
                 string ship_date = ship_date_TextBox.Text;
 
+                //SHIP FROM VARIABLES
+                ShipEngineUI.shipFrom_name = shipFrom_name_TextBox.Text;
+                ShipEngineUI.shipFrom_phone = shipFrom_phone_TextBox.Text;
+                ShipEngineUI.shipFrom_company_name = shipFrom_company_name_TextBox.Text;
+                ShipEngineUI.shipFrom_address_line1 = shipFrom_address_line1_TextBox.Text;
+                ShipEngineUI.shipFrom_address_line2 = shipFrom_address_line2_TextBox.Text;
+                ShipEngineUI.shipFrom_address_line3 = shipFrom_address_line3_TextBox.Text;
+                ShipEngineUI.shipFrom_city_locality = shipFrom_city_locality_TextBox.Text;
+                ShipEngineUI.shipFrom_state_province = shipFrom_state_province_TextBox.Text;
+                ShipEngineUI.shipFrom_postal_code = shipFrom_postal_code_TextBox.Text;
+                ShipEngineUI.shipFrom_country_code = shipFrom_country_code_TextBox.Text;
+                ShipEngineUI.shipFrom_address_residential_indicator = shipFrom_address_residential_indicator_comboBox.SelectedItem.ToString();
+                if (shipFrom_address_residential_indicator_comboBox.SelectedItem == "")
+                {
+                    ShipEngineUI.shipFrom_address_residential_indicator = "no";
+                }
+
+                ShipEngineUI.packages_dimensions_length = packages_dimensions_length_numericUpDown.Value.ToString();
+                ShipEngineUI.packages_dimensions_width = packages_dimensions_width_numericUpDown.Value.ToString();
+                ShipEngineUI.packages_dimensions_height = packages_dimensions_height_numericUpDown.Value.ToString();
+
+                ShipEngineUI.packages_weight_value = packages_weight_value_numericUpDown.Value.ToString();
+
+                //LOGID
+                Random logID = new Random();
+                string sales_order_label_LogId = logID.Next(0, 1000000).ToString("D6");
 
                 //URI - POST
                 WebRequest request = WebRequest.Create("https://api.shipengine.com/v-beta/labels/sales_order/" + sales_order_id);
@@ -1368,32 +1389,87 @@ namespace ShipEngine_UI
                 //API Key
                 request.Headers.Add("API-key", ShipEngineUI.apiKey);
 
-
                 //POST REQUEST
-                string sales_order_LabelrequestBody =
-                    "{\r\n    \"label_format\": \"png\"," +
+                string sales_order_LabelrequestBody = "{" +
+                    "\r\n    \"label_format\": \"pdf\"," +
                     "\r\n    \"shipment\": {" +
                     "\r\n        \"carrier_id\": \"" + carrier_id + "\"," +
                     "\r\n        \"service_code\": \"" + service_code + "\"," +
+                    "\r\n        \"validate_address\": \"no_validation\"," +
+                    "\r\n        \"warehouse_id\": \"\"," +
+                    "\r\n        \"external_order_id\": null," +
+                    "\r\n        \"ship_date\": \"" + ship_date + "\"," +
+                    "\r\n        \"is_return_label\": false," +
+                    "\r\n        \"items\": []," +
                     "\r\n        \"ship_from\": {" +
-                    "\r\n            \"company_name\": \"" + ShipEngineUI.shipFrom_company_name + "\"," +
                     "\r\n            \"name\": \"" + ShipEngineUI.shipFrom_name + "\"," +
                     "\r\n            \"phone\": \"" + ShipEngineUI.shipFrom_phone + "\"," +
+                    "\r\n            \"company_name\": \"" + ShipEngineUI.shipFrom_company_name + "\"," +
                     "\r\n            \"address_line1\": \"" + ShipEngineUI.shipFrom_address_line1 + "\"," +
                     "\r\n            \"address_line2\": \"" + ShipEngineUI.shipFrom_address_line2 + "\"," +
+                    "\r\n            \"address_line3\": \"" + ShipEngineUI.shipFrom_address_line3 + "\"," +
                     "\r\n            \"city_locality\": \"" + ShipEngineUI.shipFrom_city_locality + "\"," +
                     "\r\n            \"state_province\": \"" + ShipEngineUI.shipFrom_state_province + "\"," +
                     "\r\n            \"postal_code\": \"" + ShipEngineUI.shipFrom_postal_code + "\"," +
                     "\r\n            \"country_code\": \"" + ShipEngineUI.shipFrom_country_code + "\"," +
-                    "\r\n            \"address_residential_indicator\": \"" + ShipEngineUI.shipFrom_address_residential_indicator + "\"" +
+                    "\r\n            \"address_residential_indicator\": \"" + shipFrom_address_residential_indicator_comboBox.SelectedItem.ToString() + "\"" +
                     "\r\n        }," +
+                    "\r\n        \"confirmation\": \"" + delivery_confirmation_ComboBox.SelectedItem.ToString() + "\"," +
+                    "\r\n        \"advanced_options\": {" +
+                    "\r\n            \"bill_to_account\": null," +
+                    "\r\n            \"bill_to_country_code\": null," +
+                    "\r\n            \"bill_to_party\": null," +
+                    "\r\n            \"bill_to_postal_code\": null," +
+                    "\r\n            \"canada_delivered_duty\": null," +
+                    "\r\n            \"contains_alcohol\": \"false\"," +
+                    "\r\n            \"delivered_duty_paid\": \"false\"," +
+                    "\r\n            \"non_machinable\": \"false\"," +
+                    "\r\n            \"saturday_delivery\": \"false\"," +
+                    "\r\n            \"third-party-consignee\": \"false\"," +
+                    "\r\n            \"ancillary_endorsements_option\": null," +
+                    "\r\n            \"freight_class\": null," +
+                    "\r\n            \"custom_field_1\": null," +
+                    "\r\n            \"custom_field_2\": null," +
+                    "\r\n            \"custom_field_3\": null," +
+                    "\r\n            \"return_pickup_attempts\": null," +
+                    "\r\n            \"dry_ice\": \"false\"," +
+                    "\r\n            \"dry_ice_weight\": {" +
+                    "\r\n                \"value\": \"0.00\"," +
+                    "\r\n                \"unit\": \"pound\"" +
+                    "\r\n            }," +
+                    "\r\n            \"collect_on_delivery\": {" +
+                    "\r\n                \"payment_type\": \"none\"," +
+                    "\r\n                \"payment_amount\": {" +
+                    "\r\n                    \"currency\": \"usd\"," +
+                    "\r\n                    \"amount\": \"0.00\"" +
+                    "\r\n                }" +
+                    "\r\n            }" +
+                    "\r\n        }," +
+                    "\r\n        \"origin_type\": null," +
+                    "\r\n        \"insurance_provider\": \"none\"," +
                     "\r\n        \"packages\": [" +
                     "\r\n            {" +
                     "\r\n                \"package_code\": \"" + package_code_ComboBox.SelectedItem.ToString() + "\"," +
                     "\r\n                \"weight\": {" +
-                    "\r\n                    \"value\": \"" + ShipEngineUI.packages_weight_value + "\"," +
+                    "\r\n                    \"value\": " + ShipEngineUI.packages_weight_value + "," +
                     "\r\n                    \"unit\": \"pound\"" +
-                    "\r\n                }" +
+                    "\r\n                }," +
+                    "\r\n                \"dimensions\": {" +
+                    "\r\n                    \"unit\": \"inch\"," +
+                    "\r\n                    \"length\": " + ShipEngineUI.packages_dimensions_length + "," +
+                    "\r\n                    \"width\": " + ShipEngineUI.packages_dimensions_width + "," +
+                    "\r\n                    \"height\": " + ShipEngineUI.packages_dimensions_height + "" +
+                    "\r\n                }," +
+                    "\r\n                \"insured_value\": {" +
+                    "\r\n                    \"currency\": \"usd\"," +
+                    "\r\n                    \"amount\": 0.00" +
+                    "\r\n                }," +
+                    "\r\n                \"label_messages\": {" +
+                    "\r\n                    \"reference1\": null," +
+                    "\r\n                    \"reference2\": null," +
+                    "\r\n                    \"reference3\": null" +
+                    "\r\n                }," +
+                    "\r\n                \"external_package_id\": " + sales_order_label_LogId + "," +
                     "\r\n            }" +
                     "\r\n        ]" +
                     "\r\n    }" +
@@ -1409,7 +1485,7 @@ namespace ShipEngine_UI
 
                 //Documents path REQUEST LOG
                 string docPath = @"..\..\Resources\Logs";
-                File.WriteAllText(Path.Combine(docPath, "LabelRequest - " + rateLogId + ".txt"), sales_order_LabelrequestBody);
+                File.WriteAllText(Path.Combine(docPath, "SalesOrderLabelRequest - " + sales_order_label_LogId + ".txt"), sales_order_LabelrequestBody);
 
                 stream.Write(data, 0, data.Length);
                 stream.Close();
@@ -1418,8 +1494,8 @@ namespace ShipEngine_UI
                 stream = requestResponse.GetResponseStream();
 
                 StreamReader parseResponse = new StreamReader(stream);
-                sales_order_RichTextBox.Text = parseResponse.ReadToEnd();
-                string responseBodyText = sales_order_RichTextBox.Text;
+                sales_order_label_RichTextBox.Text = parseResponse.ReadToEnd();
+                string responseBodyText = sales_order_label_RichTextBox.Text;
 
                 using (var reader = new StringReader(responseBodyText))
                 {
@@ -1435,6 +1511,8 @@ namespace ShipEngine_UI
 
                             //DECLARE VARIABLE
                             ShipEngineUI.label_id = label_id.Trim();
+
+                            void_label_id_TextBox.Text = ShipEngineUI.label_id;
 
                         }
                     }
@@ -1459,9 +1537,10 @@ namespace ShipEngine_UI
                 //Save image in logging
                 using (WebClient client = new WebClient())
                 {
-                    client.DownloadFileAsync(new Uri(imgURL3 + ".png"), @"..\..\Resources\LabelImages\Label-" + rateLogId + ".png");
+                    client.DownloadFileAsync(new Uri(imgURL3 + ".png"), @"..\..\Resources\LabelImages\Label-" + sales_order_label_LogId + ".png");
                 }
 
+                label_RichTextBox.Text = sales_order_label_RichTextBox.Text;
                 labelImageBox.Load(imgURL3 + ".png");
 
                 //CLOSE STREAM
@@ -1474,9 +1553,9 @@ namespace ShipEngine_UI
 
                 if (crateLabelError.Message.Contains("400"))
                 {
-
+                
                     MessageBox.Show("ShipEngine returned a 400 Bad Request, please check your entries and retry.");
-
+                
                 }
                 else
                 {
@@ -1484,7 +1563,6 @@ namespace ShipEngine_UI
                 }
 
             }
-
 
         }
 
@@ -1571,7 +1649,7 @@ namespace ShipEngine_UI
                                 }
                             }
 
-                            MessageBox.Show(ShipEngineUI.void_label_id_Response);
+                            MessageBox.Show("This label has been voided");
                             
                             //CLOSE STREAM
                             parseResponse.Close();
