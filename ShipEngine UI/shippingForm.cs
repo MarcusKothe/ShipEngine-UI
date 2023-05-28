@@ -156,8 +156,15 @@ namespace ShipEngine_UI
                                 string warehouse_id = warehouse_id1.Replace("\",", "");
 
                                 //add to textbox
-                                warehouse_id_RichTextBox.Text = warehouse_id_RichTextBox.Text.Trim() + "," + Environment.NewLine + warehouse_id.Trim();
+                                warehouse_id_RichTextBox.Text = warehouse_id_RichTextBox.Text.Trim() + "," + Environment.NewLine + warehouse_id.Trim() + "|";
 
+                            }
+                            else if (currentLine.Contains("name") == true)
+                            {
+                                string warehouse_name1 = currentLine.Replace("\"name\": \"", "");
+                                string warehouse_name = warehouse_name1.Replace("\",", "");
+
+                                warehouse_id_RichTextBox.Text = warehouse_id_RichTextBox.Text + warehouse_name.Trim() + "~";
                             }
                             else
                             {
@@ -173,7 +180,9 @@ namespace ShipEngine_UI
                             if (warehouse_id.Trim() == "")
                                 continue;
 
-                            warehouse_id_ComboBox.Items.Add(warehouse_id.Trim());
+                            string fix = warehouse_id.Substring(0, warehouse_id.IndexOf("~"));
+                            warehouse_id_ComboBox.Items.Add(fix.Trim());
+                            
                         }
                     }
                 }
@@ -451,10 +460,16 @@ namespace ShipEngine_UI
 
         private void warehouse_id_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            //GET WAREHOUSE ID
+            string warehouse_id1 = warehouse_id_ComboBox.SelectedItem.ToString();
+            warehouse_id1 = warehouse_id1.Remove(warehouse_id1.IndexOf("|") + 1);
+            string warehouse_id = warehouse_id1.Replace("|", "");
+
             try
             {
                 //URL SOURCE
-                string URLstring = "https://api.shipengine.com/v1/warehouses/" + warehouse_id_ComboBox.SelectedItem.ToString();
+                string URLstring = "https://api.shipengine.com/v1/warehouses/" + warehouse_id;
 
                 //REQUEST
                 WebRequest requestObject = WebRequest.Create(URLstring);
