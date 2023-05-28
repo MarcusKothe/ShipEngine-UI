@@ -111,6 +111,7 @@
             this.void_label_id_Button = new System.Windows.Forms.Button();
             this.void_label_id_RichTextBox = new System.Windows.Forms.RichTextBox();
             this.label_webbrowser = new System.Windows.Forms.WebBrowser();
+            this.notify_shipped_checkBox = new System.Windows.Forms.CheckBox();
             this.shipFromgroupBox.SuspendLayout();
             this.shipTogroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.labelImageBox)).BeginInit();
@@ -905,7 +906,7 @@
             // create_label_from_Order_Button
             // 
             this.create_label_from_Order_Button.Enabled = false;
-            this.create_label_from_Order_Button.Location = new System.Drawing.Point(98, 617);
+            this.create_label_from_Order_Button.Location = new System.Drawing.Point(190, 617);
             this.create_label_from_Order_Button.Name = "create_label_from_Order_Button";
             this.create_label_from_Order_Button.Size = new System.Drawing.Size(127, 23);
             this.create_label_from_Order_Button.TabIndex = 86;
@@ -966,11 +967,22 @@
             this.label_webbrowser.Size = new System.Drawing.Size(39, 37);
             this.label_webbrowser.TabIndex = 92;
             // 
+            // notify_shipped_checkBox
+            // 
+            this.notify_shipped_checkBox.AutoSize = true;
+            this.notify_shipped_checkBox.Location = new System.Drawing.Point(12, 620);
+            this.notify_shipped_checkBox.Name = "notify_shipped_checkBox";
+            this.notify_shipped_checkBox.Size = new System.Drawing.Size(147, 17);
+            this.notify_shipped_checkBox.TabIndex = 93;
+            this.notify_shipped_checkBox.Text = "Notify The Order Source";
+            this.notify_shipped_checkBox.UseVisualStyleBackColor = true;
+            // 
             // shippingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1027, 641);
+            this.Controls.Add(this.notify_shipped_checkBox);
             this.Controls.Add(this.label_webbrowser);
             this.Controls.Add(this.void_label_id_RichTextBox);
             this.Controls.Add(this.void_label_id_Button);
@@ -1113,6 +1125,7 @@
         private System.Windows.Forms.Button void_label_id_Button;
         private System.Windows.Forms.RichTextBox void_label_id_RichTextBox;
         private System.Windows.Forms.WebBrowser label_webbrowser;
+        private System.Windows.Forms.CheckBox notify_shipped_checkBox;
     }
 }
 

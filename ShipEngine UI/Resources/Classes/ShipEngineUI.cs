@@ -13,6 +13,8 @@ namespace ShipEngine_UI
         public static string label_id = "";
         public static string void_label_id_Response = "";
 
+        public static string Tracking_number = "";
+
         public static string RATE_AMOUNT = "";
 
         //Sales order ID

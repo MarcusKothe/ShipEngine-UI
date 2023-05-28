@@ -189,7 +189,7 @@ namespace ShipEngine_UI
             }
             catch (Exception HTTPexception)
             {
-                this.Close();
+                MessageBox.Show(HTTPexception.ToString());
             }
 
             //GET SALES ORDERS
@@ -1568,6 +1568,16 @@ namespace ShipEngine_UI
                             void_label_id_TextBox.Text = ShipEngineUI.label_id;
 
                         }
+
+                        if (currentLine.Contains("tracking_number") == true)
+                        {
+
+                            string tracking_number1 = currentLine.Replace("\"tracking_number\": \"", "");
+                            string tracking_number = tracking_number1.Replace("\",", "");
+
+                            ShipEngineUI.Tracking_number = tracking_number.Trim();
+
+                        }
                     }
                 }
 
@@ -1595,6 +1605,49 @@ namespace ShipEngine_UI
 
                 label_RichTextBox.Text = sales_order_label_RichTextBox.Text;
                 labelImageBox.Load(imgURL3 + ".png");
+
+                if (notify_shipped_checkBox.Checked == true)
+                {
+                    try
+                    {
+
+                        //URI - POST
+                        WebRequest notify_shipped_request = WebRequest.Create("https://api.shipengine.com/v-beta/sales_orders/" + sales_order_id.Trim() + "/notify_shipped");
+                        notify_shipped_request.Method = "POST";
+
+                        //API Key
+                        notify_shipped_request.Headers.Add("API-key", ShipEngineUI.apiKey);
+
+                        //POST REQUEST
+                        string notify_shipped_requestBody = "" +
+                            "{\r\n  \"tracking_number\": \"" + ShipEngineUI.Tracking_number + "\"," +
+                            "\r\n  \"carrier_code\": \"" + carrier_id + "\"" +
+                            "\r\n}";
+
+                        ASCIIEncoding notify_shipped_encoding = new ASCIIEncoding();
+                        byte[] notify_shipped_data = notify_shipped_encoding.GetBytes(notify_shipped_requestBody);
+
+                        notify_shipped_request.ContentType = "application/json";
+                        notify_shipped_request.ContentLength = notify_shipped_data.Length;
+
+                        Stream notify_shipped_stream = notify_shipped_request.GetRequestStream();
+
+                        //Documents path REQUEST LOG
+                        string notify_shipped_docPath = @"..\..\Resources\Logs";
+                        File.WriteAllText(Path.Combine(notify_shipped_docPath, "SalesOrderNotifyRequest - " + sales_order_label_LogId + ".txt"), notify_shipped_requestBody);
+
+                        notify_shipped_stream.Write(notify_shipped_data, 0, notify_shipped_data.Length);
+                        notify_shipped_stream.Close();
+
+                        WebResponse notify_shipped_requestResponse = notify_shipped_request.GetResponse();
+                        notify_shipped_stream = notify_shipped_requestResponse.GetResponseStream();
+                      
+                    }
+                    catch(Exception notify_shipped_Exception)
+                    {
+                        MessageBox.Show(notify_shipped_Exception.ToString());
+                    }
+                }
 
                 //CLOSE STREAM
                 parseResponse.Close();
