@@ -922,6 +922,44 @@ namespace ShipEngine_UI
                 //SHIP DATE
                 string ship_date = ship_date_TextBox.Text;
 
+                //Address Variables
+                ShipEngineUI.shipTo_name = shipTo_name_TextBox.Text;
+                ShipEngineUI.shipTo_phone = shipTo_phone_TextBox.Text;
+                ShipEngineUI.shipTo_company_name = shipTo_company_name_TextBox.Text;
+                ShipEngineUI.shipTo_address_line1 = shipTo_address_line1_TextBox.Text;
+                ShipEngineUI.shipTo_address_line2 = shipTo_address_line2_TextBox.Text;
+                ShipEngineUI.shipTo_address_line3 = shipTo_address_line3_TextBox.Text;
+                ShipEngineUI.shipTo_city_locality = shipTo_city_locality_TextBox.Text;
+                ShipEngineUI.shipTo_state_province = shipTo_state_province_TextBox.Text;
+                ShipEngineUI.shipTo_postal_code = shipTo_postal_code_TextBox.Text;
+                ShipEngineUI.shipTo_country_code = shipTo_country_code_TextBox.Text;
+                ShipEngineUI.shipTo_address_residential_indicator = shipTo_address_residential_indicator_comboBox.SelectedItem.ToString();
+                if (shipTo_address_residential_indicator_comboBox.SelectedItem == "")
+                {
+                    ShipEngineUI.shipTo_address_residential_indicator = "no";
+                }
+
+                ShipEngineUI.shipFrom_name = shipFrom_name_TextBox.Text;
+                ShipEngineUI.shipFrom_phone = shipFrom_phone_TextBox.Text;
+                ShipEngineUI.shipFrom_company_name = shipFrom_company_name_TextBox.Text;
+                ShipEngineUI.shipFrom_address_line1 = shipFrom_address_line1_TextBox.Text;
+                ShipEngineUI.shipFrom_address_line2 = shipFrom_address_line2_TextBox.Text;
+                ShipEngineUI.shipFrom_address_line3 = shipFrom_address_line3_TextBox.Text;
+                ShipEngineUI.shipFrom_city_locality = shipFrom_city_locality_TextBox.Text;
+                ShipEngineUI.shipFrom_state_province = shipFrom_state_province_TextBox.Text;
+                ShipEngineUI.shipFrom_postal_code = shipFrom_postal_code_TextBox.Text;
+                ShipEngineUI.shipFrom_country_code = shipFrom_country_code_TextBox.Text;
+                ShipEngineUI.shipFrom_address_residential_indicator = shipFrom_address_residential_indicator_comboBox.SelectedItem.ToString();
+                if (shipFrom_address_residential_indicator_comboBox.SelectedItem == "")
+                {
+                    ShipEngineUI.shipFrom_address_residential_indicator = "no";
+                }
+
+                ShipEngineUI.packages_dimensions_length = packages_dimensions_length_numericUpDown.Value.ToString();
+                ShipEngineUI.packages_dimensions_width = packages_dimensions_width_numericUpDown.Value.ToString();
+                ShipEngineUI.packages_dimensions_height = packages_dimensions_height_numericUpDown.Value.ToString();
+
+                ShipEngineUI.packages_weight_value = packages_weight_value_numericUpDown.Value.ToString();
 
                 //URI - POST
                 WebRequest request = WebRequest.Create("https://api.shipengine.com/v1/labels");
