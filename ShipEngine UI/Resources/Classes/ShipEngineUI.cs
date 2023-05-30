@@ -17,6 +17,8 @@ namespace ShipEngine_UI
 
         public static string RATE_AMOUNT = "";
 
+        public static string create_label_error = "";
+
         //Sales order ID
         public static string external_order_number = "";
         public static string sales_order_id = "";
@@ -84,10 +86,11 @@ namespace ShipEngine_UI
         //ADVANCED OPTIONS
         public static string advanced_options_bill_to_account = "";
         public static string advanced_options_bill_to_country_code = "";
-        public static string advanced_options_bill_to_party = "";
+        public static string advanced_options_bill_to_party = null;
         public static string advanced_options_bill_to_postal_code = "";
         public static string advanced_options_contains_alcohol = "";
         public static string advanced_options_delivered_duty_paid = "";
+        public static string advanced_options_dry_ice = "";
         public static string advanced_options_dry_ice_weight_value = "";
         public static string advanced_options_dry_ice_weight_unit = "";
         public static string advanced_options_non_machinable = "";

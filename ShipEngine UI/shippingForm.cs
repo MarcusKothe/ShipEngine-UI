@@ -36,6 +36,12 @@ namespace ShipEngine_UI
 
             shipFrom_address_residential_indicator_comboBox.SelectedIndex = 1;
             shipTo_address_residential_indicator_comboBox.SelectedIndex = 1;
+            contains_alcohol_comboBox.SelectedIndex = 0;
+            delivered_duty_paid_comboBox.SelectedIndex = 0;
+            dry_ice_comboBox.SelectedIndex = 0;
+            dry_ice_weight_comboBox.SelectedIndex = 0;
+            non_machinable_comboBox.SelectedIndex = 0;
+            saturday_delivery_comboBox.SelectedIndex = 0;
 
             //GET CARRIER ACCOUNTS
             try
@@ -296,6 +302,7 @@ namespace ShipEngine_UI
             {
                 sales_order_ListBox.Items.Add("ShipEngine found no sales orders to import at this time.");
                 sales_order_ListBox.Enabled = false;
+                notify_shipped_checkBox.Enabled = false;
             }
 
         }
@@ -731,21 +738,44 @@ namespace ShipEngine_UI
 
                 ShipEngineUI.packages_weight_value = packages_weight_value_numericUpDown.Value.ToString();
 
+                //SHIPENGINE UI ADVANCED OPTIONS
+                ShipEngineUI.advanced_options_bill_to_account = bill_to_account_textBox.Text;
+                ShipEngineUI.advanced_options_bill_to_country_code = bill_to_country_code_textBox.Text;
+
+
+                ShipEngineUI.advanced_options_bill_to_postal_code = bill_to_postal_code_textBox.Text;
+
+                ShipEngineUI.advanced_options_contains_alcohol = contains_alcohol_comboBox.SelectedItem.ToString();
+                ShipEngineUI.advanced_options_delivered_duty_paid = delivered_duty_paid_comboBox.SelectedItem.ToString();
+
+                ShipEngineUI.advanced_options_dry_ice = dry_ice_comboBox.SelectedItem.ToString();
+                ShipEngineUI.advanced_options_dry_ice_weight_value = dry_ice_weight_numericUpDown.Value.ToString();
+                ShipEngineUI.advanced_options_dry_ice_weight_unit = dry_ice_weight_comboBox.SelectedItem.ToString();
+
+                ShipEngineUI.advanced_options_non_machinable = non_machinable_comboBox.SelectedItem.ToString();
+                ShipEngineUI.advanced_options_saturday_delivery = saturday_delivery_comboBox.SelectedItem.ToString();
+
 
                 //RATE REQUEST
                 #region  Rate Request
                 //POST REQUEST
-                string rateRequestBody = "{\r\n\"rate_options\": {\r\n  \"carrier_ids\": [\r\n    \"" + carrier_id + "\"\r\n  ]\r\n}," +
-                    "\r\n         \"shipment\": " +
-                    "{\r\n        \"validate_address\": \"no_validation\"" +
-                    ",\r\n        \"carrier_id\": \"" + carrier_id + "\"" +
-                    ",\r\n        \"warehouse_id\": \"" + "" + "\"" +
-                    ",\r\n        \"service_code\": \"" + service_code + "\"" +
-                    ",\r\n        \"external_order_id\": null," +
-                    "\r\n         \"ship_date\": \"" + ship_date + "\"" +
-                    ",\r\n        \"is_return_label\": " + ShipEngineUI.is_return + "," +
-                    "\r\n\r\n        \"items\": []," +
-                    "\r\n\r\n        \"ship_to\": {\r\n            \"name\": \"" + ShipEngineUI.shipTo_name + "\"," +
+                string rateRequestBody = "" +
+                    "{\r\n    \"rate_options\": {" +
+                    "\r\n        \"carrier_ids\": [" +
+                    "\r\n            \"" + carrier_id + "\"" +
+                    "\r\n        ]" +
+                    "\r\n    }," +
+                    "\r\n    \"shipment\": {" +
+                    "\r\n        \"validate_address\": \"no_validation\"," +
+                    "\r\n        \"carrier_id\": \"" + carrier_id + "\"," +
+                    "\r\n        \"warehouse_id\": \"\"," +
+                    "\r\n        \"service_code\": \"" + service_code + "\"," +
+                    "\r\n        \"external_order_id\": null," +
+                    "\r\n        \"ship_date\": \"" + ship_date + "\"," +
+                    "\r\n        \"is_return_label\": false," +
+                    "\r\n        \"items\": []," +
+                    "\r\n        \"ship_to\": {" +
+                    "\r\n            \"name\": \"" + ShipEngineUI.shipTo_name + "\"," +
                     "\r\n            \"phone\": \"" + ShipEngineUI.shipTo_phone + "\"," +
                     "\r\n            \"company_name\": \"" + ShipEngineUI.shipTo_company_name + "\"," +
                     "\r\n            \"address_line1\": \"" + ShipEngineUI.shipTo_address_line1 + "\"," +
@@ -755,8 +785,10 @@ namespace ShipEngine_UI
                     "\r\n            \"state_province\": \"" + ShipEngineUI.shipTo_state_province + "\"," +
                     "\r\n            \"postal_code\": \"" + ShipEngineUI.shipTo_postal_code + "\"," +
                     "\r\n            \"country_code\": \"" + ShipEngineUI.shipTo_country_code + "\"," +
-                    "\r\n            \"address_residential_indicator\": \"" + ShipEngineUI.shipTo_address_residential_indicator + "\"\r\n        }," +
-                    "\r\n\r\n        \"ship_from\": {\r\n            \"name\": \"" + ShipEngineUI.shipFrom_name + "\"," +
+                    "\r\n            \"address_residential_indicator\": \"" + ShipEngineUI.shipTo_address_residential_indicator + "\"" +
+                    "\r\n        }," +
+                    "\r\n        \"ship_from\": {" +
+                    "\r\n            \"name\": \"" + ShipEngineUI.shipFrom_name + "\"," +
                     "\r\n            \"phone\": \"" + ShipEngineUI.shipFrom_phone + "\"," +
                     "\r\n            \"company_name\": \"" + ShipEngineUI.shipFrom_company_name + "\"," +
                     "\r\n            \"address_line1\": \"" + ShipEngineUI.shipFrom_address_line1 + "\"," +
@@ -766,53 +798,66 @@ namespace ShipEngine_UI
                     "\r\n            \"state_province\": \"" + ShipEngineUI.shipFrom_state_province + "\"," +
                     "\r\n            \"postal_code\": \"" + ShipEngineUI.shipFrom_postal_code + "\"," +
                     "\r\n            \"country_code\": \"" + ShipEngineUI.shipFrom_country_code + "\"," +
-                    "\r\n            \"address_residential_indicator\": \"" + ShipEngineUI.shipFrom_address_residential_indicator + "\"\r\n        }," +
-                    "\r\n\r\n        \"confirmation\": \"" + delivery_confirmation_ComboBox.SelectedItem.ToString() + 
-                    "\",\r\n\r\n        \"advanced_options\": {" +
-                    "\r\n                \"bill_to_account\": null," +
-                    "\r\n                \"bill_to_country_code\": null," +
-                    "\r\n                \"bill_to_party\": null," +
-                    "\r\n                \"bill_to_postal_code\": null," +
-                    "\r\n                \"canada_delivered_duty\": null," +
-                    "\r\n                \"contains_alcohol\": \"false\"," +
-                    "\r\n                \"delivered_duty_paid\": \"false\"," +
-                    "\r\n                \"non_machinable\": \"false\"," +
-                    "\r\n                \"saturday_delivery\": \"false\"," +
-                    "\r\n                \"third-party-consignee\": \"false\"," +
-                    "\r\n                \"ancillary_endorsements_option\": null," +
-                    "\r\n                \"freight_class\": null," +
-                    "\r\n                \"custom_field_1\": null," +
-                    "\r\n                \"custom_field_2\": null," +
-                    "\r\n                \"custom_field_3\": null," +
-                    "\r\n                \"return_pickup_attempts\": null," +
-                    "\r\n\r\n            \"dry_ice\": \"false\"," +
-                    "\r\n                \"dry_ice_weight\": {" +
-                    "\r\n                \"value\": \"0.00\"," +
-                    "\r\n                \"unit\": \"pound\"\r\n            }," +
-                    "\r\n\r\n            \"collect_on_delivery\": {" +
+                    "\r\n            \"address_residential_indicator\": \"" + ShipEngineUI.shipFrom_address_residential_indicator + "\"" +
+                    "\r\n        }," +
+                    "\r\n        \"confirmation\": \"" + delivery_confirmation_ComboBox.SelectedItem.ToString() + "\"," +
+                    "\r\n        \"advanced_options\": {" +
+                    "\r\n            \"bill_to_account\": \"" + ShipEngineUI.advanced_options_bill_to_account + "\"," +
+                    "\r\n            \"bill_to_country_code\": \"" + ShipEngineUI.advanced_options_bill_to_country_code + "\"," +
+                    "\r\n            \"bill_to_party\": null," +
+                    "\r\n            \"bill_to_postal_code\": \"" + ShipEngineUI.advanced_options_bill_to_postal_code + "\"," +
+                    "\r\n            \"canada_delivered_duty\": null," +
+                    "\r\n            \"contains_alcohol\": \"" + ShipEngineUI.advanced_options_contains_alcohol + "\"," +
+                    "\r\n            \"delivered_duty_paid\": \"" + ShipEngineUI.advanced_options_delivered_duty_paid + "\"," +
+                    "\r\n            \"non_machinable\": \"" + ShipEngineUI.advanced_options_non_machinable + "\"," +
+                    "\r\n            \"saturday_delivery\": \"" + ShipEngineUI.advanced_options_saturday_delivery + "\"," +
+                    "\r\n            \"third-party-consignee\": \"false\"," +
+                    "\r\n            \"ancillary_endorsements_option\": null," +
+                    "\r\n            \"freight_class\": null," +
+                    "\r\n            \"custom_field_1\": null," +
+                    "\r\n            \"custom_field_2\": null," +
+                    "\r\n            \"custom_field_3\": null," +
+                    "\r\n            \"return_pickup_attempts\": null," +
+                    "\r\n            \"dry_ice\": \"" + ShipEngineUI.advanced_options_dry_ice + "\"," +
+                    "\r\n            \"dry_ice_weight\": {" +
+                    "\r\n                \"value\": \"" + ShipEngineUI.advanced_options_dry_ice_weight_value + "\"," +
+                    "\r\n                \"unit\": \"" + ShipEngineUI.advanced_options_dry_ice_weight_unit + "\"" +
+                    "\r\n            }," +
+                    "\r\n            \"collect_on_delivery\": {" +
                     "\r\n                \"payment_type\": \"none\"," +
                     "\r\n                \"payment_amount\": {" +
                     "\r\n                    \"currency\": \"usd\"," +
-                    "\r\n                    \"amount\": \"0.00\"\r\n                }\r\n            }\r\n        }," +
-                    "\r\n\r\n        \"origin_type\": null," +
+                    "\r\n                    \"amount\": \"0.00\"" +
+                    "\r\n                }" +
+                    "\r\n            }" +
+                    "\r\n        }," +
+                    "\r\n        \"origin_type\": null," +
                     "\r\n        \"insurance_provider\": \"none\"," +
-                    "\r\n        \"packages\": [\r\n            {" +
+                    "\r\n        \"packages\": [" +
+                    "\r\n            {" +
                     "\r\n                \"package_code\": \"" + package_code_ComboBox.SelectedItem.ToString() + "\"," +
-                    "\r\n                \"weight\": {\r\n                    \"value\": " + ShipEngineUI.packages_weight_value + "," +
-                    "\r\n                    \"unit\": " + "\"pound\"" + "\r\n                }," +
-                    "\r\n                \"dimensions\": {\r\n                    \"unit\": \"" + "inch" + "\"," +
+                    "\r\n                \"weight\": {" +
+                    "\r\n                    \"value\": " + ShipEngineUI.packages_weight_value + "," +
+                    "\r\n                    \"unit\": \"pound\"" +
+                    "\r\n                }," +
+                    "\r\n                \"dimensions\": {" +
+                    "\r\n                    \"unit\": \"inch\"," +
                     "\r\n                    \"length\": " + ShipEngineUI.packages_dimensions_length + "," +
                     "\r\n                    \"width\": " + ShipEngineUI.packages_dimensions_width + "," +
-                    "\r\n                    \"height\": " + ShipEngineUI.packages_dimensions_height + "\r\n                }," +
+                    "\r\n                    \"height\": " + ShipEngineUI.packages_dimensions_height + "" +
+                    "\r\n                }," +
                     "\r\n                \"insured_value\": {" +
                     "\r\n                    \"currency\": \"usd\"," +
-                    "\r\n                    \"amount\": 0.00\r\n                }," +
+                    "\r\n                    \"amount\": 0.00" +
+                    "\r\n                }," +
                     "\r\n                \"label_messages\": {" +
-                    "\r\n                    \"reference1\": " + rateLogId + "," +
+                    "\r\n                    \"reference1\": null," +
                     "\r\n                    \"reference2\": null," +
                     "\r\n                    \"reference3\": null" +
-                    "\r\n                },\r\n                \"external_package_id\": 0" +
-                    "\r\n            }\r\n        ]" +
+                    "\r\n                }," +
+                    "\r\n                \"external_package_id\": \"" + rateLogId + "\"" +
+                    "\r\n            }" +
+                    "\r\n        ]" +
                     "\r\n    }" +
                     "\r\n}";
 
@@ -899,17 +944,32 @@ namespace ShipEngine_UI
                 stream.Close();
 
             }
-            catch (Exception HTTPexception)
+            catch (WebException Exception)
             {
-                if (HTTPexception.Message.Contains("400"))
-                {
-                    
-                    MessageBox.Show("ShipEngine returned a 400 Bad Request, please check your entries and retry.");
 
-                }
-                else
+                using (WebResponse ShipEngineErrorResponse = Exception.Response)
                 {
-                    MessageBox.Show("Unspecified Error, please try again and check your entries");
+                    HttpWebResponse ShipEngineResponse = (HttpWebResponse)ShipEngineErrorResponse;
+                    Console.WriteLine("Error code: {0}", ShipEngineResponse.StatusCode);
+                    using (Stream parseResponse = ShipEngineErrorResponse.GetResponseStream())
+
+                    using (var reader = new StreamReader(parseResponse))
+                    {
+
+                        for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                        {
+
+                            if (currentLine.Contains("message") == true)
+                            {
+
+                                string ShipEngineErrorBody1 = currentLine.Replace("\"message\": \"", "");
+                                string ShipEngineErrorBody = ShipEngineErrorBody1.Replace("\",", "");
+
+                                MessageBox.Show(ShipEngineErrorBody.Trim(), "ERROR GETTING RATES");
+
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -932,7 +992,7 @@ namespace ShipEngine_UI
 
                 //LOGID
                 Random logID = new Random();
-                string rateLogId = logID.Next(0, 1000000).ToString("D6");
+                string labelLogId = logID.Next(0, 1000000).ToString("D6");
 
                 //SHIP DATE
                 string ship_date = ship_date_TextBox.Text;
@@ -976,6 +1036,23 @@ namespace ShipEngine_UI
 
                 ShipEngineUI.packages_weight_value = packages_weight_value_numericUpDown.Value.ToString();
 
+                //SHIPENGINE UI ADVANCED OPTIONS
+                ShipEngineUI.advanced_options_bill_to_account = bill_to_account_textBox.Text;
+                ShipEngineUI.advanced_options_bill_to_country_code = bill_to_country_code_textBox.Text;
+
+                ShipEngineUI.advanced_options_bill_to_postal_code = bill_to_postal_code_textBox.Text;
+
+                ShipEngineUI.advanced_options_contains_alcohol  = contains_alcohol_comboBox.SelectedItem.ToString();
+                ShipEngineUI.advanced_options_delivered_duty_paid = delivered_duty_paid_comboBox.SelectedItem.ToString();
+
+                ShipEngineUI.advanced_options_dry_ice = dry_ice_comboBox.SelectedItem.ToString();
+                ShipEngineUI.advanced_options_dry_ice_weight_value = dry_ice_weight_numericUpDown.Value.ToString();
+                ShipEngineUI.advanced_options_dry_ice_weight_unit = dry_ice_weight_comboBox.SelectedItem.ToString();
+
+                ShipEngineUI.advanced_options_non_machinable = non_machinable_comboBox.SelectedItem.ToString();
+                ShipEngineUI.advanced_options_saturday_delivery = saturday_delivery_comboBox.SelectedItem.ToString();
+
+
                 //URI - POST
                 WebRequest request = WebRequest.Create("https://api.shipengine.com/v1/labels");
                 request.Method = "POST";
@@ -983,19 +1060,25 @@ namespace ShipEngine_UI
                 //API Key
                 request.Headers.Add("API-key", ShipEngineUI.apiKey);
 
-
                 //POST REQUEST
-                string createLabelrequestBody = "{\r\n\"rate_options\": {\r\n  \"carrier_ids\": [\r\n    \"" + carrier_id + "\"\r\n  ]\r\n}," +
-                    "\r\n         \"shipment\": " +
-                    "{\r\n        \"validate_address\": \"no_validation\"" +
-                    ",\r\n        \"carrier_id\": \"" + carrier_id + "\"" +
-                    ",\r\n        \"warehouse_id\": \"" + "" + "\"" +
-                    ",\r\n        \"service_code\": \"" + service_code + "\"" +
-                    ",\r\n        \"external_order_id\": null," +
-                    "\r\n         \"ship_date\": \"" + ship_date + "\"" +
-                    ",\r\n        \"is_return_label\": " + ShipEngineUI.is_return + "," +
-                    "\r\n\r\n        \"items\": []," +
-                    "\r\n\r\n        \"ship_to\": {\r\n            \"name\": \"" + ShipEngineUI.shipTo_name + "\"," +
+                #region REQUEST BODY
+                string createLabelrequestBody = "" +
+                    "{\r\n    \"rate_options\": {" +
+                    "\r\n        \"carrier_ids\": [" +
+                    "\r\n            \"" + carrier_id + "\"" +
+                    "\r\n        ]" +
+                    "\r\n    }," +
+                    "\r\n    \"shipment\": {" +
+                    "\r\n        \"validate_address\": \"no_validation\"," +
+                    "\r\n        \"carrier_id\": \"" + carrier_id + "\"," +
+                    "\r\n        \"warehouse_id\": \"\"," +
+                    "\r\n        \"service_code\": \"" + service_code + "\"," +
+                    "\r\n        \"external_order_id\": null," +
+                    "\r\n        \"ship_date\": \"" + ship_date + "\"," +
+                    "\r\n        \"is_return_label\": false," +
+                    "\r\n        \"items\": []," +
+                    "\r\n        \"ship_to\": {" +
+                    "\r\n            \"name\": \"" + ShipEngineUI.shipTo_name + "\"," +
                     "\r\n            \"phone\": \"" + ShipEngineUI.shipTo_phone + "\"," +
                     "\r\n            \"company_name\": \"" + ShipEngineUI.shipTo_company_name + "\"," +
                     "\r\n            \"address_line1\": \"" + ShipEngineUI.shipTo_address_line1 + "\"," +
@@ -1005,8 +1088,10 @@ namespace ShipEngine_UI
                     "\r\n            \"state_province\": \"" + ShipEngineUI.shipTo_state_province + "\"," +
                     "\r\n            \"postal_code\": \"" + ShipEngineUI.shipTo_postal_code + "\"," +
                     "\r\n            \"country_code\": \"" + ShipEngineUI.shipTo_country_code + "\"," +
-                    "\r\n            \"address_residential_indicator\": \"" + ShipEngineUI.shipTo_address_residential_indicator + "\"\r\n        }," +
-                    "\r\n\r\n        \"ship_from\": {\r\n            \"name\": \"" + ShipEngineUI.shipFrom_name + "\"," +
+                    "\r\n            \"address_residential_indicator\": \"" + ShipEngineUI.shipTo_address_residential_indicator + "\"" +
+                    "\r\n        }," +
+                    "\r\n        \"ship_from\": {" +
+                    "\r\n            \"name\": \"" + ShipEngineUI.shipFrom_name + "\"," +
                     "\r\n            \"phone\": \"" + ShipEngineUI.shipFrom_phone + "\"," +
                     "\r\n            \"company_name\": \"" + ShipEngineUI.shipFrom_company_name + "\"," +
                     "\r\n            \"address_line1\": \"" + ShipEngineUI.shipFrom_address_line1 + "\"," +
@@ -1016,17 +1101,19 @@ namespace ShipEngine_UI
                     "\r\n            \"state_province\": \"" + ShipEngineUI.shipFrom_state_province + "\"," +
                     "\r\n            \"postal_code\": \"" + ShipEngineUI.shipFrom_postal_code + "\"," +
                     "\r\n            \"country_code\": \"" + ShipEngineUI.shipFrom_country_code + "\"," +
-                    "\r\n            \"address_residential_indicator\": \"" + ShipEngineUI.shipFrom_address_residential_indicator + "\"\r\n        }," +
-                    "\r\n\r\n        \"confirmation\": \"" + delivery_confirmation_ComboBox.SelectedItem.ToString() + "\",\r\n\r\n        \"advanced_options\": {" +
-                    "\r\n            \"bill_to_account\": null," +
-                    "\r\n            \"bill_to_country_code\": null," +
+                    "\r\n            \"address_residential_indicator\": \"" + ShipEngineUI.shipFrom_address_residential_indicator + "\"" +
+                    "\r\n        }," +
+                    "\r\n        \"confirmation\": \"" + delivery_confirmation_ComboBox.SelectedItem.ToString() + "\"," +
+                    "\r\n        \"advanced_options\": {" +
+                    "\r\n            \"bill_to_account\": \"" + ShipEngineUI.advanced_options_bill_to_account + "\"," +
+                    "\r\n            \"bill_to_country_code\": \"" + ShipEngineUI.advanced_options_bill_to_country_code + "\"," +
                     "\r\n            \"bill_to_party\": null," +
-                    "\r\n            \"bill_to_postal_code\": null," +
+                    "\r\n            \"bill_to_postal_code\": \"" + ShipEngineUI.advanced_options_bill_to_postal_code + "\"," +
                     "\r\n            \"canada_delivered_duty\": null," +
-                    "\r\n            \"contains_alcohol\": \"false\"," +
-                    "\r\n            \"delivered_duty_paid\": \"false\"," +
-                    "\r\n            \"non_machinable\": \"false\"," +
-                    "\r\n            \"saturday_delivery\": \"false\"," +
+                    "\r\n            \"contains_alcohol\": \"" + ShipEngineUI.advanced_options_contains_alcohol + "\"," +
+                    "\r\n            \"delivered_duty_paid\": \"" + ShipEngineUI.advanced_options_delivered_duty_paid + "\"," +
+                    "\r\n            \"non_machinable\": \"" + ShipEngineUI.advanced_options_non_machinable + "\"," +
+                    "\r\n            \"saturday_delivery\": \"" + ShipEngineUI.advanced_options_saturday_delivery + "\"," +
                     "\r\n            \"third-party-consignee\": \"false\"," +
                     "\r\n            \"ancillary_endorsements_option\": null," +
                     "\r\n            \"freight_class\": null," +
@@ -1034,36 +1121,49 @@ namespace ShipEngine_UI
                     "\r\n            \"custom_field_2\": null," +
                     "\r\n            \"custom_field_3\": null," +
                     "\r\n            \"return_pickup_attempts\": null," +
-                    "\r\n\r\n        \"dry_ice\": \"false\"," +
+                    "\r\n            \"dry_ice\": \"" + ShipEngineUI.advanced_options_dry_ice + "\"," +
                     "\r\n            \"dry_ice_weight\": {" +
-                    "\r\n                \"value\": \"0.00\"," +
-                    "\r\n                \"unit\": \"pound\"\r\n            }," +
-                    "\r\n\r\n            \"collect_on_delivery\": {" +
+                    "\r\n                \"value\": \"" + ShipEngineUI.advanced_options_dry_ice_weight_value + "\"," +
+                    "\r\n                \"unit\": \"" + ShipEngineUI.advanced_options_dry_ice_weight_unit + "\"" +
+                    "\r\n            }," +
+                    "\r\n            \"collect_on_delivery\": {" +
                     "\r\n                \"payment_type\": \"none\"," +
                     "\r\n                \"payment_amount\": {" +
                     "\r\n                    \"currency\": \"usd\"," +
-                    "\r\n                    \"amount\": \"0.00\"\r\n                }\r\n            }\r\n        }," +
-                    "\r\n\r\n        \"origin_type\": null," +
+                    "\r\n                    \"amount\": \"0.00\"" +
+                    "\r\n                }" +
+                    "\r\n            }" +
+                    "\r\n        }," +
+                    "\r\n        \"origin_type\": null," +
                     "\r\n        \"insurance_provider\": \"none\"," +
-                    "\r\n        \"packages\": [\r\n            {" +
+                    "\r\n        \"packages\": [" +
+                    "\r\n            {" +
                     "\r\n                \"package_code\": \"" + package_code_ComboBox.SelectedItem.ToString() + "\"," +
-                    "\r\n                \"weight\": {\r\n                    \"value\": " + ShipEngineUI.packages_weight_value + "," +
-                    "\r\n                    \"unit\": " + "\"pound\"" + "\r\n                }," +
-                    "\r\n                \"dimensions\": {\r\n                    \"unit\": \"" + "inch" + "\"," +
+                    "\r\n                \"weight\": {" +
+                    "\r\n                    \"value\": " + ShipEngineUI.packages_weight_value + "," +
+                    "\r\n                    \"unit\": \"pound\"" +
+                    "\r\n                }," +
+                    "\r\n                \"dimensions\": {" +
+                    "\r\n                    \"unit\": \"inch\"," +
                     "\r\n                    \"length\": " + ShipEngineUI.packages_dimensions_length + "," +
                     "\r\n                    \"width\": " + ShipEngineUI.packages_dimensions_width + "," +
-                    "\r\n                    \"height\": " + ShipEngineUI.packages_dimensions_height + "\r\n                }," +
+                    "\r\n                    \"height\": " + ShipEngineUI.packages_dimensions_height + "" +
+                    "\r\n                }," +
                     "\r\n                \"insured_value\": {" +
                     "\r\n                    \"currency\": \"usd\"," +
-                    "\r\n                    \"amount\": 0.00\r\n                }," +
+                    "\r\n                    \"amount\": 0.00" +
+                    "\r\n                }," +
                     "\r\n                \"label_messages\": {" +
                     "\r\n                    \"reference1\": null," +
                     "\r\n                    \"reference2\": null," +
                     "\r\n                    \"reference3\": null" +
-                    "\r\n                },\r\n                \"external_package_id\": " + rateLogId +
-                    "\r\n            }\r\n        ]" +
+                    "\r\n                }," +
+                    "\r\n                \"external_package_id\": \"" + labelLogId + "\"" +
+                    "\r\n            }" +
+                    "\r\n        ]" +
                     "\r\n    }" +
                     "\r\n}";
+                #endregion
 
                 ASCIIEncoding encoding = new ASCIIEncoding();
                 byte[] data = encoding.GetBytes(createLabelrequestBody);
@@ -1075,13 +1175,14 @@ namespace ShipEngine_UI
 
                 //Documents path REQUEST LOG
                 string docPath = @"..\..\Resources\Logs";
-                File.WriteAllText(Path.Combine(docPath, "LabelRequest - " + rateLogId + ".txt"), createLabelrequestBody);
+                File.WriteAllText(Path.Combine(docPath, "LabelRequest - " + labelLogId + ".txt"), createLabelrequestBody);
 
                 stream.Write(data, 0, data.Length);
                 stream.Close();
 
                 WebResponse requestResponse = request.GetResponse();
                 stream = requestResponse.GetResponseStream();
+
 
                 StreamReader parseResponse = new StreamReader(stream);
                 label_RichTextBox.Text = parseResponse.ReadToEnd();
@@ -1107,7 +1208,6 @@ namespace ShipEngine_UI
                         }  
                     }
                 
-
                 // GET LABEL IMAGE
                 //LABEL_DOWNLOAD OBJECT
                 int labelDownloadOBJ1 = responseBodyText.IndexOf("\"label_download\"") + "\"label_download\"".Length;
@@ -1126,7 +1226,7 @@ namespace ShipEngine_UI
                 //Save image in logging
                 using (WebClient client = new WebClient())
                 {
-                    client.DownloadFileAsync(new Uri(imgURL3 + ".png"), @"..\..\Resources\LabelImages\Label-" + rateLogId + ".png");
+                    client.DownloadFileAsync(new Uri(imgURL3 + ".png"), @"..\..\Resources\LabelImages\Label-" + labelLogId + ".png");
                 }
 
                 labelImageBox.Load(imgURL3 + ".png");
@@ -1138,22 +1238,34 @@ namespace ShipEngine_UI
                 stream.Close();
 
             }
-            catch (Exception crateLabelError)
+            catch (WebException Exception)
             {
 
-                if (crateLabelError.Message.Contains("400"))
+                using (WebResponse ShipEngineErrorResponse = Exception.Response)
                 {
+                    HttpWebResponse ShipEngineResponse = (HttpWebResponse)ShipEngineErrorResponse;
+                    Console.WriteLine("Error code: {0}", ShipEngineResponse.StatusCode);
+                    using (Stream parseResponse = ShipEngineErrorResponse.GetResponseStream())
 
-                    MessageBox.Show("ShipEngine returned a 400 Bad Request, please check your entries and retry.");
+                    using (var reader = new StreamReader(parseResponse))
+                    {
 
+                        for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                        {
+
+                            if (currentLine.Contains("message") == true)
+                            {
+
+                                string ShipEngineErrorBody1 = currentLine.Replace("\"message\": \"", "");
+                                string ShipEngineErrorBody = ShipEngineErrorBody1.Replace("\",", "");
+
+                                MessageBox.Show(ShipEngineErrorBody.Trim(), "ERROR CREATING LABEL");
+
+                            }
+                        }
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Unspecified Error, please try again and check your entries");
-                }
-
             }
-
         }
 
         void LabelImage(object o, PrintPageEventArgs e)
@@ -1431,6 +1543,23 @@ namespace ShipEngine_UI
 
                 ShipEngineUI.packages_weight_value = packages_weight_value_numericUpDown.Value.ToString();
 
+                //SHIPENGINE UI ADVANCED OPTIONS
+                ShipEngineUI.advanced_options_bill_to_account = bill_to_account_textBox.Text;
+                ShipEngineUI.advanced_options_bill_to_country_code = bill_to_country_code_textBox.Text;
+                ShipEngineUI.advanced_options_bill_to_party = bill_to_party_textBox.Text;
+                ShipEngineUI.advanced_options_bill_to_postal_code = bill_to_postal_code_textBox.Text;
+
+                ShipEngineUI.advanced_options_contains_alcohol = contains_alcohol_comboBox.SelectedItem.ToString();
+                ShipEngineUI.advanced_options_delivered_duty_paid = delivered_duty_paid_comboBox.SelectedItem.ToString();
+
+                ShipEngineUI.advanced_options_dry_ice = dry_ice_comboBox.SelectedItem.ToString();
+                ShipEngineUI.advanced_options_dry_ice_weight_value = dry_ice_weight_numericUpDown.Value.ToString();
+                ShipEngineUI.advanced_options_dry_ice_weight_unit = dry_ice_weight_comboBox.SelectedItem.ToString();
+
+                ShipEngineUI.advanced_options_non_machinable = non_machinable_comboBox.SelectedItem.ToString();
+                ShipEngineUI.advanced_options_saturday_delivery = saturday_delivery_comboBox.SelectedItem.ToString();
+
+
                 //LOGID
                 Random logID = new Random();
                 string sales_order_label_LogId = logID.Next(0, 1000000).ToString("D6");
@@ -1469,15 +1598,15 @@ namespace ShipEngine_UI
                     "\r\n        }," +
                     "\r\n        \"confirmation\": \"" + delivery_confirmation_ComboBox.SelectedItem.ToString() + "\"," +
                     "\r\n        \"advanced_options\": {" +
-                    "\r\n            \"bill_to_account\": null," +
-                    "\r\n            \"bill_to_country_code\": null," +
+                    "\r\n            \"bill_to_account\": \"" + ShipEngineUI.advanced_options_bill_to_account + "\"," +
+                    "\r\n            \"bill_to_country_code\": " + ShipEngineUI.advanced_options_bill_to_party + "," +
                     "\r\n            \"bill_to_party\": null," +
-                    "\r\n            \"bill_to_postal_code\": null," +
+                    "\r\n            \"bill_to_postal_code\": \"" + ShipEngineUI.advanced_options_bill_to_postal_code + "\"," +
                     "\r\n            \"canada_delivered_duty\": null," +
-                    "\r\n            \"contains_alcohol\": \"false\"," +
-                    "\r\n            \"delivered_duty_paid\": \"false\"," +
-                    "\r\n            \"non_machinable\": \"false\"," +
-                    "\r\n            \"saturday_delivery\": \"false\"," +
+                    "\r\n            \"contains_alcohol\": \"" + ShipEngineUI.advanced_options_contains_alcohol + "\"," +
+                    "\r\n            \"delivered_duty_paid\": \"" + ShipEngineUI.advanced_options_delivered_duty_paid + "\"," +
+                    "\r\n            \"non_machinable\": \"" + ShipEngineUI.advanced_options_non_machinable + "\"," +
+                    "\r\n            \"saturday_delivery\": \"" + ShipEngineUI.advanced_options_saturday_delivery + "\"," +
                     "\r\n            \"third-party-consignee\": \"false\"," +
                     "\r\n            \"ancillary_endorsements_option\": null," +
                     "\r\n            \"freight_class\": null," +
@@ -1485,10 +1614,10 @@ namespace ShipEngine_UI
                     "\r\n            \"custom_field_2\": null," +
                     "\r\n            \"custom_field_3\": null," +
                     "\r\n            \"return_pickup_attempts\": null," +
-                    "\r\n            \"dry_ice\": \"false\"," +
+                    "\r\n            \"dry_ice\": \"" + ShipEngineUI.advanced_options_dry_ice + "\"," +
                     "\r\n            \"dry_ice_weight\": {" +
-                    "\r\n                \"value\": \"0.00\"," +
-                    "\r\n                \"unit\": \"pound\"" +
+                    "\r\n                \"value\": \"" + ShipEngineUI.advanced_options_dry_ice_weight_value + "\"," +
+                    "\r\n                \"unit\": \"" + ShipEngineUI.advanced_options_dry_ice_weight_unit + "\"" +
                     "\r\n            }," +
                     "\r\n            \"collect_on_delivery\": {" +
                     "\r\n                \"payment_type\": \"none\"," +
@@ -1522,7 +1651,7 @@ namespace ShipEngine_UI
                     "\r\n                    \"reference2\": null," +
                     "\r\n                    \"reference3\": null" +
                     "\r\n                }," +
-                    "\r\n                \"external_package_id\": " + sales_order_label_LogId + "," +
+                    "\r\n                \"external_package_id\": \"" + sales_order_label_LogId + "\"," +
                     "\r\n            }" +
                     "\r\n        ]" +
                     "\r\n    }" +
@@ -1643,9 +1772,33 @@ namespace ShipEngine_UI
                         notify_shipped_stream = notify_shipped_requestResponse.GetResponseStream();
                       
                     }
-                    catch(Exception notify_shipped_Exception)
+                    catch (WebException Exception)
                     {
-                        MessageBox.Show(notify_shipped_Exception.ToString());
+
+                        using (WebResponse ShipEngineErrorResponse = Exception.Response)
+                        {
+                            HttpWebResponse ShipEngineResponse = (HttpWebResponse)ShipEngineErrorResponse;
+                            Console.WriteLine("Error code: {0}", ShipEngineResponse.StatusCode);
+                            using (Stream parseResponse1 = ShipEngineErrorResponse.GetResponseStream())
+
+                            using (var reader = new StreamReader(parseResponse1))
+                            {
+
+                                for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                                {
+
+                                    if (currentLine.Contains("message") == true)
+                                    {
+
+                                        string ShipEngineErrorBody1 = currentLine.Replace("\"message\": \"", "");
+                                        string ShipEngineErrorBody = ShipEngineErrorBody1.Replace("\",", "");
+
+                                        MessageBox.Show(ShipEngineErrorBody.Trim(), "ERROR NOTIFYING MARKETPLACE");
+
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
 
@@ -1654,22 +1807,34 @@ namespace ShipEngine_UI
                 stream.Close();
 
             }
-            catch (Exception crateLabelError)
+            catch (WebException Exception)
             {
 
-                if (crateLabelError.Message.Contains("400"))
+                using (WebResponse ShipEngineErrorResponse = Exception.Response)
                 {
-                
-                    MessageBox.Show("ShipEngine returned a 400 Bad Request, please check your entries and retry.");
-                
-                }
-                else
-                {
-                    MessageBox.Show("Unspecified Error, please try again and check your entries");
-                }
+                    HttpWebResponse ShipEngineResponse = (HttpWebResponse)ShipEngineErrorResponse;
+                    Console.WriteLine("Error code: {0}", ShipEngineResponse.StatusCode);
+                    using (Stream parseResponse = ShipEngineErrorResponse.GetResponseStream())
 
+                    using (var reader = new StreamReader(parseResponse))
+                    {
+
+                        for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                        {
+
+                            if (currentLine.Contains("message") == true)
+                            {
+
+                                string ShipEngineErrorBody1 = currentLine.Replace("\"message\": \"", "");
+                                string ShipEngineErrorBody = ShipEngineErrorBody1.Replace("\",", "");
+
+                                MessageBox.Show(ShipEngineErrorBody.Trim(), "ERROR CREATING LABEL FOR ORDER");
+
+                            }
+                        }
+                    }
+                }
             }
-
         }
 
         private void labelImageBox_Click(object sender, EventArgs e)
@@ -1677,7 +1842,6 @@ namespace ShipEngine_UI
             labelImageBox.Visible = false;
 
             label_RichTextBox.Visible = true;
-
 
         }
 
@@ -1701,6 +1865,7 @@ namespace ShipEngine_UI
                 {
 
                     DialogResult dialogResult = MessageBox.Show("Are you sure you would like to void " + ShipEngineUI.label_id + "?", "VOID LABEL", MessageBoxButtons.YesNo);
+
                     if (dialogResult == DialogResult.Yes)
                     {
                         try
@@ -1735,7 +1900,7 @@ namespace ShipEngine_UI
                                 StreamReader responseRead = new StreamReader(stream);
                                 streamResponse = responseRead.ReadToEnd();
 
-                                using (var reader = new StringReader(streamResponse))
+                                using (var reader = new StringReader(responseBodyText))
                                 {
 
                                     for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
@@ -1745,17 +1910,17 @@ namespace ShipEngine_UI
                                         {
 
                                             string void_label_id_Response1 = currentLine.Replace("\"message\": \"", "");
-                                            string void_label_id_Response = void_label_id_Response1.Replace("\",", "");
+                                            string void_label_id_Response = void_label_id_Response1.Replace("\"", "");
 
                                             //DECLARE VARIABLE
-                                            ShipEngineUI.void_label_id_Response = void_label_id_Response;
+                                            ShipEngineUI.void_label_id_Response = void_label_id_Response.Trim();
 
                                         }
                                     }
                                 }
                             }
 
-                            MessageBox.Show("This label has been voided");
+                            MessageBox.Show(ShipEngineUI.void_label_id_Response, "VOID LABEL");
                             
                             //CLOSE STREAM
                             parseResponse.Close();
@@ -1791,6 +1956,21 @@ namespace ShipEngine_UI
             {
                 MessageBox.Show(voidlableexception.ToString());
             }
+        }
+
+        private void advanced_options_groupBox_Click(object sender, EventArgs e)
+        {
+
+            shipTogroupBox.Visible = true;
+            advanced_options_groupBox.Visible = false;
+
+        }
+
+        private void shipTogroupBox_Click(object sender, EventArgs e)
+        {
+
+            shipTogroupBox.Visible = false;
+            advanced_options_groupBox.Visible = true;
 
         }
     }
