@@ -36,12 +36,17 @@ namespace ShipEngine_UI
 
             shipFrom_address_residential_indicator_comboBox.SelectedIndex = 1;
             shipTo_address_residential_indicator_comboBox.SelectedIndex = 1;
+            delivery_confirmation_ComboBox.SelectedIndex = 0;
+            origin_type_comboBox.SelectedIndex = 0;
+            bill_to_party_comboBox.SelectedIndex = 0;
             contains_alcohol_comboBox.SelectedIndex = 0;
             delivered_duty_paid_comboBox.SelectedIndex = 0;
             dry_ice_comboBox.SelectedIndex = 0;
             dry_ice_weight_comboBox.SelectedIndex = 0;
             non_machinable_comboBox.SelectedIndex = 0;
             saturday_delivery_comboBox.SelectedIndex = 0;
+            insurance_provider_comboBox.SelectedIndex = 0;
+            insured_value_currency_comboBox.SelectedIndex = 0;
 
             //GET CARRIER ACCOUNTS
             try
@@ -700,6 +705,8 @@ namespace ShipEngine_UI
                 string warehouse_id = warehouse_id_ComboBox.SelectedItem.ToString();
                 string ship_date = ship_date_TextBox.Text;
 
+                //SHIPENGINE UI VARIABLES
+                #region SHIPENGINE UI VARIABLES
                 ShipEngineUI.shipTo_name = shipTo_name_TextBox.Text;
                 ShipEngineUI.shipTo_phone = shipTo_phone_TextBox.Text;
                 ShipEngineUI.shipTo_company_name = shipTo_company_name_TextBox.Text;
@@ -741,7 +748,7 @@ namespace ShipEngine_UI
                 //SHIPENGINE UI ADVANCED OPTIONS
                 ShipEngineUI.advanced_options_bill_to_account = bill_to_account_textBox.Text;
                 ShipEngineUI.advanced_options_bill_to_country_code = bill_to_country_code_textBox.Text;
-
+                ShipEngineUI.advanced_options_bill_to_party = bill_to_party_comboBox.SelectedItem.ToString();
 
                 ShipEngineUI.advanced_options_bill_to_postal_code = bill_to_postal_code_textBox.Text;
 
@@ -755,6 +762,16 @@ namespace ShipEngine_UI
                 ShipEngineUI.advanced_options_non_machinable = non_machinable_comboBox.SelectedItem.ToString();
                 ShipEngineUI.advanced_options_saturday_delivery = saturday_delivery_comboBox.SelectedItem.ToString();
 
+                ShipEngineUI.advanced_options_origin_type = origin_type_comboBox.SelectedItem.ToString();
+
+                ShipEngineUI.advanced_options_custom_field1 = custom_field1_textBox.Text;
+                ShipEngineUI.advanced_options_custom_field2 = custom_field2_textBox.Text;
+                ShipEngineUI.advanced_options_custom_field3 = custom_field3_textBox.Text;
+
+                ShipEngineUI.insurance_provider = insurance_provider_comboBox.SelectedItem.ToString();
+                ShipEngineUI.packages_insured_value_amount = insured_value_amont_numericUpDown.Value.ToString();
+                ShipEngineUI.packages_insured_value_currency = insured_value_currency_comboBox.SelectedItem.ToString(); 
+                #endregion
 
                 //RATE REQUEST
                 #region  Rate Request
@@ -804,7 +821,7 @@ namespace ShipEngine_UI
                     "\r\n        \"advanced_options\": {" +
                     "\r\n            \"bill_to_account\": \"" + ShipEngineUI.advanced_options_bill_to_account + "\"," +
                     "\r\n            \"bill_to_country_code\": \"" + ShipEngineUI.advanced_options_bill_to_country_code + "\"," +
-                    "\r\n            \"bill_to_party\": null," +
+                    "\r\n            \"bill_to_party\": " + ShipEngineUI.advanced_options_bill_to_party + "," +
                     "\r\n            \"bill_to_postal_code\": \"" + ShipEngineUI.advanced_options_bill_to_postal_code + "\"," +
                     "\r\n            \"canada_delivered_duty\": null," +
                     "\r\n            \"contains_alcohol\": \"" + ShipEngineUI.advanced_options_contains_alcohol + "\"," +
@@ -814,9 +831,9 @@ namespace ShipEngine_UI
                     "\r\n            \"third-party-consignee\": \"false\"," +
                     "\r\n            \"ancillary_endorsements_option\": null," +
                     "\r\n            \"freight_class\": null," +
-                    "\r\n            \"custom_field_1\": null," +
-                    "\r\n            \"custom_field_2\": null," +
-                    "\r\n            \"custom_field_3\": null," +
+                    "\r\n            \"custom_field_1\": \"" + ShipEngineUI.advanced_options_custom_field1 + "\"," +
+                    "\r\n            \"custom_field_2\": \"" + ShipEngineUI.advanced_options_custom_field2 + "\"," +
+                    "\r\n            \"custom_field_3\": \"" + ShipEngineUI.advanced_options_custom_field3 + "\"," +
                     "\r\n            \"return_pickup_attempts\": null," +
                     "\r\n            \"dry_ice\": \"" + ShipEngineUI.advanced_options_dry_ice + "\"," +
                     "\r\n            \"dry_ice_weight\": {" +
@@ -831,8 +848,8 @@ namespace ShipEngine_UI
                     "\r\n                }" +
                     "\r\n            }" +
                     "\r\n        }," +
-                    "\r\n        \"origin_type\": null," +
-                    "\r\n        \"insurance_provider\": \"none\"," +
+                    "\r\n        \"origin_type\": " + ShipEngineUI.advanced_options_origin_type + "," +
+                    "\r\n        \"insurance_provider\": \"" + ShipEngineUI.insurance_provider + "\"," +
                     "\r\n        \"packages\": [" +
                     "\r\n            {" +
                     "\r\n                \"package_code\": \"" + package_code_ComboBox.SelectedItem.ToString() + "\"," +
@@ -847,8 +864,8 @@ namespace ShipEngine_UI
                     "\r\n                    \"height\": " + ShipEngineUI.packages_dimensions_height + "" +
                     "\r\n                }," +
                     "\r\n                \"insured_value\": {" +
-                    "\r\n                    \"currency\": \"usd\"," +
-                    "\r\n                    \"amount\": 0.00" +
+                    "\r\n                    \"currency\": \"" + ShipEngineUI.packages_insured_value_currency + "\"," +
+                    "\r\n                    \"amount\": " + ShipEngineUI.packages_insured_value_amount +
                     "\r\n                }," +
                     "\r\n                \"label_messages\": {" +
                     "\r\n                    \"reference1\": null," +
@@ -891,6 +908,7 @@ namespace ShipEngine_UI
 
                 stream.Close();
 
+                //LOAD LISTBOX
                 using (var reader = new StringReader(responseBodyText))
                 {
 
@@ -1039,7 +1057,7 @@ namespace ShipEngine_UI
                 //SHIPENGINE UI ADVANCED OPTIONS
                 ShipEngineUI.advanced_options_bill_to_account = bill_to_account_textBox.Text;
                 ShipEngineUI.advanced_options_bill_to_country_code = bill_to_country_code_textBox.Text;
-
+                ShipEngineUI.advanced_options_bill_to_party = bill_to_party_comboBox.SelectedItem.ToString();
                 ShipEngineUI.advanced_options_bill_to_postal_code = bill_to_postal_code_textBox.Text;
 
                 ShipEngineUI.advanced_options_contains_alcohol  = contains_alcohol_comboBox.SelectedItem.ToString();
@@ -1051,6 +1069,14 @@ namespace ShipEngine_UI
 
                 ShipEngineUI.advanced_options_non_machinable = non_machinable_comboBox.SelectedItem.ToString();
                 ShipEngineUI.advanced_options_saturday_delivery = saturday_delivery_comboBox.SelectedItem.ToString();
+
+                ShipEngineUI.advanced_options_custom_field1 = custom_field1_textBox.Text;
+                ShipEngineUI.advanced_options_custom_field2 = custom_field2_textBox.Text;
+                ShipEngineUI.advanced_options_custom_field3 = custom_field3_textBox.Text;
+
+                ShipEngineUI.insurance_provider = insurance_provider_comboBox.SelectedItem.ToString();
+                ShipEngineUI.packages_insured_value_amount = insured_value_amont_numericUpDown.Value.ToString();
+                ShipEngineUI.packages_insured_value_currency = insured_value_currency_comboBox.SelectedItem.ToString();
 
 
                 //URI - POST
@@ -1107,7 +1133,7 @@ namespace ShipEngine_UI
                     "\r\n        \"advanced_options\": {" +
                     "\r\n            \"bill_to_account\": \"" + ShipEngineUI.advanced_options_bill_to_account + "\"," +
                     "\r\n            \"bill_to_country_code\": \"" + ShipEngineUI.advanced_options_bill_to_country_code + "\"," +
-                    "\r\n            \"bill_to_party\": null," +
+                    "\r\n            \"bill_to_party\": " + ShipEngineUI.advanced_options_bill_to_party + "," +
                     "\r\n            \"bill_to_postal_code\": \"" + ShipEngineUI.advanced_options_bill_to_postal_code + "\"," +
                     "\r\n            \"canada_delivered_duty\": null," +
                     "\r\n            \"contains_alcohol\": \"" + ShipEngineUI.advanced_options_contains_alcohol + "\"," +
@@ -1117,9 +1143,9 @@ namespace ShipEngine_UI
                     "\r\n            \"third-party-consignee\": \"false\"," +
                     "\r\n            \"ancillary_endorsements_option\": null," +
                     "\r\n            \"freight_class\": null," +
-                    "\r\n            \"custom_field_1\": null," +
-                    "\r\n            \"custom_field_2\": null," +
-                    "\r\n            \"custom_field_3\": null," +
+                    "\r\n            \"custom_field_1\": \"" + ShipEngineUI.advanced_options_custom_field1 + "\"," +
+                    "\r\n            \"custom_field_2\": \"" + ShipEngineUI.advanced_options_custom_field2 + "\"," +
+                    "\r\n            \"custom_field_3\": \"" + ShipEngineUI.advanced_options_custom_field3 + "\"," +
                     "\r\n            \"return_pickup_attempts\": null," +
                     "\r\n            \"dry_ice\": \"" + ShipEngineUI.advanced_options_dry_ice + "\"," +
                     "\r\n            \"dry_ice_weight\": {" +
@@ -1135,7 +1161,7 @@ namespace ShipEngine_UI
                     "\r\n            }" +
                     "\r\n        }," +
                     "\r\n        \"origin_type\": null," +
-                    "\r\n        \"insurance_provider\": \"none\"," +
+                    "\r\n        \"insurance_provider\": \"" + ShipEngineUI.insurance_provider + "\"," +
                     "\r\n        \"packages\": [" +
                     "\r\n            {" +
                     "\r\n                \"package_code\": \"" + package_code_ComboBox.SelectedItem.ToString() + "\"," +
@@ -1150,8 +1176,8 @@ namespace ShipEngine_UI
                     "\r\n                    \"height\": " + ShipEngineUI.packages_dimensions_height + "" +
                     "\r\n                }," +
                     "\r\n                \"insured_value\": {" +
-                    "\r\n                    \"currency\": \"usd\"," +
-                    "\r\n                    \"amount\": 0.00" +
+                    "\r\n                    \"currency\": \"" + ShipEngineUI.packages_insured_value_currency + "\"," +
+                    "\r\n                    \"amount\": " + ShipEngineUI.packages_insured_value_amount +
                     "\r\n                }," +
                     "\r\n                \"label_messages\": {" +
                     "\r\n                    \"reference1\": null," +
@@ -1546,7 +1572,7 @@ namespace ShipEngine_UI
                 //SHIPENGINE UI ADVANCED OPTIONS
                 ShipEngineUI.advanced_options_bill_to_account = bill_to_account_textBox.Text;
                 ShipEngineUI.advanced_options_bill_to_country_code = bill_to_country_code_textBox.Text;
-                ShipEngineUI.advanced_options_bill_to_party = bill_to_party_textBox.Text;
+                ShipEngineUI.advanced_options_bill_to_party = bill_to_party_comboBox.SelectedItem.ToString();
                 ShipEngineUI.advanced_options_bill_to_postal_code = bill_to_postal_code_textBox.Text;
 
                 ShipEngineUI.advanced_options_contains_alcohol = contains_alcohol_comboBox.SelectedItem.ToString();
@@ -1558,7 +1584,16 @@ namespace ShipEngine_UI
 
                 ShipEngineUI.advanced_options_non_machinable = non_machinable_comboBox.SelectedItem.ToString();
                 ShipEngineUI.advanced_options_saturday_delivery = saturday_delivery_comboBox.SelectedItem.ToString();
+                ShipEngineUI.advanced_options_origin_type = origin_type_comboBox.SelectedItem.ToString();
 
+
+                ShipEngineUI.advanced_options_custom_field1 = custom_field1_textBox.Text;
+                ShipEngineUI.advanced_options_custom_field2 = custom_field2_textBox.Text;
+                ShipEngineUI.advanced_options_custom_field3 = custom_field3_textBox.Text;
+
+                ShipEngineUI.insurance_provider = insurance_provider_comboBox.SelectedItem.ToString();
+                ShipEngineUI.packages_insured_value_amount = insured_value_amont_numericUpDown.Value.ToString();
+                ShipEngineUI.packages_insured_value_currency = insured_value_currency_comboBox.SelectedItem.ToString();
 
                 //LOGID
                 Random logID = new Random();
@@ -1610,9 +1645,9 @@ namespace ShipEngine_UI
                     "\r\n            \"third-party-consignee\": \"false\"," +
                     "\r\n            \"ancillary_endorsements_option\": null," +
                     "\r\n            \"freight_class\": null," +
-                    "\r\n            \"custom_field_1\": null," +
-                    "\r\n            \"custom_field_2\": null," +
-                    "\r\n            \"custom_field_3\": null," +
+                    "\r\n            \"custom_field_1\": \"" + ShipEngineUI.advanced_options_custom_field1 + "\"," +
+                    "\r\n            \"custom_field_2\": \"" + ShipEngineUI.advanced_options_custom_field2 + "\"," +
+                    "\r\n            \"custom_field_3\": \"" + ShipEngineUI.advanced_options_custom_field3 + "\"," +
                     "\r\n            \"return_pickup_attempts\": null," +
                     "\r\n            \"dry_ice\": \"" + ShipEngineUI.advanced_options_dry_ice + "\"," +
                     "\r\n            \"dry_ice_weight\": {" +
@@ -1627,8 +1662,8 @@ namespace ShipEngine_UI
                     "\r\n                }" +
                     "\r\n            }" +
                     "\r\n        }," +
-                    "\r\n        \"origin_type\": null," +
-                    "\r\n        \"insurance_provider\": \"none\"," +
+                    "\r\n        \"origin_type\": " + ShipEngineUI.advanced_options_origin_type + "," +
+                    "\r\n        \"insurance_provider\": \"" + ShipEngineUI.insurance_provider + "\"," +
                     "\r\n        \"packages\": [" +
                     "\r\n            {" +
                     "\r\n                \"package_code\": \"" + package_code_ComboBox.SelectedItem.ToString() + "\"," +
@@ -1643,8 +1678,8 @@ namespace ShipEngine_UI
                     "\r\n                    \"height\": " + ShipEngineUI.packages_dimensions_height + "" +
                     "\r\n                }," +
                     "\r\n                \"insured_value\": {" +
-                    "\r\n                    \"currency\": \"usd\"," +
-                    "\r\n                    \"amount\": 0.00" +
+                    "\r\n                    \"currency\": \"" + ShipEngineUI.packages_insured_value_currency + "\"," +
+                    "\r\n                    \"amount\": " + ShipEngineUI.packages_insured_value_amount +
                     "\r\n                }," +
                     "\r\n                \"label_messages\": {" +
                     "\r\n                    \"reference1\": null," +
@@ -1971,6 +2006,22 @@ namespace ShipEngine_UI
 
             shipTogroupBox.Visible = false;
             advanced_options_groupBox.Visible = true;
+
+        }
+
+        private void shipFromgroupBox_Click(object sender, EventArgs e)
+        {
+
+            shipFromgroupBox.Visible = false;
+            advanced_options_groupBox1.Visible = true;
+
+        }
+
+        private void advanced_options_groupBox1_Click(object sender, EventArgs e)
+        {
+
+            shipFromgroupBox.Visible = true;
+            advanced_options_groupBox1.Visible = false;
 
         }
     }

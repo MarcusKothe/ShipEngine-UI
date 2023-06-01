@@ -109,7 +109,6 @@ namespace ShipEngine_UI
         public static string advanced_options_collect_on_delivery_payment_amount_currency = "";
         public static string advanced_options_collect_on_delivery_payment_amount_amount = "";
         public static string advanced_options_third_party_consignee = "";
-        public static string advanced_options_insurance_provider = "";
         public static string advanced_options_order_source_code = "";
 
         //PACKAGES
@@ -122,6 +121,7 @@ namespace ShipEngine_UI
         public static string packages_dimensions_length = "";
         public static string packages_dimensions_width = "";
         public static string packages_dimensions_height = "";
+        public static string insurance_provider = "";
         public static string packages_insured_value_currency = "";
         public static string packages_insured_value_amount = "";
         public static string packages_label_messages_reference1 = "";

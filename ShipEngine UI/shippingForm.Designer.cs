@@ -113,6 +113,8 @@
             this.label_webbrowser = new System.Windows.Forms.WebBrowser();
             this.notify_shipped_checkBox = new System.Windows.Forms.CheckBox();
             this.advanced_options_groupBox = new System.Windows.Forms.GroupBox();
+            this.origin_type_comboBox = new System.Windows.Forms.ComboBox();
+            this.label32 = new System.Windows.Forms.Label();
             this.saturday_delivery_comboBox = new System.Windows.Forms.ComboBox();
             this.non_machinable_comboBox = new System.Windows.Forms.ComboBox();
             this.dry_ice_weight_comboBox = new System.Windows.Forms.ComboBox();
@@ -133,7 +135,36 @@
             this.label38 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
-            this.bill_to_party_textBox = new System.Windows.Forms.TextBox();
+            this.advanced_options_groupBox1 = new System.Windows.Forms.GroupBox();
+            this.shipper_load_and_count_textBox = new System.Windows.Forms.TextBox();
+            this.booking_confirmation_textBox = new System.Windows.Forms.TextBox();
+            this.use_ups_ground_freight_pricing_comboBox = new System.Windows.Forms.ComboBox();
+            this.custom_field1_textBox = new System.Windows.Forms.TextBox();
+            this.custom_field2_textBox = new System.Windows.Forms.TextBox();
+            this.custom_field3_textBox = new System.Windows.Forms.TextBox();
+            this.shipper_release_comboBox = new System.Windows.Forms.ComboBox();
+            this.collect_on_delivery_payment_type_comboBox = new System.Windows.Forms.ComboBox();
+            this.collect_on_delivery_payment_currency_comboBox = new System.Windows.Forms.ComboBox();
+            this.collect_on_delivery_payment_amount_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.third_party_consignee_comboBox = new System.Windows.Forms.ComboBox();
+            this.label41 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.label43 = new System.Windows.Forms.Label();
+            this.freight_class_textBox = new System.Windows.Forms.TextBox();
+            this.label44 = new System.Windows.Forms.Label();
+            this.label45 = new System.Windows.Forms.Label();
+            this.label46 = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.label51 = new System.Windows.Forms.Label();
+            this.bill_to_party_comboBox = new System.Windows.Forms.ComboBox();
+            this.label52 = new System.Windows.Forms.Label();
+            this.insurance_provider_comboBox = new System.Windows.Forms.ComboBox();
+            this.insured_value_amont_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.insured_value_currency_comboBox = new System.Windows.Forms.ComboBox();
+            this.label53 = new System.Windows.Forms.Label();
             this.shipFromgroupBox.SuspendLayout();
             this.shipTogroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.labelImageBox)).BeginInit();
@@ -143,6 +174,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.packages_weight_value_numericUpDown)).BeginInit();
             this.advanced_options_groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dry_ice_weight_numericUpDown)).BeginInit();
+            this.advanced_options_groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.collect_on_delivery_payment_amount_numericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.insured_value_amont_numericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // service_code_ComboBox
@@ -212,10 +246,11 @@
             this.shipFromgroupBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.shipFromgroupBox.Location = new System.Drawing.Point(326, 66);
             this.shipFromgroupBox.Name = "shipFromgroupBox";
-            this.shipFromgroupBox.Size = new System.Drawing.Size(308, 304);
+            this.shipFromgroupBox.Size = new System.Drawing.Size(308, 324);
             this.shipFromgroupBox.TabIndex = 55;
             this.shipFromgroupBox.TabStop = false;
             this.shipFromgroupBox.Text = "Ship From";
+            this.shipFromgroupBox.Click += new System.EventHandler(this.shipFromgroupBox_Click);
             // 
             // shipFrom_address_residential_indicator_comboBox
             // 
@@ -224,7 +259,7 @@
             this.shipFrom_address_residential_indicator_comboBox.Items.AddRange(new object[] {
             "Yes",
             "No"});
-            this.shipFrom_address_residential_indicator_comboBox.Location = new System.Drawing.Point(100, 280);
+            this.shipFrom_address_residential_indicator_comboBox.Location = new System.Drawing.Point(103, 294);
             this.shipFrom_address_residential_indicator_comboBox.Name = "shipFrom_address_residential_indicator_comboBox";
             this.shipFrom_address_residential_indicator_comboBox.Size = new System.Drawing.Size(195, 21);
             this.shipFrom_address_residential_indicator_comboBox.TabIndex = 57;
@@ -234,7 +269,7 @@
             // 
             this.label37.AutoSize = true;
             this.label37.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label37.Location = new System.Drawing.Point(15, 155);
+            this.label37.Location = new System.Drawing.Point(14, 162);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(81, 13);
             this.label37.TabIndex = 55;
@@ -244,7 +279,7 @@
             // 
             this.shipFrom_address_line3_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
             this.shipFrom_address_line3_TextBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipFrom_address_line3_TextBox.Location = new System.Drawing.Point(100, 152);
+            this.shipFrom_address_line3_TextBox.Location = new System.Drawing.Point(103, 159);
             this.shipFrom_address_line3_TextBox.Name = "shipFrom_address_line3_TextBox";
             this.shipFrom_address_line3_TextBox.Size = new System.Drawing.Size(195, 21);
             this.shipFrom_address_line3_TextBox.TabIndex = 54;
@@ -254,7 +289,7 @@
             // 
             this.shipFrom_name_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
             this.shipFrom_name_TextBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipFrom_name_TextBox.Location = new System.Drawing.Point(100, 22);
+            this.shipFrom_name_TextBox.Location = new System.Drawing.Point(103, 24);
             this.shipFrom_name_TextBox.Name = "shipFrom_name_TextBox";
             this.shipFrom_name_TextBox.Size = new System.Drawing.Size(195, 21);
             this.shipFrom_name_TextBox.TabIndex = 17;
@@ -263,7 +298,7 @@
             // 
             this.shipFrom_company_name_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
             this.shipFrom_company_name_TextBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipFrom_company_name_TextBox.Location = new System.Drawing.Point(100, 48);
+            this.shipFrom_company_name_TextBox.Location = new System.Drawing.Point(103, 51);
             this.shipFrom_company_name_TextBox.Name = "shipFrom_company_name_TextBox";
             this.shipFrom_company_name_TextBox.Size = new System.Drawing.Size(195, 21);
             this.shipFrom_company_name_TextBox.TabIndex = 18;
@@ -272,7 +307,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(15, 259);
+            this.label23.Location = new System.Drawing.Point(15, 270);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(73, 13);
             this.label23.TabIndex = 53;
@@ -282,7 +317,7 @@
             // 
             this.shipFrom_address_line1_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
             this.shipFrom_address_line1_TextBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipFrom_address_line1_TextBox.Location = new System.Drawing.Point(100, 100);
+            this.shipFrom_address_line1_TextBox.Location = new System.Drawing.Point(103, 105);
             this.shipFrom_address_line1_TextBox.Name = "shipFrom_address_line1_TextBox";
             this.shipFrom_address_line1_TextBox.Size = new System.Drawing.Size(195, 21);
             this.shipFrom_address_line1_TextBox.TabIndex = 19;
@@ -291,7 +326,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(15, 283);
+            this.label22.Location = new System.Drawing.Point(15, 297);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(68, 13);
             this.label22.TabIndex = 52;
@@ -301,7 +336,7 @@
             // 
             this.shipFrom_phone_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
             this.shipFrom_phone_TextBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipFrom_phone_TextBox.Location = new System.Drawing.Point(100, 74);
+            this.shipFrom_phone_TextBox.Location = new System.Drawing.Point(103, 78);
             this.shipFrom_phone_TextBox.Name = "shipFrom_phone_TextBox";
             this.shipFrom_phone_TextBox.Size = new System.Drawing.Size(195, 21);
             this.shipFrom_phone_TextBox.TabIndex = 20;
@@ -311,7 +346,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(15, 207);
+            this.label21.Location = new System.Drawing.Point(15, 216);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(80, 13);
             this.label21.TabIndex = 51;
@@ -321,7 +356,7 @@
             // 
             this.shipFrom_address_line2_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
             this.shipFrom_address_line2_TextBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipFrom_address_line2_TextBox.Location = new System.Drawing.Point(100, 126);
+            this.shipFrom_address_line2_TextBox.Location = new System.Drawing.Point(103, 132);
             this.shipFrom_address_line2_TextBox.Name = "shipFrom_address_line2_TextBox";
             this.shipFrom_address_line2_TextBox.Size = new System.Drawing.Size(195, 21);
             this.shipFrom_address_line2_TextBox.TabIndex = 21;
@@ -331,7 +366,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(15, 233);
+            this.label20.Location = new System.Drawing.Point(16, 243);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(67, 13);
             this.label20.TabIndex = 50;
@@ -341,7 +376,7 @@
             // 
             this.shipFrom_city_locality_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
             this.shipFrom_city_locality_TextBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipFrom_city_locality_TextBox.Location = new System.Drawing.Point(100, 178);
+            this.shipFrom_city_locality_TextBox.Location = new System.Drawing.Point(103, 186);
             this.shipFrom_city_locality_TextBox.Name = "shipFrom_city_locality_TextBox";
             this.shipFrom_city_locality_TextBox.Size = new System.Drawing.Size(195, 21);
             this.shipFrom_city_locality_TextBox.TabIndex = 22;
@@ -350,7 +385,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(15, 129);
+            this.label13.Location = new System.Drawing.Point(14, 135);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(81, 13);
             this.label13.TabIndex = 43;
@@ -360,7 +395,7 @@
             // 
             this.shipFrom_postal_code_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
             this.shipFrom_postal_code_TextBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipFrom_postal_code_TextBox.Location = new System.Drawing.Point(100, 230);
+            this.shipFrom_postal_code_TextBox.Location = new System.Drawing.Point(103, 240);
             this.shipFrom_postal_code_TextBox.Name = "shipFrom_postal_code_TextBox";
             this.shipFrom_postal_code_TextBox.Size = new System.Drawing.Size(195, 21);
             this.shipFrom_postal_code_TextBox.TabIndex = 23;
@@ -369,7 +404,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(15, 25);
+            this.label12.Location = new System.Drawing.Point(16, 27);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(37, 13);
             this.label12.TabIndex = 42;
@@ -379,7 +414,7 @@
             // 
             this.shipFrom_state_province_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
             this.shipFrom_state_province_TextBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipFrom_state_province_TextBox.Location = new System.Drawing.Point(100, 204);
+            this.shipFrom_state_province_TextBox.Location = new System.Drawing.Point(103, 213);
             this.shipFrom_state_province_TextBox.Name = "shipFrom_state_province_TextBox";
             this.shipFrom_state_province_TextBox.Size = new System.Drawing.Size(195, 21);
             this.shipFrom_state_province_TextBox.TabIndex = 24;
@@ -388,7 +423,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(15, 77);
+            this.label10.Location = new System.Drawing.Point(16, 82);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(81, 13);
             this.label10.TabIndex = 40;
@@ -398,7 +433,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(15, 51);
+            this.label9.Location = new System.Drawing.Point(16, 54);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(86, 13);
             this.label9.TabIndex = 39;
@@ -408,7 +443,7 @@
             // 
             this.shipFrom_country_code_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
             this.shipFrom_country_code_TextBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipFrom_country_code_TextBox.Location = new System.Drawing.Point(100, 256);
+            this.shipFrom_country_code_TextBox.Location = new System.Drawing.Point(103, 267);
             this.shipFrom_country_code_TextBox.Name = "shipFrom_country_code_TextBox";
             this.shipFrom_country_code_TextBox.Size = new System.Drawing.Size(195, 21);
             this.shipFrom_country_code_TextBox.TabIndex = 29;
@@ -417,7 +452,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(15, 103);
+            this.label8.Location = new System.Drawing.Point(16, 108);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(81, 13);
             this.label8.TabIndex = 38;
@@ -427,7 +462,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(15, 181);
+            this.label7.Location = new System.Drawing.Point(15, 189);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(68, 13);
             this.label7.TabIndex = 37;
@@ -460,7 +495,7 @@
             this.shipTogroupBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.shipTogroupBox.Location = new System.Drawing.Point(12, 66);
             this.shipTogroupBox.Name = "shipTogroupBox";
-            this.shipTogroupBox.Size = new System.Drawing.Size(308, 304);
+            this.shipTogroupBox.Size = new System.Drawing.Size(308, 324);
             this.shipTogroupBox.TabIndex = 56;
             this.shipTogroupBox.TabStop = false;
             this.shipTogroupBox.Text = "Ship To";
@@ -473,9 +508,9 @@
             this.shipTo_address_residential_indicator_comboBox.Items.AddRange(new object[] {
             "Yes",
             "No"});
-            this.shipTo_address_residential_indicator_comboBox.Location = new System.Drawing.Point(101, 280);
+            this.shipTo_address_residential_indicator_comboBox.Location = new System.Drawing.Point(102, 294);
             this.shipTo_address_residential_indicator_comboBox.Name = "shipTo_address_residential_indicator_comboBox";
-            this.shipTo_address_residential_indicator_comboBox.Size = new System.Drawing.Size(195, 21);
+            this.shipTo_address_residential_indicator_comboBox.Size = new System.Drawing.Size(194, 21);
             this.shipTo_address_residential_indicator_comboBox.TabIndex = 56;
             this.shipTo_address_residential_indicator_comboBox.Text = "(Defualt) No";
             // 
@@ -483,9 +518,9 @@
             // 
             this.shipTo_address_line3_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
             this.shipTo_address_line3_TextBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipTo_address_line3_TextBox.Location = new System.Drawing.Point(101, 154);
+            this.shipTo_address_line3_TextBox.Location = new System.Drawing.Point(102, 159);
             this.shipTo_address_line3_TextBox.Name = "shipTo_address_line3_TextBox";
-            this.shipTo_address_line3_TextBox.Size = new System.Drawing.Size(195, 21);
+            this.shipTo_address_line3_TextBox.Size = new System.Drawing.Size(194, 21);
             this.shipTo_address_line3_TextBox.TabIndex = 56;
             this.shipTo_address_line3_TextBox.Text = " ";
             // 
@@ -493,7 +528,7 @@
             // 
             this.label36.AutoSize = true;
             this.label36.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label36.Location = new System.Drawing.Point(17, 157);
+            this.label36.Location = new System.Drawing.Point(14, 162);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(81, 13);
             this.label36.TabIndex = 55;
@@ -503,7 +538,7 @@
             // 
             this.label35.AutoSize = true;
             this.label35.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label35.Location = new System.Drawing.Point(17, 79);
+            this.label35.Location = new System.Drawing.Point(15, 82);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(81, 13);
             this.label35.TabIndex = 54;
@@ -513,25 +548,25 @@
             // 
             this.shipTo_phone_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
             this.shipTo_phone_TextBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipTo_phone_TextBox.Location = new System.Drawing.Point(102, 76);
+            this.shipTo_phone_TextBox.Location = new System.Drawing.Point(102, 78);
             this.shipTo_phone_TextBox.Name = "shipTo_phone_TextBox";
-            this.shipTo_phone_TextBox.Size = new System.Drawing.Size(195, 21);
+            this.shipTo_phone_TextBox.Size = new System.Drawing.Size(194, 21);
             this.shipTo_phone_TextBox.TabIndex = 53;
             // 
             // shipTo_company_name_TextBox
             // 
             this.shipTo_company_name_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
             this.shipTo_company_name_TextBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipTo_company_name_TextBox.Location = new System.Drawing.Point(102, 50);
+            this.shipTo_company_name_TextBox.Location = new System.Drawing.Point(102, 51);
             this.shipTo_company_name_TextBox.Name = "shipTo_company_name_TextBox";
-            this.shipTo_company_name_TextBox.Size = new System.Drawing.Size(195, 21);
+            this.shipTo_company_name_TextBox.Size = new System.Drawing.Size(194, 21);
             this.shipTo_company_name_TextBox.TabIndex = 52;
             // 
             // label34
             // 
             this.label34.AutoSize = true;
             this.label34.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.Location = new System.Drawing.Point(17, 53);
+            this.label34.Location = new System.Drawing.Point(14, 56);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(86, 13);
             this.label34.TabIndex = 51;
@@ -553,34 +588,34 @@
             this.shipTo_name_TextBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.shipTo_name_TextBox.Location = new System.Drawing.Point(102, 24);
             this.shipTo_name_TextBox.Name = "shipTo_name_TextBox";
-            this.shipTo_name_TextBox.Size = new System.Drawing.Size(195, 21);
+            this.shipTo_name_TextBox.Size = new System.Drawing.Size(194, 21);
             this.shipTo_name_TextBox.TabIndex = 8;
             // 
             // shipTo_address_line1_TextBox
             // 
             this.shipTo_address_line1_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
             this.shipTo_address_line1_TextBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipTo_address_line1_TextBox.Location = new System.Drawing.Point(102, 102);
+            this.shipTo_address_line1_TextBox.Location = new System.Drawing.Point(102, 105);
             this.shipTo_address_line1_TextBox.Name = "shipTo_address_line1_TextBox";
-            this.shipTo_address_line1_TextBox.Size = new System.Drawing.Size(195, 21);
+            this.shipTo_address_line1_TextBox.Size = new System.Drawing.Size(194, 21);
             this.shipTo_address_line1_TextBox.TabIndex = 9;
             // 
             // shipTo_city_locality_TextBox
             // 
             this.shipTo_city_locality_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
             this.shipTo_city_locality_TextBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipTo_city_locality_TextBox.Location = new System.Drawing.Point(101, 180);
+            this.shipTo_city_locality_TextBox.Location = new System.Drawing.Point(102, 186);
             this.shipTo_city_locality_TextBox.Name = "shipTo_city_locality_TextBox";
-            this.shipTo_city_locality_TextBox.Size = new System.Drawing.Size(195, 21);
+            this.shipTo_city_locality_TextBox.Size = new System.Drawing.Size(194, 21);
             this.shipTo_city_locality_TextBox.TabIndex = 10;
             // 
             // shipTo_address_line2_TextBox
             // 
             this.shipTo_address_line2_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
             this.shipTo_address_line2_TextBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipTo_address_line2_TextBox.Location = new System.Drawing.Point(102, 128);
+            this.shipTo_address_line2_TextBox.Location = new System.Drawing.Point(102, 132);
             this.shipTo_address_line2_TextBox.Name = "shipTo_address_line2_TextBox";
-            this.shipTo_address_line2_TextBox.Size = new System.Drawing.Size(195, 21);
+            this.shipTo_address_line2_TextBox.Size = new System.Drawing.Size(194, 21);
             this.shipTo_address_line2_TextBox.TabIndex = 11;
             this.shipTo_address_line2_TextBox.Text = " ";
             // 
@@ -588,7 +623,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(17, 209);
+            this.label19.Location = new System.Drawing.Point(17, 216);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(80, 13);
             this.label19.TabIndex = 49;
@@ -598,17 +633,17 @@
             // 
             this.shipTo_state_province_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
             this.shipTo_state_province_TextBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipTo_state_province_TextBox.Location = new System.Drawing.Point(101, 206);
+            this.shipTo_state_province_TextBox.Location = new System.Drawing.Point(102, 213);
             this.shipTo_state_province_TextBox.MaxLength = 100;
             this.shipTo_state_province_TextBox.Name = "shipTo_state_province_TextBox";
-            this.shipTo_state_province_TextBox.Size = new System.Drawing.Size(195, 21);
+            this.shipTo_state_province_TextBox.Size = new System.Drawing.Size(194, 21);
             this.shipTo_state_province_TextBox.TabIndex = 12;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(17, 261);
+            this.label18.Location = new System.Drawing.Point(17, 270);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(73, 13);
             this.label18.TabIndex = 48;
@@ -618,16 +653,16 @@
             // 
             this.shipTo_postal_code_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
             this.shipTo_postal_code_TextBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipTo_postal_code_TextBox.Location = new System.Drawing.Point(101, 232);
+            this.shipTo_postal_code_TextBox.Location = new System.Drawing.Point(102, 240);
             this.shipTo_postal_code_TextBox.Name = "shipTo_postal_code_TextBox";
-            this.shipTo_postal_code_TextBox.Size = new System.Drawing.Size(195, 21);
+            this.shipTo_postal_code_TextBox.Size = new System.Drawing.Size(194, 21);
             this.shipTo_postal_code_TextBox.TabIndex = 13;
             // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(17, 283);
+            this.label17.Location = new System.Drawing.Point(17, 297);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(68, 13);
             this.label17.TabIndex = 47;
@@ -637,16 +672,16 @@
             // 
             this.shipTo_country_code_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
             this.shipTo_country_code_TextBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipTo_country_code_TextBox.Location = new System.Drawing.Point(101, 258);
+            this.shipTo_country_code_TextBox.Location = new System.Drawing.Point(102, 267);
             this.shipTo_country_code_TextBox.Name = "shipTo_country_code_TextBox";
-            this.shipTo_country_code_TextBox.Size = new System.Drawing.Size(195, 21);
+            this.shipTo_country_code_TextBox.Size = new System.Drawing.Size(194, 21);
             this.shipTo_country_code_TextBox.TabIndex = 14;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(17, 105);
+            this.label16.Location = new System.Drawing.Point(14, 108);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(81, 13);
             this.label16.TabIndex = 46;
@@ -656,7 +691,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(17, 235);
+            this.label15.Location = new System.Drawing.Point(17, 243);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(67, 13);
             this.label15.TabIndex = 45;
@@ -666,7 +701,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(17, 131);
+            this.label11.Location = new System.Drawing.Point(14, 136);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(81, 13);
             this.label11.TabIndex = 41;
@@ -676,7 +711,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(17, 183);
+            this.label14.Location = new System.Drawing.Point(17, 189);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(68, 13);
             this.label14.TabIndex = 44;
@@ -732,7 +767,7 @@
             // 
             // get_Rates_Button
             // 
-            this.get_Rates_Button.Location = new System.Drawing.Point(245, 403);
+            this.get_Rates_Button.Location = new System.Drawing.Point(245, 423);
             this.get_Rates_Button.Name = "get_Rates_Button";
             this.get_Rates_Button.Size = new System.Drawing.Size(75, 23);
             this.get_Rates_Button.TabIndex = 62;
@@ -743,7 +778,7 @@
             // package_code_ComboBox
             // 
             this.package_code_ComboBox.FormattingEnabled = true;
-            this.package_code_ComboBox.Location = new System.Drawing.Point(12, 376);
+            this.package_code_ComboBox.Location = new System.Drawing.Point(12, 396);
             this.package_code_ComboBox.Name = "package_code_ComboBox";
             this.package_code_ComboBox.Size = new System.Drawing.Size(308, 21);
             this.package_code_ComboBox.TabIndex = 63;
@@ -762,7 +797,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(47, 406);
+            this.label1.Location = new System.Drawing.Point(47, 426);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(17, 17);
             this.label1.TabIndex = 65;
@@ -772,7 +807,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(106, 406);
+            this.label2.Location = new System.Drawing.Point(106, 426);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(22, 17);
             this.label2.TabIndex = 66;
@@ -782,7 +817,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(171, 406);
+            this.label3.Location = new System.Drawing.Point(171, 426);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(19, 17);
             this.label3.TabIndex = 67;
@@ -799,7 +834,7 @@
             "direct_signature",
             "delivery_mailed",
             "verbal_confirmation"});
-            this.delivery_confirmation_ComboBox.Location = new System.Drawing.Point(326, 376);
+            this.delivery_confirmation_ComboBox.Location = new System.Drawing.Point(326, 396);
             this.delivery_confirmation_ComboBox.Name = "delivery_confirmation_ComboBox";
             this.delivery_confirmation_ComboBox.Size = new System.Drawing.Size(308, 21);
             this.delivery_confirmation_ComboBox.TabIndex = 71;
@@ -809,7 +844,7 @@
             // 
             this.packages_dimensions_length_numericUpDown.DecimalPlaces = 1;
             this.packages_dimensions_length_numericUpDown.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.packages_dimensions_length_numericUpDown.Location = new System.Drawing.Point(12, 406);
+            this.packages_dimensions_length_numericUpDown.Location = new System.Drawing.Point(12, 426);
             this.packages_dimensions_length_numericUpDown.Maximum = new decimal(new int[] {
             200,
             0,
@@ -823,7 +858,7 @@
             // 
             this.packages_dimensions_width_numericUpDown.DecimalPlaces = 1;
             this.packages_dimensions_width_numericUpDown.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.packages_dimensions_width_numericUpDown.Location = new System.Drawing.Point(70, 406);
+            this.packages_dimensions_width_numericUpDown.Location = new System.Drawing.Point(70, 426);
             this.packages_dimensions_width_numericUpDown.Name = "packages_dimensions_width_numericUpDown";
             this.packages_dimensions_width_numericUpDown.Size = new System.Drawing.Size(35, 21);
             this.packages_dimensions_width_numericUpDown.TabIndex = 73;
@@ -832,7 +867,7 @@
             // 
             this.packages_dimensions_height_numericUpDown.DecimalPlaces = 1;
             this.packages_dimensions_height_numericUpDown.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.packages_dimensions_height_numericUpDown.Location = new System.Drawing.Point(134, 406);
+            this.packages_dimensions_height_numericUpDown.Location = new System.Drawing.Point(134, 426);
             this.packages_dimensions_height_numericUpDown.Name = "packages_dimensions_height_numericUpDown";
             this.packages_dimensions_height_numericUpDown.Size = new System.Drawing.Size(35, 21);
             this.packages_dimensions_height_numericUpDown.TabIndex = 74;
@@ -841,23 +876,23 @@
             // 
             this.packages_weight_value_numericUpDown.DecimalPlaces = 1;
             this.packages_weight_value_numericUpDown.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.packages_weight_value_numericUpDown.Location = new System.Drawing.Point(12, 435);
+            this.packages_weight_value_numericUpDown.Location = new System.Drawing.Point(12, 455);
             this.packages_weight_value_numericUpDown.Name = "packages_weight_value_numericUpDown";
             this.packages_weight_value_numericUpDown.Size = new System.Drawing.Size(41, 21);
             this.packages_weight_value_numericUpDown.TabIndex = 76;
             // 
             // rate_response_RichTextBox
             // 
-            this.rate_response_RichTextBox.Location = new System.Drawing.Point(326, 398);
+            this.rate_response_RichTextBox.Location = new System.Drawing.Point(326, 418);
             this.rate_response_RichTextBox.Name = "rate_response_RichTextBox";
-            this.rate_response_RichTextBox.Size = new System.Drawing.Size(308, 235);
+            this.rate_response_RichTextBox.Size = new System.Drawing.Size(308, 261);
             this.rate_response_RichTextBox.TabIndex = 77;
             this.rate_response_RichTextBox.Text = "";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(187, 408);
+            this.label4.Location = new System.Drawing.Point(187, 428);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 13);
             this.label4.TabIndex = 78;
@@ -867,7 +902,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(53, 437);
+            this.label5.Location = new System.Drawing.Point(53, 457);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 13);
             this.label5.TabIndex = 79;
@@ -876,7 +911,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(96, 437);
+            this.label24.Location = new System.Drawing.Point(96, 457);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(30, 13);
             this.label24.TabIndex = 80;
@@ -884,7 +919,7 @@
             // 
             // create_label_Button
             // 
-            this.create_label_Button.Location = new System.Drawing.Point(230, 432);
+            this.create_label_Button.Location = new System.Drawing.Point(640, 656);
             this.create_label_Button.Name = "create_label_Button";
             this.create_label_Button.Size = new System.Drawing.Size(90, 23);
             this.create_label_Button.TabIndex = 81;
@@ -907,7 +942,7 @@
             // 
             this.print_Button.Location = new System.Drawing.Point(640, 618);
             this.print_Button.Name = "print_Button";
-            this.print_Button.Size = new System.Drawing.Size(58, 20);
+            this.print_Button.Size = new System.Drawing.Size(90, 23);
             this.print_Button.TabIndex = 83;
             this.print_Button.Text = "Print Label";
             this.print_Button.UseVisualStyleBackColor = true;
@@ -925,7 +960,7 @@
             // sales_order_ListBox
             // 
             this.sales_order_ListBox.FormattingEnabled = true;
-            this.sales_order_ListBox.Location = new System.Drawing.Point(12, 467);
+            this.sales_order_ListBox.Location = new System.Drawing.Point(12, 508);
             this.sales_order_ListBox.Name = "sales_order_ListBox";
             this.sales_order_ListBox.Size = new System.Drawing.Size(308, 147);
             this.sales_order_ListBox.TabIndex = 85;
@@ -934,7 +969,7 @@
             // create_label_from_Order_Button
             // 
             this.create_label_from_Order_Button.Enabled = false;
-            this.create_label_from_Order_Button.Location = new System.Drawing.Point(193, 615);
+            this.create_label_from_Order_Button.Location = new System.Drawing.Point(193, 656);
             this.create_label_from_Order_Button.Name = "create_label_from_Order_Button";
             this.create_label_from_Order_Button.Size = new System.Drawing.Size(127, 23);
             this.create_label_from_Order_Button.TabIndex = 86;
@@ -953,7 +988,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(711, 622);
+            this.label25.Location = new System.Drawing.Point(765, 642);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(137, 13);
             this.label25.TabIndex = 88;
@@ -962,17 +997,18 @@
             // void_label_id_TextBox
             // 
             this.void_label_id_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
-            this.void_label_id_TextBox.Location = new System.Drawing.Point(854, 617);
+            this.void_label_id_TextBox.Location = new System.Drawing.Point(736, 618);
             this.void_label_id_TextBox.Name = "void_label_id_TextBox";
-            this.void_label_id_TextBox.Size = new System.Drawing.Size(100, 21);
+            this.void_label_id_TextBox.Size = new System.Drawing.Size(188, 21);
             this.void_label_id_TextBox.TabIndex = 89;
+            this.void_label_id_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // void_label_id_Button
             // 
             this.void_label_id_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.void_label_id_Button.Location = new System.Drawing.Point(960, 617);
+            this.void_label_id_Button.Location = new System.Drawing.Point(930, 617);
             this.void_label_id_Button.Name = "void_label_id_Button";
-            this.void_label_id_Button.Size = new System.Drawing.Size(58, 20);
+            this.void_label_id_Button.Size = new System.Drawing.Size(90, 23);
             this.void_label_id_Button.TabIndex = 90;
             this.void_label_id_Button.Text = "Void Label";
             this.void_label_id_Button.UseVisualStyleBackColor = true;
@@ -997,7 +1033,7 @@
             // notify_shipped_checkBox
             // 
             this.notify_shipped_checkBox.AutoSize = true;
-            this.notify_shipped_checkBox.Location = new System.Drawing.Point(12, 616);
+            this.notify_shipped_checkBox.Location = new System.Drawing.Point(12, 660);
             this.notify_shipped_checkBox.Name = "notify_shipped_checkBox";
             this.notify_shipped_checkBox.Size = new System.Drawing.Size(147, 17);
             this.notify_shipped_checkBox.TabIndex = 93;
@@ -1006,7 +1042,9 @@
             // 
             // advanced_options_groupBox
             // 
-            this.advanced_options_groupBox.Controls.Add(this.bill_to_party_textBox);
+            this.advanced_options_groupBox.Controls.Add(this.bill_to_party_comboBox);
+            this.advanced_options_groupBox.Controls.Add(this.origin_type_comboBox);
+            this.advanced_options_groupBox.Controls.Add(this.label32);
             this.advanced_options_groupBox.Controls.Add(this.saturday_delivery_comboBox);
             this.advanced_options_groupBox.Controls.Add(this.non_machinable_comboBox);
             this.advanced_options_groupBox.Controls.Add(this.dry_ice_weight_comboBox);
@@ -1030,12 +1068,34 @@
             this.advanced_options_groupBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.advanced_options_groupBox.Location = new System.Drawing.Point(12, 66);
             this.advanced_options_groupBox.Name = "advanced_options_groupBox";
-            this.advanced_options_groupBox.Size = new System.Drawing.Size(308, 304);
+            this.advanced_options_groupBox.Size = new System.Drawing.Size(308, 324);
             this.advanced_options_groupBox.TabIndex = 57;
             this.advanced_options_groupBox.TabStop = false;
             this.advanced_options_groupBox.Text = "Advanced Options";
             this.advanced_options_groupBox.Visible = false;
             this.advanced_options_groupBox.Click += new System.EventHandler(this.advanced_options_groupBox_Click);
+            // 
+            // origin_type_comboBox
+            // 
+            this.origin_type_comboBox.FormattingEnabled = true;
+            this.origin_type_comboBox.Items.AddRange(new object[] {
+            "null",
+            "\"pickup\"",
+            "\"drop_off\""});
+            this.origin_type_comboBox.Location = new System.Drawing.Point(127, 286);
+            this.origin_type_comboBox.Name = "origin_type_comboBox";
+            this.origin_type_comboBox.Size = new System.Drawing.Size(169, 21);
+            this.origin_type_comboBox.TabIndex = 66;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(18, 289);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(64, 13);
+            this.label32.TabIndex = 65;
+            this.label32.Text = "Origin Type";
             // 
             // saturday_delivery_comboBox
             // 
@@ -1240,21 +1300,705 @@
             this.label40.TabIndex = 44;
             this.label40.Text = "Dry Ice";
             // 
-            // bill_to_party_textBox
+            // advanced_options_groupBox1
             // 
-            this.bill_to_party_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
-            this.bill_to_party_textBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bill_to_party_textBox.Location = new System.Drawing.Point(127, 77);
-            this.bill_to_party_textBox.Name = "bill_to_party_textBox";
-            this.bill_to_party_textBox.Size = new System.Drawing.Size(170, 21);
-            this.bill_to_party_textBox.TabIndex = 64;
-            this.bill_to_party_textBox.Text = "null";
+            this.advanced_options_groupBox1.Controls.Add(this.label51);
+            this.advanced_options_groupBox1.Controls.Add(this.label50);
+            this.advanced_options_groupBox1.Controls.Add(this.label49);
+            this.advanced_options_groupBox1.Controls.Add(this.label48);
+            this.advanced_options_groupBox1.Controls.Add(this.label47);
+            this.advanced_options_groupBox1.Controls.Add(this.label46);
+            this.advanced_options_groupBox1.Controls.Add(this.label45);
+            this.advanced_options_groupBox1.Controls.Add(this.label44);
+            this.advanced_options_groupBox1.Controls.Add(this.freight_class_textBox);
+            this.advanced_options_groupBox1.Controls.Add(this.label43);
+            this.advanced_options_groupBox1.Controls.Add(this.label42);
+            this.advanced_options_groupBox1.Controls.Add(this.label41);
+            this.advanced_options_groupBox1.Controls.Add(this.third_party_consignee_comboBox);
+            this.advanced_options_groupBox1.Controls.Add(this.collect_on_delivery_payment_amount_numericUpDown);
+            this.advanced_options_groupBox1.Controls.Add(this.collect_on_delivery_payment_currency_comboBox);
+            this.advanced_options_groupBox1.Controls.Add(this.collect_on_delivery_payment_type_comboBox);
+            this.advanced_options_groupBox1.Controls.Add(this.shipper_release_comboBox);
+            this.advanced_options_groupBox1.Controls.Add(this.custom_field3_textBox);
+            this.advanced_options_groupBox1.Controls.Add(this.custom_field2_textBox);
+            this.advanced_options_groupBox1.Controls.Add(this.custom_field1_textBox);
+            this.advanced_options_groupBox1.Controls.Add(this.use_ups_ground_freight_pricing_comboBox);
+            this.advanced_options_groupBox1.Controls.Add(this.booking_confirmation_textBox);
+            this.advanced_options_groupBox1.Controls.Add(this.shipper_load_and_count_textBox);
+            this.advanced_options_groupBox1.Location = new System.Drawing.Point(326, 66);
+            this.advanced_options_groupBox1.Name = "advanced_options_groupBox1";
+            this.advanced_options_groupBox1.Size = new System.Drawing.Size(308, 324);
+            this.advanced_options_groupBox1.TabIndex = 94;
+            this.advanced_options_groupBox1.TabStop = false;
+            this.advanced_options_groupBox1.Text = "Advanced Options";
+            this.advanced_options_groupBox1.Visible = false;
+            this.advanced_options_groupBox1.Click += new System.EventHandler(this.advanced_options_groupBox1_Click);
+            // 
+            // shipper_load_and_count_textBox
+            // 
+            this.shipper_load_and_count_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
+            this.shipper_load_and_count_textBox.Enabled = false;
+            this.shipper_load_and_count_textBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.shipper_load_and_count_textBox.Location = new System.Drawing.Point(132, 24);
+            this.shipper_load_and_count_textBox.Name = "shipper_load_and_count_textBox";
+            this.shipper_load_and_count_textBox.Size = new System.Drawing.Size(170, 21);
+            this.shipper_load_and_count_textBox.TabIndex = 67;
+            // 
+            // booking_confirmation_textBox
+            // 
+            this.booking_confirmation_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
+            this.booking_confirmation_textBox.Enabled = false;
+            this.booking_confirmation_textBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.booking_confirmation_textBox.Location = new System.Drawing.Point(132, 51);
+            this.booking_confirmation_textBox.Name = "booking_confirmation_textBox";
+            this.booking_confirmation_textBox.Size = new System.Drawing.Size(170, 21);
+            this.booking_confirmation_textBox.TabIndex = 68;
+            // 
+            // use_ups_ground_freight_pricing_comboBox
+            // 
+            this.use_ups_ground_freight_pricing_comboBox.Enabled = false;
+            this.use_ups_ground_freight_pricing_comboBox.FormattingEnabled = true;
+            this.use_ups_ground_freight_pricing_comboBox.Items.AddRange(new object[] {
+            "false",
+            "true"});
+            this.use_ups_ground_freight_pricing_comboBox.Location = new System.Drawing.Point(132, 78);
+            this.use_ups_ground_freight_pricing_comboBox.Name = "use_ups_ground_freight_pricing_comboBox";
+            this.use_ups_ground_freight_pricing_comboBox.Size = new System.Drawing.Size(170, 21);
+            this.use_ups_ground_freight_pricing_comboBox.TabIndex = 67;
+            // 
+            // custom_field1_textBox
+            // 
+            this.custom_field1_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
+            this.custom_field1_textBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.custom_field1_textBox.Location = new System.Drawing.Point(132, 132);
+            this.custom_field1_textBox.Name = "custom_field1_textBox";
+            this.custom_field1_textBox.Size = new System.Drawing.Size(170, 21);
+            this.custom_field1_textBox.TabIndex = 70;
+            // 
+            // custom_field2_textBox
+            // 
+            this.custom_field2_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
+            this.custom_field2_textBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.custom_field2_textBox.Location = new System.Drawing.Point(132, 159);
+            this.custom_field2_textBox.Name = "custom_field2_textBox";
+            this.custom_field2_textBox.Size = new System.Drawing.Size(170, 21);
+            this.custom_field2_textBox.TabIndex = 71;
+            // 
+            // custom_field3_textBox
+            // 
+            this.custom_field3_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
+            this.custom_field3_textBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.custom_field3_textBox.Location = new System.Drawing.Point(132, 186);
+            this.custom_field3_textBox.Name = "custom_field3_textBox";
+            this.custom_field3_textBox.Size = new System.Drawing.Size(170, 21);
+            this.custom_field3_textBox.TabIndex = 72;
+            // 
+            // shipper_release_comboBox
+            // 
+            this.shipper_release_comboBox.Enabled = false;
+            this.shipper_release_comboBox.FormattingEnabled = true;
+            this.shipper_release_comboBox.Items.AddRange(new object[] {
+            "false",
+            "true"});
+            this.shipper_release_comboBox.Location = new System.Drawing.Point(132, 213);
+            this.shipper_release_comboBox.Name = "shipper_release_comboBox";
+            this.shipper_release_comboBox.Size = new System.Drawing.Size(170, 21);
+            this.shipper_release_comboBox.TabIndex = 73;
+            // 
+            // collect_on_delivery_payment_type_comboBox
+            // 
+            this.collect_on_delivery_payment_type_comboBox.FormattingEnabled = true;
+            this.collect_on_delivery_payment_type_comboBox.Items.AddRange(new object[] {
+            "none",
+            "any",
+            "cash",
+            "cash_equivalent"});
+            this.collect_on_delivery_payment_type_comboBox.Location = new System.Drawing.Point(132, 240);
+            this.collect_on_delivery_payment_type_comboBox.Name = "collect_on_delivery_payment_type_comboBox";
+            this.collect_on_delivery_payment_type_comboBox.Size = new System.Drawing.Size(170, 21);
+            this.collect_on_delivery_payment_type_comboBox.TabIndex = 74;
+            // 
+            // collect_on_delivery_payment_currency_comboBox
+            // 
+            this.collect_on_delivery_payment_currency_comboBox.FormattingEnabled = true;
+            this.collect_on_delivery_payment_currency_comboBox.Items.AddRange(new object[] {
+            "USD",
+            "AED",
+            "AFN",
+            "ALL",
+            "AMD",
+            "ANG",
+            "AOA",
+            "ARS",
+            "AUD",
+            "AWG",
+            "AZN",
+            "BAM",
+            "BBD",
+            "BDT",
+            "BGN",
+            "BHD",
+            "BIF",
+            "BMD",
+            "BND",
+            "BOB",
+            "BOV",
+            "BRL",
+            "BSD",
+            "BTN",
+            "BWP",
+            "BYN",
+            "BZD",
+            "CAD",
+            "CDF",
+            "CHE",
+            "CHF",
+            "CHW",
+            "CLF",
+            "CLP",
+            "CNY",
+            "COP",
+            "COU",
+            "CRC",
+            "CUC",
+            "CUP",
+            "CVE",
+            "CZK",
+            "DJF",
+            "DKK",
+            "DOP",
+            "DZD",
+            "EGP",
+            "ERN",
+            "ETB",
+            "EUR",
+            "FJD",
+            "FKP",
+            "GBP",
+            "GEL",
+            "GHS",
+            "GIP",
+            "GMD",
+            "GNF",
+            "GTQ",
+            "GYD",
+            "HKD",
+            "HNL",
+            "HTG",
+            "HUF",
+            "IDR",
+            "ILS",
+            "INR",
+            "IQD",
+            "IRR",
+            "ISK",
+            "JMD",
+            "JOD",
+            "JPY",
+            "KES",
+            "KGS",
+            "KHR",
+            "KMF",
+            "KPW",
+            "KRW",
+            "KWD",
+            "KYD",
+            "KZT",
+            "LAK",
+            "LBP",
+            "LKR",
+            "LRD",
+            "LSL",
+            "LYD",
+            "MAD",
+            "MDL",
+            "MGA",
+            "MKD",
+            "MMK",
+            "MNT",
+            "MOP",
+            "MRU",
+            "MUR",
+            "MVR",
+            "MWK",
+            "MXN",
+            "MXV",
+            "MYR",
+            "MZN",
+            "NAD",
+            "NGN",
+            "NIO",
+            "NOK",
+            "NPR",
+            "NZD",
+            "OMR",
+            "PAB",
+            "PEN",
+            "PGK",
+            "PHP",
+            "PKR",
+            "PLN",
+            "PYG",
+            "QAR",
+            "RON",
+            "RSD",
+            "RUB",
+            "RWF",
+            "SAR",
+            "SBD",
+            "SCR",
+            "SDG",
+            "SEK",
+            "SGD",
+            "SHP",
+            "SLE",
+            "SLL",
+            "SOS",
+            "SRD",
+            "SSP",
+            "STN",
+            "SVC",
+            "SYP",
+            "SZL",
+            "THB",
+            "TJS",
+            "TMT",
+            "TND",
+            "TOP",
+            "TRY",
+            "TTD",
+            "TWD",
+            "TZS",
+            "UAH",
+            "UGX",
+            "USN",
+            "UYI",
+            "UYU",
+            "UYW",
+            "UZS",
+            "VED",
+            "VES",
+            "VND",
+            "VUV",
+            "WST",
+            "XAF",
+            "XAG",
+            "XAU",
+            "XBA",
+            "XBB",
+            "XBC",
+            "XBD",
+            "XCD",
+            "XDR",
+            "XOF",
+            "XPD",
+            "XPF",
+            "XPT",
+            "XSU",
+            "XTS",
+            "XUA",
+            "XXX",
+            "YER",
+            "ZAR",
+            "ZMW",
+            "ZWL"});
+            this.collect_on_delivery_payment_currency_comboBox.Location = new System.Drawing.Point(178, 267);
+            this.collect_on_delivery_payment_currency_comboBox.Name = "collect_on_delivery_payment_currency_comboBox";
+            this.collect_on_delivery_payment_currency_comboBox.Size = new System.Drawing.Size(124, 21);
+            this.collect_on_delivery_payment_currency_comboBox.TabIndex = 75;
+            // 
+            // collect_on_delivery_payment_amount_numericUpDown
+            // 
+            this.collect_on_delivery_payment_amount_numericUpDown.DecimalPlaces = 1;
+            this.collect_on_delivery_payment_amount_numericUpDown.Location = new System.Drawing.Point(132, 267);
+            this.collect_on_delivery_payment_amount_numericUpDown.Name = "collect_on_delivery_payment_amount_numericUpDown";
+            this.collect_on_delivery_payment_amount_numericUpDown.Size = new System.Drawing.Size(40, 21);
+            this.collect_on_delivery_payment_amount_numericUpDown.TabIndex = 67;
+            // 
+            // third_party_consignee_comboBox
+            // 
+            this.third_party_consignee_comboBox.FormattingEnabled = true;
+            this.third_party_consignee_comboBox.Items.AddRange(new object[] {
+            "false",
+            "true"});
+            this.third_party_consignee_comboBox.Location = new System.Drawing.Point(132, 294);
+            this.third_party_consignee_comboBox.Name = "third_party_consignee_comboBox";
+            this.third_party_consignee_comboBox.Size = new System.Drawing.Size(170, 21);
+            this.third_party_consignee_comboBox.TabIndex = 76;
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.Location = new System.Drawing.Point(6, 27);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(122, 13);
+            this.label41.TabIndex = 67;
+            this.label41.Text = "Freight Load and Count";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label42.Location = new System.Drawing.Point(6, 53);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(114, 13);
+            this.label42.TabIndex = 77;
+            this.label42.Text = "Booking Confirmation";
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label43.Location = new System.Drawing.Point(6, 81);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(126, 13);
+            this.label43.TabIndex = 78;
+            this.label43.Text = "Use UPS Freight Pricing";
+            // 
+            // freight_class_textBox
+            // 
+            this.freight_class_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
+            this.freight_class_textBox.Enabled = false;
+            this.freight_class_textBox.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.freight_class_textBox.Location = new System.Drawing.Point(132, 105);
+            this.freight_class_textBox.Name = "freight_class_textBox";
+            this.freight_class_textBox.Size = new System.Drawing.Size(170, 21);
+            this.freight_class_textBox.TabIndex = 79;
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label44.Location = new System.Drawing.Point(6, 108);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(73, 13);
+            this.label44.TabIndex = 80;
+            this.label44.Text = "Freight Class";
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label45.Location = new System.Drawing.Point(6, 162);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(82, 13);
+            this.label45.TabIndex = 81;
+            this.label45.Text = "Custom Field 2";
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label46.Location = new System.Drawing.Point(6, 136);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(82, 13);
+            this.label46.TabIndex = 82;
+            this.label46.Text = "Custom Field 1";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label47.Location = new System.Drawing.Point(6, 187);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(82, 13);
+            this.label47.TabIndex = 83;
+            this.label47.Text = "Custom Field 3";
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label48.Location = new System.Drawing.Point(6, 216);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(88, 13);
+            this.label48.TabIndex = 84;
+            this.label48.Text = "Shipper Release";
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label49.Location = new System.Drawing.Point(7, 243);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(103, 13);
+            this.label49.TabIndex = 85;
+            this.label49.Text = "COD Payment Type";
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label50.Location = new System.Drawing.Point(7, 270);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(118, 13);
+            this.label50.TabIndex = 86;
+            this.label50.Text = "COD Payment Amount";
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label51.Location = new System.Drawing.Point(8, 297);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(111, 13);
+            this.label51.TabIndex = 87;
+            this.label51.Text = "Third Party Cosignee";
+            // 
+            // bill_to_party_comboBox
+            // 
+            this.bill_to_party_comboBox.FormattingEnabled = true;
+            this.bill_to_party_comboBox.Items.AddRange(new object[] {
+            "null",
+            "\"recipient\"",
+            "\"third_party\""});
+            this.bill_to_party_comboBox.Location = new System.Drawing.Point(127, 76);
+            this.bill_to_party_comboBox.Name = "bill_to_party_comboBox";
+            this.bill_to_party_comboBox.Size = new System.Drawing.Size(169, 21);
+            this.bill_to_party_comboBox.TabIndex = 67;
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label52.Location = new System.Drawing.Point(130, 458);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(100, 13);
+            this.label52.TabIndex = 68;
+            this.label52.Text = "Insurance Provider";
+            // 
+            // insurance_provider_comboBox
+            // 
+            this.insurance_provider_comboBox.FormattingEnabled = true;
+            this.insurance_provider_comboBox.Items.AddRange(new object[] {
+            "none",
+            "shipsurance",
+            "carrier",
+            "third_party"});
+            this.insurance_provider_comboBox.Location = new System.Drawing.Point(236, 454);
+            this.insurance_provider_comboBox.Name = "insurance_provider_comboBox";
+            this.insurance_provider_comboBox.Size = new System.Drawing.Size(84, 21);
+            this.insurance_provider_comboBox.TabIndex = 68;
+            // 
+            // insured_value_amont_numericUpDown
+            // 
+            this.insured_value_amont_numericUpDown.DecimalPlaces = 1;
+            this.insured_value_amont_numericUpDown.Location = new System.Drawing.Point(133, 481);
+            this.insured_value_amont_numericUpDown.Name = "insured_value_amont_numericUpDown";
+            this.insured_value_amont_numericUpDown.Size = new System.Drawing.Size(45, 21);
+            this.insured_value_amont_numericUpDown.TabIndex = 88;
+            // 
+            // insured_value_currency_comboBox
+            // 
+            this.insured_value_currency_comboBox.FormattingEnabled = true;
+            this.insured_value_currency_comboBox.Items.AddRange(new object[] {
+            "USD",
+            "AED",
+            "AFN",
+            "ALL",
+            "AMD",
+            "ANG",
+            "AOA",
+            "ARS",
+            "AUD",
+            "AWG",
+            "AZN",
+            "BAM",
+            "BBD",
+            "BDT",
+            "BGN",
+            "BHD",
+            "BIF",
+            "BMD",
+            "BND",
+            "BOB",
+            "BOV",
+            "BRL",
+            "BSD",
+            "BTN",
+            "BWP",
+            "BYN",
+            "BZD",
+            "CAD",
+            "CDF",
+            "CHE",
+            "CHF",
+            "CHW",
+            "CLF",
+            "CLP",
+            "CNY",
+            "COP",
+            "COU",
+            "CRC",
+            "CUC",
+            "CUP",
+            "CVE",
+            "CZK",
+            "DJF",
+            "DKK",
+            "DOP",
+            "DZD",
+            "EGP",
+            "ERN",
+            "ETB",
+            "EUR",
+            "FJD",
+            "FKP",
+            "GBP",
+            "GEL",
+            "GHS",
+            "GIP",
+            "GMD",
+            "GNF",
+            "GTQ",
+            "GYD",
+            "HKD",
+            "HNL",
+            "HTG",
+            "HUF",
+            "IDR",
+            "ILS",
+            "INR",
+            "IQD",
+            "IRR",
+            "ISK",
+            "JMD",
+            "JOD",
+            "JPY",
+            "KES",
+            "KGS",
+            "KHR",
+            "KMF",
+            "KPW",
+            "KRW",
+            "KWD",
+            "KYD",
+            "KZT",
+            "LAK",
+            "LBP",
+            "LKR",
+            "LRD",
+            "LSL",
+            "LYD",
+            "MAD",
+            "MDL",
+            "MGA",
+            "MKD",
+            "MMK",
+            "MNT",
+            "MOP",
+            "MRU",
+            "MUR",
+            "MVR",
+            "MWK",
+            "MXN",
+            "MXV",
+            "MYR",
+            "MZN",
+            "NAD",
+            "NGN",
+            "NIO",
+            "NOK",
+            "NPR",
+            "NZD",
+            "OMR",
+            "PAB",
+            "PEN",
+            "PGK",
+            "PHP",
+            "PKR",
+            "PLN",
+            "PYG",
+            "QAR",
+            "RON",
+            "RSD",
+            "RUB",
+            "RWF",
+            "SAR",
+            "SBD",
+            "SCR",
+            "SDG",
+            "SEK",
+            "SGD",
+            "SHP",
+            "SLE",
+            "SLL",
+            "SOS",
+            "SRD",
+            "SSP",
+            "STN",
+            "SVC",
+            "SYP",
+            "SZL",
+            "THB",
+            "TJS",
+            "TMT",
+            "TND",
+            "TOP",
+            "TRY",
+            "TTD",
+            "TWD",
+            "TZS",
+            "UAH",
+            "UGX",
+            "USN",
+            "UYI",
+            "UYU",
+            "UYW",
+            "UZS",
+            "VED",
+            "VES",
+            "VND",
+            "VUV",
+            "WST",
+            "XAF",
+            "XAG",
+            "XAU",
+            "XBA",
+            "XBB",
+            "XBC",
+            "XBD",
+            "XCD",
+            "XDR",
+            "XOF",
+            "XPD",
+            "XPF",
+            "XPT",
+            "XSU",
+            "XTS",
+            "XUA",
+            "XXX",
+            "YER",
+            "ZAR",
+            "ZMW",
+            "ZWL"});
+            this.insured_value_currency_comboBox.Location = new System.Drawing.Point(184, 481);
+            this.insured_value_currency_comboBox.Name = "insured_value_currency_comboBox";
+            this.insured_value_currency_comboBox.Size = new System.Drawing.Size(136, 21);
+            this.insured_value_currency_comboBox.TabIndex = 88;
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label53.Location = new System.Drawing.Point(52, 484);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(75, 13);
+            this.label53.TabIndex = 95;
+            this.label53.Text = "Insured Value";
             // 
             // shippingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1029, 640);
+            this.ClientSize = new System.Drawing.Size(1033, 683);
+            this.Controls.Add(this.label53);
+            this.Controls.Add(this.insured_value_currency_comboBox);
+            this.Controls.Add(this.insured_value_amont_numericUpDown);
+            this.Controls.Add(this.insurance_provider_comboBox);
+            this.Controls.Add(this.label52);
+            this.Controls.Add(this.advanced_options_groupBox1);
             this.Controls.Add(this.advanced_options_groupBox);
             this.Controls.Add(this.notify_shipped_checkBox);
             this.Controls.Add(this.label_webbrowser);
@@ -1314,6 +2058,10 @@
             this.advanced_options_groupBox.ResumeLayout(false);
             this.advanced_options_groupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dry_ice_weight_numericUpDown)).EndInit();
+            this.advanced_options_groupBox1.ResumeLayout(false);
+            this.advanced_options_groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.collect_on_delivery_payment_amount_numericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.insured_value_amont_numericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1424,7 +2172,38 @@
         private System.Windows.Forms.ComboBox dry_ice_weight_comboBox;
         private System.Windows.Forms.NumericUpDown dry_ice_weight_numericUpDown;
         private System.Windows.Forms.ComboBox dry_ice_comboBox;
-        private System.Windows.Forms.TextBox bill_to_party_textBox;
+        private System.Windows.Forms.ComboBox origin_type_comboBox;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.GroupBox advanced_options_groupBox1;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.TextBox freight_class_textBox;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.ComboBox third_party_consignee_comboBox;
+        private System.Windows.Forms.NumericUpDown collect_on_delivery_payment_amount_numericUpDown;
+        private System.Windows.Forms.ComboBox collect_on_delivery_payment_currency_comboBox;
+        private System.Windows.Forms.ComboBox collect_on_delivery_payment_type_comboBox;
+        private System.Windows.Forms.ComboBox shipper_release_comboBox;
+        private System.Windows.Forms.TextBox custom_field3_textBox;
+        private System.Windows.Forms.TextBox custom_field2_textBox;
+        private System.Windows.Forms.TextBox custom_field1_textBox;
+        private System.Windows.Forms.ComboBox use_ups_ground_freight_pricing_comboBox;
+        private System.Windows.Forms.TextBox booking_confirmation_textBox;
+        private System.Windows.Forms.TextBox shipper_load_and_count_textBox;
+        private System.Windows.Forms.ComboBox bill_to_party_comboBox;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.ComboBox insurance_provider_comboBox;
+        private System.Windows.Forms.NumericUpDown insured_value_amont_numericUpDown;
+        private System.Windows.Forms.ComboBox insured_value_currency_comboBox;
+        private System.Windows.Forms.Label label53;
     }
 }
 
