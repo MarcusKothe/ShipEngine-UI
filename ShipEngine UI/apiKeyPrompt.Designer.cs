@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.apiKeyTextBox = new System.Windows.Forms.TextBox();
             this.doneButton = new System.Windows.Forms.Button();
+            this.exit_button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -65,11 +66,24 @@
             this.doneButton.UseVisualStyleBackColor = true;
             this.doneButton.Click += new System.EventHandler(this.doneButton_Click);
             // 
+            // exit_button
+            // 
+            this.exit_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exit_button.ForeColor = System.Drawing.Color.DarkRed;
+            this.exit_button.Location = new System.Drawing.Point(346, 59);
+            this.exit_button.Name = "exit_button";
+            this.exit_button.Size = new System.Drawing.Size(22, 23);
+            this.exit_button.TabIndex = 3;
+            this.exit_button.Text = "X";
+            this.exit_button.UseVisualStyleBackColor = true;
+            this.exit_button.Click += new System.EventHandler(this.exit_button_Click);
+            // 
             // apiKeyPrompt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(378, 89);
+            this.Controls.Add(this.exit_button);
             this.Controls.Add(this.doneButton);
             this.Controls.Add(this.apiKeyTextBox);
             this.Controls.Add(this.label1);
@@ -89,5 +103,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button doneButton;
         public System.Windows.Forms.TextBox apiKeyTextBox;
+        private System.Windows.Forms.Button exit_button;
     }
 }

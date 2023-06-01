@@ -165,6 +165,7 @@
             this.insured_value_amont_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.insured_value_currency_comboBox = new System.Windows.Forms.ComboBox();
             this.label53 = new System.Windows.Forms.Label();
+            this.exit_button = new System.Windows.Forms.Button();
             this.shipFromgroupBox.SuspendLayout();
             this.shipTogroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.labelImageBox)).BeginInit();
@@ -1988,11 +1989,24 @@
             this.label53.TabIndex = 95;
             this.label53.Text = "Insured Value";
             // 
+            // exit_button
+            // 
+            this.exit_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exit_button.ForeColor = System.Drawing.Color.DarkRed;
+            this.exit_button.Location = new System.Drawing.Point(999, 656);
+            this.exit_button.Name = "exit_button";
+            this.exit_button.Size = new System.Drawing.Size(22, 23);
+            this.exit_button.TabIndex = 96;
+            this.exit_button.Text = "X";
+            this.exit_button.UseVisualStyleBackColor = true;
+            this.exit_button.Click += new System.EventHandler(this.exit_button_Click);
+            // 
             // shippingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1033, 683);
+            this.Controls.Add(this.exit_button);
             this.Controls.Add(this.label53);
             this.Controls.Add(this.insured_value_currency_comboBox);
             this.Controls.Add(this.insured_value_amont_numericUpDown);
@@ -2204,6 +2218,7 @@
         private System.Windows.Forms.NumericUpDown insured_value_amont_numericUpDown;
         private System.Windows.Forms.ComboBox insured_value_currency_comboBox;
         private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.Button exit_button;
     }
 }
 

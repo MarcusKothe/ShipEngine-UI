@@ -120,7 +120,7 @@ namespace ShipEngine_UI
                 if (HTTPexception.Message.Contains("401"))
                 {
                     apiKeyPrompt ApiKeyForm = new apiKeyPrompt();
-                    MessageBox.Show("ShipEngine returned 401 Unauthorized, please check your API Key.");
+                    MessageBox.Show("ShipEngine returned 401 Unauthorized, please check your API Key.", "AUTHENTICATION ERROR");
 
                     ShipEngineUI.has_error = true;
 
@@ -2023,6 +2023,14 @@ namespace ShipEngine_UI
             shipFromgroupBox.Visible = true;
             advanced_options_groupBox1.Visible = false;
 
+        }
+
+        private void exit_button_Click(object sender, EventArgs e)
+        {
+            for (int i = Application.OpenForms.Count - 1; i >= 0; i--)
+            {
+                    Application.OpenForms[i].Close();
+            }
         }
     }
 }
