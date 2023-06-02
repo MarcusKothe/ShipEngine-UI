@@ -166,6 +166,8 @@
             this.insured_value_currency_comboBox = new System.Windows.Forms.ComboBox();
             this.label53 = new System.Windows.Forms.Label();
             this.exit_button = new System.Windows.Forms.Button();
+            this.label54 = new System.Windows.Forms.Label();
+            this.label55 = new System.Windows.Forms.Label();
             this.shipFromgroupBox.SuspendLayout();
             this.shipTogroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.labelImageBox)).BeginInit();
@@ -779,11 +781,12 @@
             // package_code_ComboBox
             // 
             this.package_code_ComboBox.FormattingEnabled = true;
-            this.package_code_ComboBox.Location = new System.Drawing.Point(12, 396);
+            this.package_code_ComboBox.Location = new System.Drawing.Point(109, 396);
             this.package_code_ComboBox.Name = "package_code_ComboBox";
-            this.package_code_ComboBox.Size = new System.Drawing.Size(308, 21);
+            this.package_code_ComboBox.Size = new System.Drawing.Size(211, 21);
             this.package_code_ComboBox.TabIndex = 63;
             this.package_code_ComboBox.Text = "Select packaging";
+            this.package_code_ComboBox.SelectedIndexChanged += new System.EventHandler(this.package_code_ComboBox_SelectedIndexChanged);
             // 
             // package_code_RichTextBox
             // 
@@ -835,9 +838,9 @@
             "direct_signature",
             "delivery_mailed",
             "verbal_confirmation"});
-            this.delivery_confirmation_ComboBox.Location = new System.Drawing.Point(326, 396);
+            this.delivery_confirmation_ComboBox.Location = new System.Drawing.Point(452, 396);
             this.delivery_confirmation_ComboBox.Name = "delivery_confirmation_ComboBox";
-            this.delivery_confirmation_ComboBox.Size = new System.Drawing.Size(308, 21);
+            this.delivery_confirmation_ComboBox.Size = new System.Drawing.Size(182, 21);
             this.delivery_confirmation_ComboBox.TabIndex = 71;
             this.delivery_confirmation_ComboBox.Text = "Confirmation";
             // 
@@ -1085,7 +1088,7 @@
             "\"drop_off\""});
             this.origin_type_comboBox.Location = new System.Drawing.Point(127, 286);
             this.origin_type_comboBox.Name = "origin_type_comboBox";
-            this.origin_type_comboBox.Size = new System.Drawing.Size(169, 21);
+            this.origin_type_comboBox.Size = new System.Drawing.Size(170, 21);
             this.origin_type_comboBox.TabIndex = 66;
             // 
             // label32
@@ -1756,7 +1759,7 @@
             "\"third_party\""});
             this.bill_to_party_comboBox.Location = new System.Drawing.Point(127, 76);
             this.bill_to_party_comboBox.Name = "bill_to_party_comboBox";
-            this.bill_to_party_comboBox.Size = new System.Drawing.Size(169, 21);
+            this.bill_to_party_comboBox.Size = new System.Drawing.Size(170, 21);
             this.bill_to_party_comboBox.TabIndex = 67;
             // 
             // label52
@@ -2001,11 +2004,33 @@
             this.exit_button.UseVisualStyleBackColor = true;
             this.exit_button.Click += new System.EventHandler(this.exit_button_Click);
             // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label54.Location = new System.Drawing.Point(326, 399);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(113, 13);
+            this.label54.TabIndex = 88;
+            this.label54.Text = "Delivery Confirmation";
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Font = new System.Drawing.Font("Roboto", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label55.Location = new System.Drawing.Point(12, 399);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(94, 13);
+            this.label55.TabIndex = 97;
+            this.label55.Text = "Select Packaging";
+            // 
             // shippingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1033, 683);
+            this.ClientSize = new System.Drawing.Size(1029, 683);
+            this.Controls.Add(this.label55);
+            this.Controls.Add(this.label54);
             this.Controls.Add(this.exit_button);
             this.Controls.Add(this.label53);
             this.Controls.Add(this.insured_value_currency_comboBox);
@@ -2219,6 +2244,8 @@
         private System.Windows.Forms.ComboBox insured_value_currency_comboBox;
         private System.Windows.Forms.Label label53;
         private System.Windows.Forms.Button exit_button;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.Label label55;
     }
 }
 

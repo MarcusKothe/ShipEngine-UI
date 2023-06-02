@@ -34,19 +34,19 @@ namespace ShipEngine_UI
             ship_Date_DateTimePicker.Format = DateTimePickerFormat.Custom;
             ship_Date_DateTimePicker.CustomFormat = "dd-MM-yyyy";
 
-            shipFrom_address_residential_indicator_comboBox.SelectedIndex = 1;
-            shipTo_address_residential_indicator_comboBox.SelectedIndex = 1;
-            delivery_confirmation_ComboBox.SelectedIndex = 0;
-            origin_type_comboBox.SelectedIndex = 0;
             bill_to_party_comboBox.SelectedIndex = 0;
             contains_alcohol_comboBox.SelectedIndex = 0;
             delivered_duty_paid_comboBox.SelectedIndex = 0;
+            delivery_confirmation_ComboBox.SelectedIndex = 0;
             dry_ice_comboBox.SelectedIndex = 0;
             dry_ice_weight_comboBox.SelectedIndex = 0;
-            non_machinable_comboBox.SelectedIndex = 0;
-            saturday_delivery_comboBox.SelectedIndex = 0;
             insurance_provider_comboBox.SelectedIndex = 0;
             insured_value_currency_comboBox.SelectedIndex = 0;
+            non_machinable_comboBox.SelectedIndex = 0;
+            origin_type_comboBox.SelectedIndex = 0;
+            saturday_delivery_comboBox.SelectedIndex = 0;
+            shipFrom_address_residential_indicator_comboBox.SelectedIndex = 1;
+            shipTo_address_residential_indicator_comboBox.SelectedIndex = 1;
 
             //GET CARRIER ACCOUNTS
             try
@@ -462,7 +462,7 @@ namespace ShipEngine_UI
             {
                 MessageBox.Show(HTTPexception.ToString());
             }
-
+            package_code_ComboBox.SelectedIndex = 0;
         }
 
         private void service_code_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -770,7 +770,9 @@ namespace ShipEngine_UI
 
                 ShipEngineUI.insurance_provider = insurance_provider_comboBox.SelectedItem.ToString();
                 ShipEngineUI.packages_insured_value_amount = insured_value_amont_numericUpDown.Value.ToString();
-                ShipEngineUI.packages_insured_value_currency = insured_value_currency_comboBox.SelectedItem.ToString(); 
+                ShipEngineUI.packages_insured_value_currency = insured_value_currency_comboBox.SelectedItem.ToString();
+
+                ShipEngineUI.advanced_options_third_party_consignee = third_party_consignee_comboBox.SelectedItem.ToString();
                 #endregion
 
                 //RATE REQUEST
@@ -922,16 +924,16 @@ namespace ShipEngine_UI
                         {
 
                             ratesResponse += currentLine;
-
+                            //ratesResponse = ratesResponse.Remove(ratesResponse.IndexOf("~") + 1);
                         }
                         else
                         {
                             currentLine.Replace(currentLine, "");
                         }
-
+                        
                         if (currentLine.Contains("\"package_type\"") == true)
                         {
-
+                            
                             ratesResponse += Environment.NewLine + currentLine + Environment.NewLine;
 
                         }
@@ -950,9 +952,11 @@ namespace ShipEngine_UI
                         {
                             currentLine.Replace(currentLine, "");
                         }
+
                     }
 
                     rate_response_RichTextBox.Text = ratesResponse;
+
                     rate_response_RichTextBox.Text = rate_response_RichTextBox.Text.Replace("\"amount\": 0.0", "");
                     rate_response_RichTextBox.Text = rate_response_RichTextBox.Text.Replace(" ", "");
                     rate_response_RichTextBox.Text = rate_response_RichTextBox.Text.Replace("\"", "");
@@ -973,7 +977,6 @@ namespace ShipEngine_UI
 
                     using (var reader = new StreamReader(parseResponse))
                     {
-
                         for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
                         {
 
@@ -989,6 +992,10 @@ namespace ShipEngine_UI
                         }
                     }
                 }
+            }
+            catch(Exception exeption)
+            {
+                MessageBox.Show(exeption.ToString());
             }
         }
 
@@ -1015,6 +1022,9 @@ namespace ShipEngine_UI
                 //SHIP DATE
                 string ship_date = ship_date_TextBox.Text;
 
+
+                //SHIPENGINE UI VARIABLES
+                #region SHIPENGINE UI VARIABLES
                 //Address Variables
                 ShipEngineUI.shipTo_name = shipTo_name_TextBox.Text;
                 ShipEngineUI.shipTo_phone = shipTo_phone_TextBox.Text;
@@ -1077,7 +1087,7 @@ namespace ShipEngine_UI
                 ShipEngineUI.insurance_provider = insurance_provider_comboBox.SelectedItem.ToString();
                 ShipEngineUI.packages_insured_value_amount = insured_value_amont_numericUpDown.Value.ToString();
                 ShipEngineUI.packages_insured_value_currency = insured_value_currency_comboBox.SelectedItem.ToString();
-
+                #endregion
 
                 //URI - POST
                 WebRequest request = WebRequest.Create("https://api.shipengine.com/v1/labels");
@@ -1140,7 +1150,7 @@ namespace ShipEngine_UI
                     "\r\n            \"delivered_duty_paid\": \"" + ShipEngineUI.advanced_options_delivered_duty_paid + "\"," +
                     "\r\n            \"non_machinable\": \"" + ShipEngineUI.advanced_options_non_machinable + "\"," +
                     "\r\n            \"saturday_delivery\": \"" + ShipEngineUI.advanced_options_saturday_delivery + "\"," +
-                    "\r\n            \"third-party-consignee\": \"false\"," +
+                    "\r\n            \"third-party-consignee\": \"" +  + "\"," +
                     "\r\n            \"ancillary_endorsements_option\": null," +
                     "\r\n            \"freight_class\": null," +
                     "\r\n            \"custom_field_1\": \"" + ShipEngineUI.advanced_options_custom_field1 + "\"," +
@@ -1200,7 +1210,7 @@ namespace ShipEngine_UI
                 Stream stream = request.GetRequestStream();
 
                 //Documents path REQUEST LOG
-                string docPath = @"..\..\Resources\Logs";
+                string docPath = @"..\..\Resources\Labels";
                 File.WriteAllText(Path.Combine(docPath, "LabelRequest - " + labelLogId + ".txt"), createLabelrequestBody);
 
                 stream.Write(data, 0, data.Length);
@@ -1214,8 +1224,11 @@ namespace ShipEngine_UI
                 label_RichTextBox.Text = parseResponse.ReadToEnd();
                 string responseBodyText = label_RichTextBox.Text;
 
+                //Documents path RESPONSE LOG
+                File.WriteAllText(Path.Combine(docPath, "LabelResponse - " + labelLogId + ".txt"), responseBodyText);
 
-                    using (var reader = new StringReader(responseBodyText))
+                //GET LABELID
+                using (var reader = new StringReader(responseBodyText))
                     {
 
                         for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
@@ -1252,7 +1265,7 @@ namespace ShipEngine_UI
                 //Save image in logging
                 using (WebClient client = new WebClient())
                 {
-                    client.DownloadFileAsync(new Uri(imgURL3 + ".png"), @"..\..\Resources\LabelImages\Label-" + labelLogId + ".png");
+                    client.DownloadFileAsync(new Uri(imgURL3 + ".png"), @"..\..\Resources\Labels\Label-" + labelLogId + ".png");
                 }
 
                 labelImageBox.Load(imgURL3 + ".png");
@@ -1546,6 +1559,8 @@ namespace ShipEngine_UI
                 //SHIP DATE
                 string ship_date = ship_date_TextBox.Text;
 
+                //SHIPENGINE UI VARIABLES
+                #region SHIPENGINE UI VARIABLES
                 //SHIP FROM VARIABLES
                 ShipEngineUI.shipFrom_name = shipFrom_name_TextBox.Text;
                 ShipEngineUI.shipFrom_phone = shipFrom_phone_TextBox.Text;
@@ -1594,6 +1609,7 @@ namespace ShipEngine_UI
                 ShipEngineUI.insurance_provider = insurance_provider_comboBox.SelectedItem.ToString();
                 ShipEngineUI.packages_insured_value_amount = insured_value_amont_numericUpDown.Value.ToString();
                 ShipEngineUI.packages_insured_value_currency = insured_value_currency_comboBox.SelectedItem.ToString();
+                #endregion
 
                 //LOGID
                 Random logID = new Random();
@@ -1701,7 +1717,7 @@ namespace ShipEngine_UI
                 Stream stream = request.GetRequestStream();
 
                 //Documents path REQUEST LOG
-                string docPath = @"..\..\Resources\Logs";
+                string docPath = @"..\..\Resources\Labels";
                 File.WriteAllText(Path.Combine(docPath, "SalesOrderLabelRequest - " + sales_order_label_LogId + ".txt"), sales_order_LabelrequestBody);
 
                 stream.Write(data, 0, data.Length);
@@ -1713,6 +1729,8 @@ namespace ShipEngine_UI
                 StreamReader parseResponse = new StreamReader(stream);
                 sales_order_label_RichTextBox.Text = parseResponse.ReadToEnd();
                 string responseBodyText = sales_order_label_RichTextBox.Text;
+
+                File.WriteAllText(Path.Combine(docPath, "SalesOrderLabelResponse - " + sales_order_label_LogId + ".txt"), responseBodyText);
 
                 using (var reader = new StringReader(responseBodyText))
                 {
@@ -1764,7 +1782,7 @@ namespace ShipEngine_UI
                 //Save image in logging
                 using (WebClient client = new WebClient())
                 {
-                    client.DownloadFileAsync(new Uri(imgURL3 + ".png"), @"..\..\Resources\LabelImages\Label-" + sales_order_label_LogId + ".png");
+                    client.DownloadFileAsync(new Uri(imgURL3 + ".png"), @"..\..\Resources\Labels\Label-" + sales_order_label_LogId + ".png");
                 }
 
                 label_RichTextBox.Text = sales_order_label_RichTextBox.Text;
@@ -2031,6 +2049,11 @@ namespace ShipEngine_UI
             {
                     Application.OpenForms[i].Close();
             }
+        }
+
+        private void package_code_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
