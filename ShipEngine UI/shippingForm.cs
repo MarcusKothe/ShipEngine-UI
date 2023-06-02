@@ -45,6 +45,7 @@ namespace ShipEngine_UI
             non_machinable_comboBox.SelectedIndex = 0;
             origin_type_comboBox.SelectedIndex = 0;
             saturday_delivery_comboBox.SelectedIndex = 0;
+            third_party_consignee_comboBox.SelectedIndex = 0;
             shipFrom_address_residential_indicator_comboBox.SelectedIndex = 1;
             shipTo_address_residential_indicator_comboBox.SelectedIndex = 1;
 
@@ -1087,6 +1088,8 @@ namespace ShipEngine_UI
                 ShipEngineUI.insurance_provider = insurance_provider_comboBox.SelectedItem.ToString();
                 ShipEngineUI.packages_insured_value_amount = insured_value_amont_numericUpDown.Value.ToString();
                 ShipEngineUI.packages_insured_value_currency = insured_value_currency_comboBox.SelectedItem.ToString();
+
+                ShipEngineUI.advanced_options_third_party_consignee = third_party_consignee_comboBox.SelectedItem.ToString();
                 #endregion
 
                 //URI - POST
@@ -1150,7 +1153,7 @@ namespace ShipEngine_UI
                     "\r\n            \"delivered_duty_paid\": \"" + ShipEngineUI.advanced_options_delivered_duty_paid + "\"," +
                     "\r\n            \"non_machinable\": \"" + ShipEngineUI.advanced_options_non_machinable + "\"," +
                     "\r\n            \"saturday_delivery\": \"" + ShipEngineUI.advanced_options_saturday_delivery + "\"," +
-                    "\r\n            \"third-party-consignee\": \"" +  + "\"," +
+                    "\r\n            \"third-party-consignee\": \"" +  ShipEngineUI.advanced_options_third_party_consignee + "\"," +
                     "\r\n            \"ancillary_endorsements_option\": null," +
                     "\r\n            \"freight_class\": null," +
                     "\r\n            \"custom_field_1\": \"" + ShipEngineUI.advanced_options_custom_field1 + "\"," +
@@ -1609,6 +1612,8 @@ namespace ShipEngine_UI
                 ShipEngineUI.insurance_provider = insurance_provider_comboBox.SelectedItem.ToString();
                 ShipEngineUI.packages_insured_value_amount = insured_value_amont_numericUpDown.Value.ToString();
                 ShipEngineUI.packages_insured_value_currency = insured_value_currency_comboBox.SelectedItem.ToString();
+
+                ShipEngineUI.advanced_options_third_party_consignee = third_party_consignee_comboBox.SelectedItem.ToString();
                 #endregion
 
                 //LOGID
@@ -1658,7 +1663,7 @@ namespace ShipEngine_UI
                     "\r\n            \"delivered_duty_paid\": \"" + ShipEngineUI.advanced_options_delivered_duty_paid + "\"," +
                     "\r\n            \"non_machinable\": \"" + ShipEngineUI.advanced_options_non_machinable + "\"," +
                     "\r\n            \"saturday_delivery\": \"" + ShipEngineUI.advanced_options_saturday_delivery + "\"," +
-                    "\r\n            \"third-party-consignee\": \"false\"," +
+                    "\r\n            \"third-party-consignee\": \"" + ShipEngineUI.advanced_options_third_party_consignee + "\"," +
                     "\r\n            \"ancillary_endorsements_option\": null," +
                     "\r\n            \"freight_class\": null," +
                     "\r\n            \"custom_field_1\": \"" + ShipEngineUI.advanced_options_custom_field1 + "\"," +
