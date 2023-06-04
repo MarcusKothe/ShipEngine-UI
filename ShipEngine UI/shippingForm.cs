@@ -49,6 +49,8 @@ namespace ShipEngine_UI
             shipFrom_address_residential_indicator_comboBox.SelectedIndex = 1;
             shipTo_address_residential_indicator_comboBox.SelectedIndex = 1;
 
+            ship_date_TextBox.Text = DateTime.Today.ToString();
+
             //GET CARRIER ACCOUNTS
             GetCarrierAccounts();
 
@@ -63,6 +65,7 @@ namespace ShipEngine_UI
         }
 
         #region Form Load methods
+
         public void GetCarrierAccounts()
         {
             //GET CARRIER ACCOUNTS
@@ -358,8 +361,7 @@ namespace ShipEngine_UI
                 responseObjectGet = (HttpWebResponse)requestObject.GetResponse();
                 string streamResponse = null;
 
-
-                //Get all sales orders
+                //Get List labels data
                 using (Stream stream = responseObjectGet.GetResponseStream())
                 {
                     StreamReader responseRead = new StreamReader(stream);
@@ -394,7 +396,22 @@ namespace ShipEngine_UI
                                 string voided = voided1.Replace(",", "");
 
                                 //add to textbox
-                                label_id_richTextBox.Text = label_id_richTextBox.Text.Trim() + voided.Trim() + " < ";
+                                label_id_richTextBox.Text = label_id_richTextBox.Text.Trim() + voided.Trim() + " > ";
+
+                            }
+                            else
+                            {
+                                currentLine.Replace(currentLine, "");
+                            }
+
+                            if (currentLine.Contains("\"carrier_code\"") == true)
+                            {
+
+                                string carrier_code1 = currentLine.Replace("\"", "");
+                                string carrier_code = carrier_code1.Replace(",", "");
+
+                                //add to textbox
+                                label_id_richTextBox.Text = label_id_richTextBox.Text.Trim() + " " + carrier_code.Trim() + " < ";
 
                             }
                             else
@@ -427,8 +444,10 @@ namespace ShipEngine_UI
                                 continue;
 
                             label_history_listbox.Items.Add(label_id.Trim());
-
+                            
                         }
+
+                        RemoveURL(label_history_listbox, "http");
                     }
                 }
             }
@@ -438,6 +457,22 @@ namespace ShipEngine_UI
                 label_history_listbox.Enabled = false;
             }
 
+        }
+        
+        //Fixes UPS Having two imgURLs
+        private void RemoveURL(ListBox listBox, string input_string)
+        {
+            input_string.StartsWith("http");
+
+            int index = listBox.FindString(input_string);
+
+            if (index == -1) return;
+
+            while (index != -1)
+            {
+                listBox.Items.RemoveAt(index);
+                index = listBox.FindString(input_string, index);
+            }
         }
 
         #endregion
