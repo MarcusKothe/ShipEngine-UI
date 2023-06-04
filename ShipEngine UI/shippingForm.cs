@@ -488,11 +488,6 @@ namespace ShipEngine_UI
             Random Manifest_logID = new Random();
             string Manifest_log = Manifest_logID.Next(0, 1000000).ToString("D6");
 
-            //GET SELECTED LabelID ID
-            string label_id1 = label_history_listbox.SelectedItem.ToString();
-            label_id1 = label_id1.Remove(label_id1.IndexOf("|") + 1);
-            string label_id = label_id1.Replace("|", "");
-
             try
             {
 
@@ -518,8 +513,8 @@ namespace ShipEngine_UI
                 Stream create_manifest_stream = create_manifest_request.GetRequestStream();
 
                 //Documents path REQUEST LOG
-                string notify_shipped_docPath = @"..\..\Resources\Logs";
-                File.WriteAllText(Path.Combine(notify_shipped_docPath, "CreateManifestRequest - " + Manifest_log + ".txt"), create_manifest_requestBody);
+                string create_manifest_docPath = @"..\..\Resources\Logs";
+                File.WriteAllText(Path.Combine(create_manifest_docPath, "CreateManifestRequest - " + Manifest_log + ".txt"), create_manifest_requestBody);
 
                 create_manifest_stream.Write(create_manifest_data, 0, create_manifest_data.Length);
                 create_manifest_stream.Close();
