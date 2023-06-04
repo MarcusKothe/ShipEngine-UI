@@ -451,11 +451,13 @@ namespace ShipEngine_UI
                         if (label_history_listbox.Items.Count == 0)
                         {
                             label_history_listbox.Enabled = false;
+                            create_manifest_button.Enabled = false;
                             label_history_listbox.Items.Add("ShipEngine found no label history for today.");
                         }
                         else
                         {
                             label_history_listbox.Enabled = true;
+                            
                             label_history_listbox.Items.Remove("ShipEngine found no label history for today.");
                         }
 
@@ -554,6 +556,7 @@ namespace ShipEngine_UI
                         }
                     }
                 }
+
             }
             catch (WebException create_manifest_Exception)
             {
@@ -2354,6 +2357,7 @@ namespace ShipEngine_UI
                 void_label_id_TextBox.Text = label_id.Trim();
                 labelImageBox.Load(label_url);
 
+                if (label_history_listbox.Text.Contains("completed")) { 
                 //Select labels to void
                 if (!manifest_label_id_richTextBox.Text.Contains(label_id.Trim()))
                 {
@@ -2364,6 +2368,11 @@ namespace ShipEngine_UI
                     string currentSelection = "\"" + label_id.Trim() + "\",";
 
                     manifest_label_id_richTextBox.Text = manifest_label_id_richTextBox.Text.Replace(currentSelection, "");
+                }
+                }
+                else
+                {
+
                 }
 
                 //GET LABELS
@@ -2421,6 +2430,11 @@ namespace ShipEngine_UI
 
             CreateManifest();
 
+        }
+
+        private void clear_manifest_textBox_button_Click(object sender, EventArgs e)
+        {
+            manifest_label_id_richTextBox.Text = string.Empty;
         }
     }
 }

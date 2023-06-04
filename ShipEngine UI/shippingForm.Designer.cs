@@ -174,6 +174,11 @@
             this.create_manifest_button = new System.Windows.Forms.Button();
             this.create_manifest_richTextBox = new System.Windows.Forms.RichTextBox();
             this.manifest_label_id_richTextBox = new System.Windows.Forms.RichTextBox();
+            this.clear_manifest_textBox_button = new System.Windows.Forms.Button();
+            this.label_Tab_Control = new System.Windows.Forms.TabControl();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label25 = new System.Windows.Forms.Label();
             this.shipFromgroupBox.SuspendLayout();
             this.shipTogroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.labelImageBox)).BeginInit();
@@ -187,6 +192,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.collect_on_delivery_payment_amount_numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.insured_value_amont_numericUpDown)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.label_Tab_Control.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // service_code_ComboBox
@@ -213,7 +221,7 @@
             // 
             // carrier_id_RichTextBox
             // 
-            this.carrier_id_RichTextBox.Location = new System.Drawing.Point(1055, 118);
+            this.carrier_id_RichTextBox.Location = new System.Drawing.Point(1353, 118);
             this.carrier_id_RichTextBox.Name = "carrier_id_RichTextBox";
             this.carrier_id_RichTextBox.Size = new System.Drawing.Size(100, 100);
             this.carrier_id_RichTextBox.TabIndex = 3;
@@ -221,7 +229,7 @@
             // 
             // service_code_RichTextBox
             // 
-            this.service_code_RichTextBox.Location = new System.Drawing.Point(1161, 118);
+            this.service_code_RichTextBox.Location = new System.Drawing.Point(1459, 118);
             this.service_code_RichTextBox.Name = "service_code_RichTextBox";
             this.service_code_RichTextBox.Size = new System.Drawing.Size(100, 100);
             this.service_code_RichTextBox.TabIndex = 4;
@@ -738,7 +746,7 @@
             // 
             // warehouse_id_RichTextBox
             // 
-            this.warehouse_id_RichTextBox.Location = new System.Drawing.Point(1161, 12);
+            this.warehouse_id_RichTextBox.Location = new System.Drawing.Point(1459, 12);
             this.warehouse_id_RichTextBox.Name = "warehouse_id_RichTextBox";
             this.warehouse_id_RichTextBox.Size = new System.Drawing.Size(100, 100);
             this.warehouse_id_RichTextBox.TabIndex = 58;
@@ -765,9 +773,9 @@
             // labelImageBox
             // 
             this.labelImageBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelImageBox.Location = new System.Drawing.Point(640, 12);
+            this.labelImageBox.Location = new System.Drawing.Point(6, 6);
             this.labelImageBox.Name = "labelImageBox";
-            this.labelImageBox.Size = new System.Drawing.Size(380, 600);
+            this.labelImageBox.Size = new System.Drawing.Size(440, 705);
             this.labelImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.labelImageBox.TabIndex = 61;
             this.labelImageBox.TabStop = false;
@@ -795,7 +803,7 @@
             // 
             // package_code_RichTextBox
             // 
-            this.package_code_RichTextBox.Location = new System.Drawing.Point(1055, 224);
+            this.package_code_RichTextBox.Location = new System.Drawing.Point(1353, 224);
             this.package_code_RichTextBox.Name = "package_code_RichTextBox";
             this.package_code_RichTextBox.Size = new System.Drawing.Size(100, 100);
             this.package_code_RichTextBox.TabIndex = 64;
@@ -893,6 +901,7 @@
             // 
             this.rate_response_RichTextBox.Location = new System.Drawing.Point(326, 396);
             this.rate_response_RichTextBox.Name = "rate_response_RichTextBox";
+            this.rate_response_RichTextBox.ReadOnly = true;
             this.rate_response_RichTextBox.Size = new System.Drawing.Size(308, 328);
             this.rate_response_RichTextBox.TabIndex = 77;
             this.rate_response_RichTextBox.Text = "";
@@ -937,10 +946,10 @@
             // 
             // label_RichTextBox
             // 
-            this.label_RichTextBox.Location = new System.Drawing.Point(640, 12);
+            this.label_RichTextBox.Location = new System.Drawing.Point(6, 6);
             this.label_RichTextBox.Name = "label_RichTextBox";
             this.label_RichTextBox.ReadOnly = true;
-            this.label_RichTextBox.Size = new System.Drawing.Size(380, 600);
+            this.label_RichTextBox.Size = new System.Drawing.Size(440, 705);
             this.label_RichTextBox.TabIndex = 82;
             this.label_RichTextBox.Text = "";
             this.label_RichTextBox.Visible = false;
@@ -948,7 +957,7 @@
             // 
             // print_Button
             // 
-            this.print_Button.Location = new System.Drawing.Point(532, 730);
+            this.print_Button.Location = new System.Drawing.Point(504, 730);
             this.print_Button.Name = "print_Button";
             this.print_Button.Size = new System.Drawing.Size(102, 23);
             this.print_Button.TabIndex = 83;
@@ -958,7 +967,7 @@
             // 
             // sales_order_RichTextBox
             // 
-            this.sales_order_RichTextBox.Location = new System.Drawing.Point(1161, 330);
+            this.sales_order_RichTextBox.Location = new System.Drawing.Point(1459, 330);
             this.sales_order_RichTextBox.Name = "sales_order_RichTextBox";
             this.sales_order_RichTextBox.Size = new System.Drawing.Size(100, 100);
             this.sales_order_RichTextBox.TabIndex = 84;
@@ -986,7 +995,7 @@
             // 
             // sales_order_label_RichTextBox
             // 
-            this.sales_order_label_RichTextBox.Location = new System.Drawing.Point(1055, 330);
+            this.sales_order_label_RichTextBox.Location = new System.Drawing.Point(1353, 330);
             this.sales_order_label_RichTextBox.Name = "sales_order_label_RichTextBox";
             this.sales_order_label_RichTextBox.Size = new System.Drawing.Size(100, 100);
             this.sales_order_label_RichTextBox.TabIndex = 87;
@@ -995,16 +1004,16 @@
             // void_label_id_TextBox
             // 
             this.void_label_id_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
-            this.void_label_id_TextBox.Location = new System.Drawing.Point(640, 731);
+            this.void_label_id_TextBox.Location = new System.Drawing.Point(6, 250);
             this.void_label_id_TextBox.Name = "void_label_id_TextBox";
-            this.void_label_id_TextBox.Size = new System.Drawing.Size(158, 21);
+            this.void_label_id_TextBox.Size = new System.Drawing.Size(354, 21);
             this.void_label_id_TextBox.TabIndex = 89;
             this.void_label_id_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // void_label_id_Button
             // 
             this.void_label_id_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.void_label_id_Button.Location = new System.Drawing.Point(804, 729);
+            this.void_label_id_Button.Location = new System.Drawing.Point(366, 250);
             this.void_label_id_Button.Name = "void_label_id_Button";
             this.void_label_id_Button.Size = new System.Drawing.Size(79, 23);
             this.void_label_id_Button.TabIndex = 90;
@@ -1014,7 +1023,7 @@
             // 
             // void_label_id_RichTextBox
             // 
-            this.void_label_id_RichTextBox.Location = new System.Drawing.Point(1161, 224);
+            this.void_label_id_RichTextBox.Location = new System.Drawing.Point(1459, 224);
             this.void_label_id_RichTextBox.Name = "void_label_id_RichTextBox";
             this.void_label_id_RichTextBox.Size = new System.Drawing.Size(100, 100);
             this.void_label_id_RichTextBox.TabIndex = 91;
@@ -1022,7 +1031,7 @@
             // 
             // label_webbrowser
             // 
-            this.label_webbrowser.Location = new System.Drawing.Point(1055, 12);
+            this.label_webbrowser.Location = new System.Drawing.Point(1353, 12);
             this.label_webbrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.label_webbrowser.Name = "label_webbrowser";
             this.label_webbrowser.Size = new System.Drawing.Size(100, 100);
@@ -1990,7 +1999,7 @@
             // 
             this.exit_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exit_button.ForeColor = System.Drawing.Color.DarkRed;
-            this.exit_button.Location = new System.Drawing.Point(998, 728);
+            this.exit_button.Location = new System.Drawing.Point(612, 730);
             this.exit_button.Name = "exit_button";
             this.exit_button.Size = new System.Drawing.Size(22, 23);
             this.exit_button.TabIndex = 96;
@@ -2059,15 +2068,15 @@
             // label_history_listbox
             // 
             this.label_history_listbox.FormattingEnabled = true;
-            this.label_history_listbox.Location = new System.Drawing.Point(640, 616);
+            this.label_history_listbox.Location = new System.Drawing.Point(6, 6);
             this.label_history_listbox.Name = "label_history_listbox";
-            this.label_history_listbox.Size = new System.Drawing.Size(380, 108);
+            this.label_history_listbox.Size = new System.Drawing.Size(439, 238);
             this.label_history_listbox.TabIndex = 99;
             this.label_history_listbox.SelectedIndexChanged += new System.EventHandler(this.label_history_listbox_SelectedIndexChanged);
             // 
             // label_id_richTextBox
             // 
-            this.label_id_richTextBox.Location = new System.Drawing.Point(1055, 436);
+            this.label_id_richTextBox.Location = new System.Drawing.Point(1353, 436);
             this.label_id_richTextBox.Name = "label_id_richTextBox";
             this.label_id_richTextBox.Size = new System.Drawing.Size(100, 100);
             this.label_id_richTextBox.TabIndex = 100;
@@ -2075,8 +2084,7 @@
             // 
             // create_manifest_button
             // 
-            this.create_manifest_button.Enabled = false;
-            this.create_manifest_button.Location = new System.Drawing.Point(889, 729);
+            this.create_manifest_button.Location = new System.Drawing.Point(6, 398);
             this.create_manifest_button.Name = "create_manifest_button";
             this.create_manifest_button.Size = new System.Drawing.Size(103, 23);
             this.create_manifest_button.TabIndex = 101;
@@ -2086,7 +2094,7 @@
             // 
             // create_manifest_richTextBox
             // 
-            this.create_manifest_richTextBox.Location = new System.Drawing.Point(1161, 436);
+            this.create_manifest_richTextBox.Location = new System.Drawing.Point(1459, 436);
             this.create_manifest_richTextBox.Name = "create_manifest_richTextBox";
             this.create_manifest_richTextBox.Size = new System.Drawing.Size(100, 100);
             this.create_manifest_richTextBox.TabIndex = 102;
@@ -2094,22 +2102,79 @@
             // 
             // manifest_label_id_richTextBox
             // 
-            this.manifest_label_id_richTextBox.Location = new System.Drawing.Point(1161, 542);
+            this.manifest_label_id_richTextBox.Location = new System.Drawing.Point(6, 293);
             this.manifest_label_id_richTextBox.Name = "manifest_label_id_richTextBox";
-            this.manifest_label_id_richTextBox.Size = new System.Drawing.Size(100, 100);
+            this.manifest_label_id_richTextBox.Size = new System.Drawing.Size(439, 100);
             this.manifest_label_id_richTextBox.TabIndex = 103;
             this.manifest_label_id_richTextBox.Text = "";
+            // 
+            // clear_manifest_textBox_button
+            // 
+            this.clear_manifest_textBox_button.Location = new System.Drawing.Point(342, 398);
+            this.clear_manifest_textBox_button.Name = "clear_manifest_textBox_button";
+            this.clear_manifest_textBox_button.Size = new System.Drawing.Size(103, 23);
+            this.clear_manifest_textBox_button.TabIndex = 104;
+            this.clear_manifest_textBox_button.Text = "Clear selections";
+            this.clear_manifest_textBox_button.UseVisualStyleBackColor = true;
+            this.clear_manifest_textBox_button.Click += new System.EventHandler(this.clear_manifest_textBox_button_Click);
+            // 
+            // label_Tab_Control
+            // 
+            this.label_Tab_Control.Controls.Add(this.tabPage3);
+            this.label_Tab_Control.Controls.Add(this.tabPage4);
+            this.label_Tab_Control.Location = new System.Drawing.Point(640, 10);
+            this.label_Tab_Control.Name = "label_Tab_Control";
+            this.label_Tab_Control.SelectedIndex = 0;
+            this.label_Tab_Control.Size = new System.Drawing.Size(459, 742);
+            this.label_Tab_Control.TabIndex = 105;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.labelImageBox);
+            this.tabPage3.Controls.Add(this.label_RichTextBox);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(451, 716);
+            this.tabPage3.TabIndex = 0;
+            this.tabPage3.Text = "Shipping Label";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.label25);
+            this.tabPage4.Controls.Add(this.clear_manifest_textBox_button);
+            this.tabPage4.Controls.Add(this.create_manifest_button);
+            this.tabPage4.Controls.Add(this.manifest_label_id_richTextBox);
+            this.tabPage4.Controls.Add(this.label_history_listbox);
+            this.tabPage4.Controls.Add(this.void_label_id_TextBox);
+            this.tabPage4.Controls.Add(this.void_label_id_Button);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(451, 716);
+            this.tabPage4.TabIndex = 1;
+            this.tabPage4.Text = "Label History";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(6, 277);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(358, 13);
+            this.label25.TabIndex = 105;
+            this.label25.Text = "Labels Selected to Manifest - Please select \"Completed\" labels above.";
             // 
             // shippingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1031, 759);
-            this.Controls.Add(this.manifest_label_id_richTextBox);
+            this.ClientSize = new System.Drawing.Size(1106, 759);
+            this.Controls.Add(this.rate_response_RichTextBox);
+            this.Controls.Add(this.label_Tab_Control);
             this.Controls.Add(this.create_manifest_richTextBox);
-            this.Controls.Add(this.create_manifest_button);
             this.Controls.Add(this.label_id_richTextBox);
-            this.Controls.Add(this.label_history_listbox);
             this.Controls.Add(this.label56);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.exit_button);
@@ -2118,20 +2183,15 @@
             this.Controls.Add(this.notify_shipped_checkBox);
             this.Controls.Add(this.label_webbrowser);
             this.Controls.Add(this.void_label_id_RichTextBox);
-            this.Controls.Add(this.void_label_id_Button);
-            this.Controls.Add(this.void_label_id_TextBox);
             this.Controls.Add(this.sales_order_label_RichTextBox);
             this.Controls.Add(this.create_label_from_Order_Button);
             this.Controls.Add(this.sales_order_ListBox);
             this.Controls.Add(this.sales_order_RichTextBox);
             this.Controls.Add(this.print_Button);
-            this.Controls.Add(this.label_RichTextBox);
             this.Controls.Add(this.create_label_Button);
-            this.Controls.Add(this.rate_response_RichTextBox);
             this.Controls.Add(this.shipTogroupBox);
             this.Controls.Add(this.package_code_RichTextBox);
             this.Controls.Add(this.get_Rates_Button);
-            this.Controls.Add(this.labelImageBox);
             this.Controls.Add(this.ship_date_TextBox);
             this.Controls.Add(this.ship_Date_DateTimePicker);
             this.Controls.Add(this.warehouse_id_RichTextBox);
@@ -2166,6 +2226,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.insured_value_amont_numericUpDown)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.label_Tab_Control.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2317,6 +2381,11 @@
         private System.Windows.Forms.Button create_manifest_button;
         private System.Windows.Forms.RichTextBox create_manifest_richTextBox;
         private System.Windows.Forms.RichTextBox manifest_label_id_richTextBox;
+        private System.Windows.Forms.Button clear_manifest_textBox_button;
+        private System.Windows.Forms.TabControl label_Tab_Control;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Label label25;
     }
 }
 
