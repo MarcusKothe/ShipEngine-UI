@@ -171,6 +171,7 @@
             this.label56 = new System.Windows.Forms.Label();
             this.label_history_listbox = new System.Windows.Forms.ListBox();
             this.label_id_richTextBox = new System.Windows.Forms.RichTextBox();
+            this.refresh_history_button = new System.Windows.Forms.Button();
             this.shipFromgroupBox.SuspendLayout();
             this.shipTogroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.labelImageBox)).BeginInit();
@@ -994,16 +995,16 @@
             this.void_label_id_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
             this.void_label_id_TextBox.Location = new System.Drawing.Point(640, 731);
             this.void_label_id_TextBox.Name = "void_label_id_TextBox";
-            this.void_label_id_TextBox.Size = new System.Drawing.Size(256, 21);
+            this.void_label_id_TextBox.Size = new System.Drawing.Size(158, 21);
             this.void_label_id_TextBox.TabIndex = 89;
             this.void_label_id_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // void_label_id_Button
             // 
             this.void_label_id_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.void_label_id_Button.Location = new System.Drawing.Point(902, 729);
+            this.void_label_id_Button.Location = new System.Drawing.Point(804, 729);
             this.void_label_id_Button.Name = "void_label_id_Button";
-            this.void_label_id_Button.Size = new System.Drawing.Size(90, 23);
+            this.void_label_id_Button.Size = new System.Drawing.Size(79, 23);
             this.void_label_id_Button.TabIndex = 90;
             this.void_label_id_Button.Text = "Void Label";
             this.void_label_id_Button.UseVisualStyleBackColor = true;
@@ -2070,11 +2071,22 @@
             this.label_id_richTextBox.TabIndex = 100;
             this.label_id_richTextBox.Text = "";
             // 
+            // refresh_history_button
+            // 
+            this.refresh_history_button.Location = new System.Drawing.Point(889, 729);
+            this.refresh_history_button.Name = "refresh_history_button";
+            this.refresh_history_button.Size = new System.Drawing.Size(103, 23);
+            this.refresh_history_button.TabIndex = 101;
+            this.refresh_history_button.Text = "Refresh History";
+            this.refresh_history_button.UseVisualStyleBackColor = true;
+            this.refresh_history_button.Click += new System.EventHandler(this.refresh_history_button_Click);
+            // 
             // shippingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1029, 759);
+            this.Controls.Add(this.refresh_history_button);
             this.Controls.Add(this.label_id_richTextBox);
             this.Controls.Add(this.label_history_listbox);
             this.Controls.Add(this.label56);
@@ -2281,6 +2293,7 @@
         private System.Windows.Forms.Label label56;
         private System.Windows.Forms.ListBox label_history_listbox;
         private System.Windows.Forms.RichTextBox label_id_richTextBox;
+        private System.Windows.Forms.Button refresh_history_button;
     }
 }
 

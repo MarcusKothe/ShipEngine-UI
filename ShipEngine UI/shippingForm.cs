@@ -62,6 +62,7 @@ namespace ShipEngine_UI
             GetLabelHistory();
         }
 
+        #region Form Load methods
         public void GetCarrierAccounts()
         {
             //GET CARRIER ACCOUNTS
@@ -335,6 +336,7 @@ namespace ShipEngine_UI
 
         public void GetLabelHistory()
         {
+            label_id_richTextBox.Text = string.Empty;
 
             //GET LABELS
             try
@@ -434,10 +436,11 @@ namespace ShipEngine_UI
             {
                 label_history_listbox.Items.Add("ShipEngine found no label history for today.");
                 label_history_listbox.Enabled = false;
-
             }
 
         }
+
+        #endregion
 
         private void carrier_id_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -2051,11 +2054,9 @@ namespace ShipEngine_UI
 
             try
             {
+                string label_id = void_label_id_TextBox.Text;
 
-                if (label_id_entered == ShipEngineUI.label_id)
-                {
-
-                    DialogResult dialogResult = MessageBox.Show("Are you sure you would like to void " + ShipEngineUI.label_id + "?", "VOID LABEL", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Are you sure you would like to void " + label_id + "?", "VOID LABEL", MessageBoxButtons.YesNo);
 
                     if (dialogResult == DialogResult.Yes)
                     {
@@ -2063,7 +2064,7 @@ namespace ShipEngine_UI
                         {
 
                             //URI - POST
-                            WebRequest request = WebRequest.Create("https://api.shipengine.com/v1/labels/" + ShipEngineUI.label_id + "/void");
+                            WebRequest request = WebRequest.Create("https://api.shipengine.com/v1/labels/" + label_id.Trim() + "/void");
                             request.Method = "PUT";
 
                             //API Key
@@ -2120,7 +2121,7 @@ namespace ShipEngine_UI
                             label_history_listbox.Items.Clear();
                             GetLabelHistory();
 
-                        }
+                    }
                         catch(Exception void_label_id_response_Error)
                         {
 
@@ -2136,14 +2137,6 @@ namespace ShipEngine_UI
                         MessageBox.Show("You canceled the void request.");
 
                     }
-
-                }
-                else if (label_id_entered != ShipEngineUI.label_id)
-                {
-
-                    MessageBox.Show("The Label ID you entered does not match the label you created. Please check your entry.");
-
-                }
 
             }
             catch(Exception voidlableexception)
@@ -2200,14 +2193,26 @@ namespace ShipEngine_UI
 
         private void label_history_listbox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //GET SELECTED LabelID ID
+            string label_id1 = label_history_listbox.SelectedItem.ToString();
+            label_id1 = label_id1.Remove(label_id1.IndexOf("|") + 1);
+            string label_id = label_id1.Replace("|", "");
 
             //GET LABEL URL
             string label_url1 = label_history_listbox.SelectedItem.ToString();
             //label_url1 = label_url1.Remove(label_url1.LastIndexOf("<") + 1);
             string label_url = label_url1.Substring(label_url1.LastIndexOf('<') + 1);
 
+            void_label_id_TextBox.Text = label_id.Trim();
             labelImageBox.Load(label_url);
 
+        }
+
+        private void refresh_history_button_Click(object sender, EventArgs e)
+        {
+
+            label_history_listbox.Items.Clear();
+            GetLabelHistory();
         }
     }
 }
