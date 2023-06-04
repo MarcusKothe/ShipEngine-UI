@@ -52,7 +52,7 @@
             this.apiKeyTextBox.Name = "apiKeyTextBox";
             this.apiKeyTextBox.Size = new System.Drawing.Size(356, 21);
             this.apiKeyTextBox.TabIndex = 1;
-            this.apiKeyTextBox.Text = "ENTER  API KEY TO BEGIN";
+            this.apiKeyTextBox.Text = "ENTER API KEY TO BEGIN";
             this.apiKeyTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // doneButton

@@ -19,6 +19,10 @@ namespace ShipEngine_UI
 
         public static string create_label_error = "";
 
+        //GET LABEL IMAGE URL FROM FORM LOAD
+        public static string label_url = "";
+        public static string label_url_label_id = "";
+
         //Sales order ID
         public static string external_order_number = "";
         public static string sales_order_id = "";
