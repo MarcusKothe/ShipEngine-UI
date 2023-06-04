@@ -2243,6 +2243,50 @@ namespace ShipEngine_UI
             void_label_id_TextBox.Text = label_id.Trim();
             labelImageBox.Load(label_url);
 
+            //GET LABELS
+            try
+            {
+                string todaysDate = DateTime.Today.ToString();
+
+                //URL SOURCE
+                string URLstring = "https://api.shipengine.com/v1/labels/" + label_id.Trim();
+
+                //REQUEST
+                WebRequest requestObject = WebRequest.Create(URLstring);
+                requestObject.Method = "GET";
+
+                //SE AUTH
+                requestObject.Headers.Add("API-key", ShipEngineUI.apiKey);
+
+                //RESPONSE
+                HttpWebResponse responseObjectGet = null;
+                responseObjectGet = (HttpWebResponse)requestObject.GetResponse();
+                string streamResponse = null;
+
+                //Get List labels data
+                using (Stream stream = responseObjectGet.GetResponseStream())
+                {
+                    StreamReader responseRead = new StreamReader(stream);
+                    streamResponse = responseRead.ReadToEnd();
+
+                    label_RichTextBox.Text = streamResponse;
+
+                    using (var reader = new StringReader(streamResponse))
+                    {
+
+                        for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                        {
+
+                            
+
+                        }
+                    }
+                }
+            }
+            catch (Exception HTTPexception)
+            {
+
+            }
         }
 
         private void refresh_history_button_Click(object sender, EventArgs e)
