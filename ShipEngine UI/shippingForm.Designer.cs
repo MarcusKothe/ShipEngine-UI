@@ -171,7 +171,9 @@
             this.label56 = new System.Windows.Forms.Label();
             this.label_history_listbox = new System.Windows.Forms.ListBox();
             this.label_id_richTextBox = new System.Windows.Forms.RichTextBox();
-            this.refresh_history_button = new System.Windows.Forms.Button();
+            this.create_manifest_button = new System.Windows.Forms.Button();
+            this.create_manifest_richTextBox = new System.Windows.Forms.RichTextBox();
+            this.manifest_label_id_richTextBox = new System.Windows.Forms.RichTextBox();
             this.shipFromgroupBox.SuspendLayout();
             this.shipTogroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.labelImageBox)).BeginInit();
@@ -2071,22 +2073,41 @@
             this.label_id_richTextBox.TabIndex = 100;
             this.label_id_richTextBox.Text = "";
             // 
-            // refresh_history_button
+            // create_manifest_button
             // 
-            this.refresh_history_button.Location = new System.Drawing.Point(889, 729);
-            this.refresh_history_button.Name = "refresh_history_button";
-            this.refresh_history_button.Size = new System.Drawing.Size(103, 23);
-            this.refresh_history_button.TabIndex = 101;
-            this.refresh_history_button.Text = "Refresh History";
-            this.refresh_history_button.UseVisualStyleBackColor = true;
-            this.refresh_history_button.Click += new System.EventHandler(this.refresh_history_button_Click);
+            this.create_manifest_button.Enabled = false;
+            this.create_manifest_button.Location = new System.Drawing.Point(889, 729);
+            this.create_manifest_button.Name = "create_manifest_button";
+            this.create_manifest_button.Size = new System.Drawing.Size(103, 23);
+            this.create_manifest_button.TabIndex = 101;
+            this.create_manifest_button.Text = "Create Manifest";
+            this.create_manifest_button.UseVisualStyleBackColor = true;
+            this.create_manifest_button.Click += new System.EventHandler(this.create_manifest_button_Click);
+            // 
+            // create_manifest_richTextBox
+            // 
+            this.create_manifest_richTextBox.Location = new System.Drawing.Point(1161, 436);
+            this.create_manifest_richTextBox.Name = "create_manifest_richTextBox";
+            this.create_manifest_richTextBox.Size = new System.Drawing.Size(100, 100);
+            this.create_manifest_richTextBox.TabIndex = 102;
+            this.create_manifest_richTextBox.Text = "";
+            // 
+            // manifest_label_id_richTextBox
+            // 
+            this.manifest_label_id_richTextBox.Location = new System.Drawing.Point(1161, 542);
+            this.manifest_label_id_richTextBox.Name = "manifest_label_id_richTextBox";
+            this.manifest_label_id_richTextBox.Size = new System.Drawing.Size(100, 100);
+            this.manifest_label_id_richTextBox.TabIndex = 103;
+            this.manifest_label_id_richTextBox.Text = "";
             // 
             // shippingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1029, 759);
-            this.Controls.Add(this.refresh_history_button);
+            this.ClientSize = new System.Drawing.Size(1031, 759);
+            this.Controls.Add(this.manifest_label_id_richTextBox);
+            this.Controls.Add(this.create_manifest_richTextBox);
+            this.Controls.Add(this.create_manifest_button);
             this.Controls.Add(this.label_id_richTextBox);
             this.Controls.Add(this.label_history_listbox);
             this.Controls.Add(this.label56);
@@ -2293,7 +2314,9 @@
         private System.Windows.Forms.Label label56;
         private System.Windows.Forms.ListBox label_history_listbox;
         private System.Windows.Forms.RichTextBox label_id_richTextBox;
-        private System.Windows.Forms.Button refresh_history_button;
+        private System.Windows.Forms.Button create_manifest_button;
+        private System.Windows.Forms.RichTextBox create_manifest_richTextBox;
+        private System.Windows.Forms.RichTextBox manifest_label_id_richTextBox;
     }
 }
 

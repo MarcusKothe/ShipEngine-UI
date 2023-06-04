@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Net;
+using System.Runtime.InteropServices.ComTypes;
 using System.Security.Policy;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -478,6 +479,106 @@ namespace ShipEngine_UI
         }
 
         #endregion
+
+        //Creating a Manifest
+        public void CreateManifest()
+        {
+
+            //LOGID
+            Random Manifest_logID = new Random();
+            string Manifest_log = Manifest_logID.Next(0, 1000000).ToString("D6");
+
+            //GET SELECTED LabelID ID
+            string label_id1 = label_history_listbox.SelectedItem.ToString();
+            label_id1 = label_id1.Remove(label_id1.IndexOf("|") + 1);
+            string label_id = label_id1.Replace("|", "");
+
+            try
+            {
+
+                //URI - POST
+                WebRequest create_manifest_request = WebRequest.Create("https://api.shipengine.com/v1/manifests");
+                create_manifest_request.Method = "POST";
+
+                //API Key
+                create_manifest_request.Headers.Add("API-key", ShipEngineUI.apiKey);
+
+                //POST REQUEST
+                string create_manifest_requestBody = "" +
+                    "{\r\n" +
+                    "  \"label_ids\": [" + manifest_label_id_richTextBox.Text + "]" +
+                    "\r\n}";
+
+                ASCIIEncoding create_manifest_encoding = new ASCIIEncoding();
+                byte[] create_manifest_data = create_manifest_encoding.GetBytes(create_manifest_requestBody);
+
+                create_manifest_request.ContentType = "application/json";
+                create_manifest_request.ContentLength = create_manifest_data.Length;
+
+                Stream create_manifest_stream = create_manifest_request.GetRequestStream();
+
+                //Documents path REQUEST LOG
+                string notify_shipped_docPath = @"..\..\Resources\Logs";
+                File.WriteAllText(Path.Combine(notify_shipped_docPath, "CreateManifestRequest - " + Manifest_log + ".txt"), create_manifest_requestBody);
+
+                create_manifest_stream.Write(create_manifest_data, 0, create_manifest_data.Length);
+                create_manifest_stream.Close();
+
+                WebResponse create_manifest_requestResponse = create_manifest_request.GetResponse();
+                create_manifest_stream = create_manifest_requestResponse.GetResponseStream();
+
+                StreamReader parseResponse = new StreamReader(create_manifest_stream);
+                create_manifest_richTextBox.Text = parseResponse.ReadToEnd();
+                string responseBodyText = create_manifest_richTextBox.Text;
+
+                using (var reader = new StringReader(responseBodyText))
+                {
+
+                    for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                    {
+
+                        if (currentLine.Contains("href") == true)
+                        {
+
+                            string manifest_pdf_url1 = currentLine.Replace("\"href\": \"", "");
+                            string manifest_pdf_url = manifest_pdf_url1.Replace("\",", "");
+
+                            //DECLARE VARIABLE
+                            ShipEngineUI.manifest_pdf_url = manifest_pdf_url.Trim();
+
+                        }
+                    }
+                }
+            }
+            catch (WebException create_manifest_Exception)
+            {
+
+                using (WebResponse ShipEngineErrorResponse = create_manifest_Exception.Response)
+                {
+                    HttpWebResponse ShipEngineResponse = (HttpWebResponse)ShipEngineErrorResponse;
+                    Console.WriteLine("Error code: {0}", ShipEngineResponse.StatusCode);
+                    using (Stream parseResponse1 = ShipEngineErrorResponse.GetResponseStream())
+
+                    using (var reader = new StreamReader(parseResponse1))
+                    {
+
+                        for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                        {
+
+                            if (currentLine.Contains("message") == true)
+                            {
+
+                                string ShipEngineErrorBody1 = currentLine.Replace("\"message\": \"", "");
+                                string ShipEngineErrorBody = ShipEngineErrorBody1.Replace("\",", "");
+
+                                MessageBox.Show(ShipEngineErrorBody.Trim(), "ERROR CREATING MANIFEST");
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
         private void carrier_id_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1797,6 +1898,7 @@ namespace ShipEngine_UI
                 request.Headers.Add("API-key", ShipEngineUI.apiKey);
 
                 //POST REQUEST
+                #region Sales Order request
                 string sales_order_LabelrequestBody = "{" +
                     "\r\n    \"label_format\": \"pdf\"," +
                     "\r\n    \"shipment\": {" +
@@ -1881,6 +1983,7 @@ namespace ShipEngine_UI
                     "\r\n        ]" +
                     "\r\n    }" +
                     "\r\n}";
+                #endregion
 
                 ASCIIEncoding encoding = new ASCIIEncoding();
                 byte[] data = encoding.GetBytes(sales_order_LabelrequestBody);
@@ -2243,10 +2346,21 @@ namespace ShipEngine_UI
             void_label_id_TextBox.Text = label_id.Trim();
             labelImageBox.Load(label_url);
 
+            //Select labels to void
+            if (!manifest_label_id_richTextBox.Text.Contains(label_id.Trim()))
+            {
+                manifest_label_id_richTextBox.Text += "\"" + label_id.Trim() + "\"" + ",";
+            }
+            else if(manifest_label_id_richTextBox.Text.Contains(label_id.Trim()))
+            {
+                string currentSelection = "\"" + label_id.Trim() + "\",";
+
+                manifest_label_id_richTextBox.Text = manifest_label_id_richTextBox.Text.Replace(currentSelection,"");
+            }
+
             //GET LABELS
             try
             {
-                string todaysDate = DateTime.Today.ToString();
 
                 //URL SOURCE
                 string URLstring = "https://api.shipengine.com/v1/labels/" + label_id.Trim();
@@ -2289,11 +2403,11 @@ namespace ShipEngine_UI
             }
         }
 
-        private void refresh_history_button_Click(object sender, EventArgs e)
+        private void create_manifest_button_Click(object sender, EventArgs e)
         {
 
-            label_history_listbox.Items.Clear();
-            GetLabelHistory();
+            CreateManifest();
+
         }
     }
 }
