@@ -373,7 +373,7 @@ namespace ShipEngine_UI
 
                         for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
                         {
-
+                           
                             if (currentLine.Contains("label_id") == true)
                             {
 
@@ -448,14 +448,24 @@ namespace ShipEngine_UI
                             
                         }
 
+                        if (label_history_listbox.Items.Count == 0)
+                        {
+                            label_history_listbox.Enabled = false;
+                            label_history_listbox.Items.Add("ShipEngine found no label history for today.");
+                        }
+                        else
+                        {
+                            label_history_listbox.Enabled = true;
+                            label_history_listbox.Items.Remove("ShipEngine found no label history for today.");
+                        }
+
                         RemoveURL(label_history_listbox, "http");
                     }
                 }
             }
             catch (Exception HTTPexception)
             {
-                label_history_listbox.Items.Add("ShipEngine found no label history for today.");
-                label_history_listbox.Enabled = false;
+
             }
 
         }
@@ -2328,76 +2338,84 @@ namespace ShipEngine_UI
 
         private void label_history_listbox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //GET SELECTED LabelID ID
-            string label_id1 = label_history_listbox.SelectedItem.ToString();
-            label_id1 = label_id1.Remove(label_id1.IndexOf("|") + 1);
-            string label_id = label_id1.Replace("|", "");
 
-            //GET LABEL URL
-            string label_url1 = label_history_listbox.SelectedItem.ToString();
-            //label_url1 = label_url1.Remove(label_url1.LastIndexOf("<") + 1);
-            string label_url = label_url1.Substring(label_url1.LastIndexOf('<') + 1);
-
-            void_label_id_TextBox.Text = label_id.Trim();
-            labelImageBox.Load(label_url);
-
-            //Select labels to void
-            if (!manifest_label_id_richTextBox.Text.Contains(label_id.Trim()))
-            {
-                manifest_label_id_richTextBox.Text += "\"" + label_id.Trim() + "\"" + ",";
-            }
-            else if(manifest_label_id_richTextBox.Text.Contains(label_id.Trim()))
-            {
-                string currentSelection = "\"" + label_id.Trim() + "\",";
-
-                manifest_label_id_richTextBox.Text = manifest_label_id_richTextBox.Text.Replace(currentSelection,"");
-            }
-
-            //GET LABELS
             try
             {
+                //GET SELECTED LabelID ID
+                string label_id1 = label_history_listbox.SelectedItem.ToString();
+                label_id1 = label_id1.Remove(label_id1.IndexOf("|") + 1);
+                string label_id = label_id1.Replace("|", "");
 
-                //URL SOURCE
-                string URLstring = "https://api.shipengine.com/v1/labels/" + label_id.Trim();
+                //GET LABEL URL
+                string label_url1 = label_history_listbox.SelectedItem.ToString();
+                //label_url1 = label_url1.Remove(label_url1.LastIndexOf("<") + 1);
+                string label_url = label_url1.Substring(label_url1.LastIndexOf('<') + 1);
 
-                //REQUEST
-                WebRequest requestObject = WebRequest.Create(URLstring);
-                requestObject.Method = "GET";
+                void_label_id_TextBox.Text = label_id.Trim();
+                labelImageBox.Load(label_url);
 
-                //SE AUTH
-                requestObject.Headers.Add("API-key", ShipEngineUI.apiKey);
-
-                //RESPONSE
-                HttpWebResponse responseObjectGet = null;
-                responseObjectGet = (HttpWebResponse)requestObject.GetResponse();
-                string streamResponse = null;
-
-                //Get List labels data
-                using (Stream stream = responseObjectGet.GetResponseStream())
+                //Select labels to void
+                if (!manifest_label_id_richTextBox.Text.Contains(label_id.Trim()))
                 {
-                    StreamReader responseRead = new StreamReader(stream);
-                    streamResponse = responseRead.ReadToEnd();
+                    manifest_label_id_richTextBox.Text += "\"" + label_id.Trim() + "\"" + ",";
+                }
+                else if (manifest_label_id_richTextBox.Text.Contains(label_id.Trim()))
+                {
+                    string currentSelection = "\"" + label_id.Trim() + "\",";
 
-                    label_RichTextBox.Text = streamResponse;
+                    manifest_label_id_richTextBox.Text = manifest_label_id_richTextBox.Text.Replace(currentSelection, "");
+                }
 
-                    using (var reader = new StringReader(streamResponse))
+                //GET LABELS
+                try
+                {
+
+                    //URL SOURCE
+                    string URLstring = "https://api.shipengine.com/v1/labels/" + label_id.Trim();
+
+                    //REQUEST
+                    WebRequest requestObject = WebRequest.Create(URLstring);
+                    requestObject.Method = "GET";
+
+                    //SE AUTH
+                    requestObject.Headers.Add("API-key", ShipEngineUI.apiKey);
+
+                    //RESPONSE
+                    HttpWebResponse responseObjectGet = null;
+                    responseObjectGet = (HttpWebResponse)requestObject.GetResponse();
+                    string streamResponse = null;
+
+                    //Get List labels data
+                    using (Stream stream = responseObjectGet.GetResponseStream())
                     {
+                        StreamReader responseRead = new StreamReader(stream);
+                        streamResponse = responseRead.ReadToEnd();
 
-                        for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                        label_RichTextBox.Text = streamResponse;
+
+                        using (var reader = new StringReader(streamResponse))
                         {
 
-                            
+                            for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                            {
 
+
+
+                            }
                         }
                     }
                 }
+                catch (Exception HTTPexception)
+                {
+
+                }
             }
-            catch (Exception HTTPexception)
+            catch(Exception HTTPexception)
             {
 
             }
         }
-
+            
         private void create_manifest_button_Click(object sender, EventArgs e)
         {
 
