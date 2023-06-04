@@ -50,6 +50,21 @@ namespace ShipEngine_UI
             shipTo_address_residential_indicator_comboBox.SelectedIndex = 1;
 
             //GET CARRIER ACCOUNTS
+            GetCarrierAccounts();
+
+            //GET WAREHOUSES
+            GetWarehouses();
+
+            //GET SALES ORDERS
+            GetSalesOrders();
+
+            //GET LABEL HISTORY
+            GetLabelHistory();
+        }
+
+        public void GetCarrierAccounts()
+        {
+            //GET CARRIER ACCOUNTS
             try
             {
                 //URL SOURCE
@@ -66,7 +81,7 @@ namespace ShipEngine_UI
                 HttpWebResponse responseObjectGet = null;
                 responseObjectGet = (HttpWebResponse)requestObject.GetResponse();
                 string streamResponse = null;
-                
+
                 using (Stream stream = responseObjectGet.GetResponseStream())
                 {
                     StreamReader responseRead = new StreamReader(stream);
@@ -129,7 +144,10 @@ namespace ShipEngine_UI
                 }
 
             }
+        }
 
+        public void GetWarehouses()
+        {
             //GET WAREHOUSES
             try
             {
@@ -194,7 +212,7 @@ namespace ShipEngine_UI
 
                             string fix = warehouse_id.Substring(0, warehouse_id.IndexOf("]"));
                             warehouse_id_ComboBox.Items.Add(fix.Trim());
-                            
+
                         }
                     }
                 }
@@ -203,7 +221,10 @@ namespace ShipEngine_UI
             {
                 MessageBox.Show(HTTPexception.ToString());
             }
+        }
 
+        public void GetSalesOrders()
+        {
             //GET SALES ORDERS
             try
             {
@@ -231,7 +252,7 @@ namespace ShipEngine_UI
 
                     using (var reader = new StringReader(streamResponse))
                     {
-                        
+
                         for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
                         {
 
@@ -285,9 +306,9 @@ namespace ShipEngine_UI
                             }
 
                             //string line = ShipEngineUI.external_order_number.Trim() + " - " + ShipEngineUI.fulfillment_status.Trim() + " | " +
-                               // ShipEngineUI.sales_order_id.Trim() + Environment.NewLine + ",";
+                            // ShipEngineUI.sales_order_id.Trim() + Environment.NewLine + ",";
 
-                           // sales_order_RichTextBox.Text += line;
+                            // sales_order_RichTextBox.Text += line;
 
                         }
 
@@ -310,9 +331,8 @@ namespace ShipEngine_UI
                 sales_order_ListBox.Enabled = false;
                 notify_shipped_checkBox.Enabled = false;
             }
-
-            GetLabelHistory();
         }
+
         public void GetLabelHistory()
         {
 
@@ -2097,6 +2117,9 @@ namespace ShipEngine_UI
                             parseResponse.Close();
                             stream.Close();
 
+                            label_history_listbox.Items.Clear();
+                            GetLabelHistory();
+
                         }
                         catch(Exception void_label_id_response_Error)
                         {
@@ -2122,8 +2145,6 @@ namespace ShipEngine_UI
 
                 }
 
-                label_history_listbox.Items.Clear();
-                GetLabelHistory();
             }
             catch(Exception voidlableexception)
             {

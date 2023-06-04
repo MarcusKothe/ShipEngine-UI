@@ -2074,7 +2074,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1203, 759);
+            this.ClientSize = new System.Drawing.Size(1029, 759);
             this.Controls.Add(this.label_id_richTextBox);
             this.Controls.Add(this.label_history_listbox);
             this.Controls.Add(this.label56);
