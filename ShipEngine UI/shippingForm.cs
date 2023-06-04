@@ -459,7 +459,7 @@ namespace ShipEngine_UI
 
         }
         
-        //Fixes UPS Having two imgURLs
+        //Fixes UPS Having two label download objects
         private void RemoveURL(ListBox listBox, string input_string)
         {
             input_string.StartsWith("http");
@@ -470,8 +470,10 @@ namespace ShipEngine_UI
 
             while (index != -1)
             {
+
                 listBox.Items.RemoveAt(index);
                 index = listBox.FindString(input_string, index);
+
             }
         }
 
@@ -1482,9 +1484,9 @@ namespace ShipEngine_UI
 
             Image image = this.labelImageBox.Image;
 
-            Point point = new Point(100, 100);
+            e.Graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            e.Graphics.DrawImage(image, e.PageBounds);
 
-            e.Graphics.DrawImage(image, point);
 
         }
         private void print_Button_Click(object sender, EventArgs e)
