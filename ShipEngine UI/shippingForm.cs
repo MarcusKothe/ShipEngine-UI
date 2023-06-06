@@ -454,10 +454,10 @@ namespace ShipEngine_UI
                             create_manifest_button.Enabled = false;
                             label_history_listbox.Items.Add("ShipEngine found no label history for today.");
                         }
-                        else
+                        else if(label_history_listbox.Items.Count != 0)
                         {
                             label_history_listbox.Enabled = true;
-                            
+                            create_manifest_button.Enabled = true;
                             label_history_listbox.Items.Remove("ShipEngine found no label history for today.");
                         }
 
@@ -553,6 +553,7 @@ namespace ShipEngine_UI
                             //DECLARE VARIABLE
                             ShipEngineUI.manifest_pdf_url = manifest_pdf_url.Trim();
 
+                            manifest_textBox.Text = ShipEngineUI.manifest_pdf_url.Replace("\"", "");
                         }
                     }
                 }
@@ -1555,6 +1556,7 @@ namespace ShipEngine_UI
                 stream.Close();
 
                 label_history_listbox.Items.Clear();
+                GetCurrentTrackingNumber();
                 GetLabelHistory();
             }
             catch (WebException Exception)
@@ -1805,9 +1807,12 @@ namespace ShipEngine_UI
                             {
                                 TextBoxes.Text = TextBoxes.Text.Replace("    ", "");
                             }
+
+                            
                         }
                     }
                 }
+
             }
             catch (Exception HTTPexception)
             {
@@ -2141,6 +2146,7 @@ namespace ShipEngine_UI
                 }
 
                 label_history_listbox.Items.Clear();
+                GetCurrentTrackingNumber();
                 GetLabelHistory();
 
                 //CLOSE STREAM
@@ -2308,6 +2314,7 @@ namespace ShipEngine_UI
             shipTogroupBox.Visible = false;
             advanced_options_groupBox.Visible = true;
 
+
         }
 
         private void shipFromgroupBox_Click(object sender, EventArgs e)
@@ -2316,12 +2323,14 @@ namespace ShipEngine_UI
             shipFromgroupBox.Visible = false;
             advanced_options_groupBox1.Visible = true;
 
+
         }
 
         private void advanced_options_groupBox1_Click(object sender, EventArgs e)
         {
 
             shipFromgroupBox.Visible = true;
+
             advanced_options_groupBox1.Visible = false;
 
         }
@@ -2408,11 +2417,13 @@ namespace ShipEngine_UI
                             for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
                             {
 
-
+                                
 
                             }
                         }
                     }
+
+                    GetCurrentTrackingNumber();
                 }
                 catch (Exception HTTPexception)
                 {
@@ -2436,5 +2447,39 @@ namespace ShipEngine_UI
         {
             manifest_label_id_richTextBox.Text = string.Empty;
         }
+
+        public void GetCurrentTrackingNumber()
+        {
+            string input = label_RichTextBox.Text;
+
+            using (var reader = new StringReader(input))
+            {
+
+                for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                {
+
+                    if (currentLine.Contains("tracking_number") == true)
+                    {
+
+                        string tracking_number1 = currentLine.Replace("\"tracking_number\": \"", "");
+                        string tracking_number = tracking_number1.Replace("\",", "");
+
+                        ShipEngineUI.Tracking_number = tracking_number.Trim();
+
+                        tracking_number_textBox.Text = "Tracking Number: " + ShipEngineUI.Tracking_number;
+
+                    }
+
+                }
+            }
+        }
+
+        private void label_RichTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+            GetCurrentTrackingNumber();
+
+        }
+
     }
 }
