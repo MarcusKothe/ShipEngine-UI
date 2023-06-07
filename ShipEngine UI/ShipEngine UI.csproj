@@ -110,6 +110,7 @@
     <Compile Include="apiKeyPrompt.Designer.cs">
       <DependentUpon>apiKeyPrompt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Classes\Sales_Order_Object.cs" />
     <Compile Include="Resources\Classes\ShipEngineUI.cs" />
     <Compile Include="shippingForm.cs">
       <SubType>Form</SubType>
