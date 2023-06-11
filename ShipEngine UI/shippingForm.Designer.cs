@@ -178,19 +178,20 @@
             this.label_Tab_Control = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.label25 = new System.Windows.Forms.Label();
-            this.manifest_textBox = new System.Windows.Forms.TextBox();
-            this.label57 = new System.Windows.Forms.Label();
-            this.add_funds_groupBox = new System.Windows.Forms.GroupBox();
-            this.label58 = new System.Windows.Forms.Label();
-            this.label59 = new System.Windows.Forms.Label();
-            this.current_balance_label = new System.Windows.Forms.Label();
-            this.label60 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label61 = new System.Windows.Forms.Label();
-            this.label62 = new System.Windows.Forms.Label();
-            this.label63 = new System.Windows.Forms.Label();
             this.tracking_number_textBox = new System.Windows.Forms.TextBox();
+            this.add_funds_groupBox = new System.Windows.Forms.GroupBox();
+            this.label63 = new System.Windows.Forms.Label();
+            this.label62 = new System.Windows.Forms.Label();
+            this.label61 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label60 = new System.Windows.Forms.Label();
+            this.current_balance_label = new System.Windows.Forms.Label();
+            this.label59 = new System.Windows.Forms.Label();
+            this.label58 = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
+            this.manifest_textBox = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.carrier_balance_richTextBox = new System.Windows.Forms.RichTextBox();
             this.shipFromgroupBox.SuspendLayout();
             this.shipTogroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.labelImageBox)).BeginInit();
@@ -2067,7 +2068,7 @@
             this.groupBox1.Size = new System.Drawing.Size(308, 175);
             this.groupBox1.TabIndex = 98;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Configure Shipment";
+            this.groupBox1.Text = "Configure Package";
             // 
             // label56
             // 
@@ -2176,31 +2177,15 @@
             this.tabPage4.Text = "Label History";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // label25
+            // tracking_number_textBox
             // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(6, 305);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(358, 13);
-            this.label25.TabIndex = 105;
-            this.label25.Text = "Labels Selected to Manifest - Please select \"Completed\" labels above.";
-            // 
-            // manifest_textBox
-            // 
-            this.manifest_textBox.Location = new System.Drawing.Point(6, 455);
-            this.manifest_textBox.Name = "manifest_textBox";
-            this.manifest_textBox.ReadOnly = true;
-            this.manifest_textBox.Size = new System.Drawing.Size(439, 21);
-            this.manifest_textBox.TabIndex = 108;
-            // 
-            // label57
-            // 
-            this.label57.AutoSize = true;
-            this.label57.Location = new System.Drawing.Point(164, 439);
-            this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(125, 13);
-            this.label57.TabIndex = 109;
-            this.label57.Text = "Manifest download URL";
+            this.tracking_number_textBox.Location = new System.Drawing.Point(6, 277);
+            this.tracking_number_textBox.Name = "tracking_number_textBox";
+            this.tracking_number_textBox.ReadOnly = true;
+            this.tracking_number_textBox.Size = new System.Drawing.Size(439, 21);
+            this.tracking_number_textBox.TabIndex = 111;
+            this.tracking_number_textBox.Text = " Tracking Number";
+            this.tracking_number_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // add_funds_groupBox
             // 
@@ -2221,58 +2206,14 @@
             this.add_funds_groupBox.Text = "Add Funds";
             this.add_funds_groupBox.Visible = false;
             // 
-            // label58
+            // label63
             // 
-            this.label58.AutoSize = true;
-            this.label58.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label58.Location = new System.Drawing.Point(6, 17);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(120, 15);
-            this.label58.TabIndex = 0;
-            this.label58.Text = "One-Time Purchase";
-            // 
-            // label59
-            // 
-            this.label59.AutoSize = true;
-            this.label59.Location = new System.Drawing.Point(6, 51);
-            this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(90, 13);
-            this.label59.TabIndex = 1;
-            this.label59.Text = "Current Balance:";
-            // 
-            // current_balance_label
-            // 
-            this.current_balance_label.AutoSize = true;
-            this.current_balance_label.Location = new System.Drawing.Point(102, 51);
-            this.current_balance_label.Name = "current_balance_label";
-            this.current_balance_label.Size = new System.Drawing.Size(110, 13);
-            this.current_balance_label.TabIndex = 2;
-            this.current_balance_label.Text = "currentBalanceLabel";
-            // 
-            // label60
-            // 
-            this.label60.AutoSize = true;
-            this.label60.Location = new System.Drawing.Point(6, 89);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(49, 13);
-            this.label60.TabIndex = 3;
-            this.label60.Text = "Amount:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(105, 86);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(158, 21);
-            this.textBox1.TabIndex = 4;
-            // 
-            // label61
-            // 
-            this.label61.AutoSize = true;
-            this.label61.Location = new System.Drawing.Point(102, 110);
-            this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(168, 13);
-            this.label61.TabIndex = 5;
-            this.label61.Text = "Minimum Purchase $10.00 USD ";
+            this.label63.AutoSize = true;
+            this.label63.Location = new System.Drawing.Point(109, 141);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(43, 13);
+            this.label63.TabIndex = 7;
+            this.label63.Text = "label63";
             // 
             // label62
             // 
@@ -2283,30 +2224,99 @@
             this.label62.TabIndex = 6;
             this.label62.Text = "Resulting Balance:";
             // 
-            // label63
+            // label61
             // 
-            this.label63.AutoSize = true;
-            this.label63.Location = new System.Drawing.Point(109, 141);
-            this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(43, 13);
-            this.label63.TabIndex = 7;
-            this.label63.Text = "label63";
+            this.label61.AutoSize = true;
+            this.label61.Location = new System.Drawing.Point(102, 110);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(168, 13);
+            this.label61.TabIndex = 5;
+            this.label61.Text = "Minimum Purchase $10.00 USD ";
             // 
-            // tracking_number_textBox
+            // textBox1
             // 
-            this.tracking_number_textBox.Location = new System.Drawing.Point(6, 277);
-            this.tracking_number_textBox.Name = "tracking_number_textBox";
-            this.tracking_number_textBox.ReadOnly = true;
-            this.tracking_number_textBox.Size = new System.Drawing.Size(439, 21);
-            this.tracking_number_textBox.TabIndex = 111;
-            this.tracking_number_textBox.Text = " Tracking Number";
-            this.tracking_number_textBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox1.Location = new System.Drawing.Point(105, 86);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(158, 21);
+            this.textBox1.TabIndex = 4;
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Location = new System.Drawing.Point(6, 89);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(49, 13);
+            this.label60.TabIndex = 3;
+            this.label60.Text = "Amount:";
+            // 
+            // current_balance_label
+            // 
+            this.current_balance_label.AutoSize = true;
+            this.current_balance_label.Location = new System.Drawing.Point(102, 51);
+            this.current_balance_label.Name = "current_balance_label";
+            this.current_balance_label.Size = new System.Drawing.Size(110, 13);
+            this.current_balance_label.TabIndex = 2;
+            this.current_balance_label.Text = "currentBalanceLabel";
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Location = new System.Drawing.Point(6, 51);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(90, 13);
+            this.label59.TabIndex = 1;
+            this.label59.Text = "Current Balance:";
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label58.Location = new System.Drawing.Point(6, 17);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(120, 15);
+            this.label58.TabIndex = 0;
+            this.label58.Text = "One-Time Purchase";
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(170, 439);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(125, 13);
+            this.label57.TabIndex = 109;
+            this.label57.Text = "Manifest download URL";
+            // 
+            // manifest_textBox
+            // 
+            this.manifest_textBox.Location = new System.Drawing.Point(6, 455);
+            this.manifest_textBox.Name = "manifest_textBox";
+            this.manifest_textBox.ReadOnly = true;
+            this.manifest_textBox.Size = new System.Drawing.Size(439, 21);
+            this.manifest_textBox.TabIndex = 108;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(6, 305);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(358, 13);
+            this.label25.TabIndex = 105;
+            this.label25.Text = "Labels Selected to Manifest - Please select \"Completed\" labels above.";
+            // 
+            // carrier_balance_richTextBox
+            // 
+            this.carrier_balance_richTextBox.Location = new System.Drawing.Point(1353, 542);
+            this.carrier_balance_richTextBox.Name = "carrier_balance_richTextBox";
+            this.carrier_balance_richTextBox.Size = new System.Drawing.Size(100, 100);
+            this.carrier_balance_richTextBox.TabIndex = 106;
+            this.carrier_balance_richTextBox.Text = "";
             // 
             // shippingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1105, 759);
+            this.Controls.Add(this.carrier_balance_richTextBox);
             this.Controls.Add(this.rate_response_RichTextBox);
             this.Controls.Add(this.label_Tab_Control);
             this.Controls.Add(this.create_manifest_richTextBox);
@@ -2536,6 +2546,7 @@
         private System.Windows.Forms.Label label59;
         private System.Windows.Forms.Label label58;
         private System.Windows.Forms.TextBox tracking_number_textBox;
+        private System.Windows.Forms.RichTextBox carrier_balance_richTextBox;
     }
 }
 

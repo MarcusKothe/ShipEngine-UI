@@ -349,9 +349,10 @@ namespace ShipEngine_UI
 
                 //URL SOURCE
                 string URLstring = "https://api.shipengine.com/v1/labels?created_at_start=" + todaysDate + "&page_size=100";
+                ShipEngineUI.get_label_URL = URLstring;
 
                 //REQUEST
-                WebRequest requestObject = WebRequest.Create(URLstring);
+                WebRequest requestObject = WebRequest.Create(ShipEngineUI.get_label_URL);
                 requestObject.Method = "GET";
 
                 //SE AUTH
@@ -434,6 +435,17 @@ namespace ShipEngine_UI
                                 currentLine.Replace(currentLine, "");
                             }
 
+                            if (currentLine.Contains("\"total\": 543"))
+                            {
+
+                                ShipEngineUI.get_label_URL = ShipEngineUI.get_label_URL + "&page=2";
+
+                            }
+                            else
+                            {
+                                currentLine.Replace(currentLine, "");
+                            }
+
                         }
 
                         //PARSE AND ADD LABELS
@@ -470,6 +482,63 @@ namespace ShipEngine_UI
 
             }
 
+        }
+
+        public void GetCarrierBalance()
+        {
+            //GET CARRIER ACCOUNTS
+            try
+            {
+                //URL SOURCE
+                ShipEngineUI.urlString = "https://api.shipengine.com/v1/carriers";
+
+                //REQUEST
+                WebRequest requestObject = WebRequest.Create(ShipEngineUI.urlString);
+                requestObject.Method = "GET";
+
+                //ADD API KEY TO HEADER
+                requestObject.Headers.Add("API-key", ShipEngineUI.apiKey);
+
+                //RESPONSE
+                HttpWebResponse responseObjectGet = null;
+                responseObjectGet = (HttpWebResponse)requestObject.GetResponse();
+                string streamResponse = null;
+
+                using (Stream stream = responseObjectGet.GetResponseStream())
+                {
+                    StreamReader responseRead = new StreamReader(stream);
+                    streamResponse = responseRead.ReadToEnd();
+
+                    using (var reader = new StringReader(streamResponse))
+                    {
+
+                        for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                        {
+
+                            if (currentLine.Contains("balance") == true)
+                            {
+
+                                string carrier_balance1 = currentLine.Replace(" \"balance\": \"", "");
+                                string carrier_balance = carrier_balance1.Replace("\",", "");
+
+                                //add to textbox
+                                carrier_balance_richTextBox.Text = carrier_balance_richTextBox.Text.Trim() + "," + Environment.NewLine + carrier_balance.Trim() + "|";
+
+                            }
+                            else
+                            {
+                                currentLine.Replace(currentLine, "");
+                            }
+                        }
+
+                      //
+                    }
+                }
+            }
+            catch (Exception HTTPexception)
+            {
+
+            }
         }
         
         //Fixes UPS Having two label download objects
@@ -1586,8 +1655,10 @@ namespace ShipEngine_UI
                         }
                     }
                 }
+            }catch (Exception Exception)
+            {
+                MessageBox.Show(Exception.Message);
             }
-
         }
 
         void LabelImage(object o, PrintPageEventArgs e)
@@ -2053,7 +2124,6 @@ namespace ShipEngine_UI
                     }
                 }
 
-
                 // GET LABEL IMAGE
                 //LABEL_DOWNLOAD OBJECT
                 int labelDownloadOBJ1 = responseBodyText.IndexOf("\"label_download\"") + "\"label_download\"".Length;
@@ -2203,6 +2273,7 @@ namespace ShipEngine_UI
 
         private void void_label_id_Button_Click(object sender, EventArgs e)
         {
+           
 
             string label_id_entered = void_label_id_TextBox.Text;
 
@@ -2211,6 +2282,8 @@ namespace ShipEngine_UI
                 string label_id = void_label_id_TextBox.Text;
 
                 DialogResult dialogResult = MessageBox.Show("Are you sure you would like to void " + label_id + "?", "VOID LABEL", MessageBoxButtons.YesNo);
+
+                manifest_label_id_richTextBox.Text = manifest_label_id_richTextBox.Text.Replace("\"" + void_label_id_TextBox.Text + "\",", "");
 
                     if (dialogResult == DialogResult.Yes)
                     {
@@ -2353,6 +2426,7 @@ namespace ShipEngine_UI
 
             try
             {
+
                 //GET SELECTED LabelID ID
                 string label_id1 = label_history_listbox.SelectedItem.ToString();
                 label_id1 = label_id1.Remove(label_id1.IndexOf("|") + 1);
@@ -2434,6 +2508,7 @@ namespace ShipEngine_UI
             {
 
             }
+
         }
             
         private void create_manifest_button_Click(object sender, EventArgs e)

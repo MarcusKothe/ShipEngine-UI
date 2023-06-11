@@ -19,6 +19,10 @@ namespace ShipEngine_UI
 
         public static string create_label_error = "";
 
+        //SHIPENGINE GET LABEL URL
+
+        public static string get_label_URL = "";
+
         //MANIFEST
         public static string manifest_pdf_url = "";
 
