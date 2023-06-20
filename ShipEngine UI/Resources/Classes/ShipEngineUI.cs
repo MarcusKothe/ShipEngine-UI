@@ -19,6 +19,10 @@ namespace ShipEngine_UI
 
         public static string create_label_error = "";
 
+        //Numbers
+
+        public static string[] Numbers = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "."};
+
         //SHIPENGINE GET LABEL URL
 
         public static string get_label_URL = "";

@@ -192,6 +192,7 @@
             this.manifest_textBox = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.carrier_balance_richTextBox = new System.Windows.Forms.RichTextBox();
+            this.rate_RichTextBox = new System.Windows.Forms.RichTextBox();
             this.shipFromgroupBox.SuspendLayout();
             this.shipTogroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.labelImageBox)).BeginInit();
@@ -913,7 +914,7 @@
             // 
             // rate_response_RichTextBox
             // 
-            this.rate_response_RichTextBox.Location = new System.Drawing.Point(326, 396);
+            this.rate_response_RichTextBox.Location = new System.Drawing.Point(326, 397);
             this.rate_response_RichTextBox.Name = "rate_response_RichTextBox";
             this.rate_response_RichTextBox.ReadOnly = true;
             this.rate_response_RichTextBox.Size = new System.Drawing.Size(308, 328);
@@ -2311,11 +2312,21 @@
             this.carrier_balance_richTextBox.TabIndex = 106;
             this.carrier_balance_richTextBox.Text = "";
             // 
+            // rate_RichTextBox
+            // 
+            this.rate_RichTextBox.Location = new System.Drawing.Point(1196, 103);
+            this.rate_RichTextBox.Name = "rate_RichTextBox";
+            this.rate_RichTextBox.ReadOnly = true;
+            this.rate_RichTextBox.Size = new System.Drawing.Size(308, 328);
+            this.rate_RichTextBox.TabIndex = 108;
+            this.rate_RichTextBox.Text = "";
+            // 
             // shippingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1105, 759);
+            this.Controls.Add(this.rate_RichTextBox);
             this.Controls.Add(this.carrier_balance_richTextBox);
             this.Controls.Add(this.rate_response_RichTextBox);
             this.Controls.Add(this.label_Tab_Control);
@@ -2547,6 +2558,7 @@
         private System.Windows.Forms.Label label58;
         private System.Windows.Forms.TextBox tracking_number_textBox;
         private System.Windows.Forms.RichTextBox carrier_balance_richTextBox;
+        private System.Windows.Forms.RichTextBox rate_RichTextBox;
     }
 }
 

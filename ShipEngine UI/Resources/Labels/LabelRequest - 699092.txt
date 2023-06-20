@@ -1,0 +1,101 @@
+{
+    "rate_options": {
+        "carrier_ids": [
+            "se-4279153"
+        ]
+    },
+    "shipment": {
+        "validate_address": "no_validation",
+        "carrier_id": "se-4279153",
+        "warehouse_id": "",
+        "service_code": "usps_priority_mail",
+        "external_order_id": null,
+        "ship_date": "6/19/2023 8:12:47 AM",
+        "is_return_label": false,
+        "items": [],
+        "ship_to": {
+            "name": "Dade Murphy",
+            "phone": "512-485-4282",
+            "company_name": "Zero Cool",
+            "address_line1": "345 Chambers Street",
+            "address_line2": " ",
+            "address_line3": " ",
+            "city_locality": "New York City",
+            "state_province": "NY",
+            "postal_code": "10282",
+            "country_code": "US",
+            "address_residential_indicator": "No"
+        },
+        "ship_from": {
+            "name": "Dade Murphy",
+            "phone": "512-485-4282",
+            "company_name": "Zero Cool",
+            "address_line1": "345 Chambers Street",
+            "address_line2": "Suite 100",
+            "address_line3": " ",
+            "city_locality": "New York City",
+            "state_province": "NY",
+            "postal_code": "10282",
+            "country_code": "US",
+            "address_residential_indicator": "No"
+        },
+        "confirmation": "none",
+        "advanced_options": {
+            "bill_to_account": "",
+            "bill_to_country_code": "",
+            "bill_to_party": null,
+            "bill_to_postal_code": "",
+            "canada_delivered_duty": null,
+            "contains_alcohol": "false",
+            "delivered_duty_paid": "false",
+            "non_machinable": "false",
+            "saturday_delivery": "false",
+            "third-party-consignee": "false",
+            "ancillary_endorsements_option": null,
+            "freight_class": null,
+            "custom_field_1": "",
+            "custom_field_2": "",
+            "custom_field_3": "",
+            "return_pickup_attempts": null,
+            "dry_ice": "false",
+            "dry_ice_weight": {
+                "value": "0",
+                "unit": "pound"
+            },
+            "collect_on_delivery": {
+                "payment_type": "none",
+                "payment_amount": {
+                    "currency": "usd",
+                    "amount": "0.00"
+                }
+            }
+        },
+        "origin_type": null,
+        "insurance_provider": "none",
+        "packages": [
+            {
+                "package_code": "package",
+                "weight": {
+                    "value": 1,
+                    "unit": "pound"
+                },
+                "dimensions": {
+                    "unit": "inch",
+                    "length": 1,
+                    "width": 1,
+                    "height": 1
+                },
+                "insured_value": {
+                    "currency": "USD",
+                    "amount": 0
+                },
+                "label_messages": {
+                    "reference1": null,
+                    "reference2": null,
+                    "reference3": null
+                },
+                "external_package_id": "699092"
+            }
+        ]
+    }
+}

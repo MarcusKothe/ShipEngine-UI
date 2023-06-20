@@ -374,7 +374,7 @@ namespace ShipEngine_UI
 
                         for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
                         {
-                           
+
                             if (currentLine.Contains("label_id") == true)
                             {
 
@@ -457,7 +457,7 @@ namespace ShipEngine_UI
                                 continue;
 
                             label_history_listbox.Items.Add(label_id.Trim());
-                            
+
                         }
 
                         if (label_history_listbox.Items.Count == 0)
@@ -466,7 +466,7 @@ namespace ShipEngine_UI
                             create_manifest_button.Enabled = false;
                             label_history_listbox.Items.Add("ShipEngine found no label history for today.");
                         }
-                        else if(label_history_listbox.Items.Count != 0)
+                        else if (label_history_listbox.Items.Count != 0)
                         {
                             label_history_listbox.Enabled = true;
                             create_manifest_button.Enabled = true;
@@ -531,7 +531,7 @@ namespace ShipEngine_UI
                             }
                         }
 
-                      //
+                        //
                     }
                 }
             }
@@ -540,7 +540,7 @@ namespace ShipEngine_UI
 
             }
         }
-        
+
         //Fixes UPS Having two label download objects
         private void RemoveURL(ListBox listBox, string input_string)
         {
@@ -595,7 +595,7 @@ namespace ShipEngine_UI
 
                 //Documents path REQUEST LOG
                 string create_manifest_docPath = @"..\..\Resources\Logs";
-                File.WriteAllText(Path.Combine(create_manifest_docPath, "CreateManifestRequest - " + Manifest_log + ".txt"), create_manifest_requestBody);
+                //File.WriteAllText(Path.Combine(create_manifest_docPath, "CreateManifestRequest - " + Manifest_log + ".txt"), create_manifest_requestBody);
 
                 create_manifest_stream.Write(create_manifest_data, 0, create_manifest_data.Length);
                 create_manifest_stream.Close();
@@ -664,7 +664,7 @@ namespace ShipEngine_UI
             package_code_RichTextBox.Clear();
             service_code_ComboBox.Items.Clear();
             package_code_ComboBox.Items.Clear();
-                    
+
             //GET CARRIER ID
             string carrier_id1 = carrier_id_ComboBox.SelectedItem.ToString();
             carrier_id1 = carrier_id1.Remove(carrier_id1.IndexOf("|") + 1);
@@ -734,7 +734,7 @@ namespace ShipEngine_UI
 
                             service_code_ComboBox.Items.Add(service_code.Trim());
                         }
-                        
+
                         service_code_ComboBox.SelectedIndex = 0;
                     }
                 }
@@ -831,7 +831,7 @@ namespace ShipEngine_UI
 
                 //REQUEST
                 WebRequest requestObject = WebRequest.Create(URLstring);
-                requestObject.Method = "GET";;
+                requestObject.Method = "GET"; ;
 
                 //SE AUTH
                 requestObject.Headers.Add("API-key", ShipEngineUI.apiKey);
@@ -1242,7 +1242,7 @@ namespace ShipEngine_UI
 
                 //Documents path REQUEST LOG
                 string docPath = @"..\..\Resources\Logs";
-                File.WriteAllText(Path.Combine(docPath, "RateRequest - " + rateLogId + ".txt"), rateRequestBody);
+                //File.WriteAllText(Path.Combine(docPath, "RateRequest - " + rateLogId + ".txt"), rateRequestBody);
 
 
                 WebResponse requestResponse = request.GetResponse();
@@ -1252,7 +1252,7 @@ namespace ShipEngine_UI
                 rate_response_RichTextBox.Text = parseResponse.ReadToEnd();
 
                 string responseBodyText = rate_response_RichTextBox.Text;
-                File.WriteAllText(Path.Combine(docPath, "RateResponse - " + rateLogId + ".txt"), responseBodyText);
+                //File.WriteAllText(Path.Combine(docPath, "RateResponse - " + rateLogId + ".txt"), responseBodyText);
 
                 stream.Close();
 
@@ -1276,10 +1276,10 @@ namespace ShipEngine_UI
                         {
                             currentLine.Replace(currentLine, "");
                         }
-                        
+
                         if (currentLine.Contains("\"package_type\"") == true)
                         {
-                            
+
                             ratesResponse += Environment.NewLine + currentLine + Environment.NewLine;
 
                         }
@@ -1339,7 +1339,7 @@ namespace ShipEngine_UI
                     }
                 }
             }
-            catch(Exception exeption)
+            catch (Exception exeption)
             {
                 MessageBox.Show(exeption.ToString());
             }
@@ -1416,7 +1416,7 @@ namespace ShipEngine_UI
                 ShipEngineUI.advanced_options_bill_to_party = bill_to_party_comboBox.SelectedItem.ToString();
                 ShipEngineUI.advanced_options_bill_to_postal_code = bill_to_postal_code_textBox.Text;
 
-                ShipEngineUI.advanced_options_contains_alcohol  = contains_alcohol_comboBox.SelectedItem.ToString();
+                ShipEngineUI.advanced_options_contains_alcohol = contains_alcohol_comboBox.SelectedItem.ToString();
                 ShipEngineUI.advanced_options_delivered_duty_paid = delivered_duty_paid_comboBox.SelectedItem.ToString();
 
                 ShipEngineUI.advanced_options_dry_ice = dry_ice_comboBox.SelectedItem.ToString();
@@ -1498,7 +1498,7 @@ namespace ShipEngine_UI
                     "\r\n            \"delivered_duty_paid\": \"" + ShipEngineUI.advanced_options_delivered_duty_paid + "\"," +
                     "\r\n            \"non_machinable\": \"" + ShipEngineUI.advanced_options_non_machinable + "\"," +
                     "\r\n            \"saturday_delivery\": \"" + ShipEngineUI.advanced_options_saturday_delivery + "\"," +
-                    "\r\n            \"third-party-consignee\": \"" +  ShipEngineUI.advanced_options_third_party_consignee + "\"," +
+                    "\r\n            \"third-party-consignee\": \"" + ShipEngineUI.advanced_options_third_party_consignee + "\"," +
                     "\r\n            \"ancillary_endorsements_option\": null," +
                     "\r\n            \"freight_class\": null," +
                     "\r\n            \"custom_field_1\": \"" + ShipEngineUI.advanced_options_custom_field1 + "\"," +
@@ -1559,7 +1559,7 @@ namespace ShipEngine_UI
 
                 //Documents path REQUEST LOG
                 string docPath = @"..\..\Resources\Labels";
-                File.WriteAllText(Path.Combine(docPath, "LabelRequest - " + labelLogId + ".txt"), createLabelrequestBody);
+                //File.WriteAllText(Path.Combine(docPath, "LabelRequest - " + labelLogId + ".txt"), createLabelrequestBody);
 
                 stream.Write(data, 0, data.Length);
                 stream.Close();
@@ -1573,28 +1573,28 @@ namespace ShipEngine_UI
                 string responseBodyText = label_RichTextBox.Text;
 
                 //Documents path RESPONSE LOG
-                File.WriteAllText(Path.Combine(docPath, "LabelResponse - " + labelLogId + ".txt"), responseBodyText);
+                //File.WriteAllText(Path.Combine(docPath, "LabelResponse - " + labelLogId + ".txt"), responseBodyText);
 
                 //GET LABELID
                 using (var reader = new StringReader(responseBodyText))
+                {
+
+                    for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
                     {
 
-                        for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                        if (currentLine.Contains("label_id") == true)
                         {
 
-                            if (currentLine.Contains("label_id") == true)
-                            {
+                            string label_id1 = currentLine.Replace("\"label_id\": \"", "");
+                            string label_id = label_id1.Replace("\",", "");
 
-                                string label_id1 = currentLine.Replace("\"label_id\": \"", "");
-                                string label_id = label_id1.Replace("\",", "");
+                            //DECLARE VARIABLE
+                            ShipEngineUI.label_id = label_id.Trim();
 
-                                //DECLARE VARIABLE
-                                ShipEngineUI.label_id = label_id.Trim();
-
-                            }
-                        }  
+                        }
                     }
-                
+                }
+
                 // GET LABEL IMAGE
                 //LABEL_DOWNLOAD OBJECT
                 int labelDownloadOBJ1 = responseBodyText.IndexOf("\"label_download\"") + "\"label_download\"".Length;
@@ -1613,7 +1613,7 @@ namespace ShipEngine_UI
                 //Save image in logging
                 using (WebClient client = new WebClient())
                 {
-                    client.DownloadFileAsync(new Uri(imgURL3 + ".png"), @"..\..\Resources\Labels\Label-" + labelLogId + ".png");
+                    //client.DownloadFileAsync(new Uri(imgURL3 + ".png"), @"..\..\Resources\Labels\Label-" + labelLogId + ".png");
                 }
 
                 labelImageBox.Load(imgURL3 + ".png");
@@ -1655,7 +1655,8 @@ namespace ShipEngine_UI
                         }
                     }
                 }
-            }catch (Exception Exception)
+            }
+            catch (Exception Exception)
             {
                 MessageBox.Show(Exception.Message);
             }
@@ -1699,7 +1700,7 @@ namespace ShipEngine_UI
                 string sales_order_id1 = sales_order_ListBox.SelectedItem.ToString();
                 sales_order_id1 = sales_order_id1.Remove(sales_order_id1.IndexOf("|") + 1);
                 string sales_order_id = sales_order_id1.Replace("|", "");
-                
+
                 //URL SOURCE
                 string URLstring = "https://api.shipengine.com/v-beta/sales_orders/" + sales_order_id;
 
@@ -1736,7 +1737,7 @@ namespace ShipEngine_UI
                             if (currentLine.Contains(" \"name\": \"") == true)
                             {
 
-                                
+
                                 string sales_order_Name1 = currentLine.Replace("\"name\": \"", "");
                                 string sales_order_Name = sales_order_Name1.Replace("\",", "");
 
@@ -1749,7 +1750,7 @@ namespace ShipEngine_UI
                             //PHONE
                             if (currentLine.Contains("\"phone\": \"") == true)
                             {
-                                
+
                                 string sales_order_Phone1 = currentLine.Replace("\"phone\": \"", "");
                                 string sales_order_Phone = sales_order_Phone1.Replace("\",", "");
 
@@ -1761,7 +1762,7 @@ namespace ShipEngine_UI
                             //Company
                             if (currentLine.Contains("\"company_name\": \"") == true)
                             {
-                                
+
                                 string sales_order_CompanyName1 = currentLine.Replace("\"company_name\": \"", "");
                                 string sales_order_CompanyName = sales_order_CompanyName1.Replace("\",", "");
 
@@ -1773,7 +1774,7 @@ namespace ShipEngine_UI
                             //AddressLine 1
                             if (currentLine.Contains("\"address_line1\": \"") == true)
                             {
-                                
+
                                 string sales_order_AddressL1 = currentLine.Replace("\"address_line1\": \"", "");
                                 string sales_order_AddressL = sales_order_AddressL1.Replace("\",", "");
 
@@ -1785,7 +1786,7 @@ namespace ShipEngine_UI
                             //AddressLine 2
                             if (currentLine.Contains("\"address_line2\": \"") == true)
                             {
-                                
+
                                 string sales_order_AddressL2 = currentLine.Replace("\"address_line2\": \"", "");
                                 string sales_order_AddressL3 = sales_order_AddressL2.Replace("\",", "");
 
@@ -1798,7 +1799,7 @@ namespace ShipEngine_UI
                             //AddressLine 3
                             if (currentLine.Contains("\"address_line3\": \"") == true)
                             {
-                                
+
                                 string sales_order_AddressL4 = currentLine.Replace("\"address_line3\": \"", "");
                                 string sales_order_AddressL5 = sales_order_AddressL4.Replace("\",", "");
 
@@ -1810,7 +1811,7 @@ namespace ShipEngine_UI
                             //City
                             if (currentLine.Contains("\"city_locality\": \"") == true)
                             {
-                                
+
                                 string sales_order_City1 = currentLine.Replace("\"city_locality\": \"", "");
                                 string sales_order_City = sales_order_City1.Replace("\",", "");
 
@@ -1822,7 +1823,7 @@ namespace ShipEngine_UI
                             //State Province
                             if (currentLine.Contains("\"state_province\": \"") == true)
                             {
-                                
+
                                 string sales_order_StateProvince1 = currentLine.Replace("\"state_province\": \"", "");
                                 string sales_order_StateProvince = sales_order_StateProvince1.Replace("\",", "");
 
@@ -1834,7 +1835,7 @@ namespace ShipEngine_UI
                             //Postal Code
                             if (currentLine.Contains("\"postal_code\": \"") == true)
                             {
-                                
+
                                 string sales_order_PostalCode1 = currentLine.Replace("\"postal_code\": \"", "");
                                 string sales_order_PostalCode = sales_order_PostalCode1.Replace("\",", "");
 
@@ -1846,7 +1847,7 @@ namespace ShipEngine_UI
                             //Country Code
                             if (currentLine.Contains("\"country_code\": \"") == true)
                             {
-                                
+
                                 string sales_order_CountryCode1 = currentLine.Replace("\"country_code\": \"", "");
                                 string sales_order_CountryCode = sales_order_CountryCode1.Replace("\",", "");
 
@@ -1879,7 +1880,7 @@ namespace ShipEngine_UI
                                 TextBoxes.Text = TextBoxes.Text.Replace("    ", "");
                             }
 
-                            
+
                         }
                     }
                 }
@@ -2079,7 +2080,7 @@ namespace ShipEngine_UI
 
                 //Documents path REQUEST LOG
                 string docPath = @"..\..\Resources\Labels";
-                File.WriteAllText(Path.Combine(docPath, "SalesOrderLabelRequest - " + sales_order_label_LogId + ".txt"), sales_order_LabelrequestBody);
+                //File.WriteAllText(Path.Combine(docPath, "SalesOrderLabelRequest - " + sales_order_label_LogId + ".txt"), sales_order_LabelrequestBody);
 
                 stream.Write(data, 0, data.Length);
                 stream.Close();
@@ -2091,7 +2092,7 @@ namespace ShipEngine_UI
                 sales_order_label_RichTextBox.Text = parseResponse.ReadToEnd();
                 string responseBodyText = sales_order_label_RichTextBox.Text;
 
-                File.WriteAllText(Path.Combine(docPath, "SalesOrderLabelResponse - " + sales_order_label_LogId + ".txt"), responseBodyText);
+                //File.WriteAllText(Path.Combine(docPath, "SalesOrderLabelResponse - " + sales_order_label_LogId + ".txt"), responseBodyText);
 
                 using (var reader = new StringReader(responseBodyText))
                 {
@@ -2142,7 +2143,7 @@ namespace ShipEngine_UI
                 //Save image in logging
                 using (WebClient client = new WebClient())
                 {
-                    client.DownloadFileAsync(new Uri(imgURL3 + ".png"), @"..\..\Resources\Labels\Label-" + sales_order_label_LogId + ".png");
+                    //client.DownloadFileAsync(new Uri(imgURL3 + ".png"), @"..\..\Resources\Labels\Label-" + sales_order_label_LogId + ".png");
                 }
 
                 label_RichTextBox.Text = sales_order_label_RichTextBox.Text;
@@ -2176,14 +2177,14 @@ namespace ShipEngine_UI
 
                         //Documents path REQUEST LOG
                         string notify_shipped_docPath = @"..\..\Resources\Logs";
-                        File.WriteAllText(Path.Combine(notify_shipped_docPath, "SalesOrderNotifyRequest - " + sales_order_label_LogId + ".txt"), notify_shipped_requestBody);
+                        //File.WriteAllText(Path.Combine(notify_shipped_docPath, "SalesOrderNotifyRequest - " + sales_order_label_LogId + ".txt"), notify_shipped_requestBody);
 
                         notify_shipped_stream.Write(notify_shipped_data, 0, notify_shipped_data.Length);
                         notify_shipped_stream.Close();
 
                         WebResponse notify_shipped_requestResponse = notify_shipped_request.GetResponse();
                         notify_shipped_stream = notify_shipped_requestResponse.GetResponseStream();
-                      
+
                     }
                     catch (WebException Exception)
                     {
@@ -2273,7 +2274,7 @@ namespace ShipEngine_UI
 
         private void void_label_id_Button_Click(object sender, EventArgs e)
         {
-           
+
 
             string label_id_entered = void_label_id_TextBox.Text;
 
@@ -2285,88 +2286,88 @@ namespace ShipEngine_UI
 
                 manifest_label_id_richTextBox.Text = manifest_label_id_richTextBox.Text.Replace("\"" + void_label_id_TextBox.Text + "\",", "");
 
-                    if (dialogResult == DialogResult.Yes)
+                if (dialogResult == DialogResult.Yes)
+                {
+                    try
                     {
-                        try
+
+                        //URI - POST
+                        WebRequest request = WebRequest.Create("https://api.shipengine.com/v1/labels/" + label_id.Trim() + "/void");
+                        request.Method = "PUT";
+
+                        //API Key
+                        request.Headers.Add("API-key", ShipEngineUI.apiKey);
+
+                        Stream stream = request.GetRequestStream();
+
+                        stream.Close();
+
+                        WebResponse requestResponse = request.GetResponse();
+                        stream = requestResponse.GetResponseStream();
+
+                        StreamReader parseResponse = new StreamReader(stream);
+                        void_label_id_RichTextBox.Text = parseResponse.ReadToEnd();
+                        string responseBodyText = void_label_id_RichTextBox.Text;
+
+                        //RESPONSE
+                        HttpWebResponse responseObjectGet = null;
+                        responseObjectGet = (HttpWebResponse)request.GetResponse();
+                        string streamResponse = null;
+
+                        //Get variables to declare globally
+                        using (Stream labelStream = responseObjectGet.GetResponseStream())
                         {
+                            StreamReader responseRead = new StreamReader(stream);
+                            streamResponse = responseRead.ReadToEnd();
 
-                            //URI - POST
-                            WebRequest request = WebRequest.Create("https://api.shipengine.com/v1/labels/" + label_id.Trim() + "/void");
-                            request.Method = "PUT";
-
-                            //API Key
-                            request.Headers.Add("API-key", ShipEngineUI.apiKey);
-
-                            Stream stream = request.GetRequestStream();
-
-                            stream.Close();
-
-                            WebResponse requestResponse = request.GetResponse();
-                            stream = requestResponse.GetResponseStream();
-
-                            StreamReader parseResponse = new StreamReader(stream);
-                            void_label_id_RichTextBox.Text = parseResponse.ReadToEnd();
-                            string responseBodyText = void_label_id_RichTextBox.Text;
-
-                            //RESPONSE
-                            HttpWebResponse responseObjectGet = null;
-                            responseObjectGet = (HttpWebResponse)request.GetResponse();
-                            string streamResponse = null;
-
-                            //Get variables to declare globally
-                            using (Stream labelStream = responseObjectGet.GetResponseStream())
+                            using (var reader = new StringReader(responseBodyText))
                             {
-                                StreamReader responseRead = new StreamReader(stream);
-                                streamResponse = responseRead.ReadToEnd();
 
-                                using (var reader = new StringReader(responseBodyText))
+                                for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
                                 {
 
-                                    for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                                    if (currentLine.Contains("message") == true)
                                     {
 
-                                        if (currentLine.Contains("message") == true)
-                                        {
+                                        string void_label_id_Response1 = currentLine.Replace("\"message\": \"", "");
+                                        string void_label_id_Response = void_label_id_Response1.Replace("\"", "");
 
-                                            string void_label_id_Response1 = currentLine.Replace("\"message\": \"", "");
-                                            string void_label_id_Response = void_label_id_Response1.Replace("\"", "");
+                                        //DECLARE VARIABLE
+                                        ShipEngineUI.void_label_id_Response = void_label_id_Response.Trim();
 
-                                            //DECLARE VARIABLE
-                                            ShipEngineUI.void_label_id_Response = void_label_id_Response.Trim();
-
-                                        }
                                     }
                                 }
                             }
-
-                            MessageBox.Show(ShipEngineUI.void_label_id_Response, "VOID LABEL");
-                            
-                            //CLOSE STREAM
-                            parseResponse.Close();
-                            stream.Close();
-
-                            label_history_listbox.Items.Clear();
-                            GetLabelHistory();
-
-                    }
-                        catch(Exception void_label_id_response_Error)
-                        {
-
-                            MessageBox.Show(void_label_id_response_Error + Environment.NewLine + "This label could not be voided.");
-
                         }
 
-                    }
-                    else if (dialogResult == DialogResult.No)
-                    {
-                        
-                        void_label_id_TextBox.Text = string.Empty;
-                        MessageBox.Show("You canceled the void request.");
+                        MessageBox.Show(ShipEngineUI.void_label_id_Response, "VOID LABEL");
+
+                        //CLOSE STREAM
+                        parseResponse.Close();
+                        stream.Close();
+
+                        label_history_listbox.Items.Clear();
+                        GetLabelHistory();
 
                     }
+                    catch (Exception void_label_id_response_Error)
+                    {
+
+                        MessageBox.Show(void_label_id_response_Error + Environment.NewLine + "This label could not be voided.");
+
+                    }
+
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+
+                    void_label_id_TextBox.Text = string.Empty;
+                    MessageBox.Show("You canceled the void request.");
+
+                }
 
             }
-            catch(Exception voidlableexception)
+            catch (Exception voidlableexception)
             {
                 MessageBox.Show(voidlableexception.ToString());
             }
@@ -2412,7 +2413,7 @@ namespace ShipEngine_UI
         {
             for (int i = Application.OpenForms.Count - 1; i >= 0; i--)
             {
-                    Application.OpenForms[i].Close();
+                Application.OpenForms[i].Close();
             }
         }
 
@@ -2440,18 +2441,19 @@ namespace ShipEngine_UI
                 void_label_id_TextBox.Text = label_id.Trim();
                 labelImageBox.Load(label_url);
 
-                if (label_history_listbox.Text.Contains("completed")) { 
-                //Select labels to void
-                if (!manifest_label_id_richTextBox.Text.Contains(label_id.Trim()))
+                if (label_history_listbox.Text.Contains("completed"))
                 {
-                    manifest_label_id_richTextBox.Text += "\"" + label_id.Trim() + "\"" + ",";
-                }
-                else if (manifest_label_id_richTextBox.Text.Contains(label_id.Trim()))
-                {
-                    string currentSelection = "\"" + label_id.Trim() + "\",";
+                    //Select labels to void
+                    if (!manifest_label_id_richTextBox.Text.Contains(label_id.Trim()))
+                    {
+                        manifest_label_id_richTextBox.Text += "\"" + label_id.Trim() + "\"" + ",";
+                    }
+                    else if (manifest_label_id_richTextBox.Text.Contains(label_id.Trim()))
+                    {
+                        string currentSelection = "\"" + label_id.Trim() + "\",";
 
-                    manifest_label_id_richTextBox.Text = manifest_label_id_richTextBox.Text.Replace(currentSelection, "");
-                }
+                        manifest_label_id_richTextBox.Text = manifest_label_id_richTextBox.Text.Replace(currentSelection, "");
+                    }
                 }
                 else
                 {
@@ -2491,7 +2493,7 @@ namespace ShipEngine_UI
                             for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
                             {
 
-                                
+
 
                             }
                         }
@@ -2504,13 +2506,13 @@ namespace ShipEngine_UI
 
                 }
             }
-            catch(Exception HTTPexception)
+            catch (Exception HTTPexception)
             {
 
             }
 
         }
-            
+
         private void create_manifest_button_Click(object sender, EventArgs e)
         {
 
