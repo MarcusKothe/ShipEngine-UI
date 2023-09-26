@@ -110,6 +110,12 @@
     <Compile Include="apiKeyPrompt.Designer.cs">
       <DependentUpon>apiKeyPrompt.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewUI.Designer.cs">
+      <DependentUpon>NewUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Classes\Sales_Order_Object.cs" />
     <Compile Include="Resources\Classes\ShipEngineUI.cs" />
     <Compile Include="shippingForm.cs">
@@ -120,8 +126,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="shipping_Form_Original.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="shipping_Form_Original.Designer.cs">
+      <DependentUpon>shipping_Form_Original.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="apiKeyPrompt.resx">
       <DependentUpon>apiKeyPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewUI.resx">
+      <DependentUpon>NewUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="shippingForm.resx">
       <DependentUpon>shippingForm.cs</DependentUpon>
@@ -135,6 +150,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="shipping_Form_Original.resx">
+      <DependentUpon>shipping_Form_Original.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

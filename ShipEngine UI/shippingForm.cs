@@ -1028,6 +1028,7 @@ namespace ShipEngine_UI
         private void get_Rates_Button_Click(object sender, EventArgs e)
         {
             rate_response_RichTextBox.Clear();
+            label_Tab_Control.SelectedIndex = 2;
 
             try
             {
@@ -1350,7 +1351,7 @@ namespace ShipEngine_UI
 
             label_RichTextBox.Clear();
             void_label_id_TextBox.Text = string.Empty;
-
+            label_Tab_Control.SelectedIndex = 0;
             try
             {
                 string carrier_id1 = carrier_id_ComboBox.SelectedItem.ToString();
@@ -2384,7 +2385,7 @@ namespace ShipEngine_UI
 
         private void shipTogroupBox_Click(object sender, EventArgs e)
         {
-
+            
             shipTogroupBox.Visible = false;
             advanced_options_groupBox.Visible = true;
 
