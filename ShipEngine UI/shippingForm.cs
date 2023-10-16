@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlTypes;
 using System.Drawing;
+using System.Drawing.Design;
 using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
@@ -15,15 +16,18 @@ using System.Security.Policy;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace ShipEngine_UI
 {
-    public partial class shippingForm : Form
+    public partial class ShippingForm : Form
     {
-        public shippingForm()
+        
+        public ShippingForm()
         {
             InitializeComponent();
         }
@@ -63,6 +67,9 @@ namespace ShipEngine_UI
 
             //GET LABEL HISTORY
             GetLabelHistory();
+
+            //GET ONE BALANCE
+            GetCarrierBalance();
         }
 
         #region Form Load methods
@@ -346,9 +353,10 @@ namespace ShipEngine_UI
             try
             {
                 string todaysDate = DateTime.Today.ToString();
+                string last7Days  = DateTime.Today.AddDays(-7).ToString();
 
                 //URL SOURCE
-                string URLstring = "https://api.shipengine.com/v1/labels?created_at_start=" + todaysDate + "&page_size=100";
+                string URLstring = "https://api.shipengine.com/v1/labels?created_at_start=" + last7Days + "&created_at_end" + todaysDate + "&page_size=100";
                 ShipEngineUI.get_label_URL = URLstring;
 
                 //REQUEST
@@ -523,7 +531,7 @@ namespace ShipEngine_UI
 
                                 //add to textbox
                                 carrier_balance_richTextBox.Text = carrier_balance_richTextBox.Text.Trim() + "," + Environment.NewLine + carrier_balance.Trim() + "|";
-
+                                current_balance_label.Text = carrier_balance;
                             }
                             else
                             {
@@ -531,8 +539,124 @@ namespace ShipEngine_UI
                             }
                         }
 
-                        //
+                        
                     }
+                }
+            }
+            catch (Exception HTTPexception)
+            {
+
+            }
+        }
+
+        public void GetShipmentTracking()
+        {
+            //GET LABELS
+            try
+            {
+                string todaysDate = DateTime.Today.ToString();
+
+                //URL SOURCE
+                string URLstring = "https://api.shipengine.com/v1/tracking?carrier_code=" + "" + "&tracking_number=";
+                ShipEngineUI.get_label_URL = URLstring;
+
+                //REQUEST
+                WebRequest requestObject = WebRequest.Create(ShipEngineUI.get_label_URL);
+                requestObject.Method = "GET";
+
+                //SE AUTH
+                requestObject.Headers.Add("API-key", ShipEngineUI.apiKey);
+
+                //RESPONSE
+                HttpWebResponse responseObjectGet = null;
+                responseObjectGet = (HttpWebResponse)requestObject.GetResponse();
+                string streamResponse = null;
+
+                //Get List labels data
+                using (Stream stream = responseObjectGet.GetResponseStream())
+                {
+                    StreamReader responseRead = new StreamReader(stream);
+                    streamResponse = responseRead.ReadToEnd();
+
+                    using (var reader = new StringReader(streamResponse))
+                    {
+
+                        for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                        {
+
+                            if (currentLine.Contains("label_id") == true)
+                            {
+
+                                string label_id1 = currentLine.Replace("\"label_id\": \"", "");
+                                string label_id = label_id1.Replace("\",", "");
+
+                                //add to textbox
+                                label_id_richTextBox.Text += label_id.Trim() + " | ";
+                                label_id = ShipEngineUI.label_url_label_id.Trim();
+
+                            }
+                            else
+                            {
+                                currentLine.Replace(currentLine, "");
+                            }
+
+                            if (currentLine.Contains("\"status\"") == true)
+                            {
+
+                                string voided1 = currentLine.Replace("\"", "");
+                                string voided = voided1.Replace(",", "");
+
+                                //add to textbox
+                                label_id_richTextBox.Text = label_id_richTextBox.Text.Trim() + voided.Trim() + " > ";
+
+                            }
+                            else
+                            {
+                                currentLine.Replace(currentLine, "");
+                            }
+
+                            if (currentLine.Contains("\"carrier_code\"") == true)
+                            {
+
+                                string carrier_code1 = currentLine.Replace("\"", "");
+                                string carrier_code = carrier_code1.Replace(",", "");
+
+                                //add to textbox
+                                label_id_richTextBox.Text = label_id_richTextBox.Text.Trim() + " " + carrier_code.Trim() + " < ";
+
+                            }
+                            else
+                            {
+                                currentLine.Replace(currentLine, "");
+                            }
+
+                            if (currentLine.Contains(ShipEngineUI.label_url_label_id.Trim() + ".png") == true)
+                            {
+
+                                string img_url1 = currentLine.Replace("\"png\": \"", "");
+                                string img_url = img_url1.Replace("\",", "");
+
+                                //add to textbox
+                                label_id_richTextBox.Text += img_url.Trim() + Environment.NewLine + ",";
+                            }
+                            else
+                            {
+                                currentLine.Replace(currentLine, "");
+                            }
+
+                            if (currentLine.Contains("\"total\": 543"))
+                            {
+
+                                ShipEngineUI.get_label_URL = ShipEngineUI.get_label_URL + "&page=2";
+
+                            }
+                            else
+                            {
+                                currentLine.Replace(currentLine, "");
+                            }
+
+                        }
+                                           }
                 }
             }
             catch (Exception HTTPexception)
@@ -1028,7 +1152,7 @@ namespace ShipEngine_UI
         private void get_Rates_Button_Click(object sender, EventArgs e)
         {
             rate_response_RichTextBox.Clear();
-            label_Tab_Control.SelectedIndex = 2;
+            label_Tab_Control.SelectedIndex = 1;
 
             try
             {
@@ -1243,7 +1367,7 @@ namespace ShipEngine_UI
 
                 //Documents path REQUEST LOG
                 string docPath = @"..\..\Resources\Logs";
-                //File.WriteAllText(Path.Combine(docPath, "RateRequest - " + rateLogId + ".txt"), rateRequestBody);
+                File.WriteAllText(Path.Combine(docPath, "RateRequest - " + rateLogId + ".txt"), rateRequestBody);
 
 
                 WebResponse requestResponse = request.GetResponse();
@@ -1253,11 +1377,12 @@ namespace ShipEngine_UI
                 rate_response_RichTextBox.Text = parseResponse.ReadToEnd();
 
                 string responseBodyText = rate_response_RichTextBox.Text;
-                //File.WriteAllText(Path.Combine(docPath, "RateResponse - " + rateLogId + ".txt"), responseBodyText);
+                File.WriteAllText(Path.Combine(docPath, "RateResponse - " + rateLogId + ".txt"), responseBodyText);
 
                 stream.Close();
 
                 //LOAD LISTBOX
+
                 using (var reader = new StringReader(responseBodyText))
                 {
 
@@ -1266,12 +1391,11 @@ namespace ShipEngine_UI
                     for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
                     {
 
-
                         if (currentLine.Contains("\"amount\"") == true)
                         {
-
-                            ratesResponse += currentLine;
-                            //ratesResponse = ratesResponse.Remove(ratesResponse.IndexOf("~") + 1);
+                            
+                            ratesResponse += currentLine + "~"; 
+                           
                         }
                         else
                         {
@@ -1302,11 +1426,14 @@ namespace ShipEngine_UI
 
                     }
 
+                    
                     rate_response_RichTextBox.Text = ratesResponse;
 
                     rate_response_RichTextBox.Text = rate_response_RichTextBox.Text.Replace("\"amount\": 0.0", "");
                     rate_response_RichTextBox.Text = rate_response_RichTextBox.Text.Replace(" ", "");
                     rate_response_RichTextBox.Text = rate_response_RichTextBox.Text.Replace("\"", "");
+                    rate_response_RichTextBox.Text = rate_response_RichTextBox.Text.Replace("0~", "");
+                    FixRate();
 
                 }
 
@@ -1560,7 +1687,7 @@ namespace ShipEngine_UI
 
                 //Documents path REQUEST LOG
                 string docPath = @"..\..\Resources\Labels";
-                //File.WriteAllText(Path.Combine(docPath, "LabelRequest - " + labelLogId + ".txt"), createLabelrequestBody);
+                File.WriteAllText(Path.Combine(docPath, "LabelRequest - " + labelLogId + ".txt"), createLabelrequestBody);
 
                 stream.Write(data, 0, data.Length);
                 stream.Close();
@@ -1574,7 +1701,7 @@ namespace ShipEngine_UI
                 string responseBodyText = label_RichTextBox.Text;
 
                 //Documents path RESPONSE LOG
-                //File.WriteAllText(Path.Combine(docPath, "LabelResponse - " + labelLogId + ".txt"), responseBodyText);
+                File.WriteAllText(Path.Combine(docPath, "LabelResponse - " + labelLogId + ".txt"), responseBodyText);
 
                 //GET LABELID
                 using (var reader = new StringReader(responseBodyText))
@@ -1614,7 +1741,7 @@ namespace ShipEngine_UI
                 //Save image in logging
                 using (WebClient client = new WebClient())
                 {
-                    //client.DownloadFileAsync(new Uri(imgURL3 + ".png"), @"..\..\Resources\Labels\Label-" + labelLogId + ".png");
+                    client.DownloadFileAsync(new Uri(imgURL3 + ".png"), @"..\..\Resources\Labels\Label-" + labelLogId + ".png");
                 }
 
                 labelImageBox.Load(imgURL3 + ".png");
@@ -1665,8 +1792,8 @@ namespace ShipEngine_UI
 
         void LabelImage(object o, PrintPageEventArgs e)
         {
-
-            Image image = this.labelImageBox.Image;
+           
+            System.Drawing.Image image = this.labelImageBox.Image;
 
             e.Graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             e.Graphics.DrawImage(image, e.PageBounds);
@@ -2412,9 +2539,10 @@ namespace ShipEngine_UI
 
         private void exit_button_Click(object sender, EventArgs e)
         {
-            for (int i = Application.OpenForms.Count - 1; i >= 0; i--)
+            
+            for (int i = System.Windows.Forms.Application.OpenForms.Count - 1; i >= 0; i--)
             {
-                Application.OpenForms[i].Close();
+                System.Windows.Forms.Application.OpenForms[i].Close();
             }
         }
 
@@ -2545,6 +2673,7 @@ namespace ShipEngine_UI
                         ShipEngineUI.Tracking_number = tracking_number.Trim();
 
                         tracking_number_textBox.Text = "Tracking Number: " + ShipEngineUI.Tracking_number;
+                        track_shipment_TextBox.Text = ShipEngineUI.Tracking_number;
 
                     }
 
@@ -2559,5 +2688,81 @@ namespace ShipEngine_UI
 
         }
 
+        public void FixRate()
+        {
+        }
+
+        private void track_Shipment_Button_Click(object sender, EventArgs e)
+        {
+
+            tracking_RichTextBox.Text = "";
+
+            try
+            {
+                //URL SOURCE
+                string URLstring = "https://api.shipengine.com/v1/tracking?carrier_code=" + carrier_code_comboBox.SelectedItem.ToString() + "&tracking_number=" + ShipEngineUI.Tracking_number;
+
+                //REQUEST
+                WebRequest requestObject = WebRequest.Create(URLstring);
+                requestObject.Method = "GET";
+
+                //SE AUTH
+                requestObject.Headers.Add("API-key", ShipEngineUI.apiKey);
+
+                //RESPONSE
+                HttpWebResponse responseObjectGet = null;
+                responseObjectGet = (HttpWebResponse)requestObject.GetResponse();
+                string streamResponse = null;
+
+                //Get List labels data
+                using (Stream stream = responseObjectGet.GetResponseStream())
+                {
+                    StreamReader responseRead = new StreamReader(stream);
+                    streamResponse = responseRead.ReadToEnd();
+
+                    tracking_RichTextBox.Text = streamResponse;
+
+                    using (var reader = new StringReader(streamResponse))
+                    {
+
+                        for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                        {
+
+
+
+                        }
+                    }
+                }
+            }
+            catch (WebException Exception)
+            {
+
+                using (WebResponse ShipEngineErrorResponse = Exception.Response)
+                {
+                    HttpWebResponse ShipEngineResponse = (HttpWebResponse)ShipEngineErrorResponse;
+                    Console.WriteLine("Error code: {0}", ShipEngineResponse.StatusCode);
+                    using (Stream parseResponse1 = ShipEngineErrorResponse.GetResponseStream())
+
+                    using (var reader = new StreamReader(parseResponse1))
+                    {
+
+                        for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                        {
+
+                            if (currentLine.Contains("message") == true)
+                            {
+
+                                string ShipEngineErrorBody1 = currentLine.Replace("\"message\": \"", "");
+                                string ShipEngineErrorBody = ShipEngineErrorBody1.Replace("\",", "");
+
+                                MessageBox.Show(ShipEngineErrorBody.Trim(), "ERROR TRACKING PACKAGE");
+
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
     }
 }

@@ -1,0 +1,79 @@
+{
+  "label_id": "se-352737565",
+  "status": "completed",
+  "shipment_id": "se-798346764",
+  "ship_date": "2023-09-29T07:00:00Z",
+  "created_at": "2023-09-29T19:30:56.6569059Z",
+  "shipment_cost": {
+    "currency": "usd",
+    "amount": 14.01
+  },
+  "insurance_cost": {
+    "currency": "usd",
+    "amount": 0.0
+  },
+  "rate_details": [],
+  "tracking_number": "1ZW29V440395242464",
+  "is_return_label": false,
+  "rma_number": null,
+  "is_international": false,
+  "batch_id": "",
+  "carrier_id": "se-105007",
+  "service_code": "ups_ground",
+  "package_code": "package",
+  "voided": false,
+  "voided_at": null,
+  "label_format": "pdf",
+  "display_scheme": "label",
+  "label_layout": "4x6",
+  "trackable": true,
+  "label_image_id": null,
+  "carrier_code": "ups",
+  "tracking_status": "in_transit",
+  "label_download": {
+    "pdf": "https://api.shipengine.com/v1/downloads/10/bLmMBxZeD0KtRY7_zwS74A/label-352737565.pdf",
+    "png": "https://api.shipengine.com/v1/downloads/10/bLmMBxZeD0KtRY7_zwS74A/label-352737565.png",
+    "zpl": "https://api.shipengine.com/v1/downloads/10/bLmMBxZeD0KtRY7_zwS74A/label-352737565.zpl",
+    "href": "https://api.shipengine.com/v1/downloads/10/bLmMBxZeD0KtRY7_zwS74A/label-352737565.pdf"
+  },
+  "form_download": null,
+  "qr_code_download": null,
+  "insurance_claim": null,
+  "packages": [
+    {
+      "package_id": 369193553,
+      "package_code": "package",
+      "weight": {
+        "value": 1.00,
+        "unit": "pound"
+      },
+      "dimensions": {
+        "unit": "inch",
+        "length": 1.00,
+        "width": 1.00,
+        "height": 1.00
+      },
+      "insured_value": {
+        "currency": "usd",
+        "amount": 0.00
+      },
+      "tracking_number": "1ZW29V440395242464",
+      "label_download": {
+        "pdf": "https://api.shipengine.com/v1/downloads/10/SyR0q8LEPEG230HatnPf2g/labelpackage-369193553.pdf",
+        "png": "https://api.shipengine.com/v1/downloads/10/SyR0q8LEPEG230HatnPf2g/labelpackage-369193553.png",
+        "zpl": "https://api.shipengine.com/v1/downloads/10/SyR0q8LEPEG230HatnPf2g/labelpackage-369193553.zpl"
+      },
+      "qr_code_download": null,
+      "label_messages": {
+        "reference1": null,
+        "reference2": null,
+        "reference3": null
+      },
+      "external_package_id": "480310",
+      "content_description": null,
+      "sequence": 1
+    }
+  ],
+  "charge_event": "carrier_default",
+  "alternative_identifiers": []
+}

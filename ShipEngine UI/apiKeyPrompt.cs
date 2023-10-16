@@ -30,7 +30,7 @@ namespace ShipEngine_UI
 
             this.Hide();
 
-            shippingForm shippingForm = new shippingForm();
+            ShippingForm shippingForm = new ShippingForm();
             shippingForm.ShowDialog();
 
         }

@@ -19,6 +19,8 @@ namespace ShipEngine_UI
 
         public static string create_label_error = "";
 
+        public static string branded_tracking_url = "";
+
         //Numbers
 
         public static string[] Numbers = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "."};
@@ -150,5 +152,19 @@ namespace ShipEngine_UI
         public static string charge_event = "";
         public static string outbound_label_id = "";
         public static string validate_address = "";
+
+        //Branded Tracking
+
+        public static string bTracking_carrier_code = "";
+        public static string bTracking_service_code = "";
+        public static string bTracking_to_city_locality = "";
+        public static string bTracking_to_state_province = "";
+        public static string bTracking_to_postal_code = "";
+        public static string bTracking_to_country_code = "";
+        public static string bTracking_from_city_locality = "";
+        public static string bTracking_from_state_province = ""; 
+        public static string bTracking_from_postal_code = "";
+        public static string bTracking_from_country_code = "";
+
     }
 }

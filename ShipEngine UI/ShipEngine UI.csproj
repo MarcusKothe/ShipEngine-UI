@@ -110,12 +110,6 @@
     <Compile Include="apiKeyPrompt.Designer.cs">
       <DependentUpon>apiKeyPrompt.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NewUI.Designer.cs">
-      <DependentUpon>NewUI.cs</DependentUpon>
-    </Compile>
     <Compile Include="Resources\Classes\Sales_Order_Object.cs" />
     <Compile Include="Resources\Classes\ShipEngineUI.cs" />
     <Compile Include="shippingForm.cs">
@@ -134,9 +128,6 @@
     </Compile>
     <EmbeddedResource Include="apiKeyPrompt.resx">
       <DependentUpon>apiKeyPrompt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NewUI.resx">
-      <DependentUpon>NewUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="shippingForm.resx">
       <DependentUpon>shippingForm.cs</DependentUpon>
@@ -167,10 +158,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\LabelImages\" />
-    <Folder Include="Resources\Logs\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
