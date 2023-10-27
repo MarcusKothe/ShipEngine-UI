@@ -8,3 +8,10 @@ company’s needs. However, ShipEngine has no user interface to create shipping 
 
 This may lead to confusion or trouble knowing where to begin. With ShipEngine UI, developers have not only an example,
 but also an easy to follow UI and source code that can help users to understand how ShipEngine works.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+MUST HAVE/OPEN A SHIPENGINE ACCOUNT - https://www.shipengine.com/signup/
+
+A ShipEngine API Key is needed to utilize this application, sandbox or production. Currently, I have not added a add carrier function.
+You must also add your carrier accounts on ShipEngine, (dashboard.shipengine.com)
