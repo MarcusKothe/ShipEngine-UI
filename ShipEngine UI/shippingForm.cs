@@ -2586,7 +2586,7 @@ namespace ShipEngine_UI
             try
             {
                 //URL SOURCE
-                string URLstring = "https://api.shipengine.com/v1/tracking?carrier_code=" + carrier_code_comboBox.SelectedItem.ToString() + "&tracking_number=" + tracking_number_textBox.Text;
+                string URLstring = "https://api.shipengine.com/v1/tracking?carrier_code=" + carrier_code_comboBox.SelectedItem.ToString() + "&tracking_number=" + track_shipment_TextBox.Text;
 
                 //REQUEST
                 WebRequest requestObject = WebRequest.Create(URLstring);
