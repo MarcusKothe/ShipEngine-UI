@@ -195,6 +195,8 @@
             this.void_label_id_TextBox = new System.Windows.Forms.TextBox();
             this.void_label_id_Button = new System.Windows.Forms.Button();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.carrier_code_comboBox = new System.Windows.Forms.ComboBox();
+            this.tracking_RichTextBox = new System.Windows.Forms.RichTextBox();
             this.track_Shipment_Button = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.track_shipment_TextBox = new System.Windows.Forms.TextBox();
@@ -202,8 +204,6 @@
             this.notify_shipped_checkBox = new System.Windows.Forms.CheckBox();
             this.create_label_from_Order_Button = new System.Windows.Forms.Button();
             this.sales_order_ListBox = new System.Windows.Forms.ListBox();
-            this.tracking_RichTextBox = new System.Windows.Forms.RichTextBox();
-            this.carrier_code_comboBox = new System.Windows.Forms.ComboBox();
             this.shipment_Config_GroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.insured_value_amont_numericUpDown)).BeginInit();
@@ -2372,6 +2372,71 @@
             this.tabPage6.Text = "Track Package";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
+            // carrier_code_comboBox
+            // 
+            this.carrier_code_comboBox.FormattingEnabled = true;
+            this.carrier_code_comboBox.Items.AddRange(new object[] {
+            "usps",
+            "stamps_com",
+            "fedex",
+            "ups",
+            "dhl_express",
+            "dhl_global_mail",
+            "dhl_ecommerce_au",
+            "access_worldwide",
+            "apc",
+            "Fastway\tfastway_au",
+            "Fastway\tfastway_nz",
+            "asendia",
+            "australia_post",
+            "australia_post_mypost_business",
+            "canada_post",
+            "canpar",
+            "couriers_please",
+            "dai",
+            "direct_freight",
+            "evri_international",
+            "firstmile",
+            "freightways",
+            "castle_parcels",
+            "new_zealand_couriers",
+            "now_couriers",
+            "post_haste",
+            "global_access",
+            "imex",
+            "landmark_global",
+            "landmark_global_au",
+            "landmark_global_uk",
+            "newgistics",
+            "nobordist",
+            "courierpost",
+            "new_zealand_post_international",
+            "ontrac",
+            "purolator_ca",
+            "quantium",
+            "rr_donnelley",
+            "seko",
+            "seko_uk",
+            "sendle",
+            "seven_senders",
+            "star_track",
+            "tnt_australia",
+            "toll_ipec",
+            "toll_priority",
+            "wizmo"});
+            this.carrier_code_comboBox.Location = new System.Drawing.Point(6, 3);
+            this.carrier_code_comboBox.Name = "carrier_code_comboBox";
+            this.carrier_code_comboBox.Size = new System.Drawing.Size(114, 21);
+            this.carrier_code_comboBox.TabIndex = 134;
+            // 
+            // tracking_RichTextBox
+            // 
+            this.tracking_RichTextBox.Location = new System.Drawing.Point(6, 59);
+            this.tracking_RichTextBox.Name = "tracking_RichTextBox";
+            this.tracking_RichTextBox.Size = new System.Drawing.Size(442, 654);
+            this.tracking_RichTextBox.TabIndex = 133;
+            this.tracking_RichTextBox.Text = "";
+            // 
             // track_Shipment_Button
             // 
             this.track_Shipment_Button.Location = new System.Drawing.Point(126, 30);
@@ -2441,71 +2506,6 @@
             this.sales_order_ListBox.Size = new System.Drawing.Size(644, 303);
             this.sales_order_ListBox.TabIndex = 128;
             this.sales_order_ListBox.SelectedIndexChanged += new System.EventHandler(this.sales_order_ListBox_SelectedIndexChanged);
-            // 
-            // tracking_RichTextBox
-            // 
-            this.tracking_RichTextBox.Location = new System.Drawing.Point(6, 59);
-            this.tracking_RichTextBox.Name = "tracking_RichTextBox";
-            this.tracking_RichTextBox.Size = new System.Drawing.Size(442, 654);
-            this.tracking_RichTextBox.TabIndex = 133;
-            this.tracking_RichTextBox.Text = "";
-            // 
-            // carrier_code_comboBox
-            // 
-            this.carrier_code_comboBox.FormattingEnabled = true;
-            this.carrier_code_comboBox.Items.AddRange(new object[] {
-            "usps",
-            "stamps_com",
-            "fedex",
-            "ups",
-            "dhl_express",
-            "dhl_global_mail",
-            "dhl_ecommerce_au",
-            "access_worldwide",
-            "apc",
-            "Fastway\tfastway_au",
-            "Fastway\tfastway_nz",
-            "asendia",
-            "australia_post",
-            "australia_post_mypost_business",
-            "canada_post",
-            "canpar",
-            "couriers_please",
-            "dai",
-            "direct_freight",
-            "evri_international",
-            "firstmile",
-            "freightways",
-            "castle_parcels",
-            "new_zealand_couriers",
-            "now_couriers",
-            "post_haste",
-            "global_access",
-            "imex",
-            "landmark_global",
-            "landmark_global_au",
-            "landmark_global_uk",
-            "newgistics",
-            "nobordist",
-            "courierpost",
-            "new_zealand_post_international",
-            "ontrac",
-            "purolator_ca",
-            "quantium",
-            "rr_donnelley",
-            "seko",
-            "seko_uk",
-            "sendle",
-            "seven_senders",
-            "star_track",
-            "tnt_australia",
-            "toll_ipec",
-            "toll_priority",
-            "wizmo"});
-            this.carrier_code_comboBox.Location = new System.Drawing.Point(6, 3);
-            this.carrier_code_comboBox.Name = "carrier_code_comboBox";
-            this.carrier_code_comboBox.Size = new System.Drawing.Size(114, 21);
-            this.carrier_code_comboBox.TabIndex = 134;
             // 
             // ShippingForm
             // 

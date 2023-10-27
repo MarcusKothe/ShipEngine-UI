@@ -21,6 +21,7 @@ namespace ShipEngine_UI
         {
 
 
+
         }
        
         private void doneButton_Click(object sender, EventArgs e)
@@ -28,10 +29,10 @@ namespace ShipEngine_UI
             //SET API KEY
             ShipEngineUI.apiKey = apiKeyTextBox.Text;
 
-            this.Hide();
-
             ShippingForm shippingForm = new ShippingForm();
             shippingForm.ShowDialog();
+
+            this.Hide();
 
         }
 
@@ -39,6 +40,16 @@ namespace ShipEngine_UI
         {
 
             this.Close();
+
+        }
+
+        private void apiKeyTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
 
         }
     }

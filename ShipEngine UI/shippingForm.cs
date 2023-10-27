@@ -53,6 +53,7 @@ namespace ShipEngine_UI
             third_party_consignee_comboBox.SelectedIndex = 0;
             shipFrom_address_residential_indicator_comboBox.SelectedIndex = 1;
             shipTo_address_residential_indicator_comboBox.SelectedIndex = 1;
+            carrier_code_comboBox.SelectedIndex = 1;
 
             ship_date_TextBox.Text = DateTime.Today.ToString();
 
@@ -70,6 +71,7 @@ namespace ShipEngine_UI
 
             //GET ONE BALANCE
             GetCarrierBalance();
+
         }
 
         #region Form Load methods
@@ -1251,7 +1253,7 @@ namespace ShipEngine_UI
 
                 //Documents path REQUEST LOG
                 string docPath = @"..\..\Resources\Logs";
-                File.WriteAllText(Path.Combine(docPath, "RateRequest - " + rateLogId + ".txt"), rateRequestBody);
+               // File.WriteAllText(Path.Combine(docPath, "RateRequest - " + rateLogId + ".txt"), rateRequestBody);
 
 
                 WebResponse requestResponse = request.GetResponse();
@@ -1261,7 +1263,7 @@ namespace ShipEngine_UI
                 rate_response_RichTextBox.Text = parseResponse.ReadToEnd();
 
                 string responseBodyText = rate_response_RichTextBox.Text;
-                File.WriteAllText(Path.Combine(docPath, "RateResponse - " + rateLogId + ".txt"), responseBodyText);
+                //File.WriteAllText(Path.Combine(docPath, "RateResponse - " + rateLogId + ".txt"), responseBodyText);
 
                 stream.Close();
 
@@ -1571,7 +1573,7 @@ namespace ShipEngine_UI
 
                 //Documents path REQUEST LOG
                 string docPath = @"..\..\Resources\Labels";
-                File.WriteAllText(Path.Combine(docPath, "LabelRequest - " + labelLogId + ".txt"), createLabelrequestBody);
+                //File.WriteAllText(Path.Combine(docPath, "LabelRequest - " + labelLogId + ".txt"), createLabelrequestBody);
 
                 stream.Write(data, 0, data.Length);
                 stream.Close();
@@ -1585,7 +1587,7 @@ namespace ShipEngine_UI
                 string responseBodyText = label_RichTextBox.Text;
 
                 //Documents path RESPONSE LOG
-                File.WriteAllText(Path.Combine(docPath, "LabelResponse - " + labelLogId + ".txt"), responseBodyText);
+                //File.WriteAllText(Path.Combine(docPath, "LabelResponse - " + labelLogId + ".txt"), responseBodyText);
 
                 //GET LABELID
                 using (var reader = new StringReader(responseBodyText))
@@ -2584,7 +2586,7 @@ namespace ShipEngine_UI
             try
             {
                 //URL SOURCE
-                string URLstring = "https://api.shipengine.com/v1/tracking?carrier_code=" + carrier_code_comboBox.SelectedItem.ToString() + "&tracking_number=" + ShipEngineUI.Tracking_number;
+                string URLstring = "https://api.shipengine.com/v1/tracking?carrier_code=" + carrier_code_comboBox.SelectedItem.ToString() + "&tracking_number=" + tracking_number_textBox.Text;
 
                 //REQUEST
                 WebRequest requestObject = WebRequest.Create(URLstring);
@@ -2646,7 +2648,6 @@ namespace ShipEngine_UI
                     }
                 }
             }
-
         }
     }
 }
