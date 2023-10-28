@@ -2981,9 +2981,49 @@ namespace ShipEngine_UI
             else if (dialogResult == DialogResult.No)
             {
 
-                MessageBox.Show("You canceled the delete request for " + carrier_id + ".");
+                MessageBox.Show("You canceled the delete request for " + carrier_id + ".", "DELETE CARRIER ACCOUNT");
 
             }
+        }
+
+        private void connect_carrier_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            string selected_carrier_account = connect_carrier_ComboBox.SelectedItem.ToString();
+
+            if (selected_carrier_account.Contains("fedex"))
+            {
+                connect_carrier_richTextBox.Enabled = true;
+                connect_carrier_richTextBox.Text = SE_Carrier_Connection.connections_fedex;
+            }
+            else if (selected_carrier_account.Contains("ups"))
+            {
+                connect_carrier_richTextBox.Enabled = true;
+                connect_carrier_richTextBox.Text = SE_Carrier_Connection.connections_ups;
+            }
+            else if (selected_carrier_account.Contains("usps"))
+            {
+                connect_carrier_richTextBox.Enabled = true;
+                connect_carrier_richTextBox.Text = SE_Carrier_Connection.connections_stamps_com;
+            }
+            else if (selected_carrier_account.Contains("stamps"))
+            {
+                connect_carrier_richTextBox.Enabled = true;
+                connect_carrier_richTextBox.Text = SE_Carrier_Connection.connections_stamps_com;
+            }
+            else if (selected_carrier_account.Contains("endicia"))
+            {
+                connect_carrier_richTextBox.Enabled = true;
+                connect_carrier_richTextBox.Text = SE_Carrier_Connection.connections_stamps_com;
+            }
+            else if (!selected_carrier_account.Contains("ups") || selected_carrier_account.Contains("fedex") || selected_carrier_account.Contains("usps")
+                   || selected_carrier_account.Contains("stamps") || selected_carrier_account.Contains("endicia"))
+            {
+                connect_carrier_richTextBox.Text = string.Empty;
+                connect_carrier_richTextBox.Enabled = false;
+            }
+
+
         }
     }
 }

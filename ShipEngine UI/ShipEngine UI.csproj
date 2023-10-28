@@ -136,6 +136,7 @@
     </Compile>
     <Compile Include="Resources\Classes\Sales_Order_Object.cs" />
     <Compile Include="Resources\Classes\SE_Carrier_Connection.cs" />
+    <Compile Include="Resources\Classes\SE_Order_Source_Connection.cs" />
     <Compile Include="Resources\Classes\ShipEngineUI.cs" />
     <Compile Include="shippingForm.cs">
       <SubType>Form</SubType>
