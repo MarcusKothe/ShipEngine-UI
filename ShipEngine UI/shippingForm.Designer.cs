@@ -204,6 +204,14 @@
             this.notify_shipped_checkBox = new System.Windows.Forms.CheckBox();
             this.create_label_from_Order_Button = new System.Windows.Forms.Button();
             this.sales_order_ListBox = new System.Windows.Forms.ListBox();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.carrier_connection_tabControl = new System.Windows.Forms.TabControl();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.connect_carrier_ComboBox = new System.Windows.Forms.ComboBox();
+            this.connect_carrier_richTextBox = new System.Windows.Forms.RichTextBox();
+            this.connect_carrier_button = new System.Windows.Forms.Button();
+            this.update_carrier_listBox = new System.Windows.Forms.ListBox();
             this.shipment_Config_GroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.insured_value_amont_numericUpDown)).BeginInit();
@@ -227,6 +235,10 @@
             this.tabPage4.SuspendLayout();
             this.add_funds_groupBox.SuspendLayout();
             this.tabPage6.SuspendLayout();
+            this.tabPage7.SuspendLayout();
+            this.carrier_connection_tabControl.SuspendLayout();
+            this.tabPage8.SuspendLayout();
+            this.tabPage9.SuspendLayout();
             this.SuspendLayout();
             // 
             // carrier_id_RichTextBox
@@ -2094,6 +2106,7 @@
             this.label_Tab_Control.Controls.Add(this.tabPage5);
             this.label_Tab_Control.Controls.Add(this.tabPage4);
             this.label_Tab_Control.Controls.Add(this.tabPage6);
+            this.label_Tab_Control.Controls.Add(this.tabPage7);
             this.label_Tab_Control.Location = new System.Drawing.Point(663, 6);
             this.label_Tab_Control.Name = "label_Tab_Control";
             this.label_Tab_Control.SelectedIndex = 0;
@@ -2507,6 +2520,89 @@
             this.sales_order_ListBox.TabIndex = 128;
             this.sales_order_ListBox.SelectedIndexChanged += new System.EventHandler(this.sales_order_ListBox_SelectedIndexChanged);
             // 
+            // tabPage7
+            // 
+            this.tabPage7.Controls.Add(this.carrier_connection_tabControl);
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(451, 716);
+            this.tabPage7.TabIndex = 4;
+            this.tabPage7.Text = "ShipEngine Account";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // carrier_connection_tabControl
+            // 
+            this.carrier_connection_tabControl.Controls.Add(this.tabPage8);
+            this.carrier_connection_tabControl.Controls.Add(this.tabPage9);
+            this.carrier_connection_tabControl.Location = new System.Drawing.Point(6, 6);
+            this.carrier_connection_tabControl.Name = "carrier_connection_tabControl";
+            this.carrier_connection_tabControl.SelectedIndex = 0;
+            this.carrier_connection_tabControl.Size = new System.Drawing.Size(439, 353);
+            this.carrier_connection_tabControl.TabIndex = 129;
+            // 
+            // tabPage8
+            // 
+            this.tabPage8.Controls.Add(this.connect_carrier_button);
+            this.tabPage8.Controls.Add(this.connect_carrier_richTextBox);
+            this.tabPage8.Controls.Add(this.connect_carrier_ComboBox);
+            this.tabPage8.Location = new System.Drawing.Point(4, 22);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage8.Size = new System.Drawing.Size(431, 327);
+            this.tabPage8.TabIndex = 0;
+            this.tabPage8.Text = "Connect Carrier";
+            this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // tabPage9
+            // 
+            this.tabPage9.Controls.Add(this.update_carrier_listBox);
+            this.tabPage9.Location = new System.Drawing.Point(4, 22);
+            this.tabPage9.Name = "tabPage9";
+            this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage9.Size = new System.Drawing.Size(431, 327);
+            this.tabPage9.TabIndex = 1;
+            this.tabPage9.Text = "Update carrier Connection";
+            this.tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // connect_carrier_ComboBox
+            // 
+            this.connect_carrier_ComboBox.FormattingEnabled = true;
+            this.connect_carrier_ComboBox.Items.AddRange(new object[] {
+            "stamps_com",
+            "endicia",
+            "fedex",
+            "ups"});
+            this.connect_carrier_ComboBox.Location = new System.Drawing.Point(6, 6);
+            this.connect_carrier_ComboBox.Name = "connect_carrier_ComboBox";
+            this.connect_carrier_ComboBox.Size = new System.Drawing.Size(182, 21);
+            this.connect_carrier_ComboBox.TabIndex = 129;
+            // 
+            // connect_carrier_richTextBox
+            // 
+            this.connect_carrier_richTextBox.Location = new System.Drawing.Point(6, 33);
+            this.connect_carrier_richTextBox.Name = "connect_carrier_richTextBox";
+            this.connect_carrier_richTextBox.Size = new System.Drawing.Size(419, 288);
+            this.connect_carrier_richTextBox.TabIndex = 130;
+            this.connect_carrier_richTextBox.Text = "";
+            // 
+            // connect_carrier_button
+            // 
+            this.connect_carrier_button.Location = new System.Drawing.Point(350, 6);
+            this.connect_carrier_button.Name = "connect_carrier_button";
+            this.connect_carrier_button.Size = new System.Drawing.Size(75, 21);
+            this.connect_carrier_button.TabIndex = 131;
+            this.connect_carrier_button.Text = "connect";
+            this.connect_carrier_button.UseVisualStyleBackColor = true;
+            // 
+            // update_carrier_listBox
+            // 
+            this.update_carrier_listBox.FormattingEnabled = true;
+            this.update_carrier_listBox.Location = new System.Drawing.Point(6, 6);
+            this.update_carrier_listBox.Name = "update_carrier_listBox";
+            this.update_carrier_listBox.Size = new System.Drawing.Size(264, 316);
+            this.update_carrier_listBox.TabIndex = 0;
+            // 
             // ShippingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2570,6 +2666,10 @@
             this.add_funds_groupBox.PerformLayout();
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
+            this.tabPage7.ResumeLayout(false);
+            this.carrier_connection_tabControl.ResumeLayout(false);
+            this.tabPage8.ResumeLayout(false);
+            this.tabPage9.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2751,6 +2851,14 @@
         private System.Windows.Forms.TextBox track_shipment_TextBox;
         private System.Windows.Forms.RichTextBox tracking_RichTextBox;
         private System.Windows.Forms.ComboBox carrier_code_comboBox;
+        private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.TabControl carrier_connection_tabControl;
+        private System.Windows.Forms.TabPage tabPage8;
+        private System.Windows.Forms.ComboBox connect_carrier_ComboBox;
+        private System.Windows.Forms.TabPage tabPage9;
+        private System.Windows.Forms.Button connect_carrier_button;
+        private System.Windows.Forms.RichTextBox connect_carrier_richTextBox;
+        private System.Windows.Forms.ListBox update_carrier_listBox;
     }
 }
 

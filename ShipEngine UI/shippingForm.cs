@@ -53,13 +53,14 @@ namespace ShipEngine_UI
             third_party_consignee_comboBox.SelectedIndex = 0;
             shipFrom_address_residential_indicator_comboBox.SelectedIndex = 1;
             shipTo_address_residential_indicator_comboBox.SelectedIndex = 1;
-            carrier_code_comboBox.SelectedIndex = 1;
+            carrier_code_comboBox.SelectedIndex = 0;
+            connect_carrier_ComboBox.SelectedIndex = 0;
 
             ship_date_TextBox.Text = DateTime.Today.ToString();
 
             //GET CARRIER ACCOUNTS
             GetCarrierAccounts();
-
+            
             //GET WAREHOUSES
             GetWarehouses();
 
@@ -139,6 +140,7 @@ namespace ShipEngine_UI
                                 continue;
 
                             carrier_id_ComboBox.Items.Add(carrier_id.Trim());
+                            update_carrier_listBox.Items.Add(carrier_id.Trim());
                         }
                     }
                 }
