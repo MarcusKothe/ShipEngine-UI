@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ShipEngine_UI.Resources.Classes
 {
-    internal class SE_Order_Source_Connection
+    public class SE_Order_Source_Connection
     {
+
     }
 }
