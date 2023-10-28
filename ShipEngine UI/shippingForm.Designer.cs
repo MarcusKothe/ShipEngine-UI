@@ -212,6 +212,14 @@
             this.connect_carrier_richTextBox = new System.Windows.Forms.RichTextBox();
             this.connect_carrier_button = new System.Windows.Forms.Button();
             this.update_carrier_listBox = new System.Windows.Forms.ListBox();
+            this.update_carrier_button = new System.Windows.Forms.Button();
+            this.delete_carrier_button = new System.Windows.Forms.Button();
+            this.update_carrier_richTextBox = new System.Windows.Forms.RichTextBox();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.update_carrier_response_richTextBox = new System.Windows.Forms.RichTextBox();
+            this.current_carrier_settings_button = new System.Windows.Forms.Button();
             this.shipment_Config_GroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.insured_value_amont_numericUpDown)).BeginInit();
@@ -239,6 +247,7 @@
             this.carrier_connection_tabControl.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.tabPage9.SuspendLayout();
+            this.tabControl2.SuspendLayout();
             this.SuspendLayout();
             // 
             // carrier_id_RichTextBox
@@ -2522,6 +2531,7 @@
             // 
             // tabPage7
             // 
+            this.tabPage7.Controls.Add(this.tabControl2);
             this.tabPage7.Controls.Add(this.carrier_connection_tabControl);
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
@@ -2556,13 +2566,17 @@
             // 
             // tabPage9
             // 
+            this.tabPage9.Controls.Add(this.current_carrier_settings_button);
+            this.tabPage9.Controls.Add(this.update_carrier_richTextBox);
+            this.tabPage9.Controls.Add(this.delete_carrier_button);
+            this.tabPage9.Controls.Add(this.update_carrier_button);
             this.tabPage9.Controls.Add(this.update_carrier_listBox);
             this.tabPage9.Location = new System.Drawing.Point(4, 22);
             this.tabPage9.Name = "tabPage9";
             this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage9.Size = new System.Drawing.Size(431, 327);
             this.tabPage9.TabIndex = 1;
-            this.tabPage9.Text = "Update carrier Connection";
+            this.tabPage9.Text = "Update Carrier Connection";
             this.tabPage9.UseVisualStyleBackColor = true;
             // 
             // connect_carrier_ComboBox
@@ -2600,14 +2614,93 @@
             this.update_carrier_listBox.FormattingEnabled = true;
             this.update_carrier_listBox.Location = new System.Drawing.Point(6, 6);
             this.update_carrier_listBox.Name = "update_carrier_listBox";
-            this.update_carrier_listBox.Size = new System.Drawing.Size(264, 316);
+            this.update_carrier_listBox.Size = new System.Drawing.Size(274, 69);
             this.update_carrier_listBox.TabIndex = 0;
+            this.update_carrier_listBox.SelectedIndexChanged += new System.EventHandler(this.update_carrier_listBox_SelectedIndexChanged);
+            // 
+            // update_carrier_button
+            // 
+            this.update_carrier_button.Location = new System.Drawing.Point(286, 30);
+            this.update_carrier_button.Name = "update_carrier_button";
+            this.update_carrier_button.Size = new System.Drawing.Size(139, 23);
+            this.update_carrier_button.TabIndex = 1;
+            this.update_carrier_button.Text = "Update Carrier Account";
+            this.update_carrier_button.UseVisualStyleBackColor = true;
+            this.update_carrier_button.Click += new System.EventHandler(this.update_carrier_button_Click);
+            // 
+            // delete_carrier_button
+            // 
+            this.delete_carrier_button.Location = new System.Drawing.Point(286, 54);
+            this.delete_carrier_button.Name = "delete_carrier_button";
+            this.delete_carrier_button.Size = new System.Drawing.Size(139, 23);
+            this.delete_carrier_button.TabIndex = 2;
+            this.delete_carrier_button.Text = "Delete Carrier Account";
+            this.delete_carrier_button.UseVisualStyleBackColor = true;
+            this.delete_carrier_button.Click += new System.EventHandler(this.delete_carrier_button_Click);
+            // 
+            // update_carrier_richTextBox
+            // 
+            this.update_carrier_richTextBox.Location = new System.Drawing.Point(6, 81);
+            this.update_carrier_richTextBox.Name = "update_carrier_richTextBox";
+            this.update_carrier_richTextBox.Size = new System.Drawing.Size(419, 240);
+            this.update_carrier_richTextBox.TabIndex = 3;
+            this.update_carrier_richTextBox.Text = "";
+            // 
+            // tabControl2
+            // 
+            this.tabControl2.Controls.Add(this.tabPage10);
+            this.tabControl2.Controls.Add(this.tabPage11);
+            this.tabControl2.Location = new System.Drawing.Point(6, 365);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(439, 345);
+            this.tabControl2.TabIndex = 130;
+            // 
+            // tabPage10
+            // 
+            this.tabPage10.Location = new System.Drawing.Point(4, 22);
+            this.tabPage10.Name = "tabPage10";
+            this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage10.Size = new System.Drawing.Size(431, 319);
+            this.tabPage10.TabIndex = 0;
+            this.tabPage10.Text = "Connect Order Source";
+            this.tabPage10.UseVisualStyleBackColor = true;
+            // 
+            // tabPage11
+            // 
+            this.tabPage11.Location = new System.Drawing.Point(4, 22);
+            this.tabPage11.Name = "tabPage11";
+            this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage11.Size = new System.Drawing.Size(431, 319);
+            this.tabPage11.TabIndex = 1;
+            this.tabPage11.Text = "Manage Order Sources";
+            this.tabPage11.UseVisualStyleBackColor = true;
+            // 
+            // update_carrier_response_richTextBox
+            // 
+            this.update_carrier_response_richTextBox.Location = new System.Drawing.Point(1459, 648);
+            this.update_carrier_response_richTextBox.Name = "update_carrier_response_richTextBox";
+            this.update_carrier_response_richTextBox.ReadOnly = true;
+            this.update_carrier_response_richTextBox.Size = new System.Drawing.Size(100, 100);
+            this.update_carrier_response_richTextBox.TabIndex = 133;
+            this.update_carrier_response_richTextBox.Text = "";
+            // 
+            // current_carrier_settings_button
+            // 
+            this.current_carrier_settings_button.Location = new System.Drawing.Point(286, 6);
+            this.current_carrier_settings_button.Name = "current_carrier_settings_button";
+            this.current_carrier_settings_button.Size = new System.Drawing.Size(139, 23);
+            this.current_carrier_settings_button.TabIndex = 4;
+            this.current_carrier_settings_button.Text = "Get Current settings";
+            this.current_carrier_settings_button.UseVisualStyleBackColor = true;
+            this.current_carrier_settings_button.Click += new System.EventHandler(this.current_carrier_settings_button_Click);
             // 
             // ShippingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1125, 755);
+            this.Controls.Add(this.update_carrier_response_richTextBox);
             this.Controls.Add(this.shipment_Config_GroupBox);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label_Tab_Control);
@@ -2670,6 +2763,7 @@
             this.carrier_connection_tabControl.ResumeLayout(false);
             this.tabPage8.ResumeLayout(false);
             this.tabPage9.ResumeLayout(false);
+            this.tabControl2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2859,6 +2953,14 @@
         private System.Windows.Forms.Button connect_carrier_button;
         private System.Windows.Forms.RichTextBox connect_carrier_richTextBox;
         private System.Windows.Forms.ListBox update_carrier_listBox;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabPage tabPage10;
+        private System.Windows.Forms.TabPage tabPage11;
+        private System.Windows.Forms.RichTextBox update_carrier_richTextBox;
+        private System.Windows.Forms.Button delete_carrier_button;
+        private System.Windows.Forms.Button update_carrier_button;
+        private System.Windows.Forms.RichTextBox update_carrier_response_richTextBox;
+        private System.Windows.Forms.Button current_carrier_settings_button;
     }
 }
 

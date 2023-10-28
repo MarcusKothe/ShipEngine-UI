@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShipEngine_UI.Resources.Classes;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,7 +27,7 @@ namespace ShipEngine_UI
 {
     public partial class ShippingForm : Form
     {
-        
+
         public ShippingForm()
         {
             InitializeComponent();
@@ -60,7 +61,7 @@ namespace ShipEngine_UI
 
             //GET CARRIER ACCOUNTS
             GetCarrierAccounts();
-            
+
             //GET WAREHOUSES
             GetWarehouses();
 
@@ -357,7 +358,7 @@ namespace ShipEngine_UI
             try
             {
                 string todaysDate = DateTime.Today.ToString();
-                string last7Days  = DateTime.Today.AddDays(-7).ToString();
+                string last7Days = DateTime.Today.AddDays(-7).ToString();
 
                 //URL SOURCE
                 string URLstring = "https://api.shipengine.com/v1/labels?created_at_start=" + last7Days + "&created_at_end" + todaysDate + "&page_size=100";
@@ -543,7 +544,7 @@ namespace ShipEngine_UI
                             }
                         }
 
-                        
+
                     }
                 }
             }
@@ -1255,7 +1256,7 @@ namespace ShipEngine_UI
 
                 //Documents path REQUEST LOG
                 string docPath = @"..\..\Resources\Logs";
-               // File.WriteAllText(Path.Combine(docPath, "RateRequest - " + rateLogId + ".txt"), rateRequestBody);
+                // File.WriteAllText(Path.Combine(docPath, "RateRequest - " + rateLogId + ".txt"), rateRequestBody);
 
 
                 WebResponse requestResponse = request.GetResponse();
@@ -1281,9 +1282,9 @@ namespace ShipEngine_UI
 
                         if (currentLine.Contains("\"amount\"") == true)
                         {
-                            
-                            ratesResponse += currentLine + "~"; 
-                           
+
+                            ratesResponse += currentLine + "~";
+
                         }
                         else
                         {
@@ -1314,7 +1315,7 @@ namespace ShipEngine_UI
 
                     }
 
-                    
+
                     rate_response_RichTextBox.Text = ratesResponse;
 
                     rate_response_RichTextBox.Text = rate_response_RichTextBox.Text.Replace("\"amount\": 0.0", "");
@@ -1680,7 +1681,7 @@ namespace ShipEngine_UI
 
         void LabelImage(object o, PrintPageEventArgs e)
         {
-           
+
             System.Drawing.Image image = this.labelImageBox.Image;
 
             e.Graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
@@ -2400,7 +2401,7 @@ namespace ShipEngine_UI
 
         private void shipTogroupBox_Click(object sender, EventArgs e)
         {
-            
+
             shipTogroupBox.Visible = false;
             advanced_options_groupBox.Visible = true;
 
@@ -2427,7 +2428,7 @@ namespace ShipEngine_UI
 
         private void exit_button_Click(object sender, EventArgs e)
         {
-            
+
             for (int i = System.Windows.Forms.Application.OpenForms.Count - 1; i >= 0; i--)
             {
                 System.Windows.Forms.Application.OpenForms[i].Close();
@@ -2649,6 +2650,339 @@ namespace ShipEngine_UI
                         }
                     }
                 }
+            }
+        }
+
+        private void update_carrier_listBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selected_carrier_account = update_carrier_listBox.SelectedItem.ToString();
+
+            if (selected_carrier_account.Contains("fedex"))
+            {
+                update_carrier_richTextBox.Enabled = true;
+                update_carrier_richTextBox.Text = SE_Carrier_Connection.connections_fedex_settings;
+            }
+            else if (selected_carrier_account.Contains("ups"))
+            {
+                update_carrier_richTextBox.Enabled = true;
+                update_carrier_richTextBox.Text = SE_Carrier_Connection.connections_ups_settings;
+            }
+            else if (selected_carrier_account.Contains("usps"))
+            {
+                update_carrier_richTextBox.Enabled = true;
+                update_carrier_richTextBox.Text = SE_Carrier_Connection.connections_stamps_com;
+            }
+            else if (selected_carrier_account.Contains("stamps"))
+            {
+                update_carrier_richTextBox.Enabled = true;
+                update_carrier_richTextBox.Text = SE_Carrier_Connection.connections_stamps_com;
+            }
+            else if (selected_carrier_account.Contains("endicia"))
+            {
+                update_carrier_richTextBox.Enabled = true;
+                update_carrier_richTextBox.Text = SE_Carrier_Connection.connections_stamps_com;
+            }
+            else if (!selected_carrier_account.Contains("ups") || selected_carrier_account.Contains("fedex") || selected_carrier_account.Contains("usps")
+                   || selected_carrier_account.Contains("stamps") || selected_carrier_account.Contains("endicia"))
+            {
+                update_carrier_richTextBox.Text = string.Empty;
+                update_carrier_richTextBox.Enabled = false;
+            }
+
+
+        }
+
+        private void update_carrier_button_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                string carrier_id1 = update_carrier_listBox.SelectedItem.ToString();
+                carrier_id1 = carrier_id1.Remove(carrier_id1.IndexOf("|") + 1);
+                string carrier_id = carrier_id1.Replace("|", "");
+
+                string carrier_name1 = update_carrier_listBox.SelectedItem.ToString();
+                carrier_name1 = carrier_name1.Substring(carrier_name1.IndexOf("|"));
+                string carrier_name = carrier_name1.Replace("|", "");
+
+                //URI - POST
+                ShipEngineUI.urlString = "https://api.shipengine.com/v1/connections/carriers/" + carrier_name + "/" + carrier_id + "/settings".Trim();
+
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(ShipEngineUI.urlString);
+
+                request.Method = "PUT";
+
+                //API Key
+                request.Headers.Add("API-key", ShipEngineUI.apiKey);
+
+                //POST REQUEST
+                string update_carrier_request = update_carrier_richTextBox.Text;
+
+                ASCIIEncoding encoding = new ASCIIEncoding();
+                byte[] data = encoding.GetBytes(update_carrier_request);
+
+                request.ContentType = "application/json";
+                request.ContentLength = data.Length;
+
+                Stream stream = request.GetRequestStream();
+
+                stream.Write(data, 0, data.Length);
+                stream.Close();
+
+                HttpWebResponse requestResponse = (HttpWebResponse)request.GetResponse();
+                stream = requestResponse.GetResponseStream();
+
+                if (requestResponse.StatusCode == HttpStatusCode.NoContent)
+                {
+
+                    MessageBox.Show("Carrier settings have been updated.", "UPDATE CARRIER ACCOUNT");
+
+                }
+
+                StreamReader parseResponse = new StreamReader(stream);
+                update_carrier_response_richTextBox.Text = parseResponse.ReadToEnd();
+                string responseBodyText = update_carrier_response_richTextBox.Text;
+
+                //GET RESPONSE
+                using (var reader = new StringReader(responseBodyText))
+                {
+
+                    for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                    {
+
+
+                    }
+                }
+
+                stream.Close();
+
+                //CLOSE STREAM
+                parseResponse.Close();
+                stream.Close();
+
+            }
+            catch (WebException Exception)
+            {
+                //refresh if failed
+                current_carrier_settings_button_Click(sender, e);
+
+                using (WebResponse ShipEngineErrorResponse = Exception.Response)
+                {
+                    HttpWebResponse ShipEngineResponse = (HttpWebResponse)ShipEngineErrorResponse;
+                    Console.WriteLine("Error code: {0}", ShipEngineResponse.StatusCode);
+                    using (Stream parseResponse = ShipEngineErrorResponse.GetResponseStream())
+
+                    using (var reader = new StreamReader(parseResponse))
+                    {
+
+                        for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                        {
+
+                            if (currentLine.Contains("message") == true)
+                            {
+
+                                string ShipEngineErrorBody1 = currentLine.Replace("\"message\": \"", "");
+                                string ShipEngineErrorBody = ShipEngineErrorBody1.Replace("\",", "");
+
+                                MessageBox.Show(ShipEngineErrorBody.Trim(), "ERROR UPDATING SETTINGS");
+
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+
+        private void current_carrier_settings_button_Click(object sender, EventArgs e)
+        {
+
+            string carrier_id1 = update_carrier_listBox.SelectedItem.ToString();
+            carrier_id1 = carrier_id1.Remove(carrier_id1.IndexOf("|") + 1);
+            string carrier_id = carrier_id1.Replace("|", "");
+
+            string carrier_name1 = update_carrier_listBox.SelectedItem.ToString();
+            carrier_name1 = carrier_name1.Substring(carrier_name1.IndexOf("|"));
+            string carrier_name = carrier_name1.Replace("|", "");
+
+            //GET CARRIER SETTINGS
+            try
+            {
+                //URL SOURCE
+                ShipEngineUI.urlString = "https://api.shipengine.com/v1/connections/carriers/" + carrier_name + "/" + carrier_id + "/settings".Trim();
+
+                //REQUEST
+                WebRequest requestObject = WebRequest.Create(ShipEngineUI.urlString);
+                requestObject.Method = "GET";
+
+                //ADD API KEY TO HEADER
+                requestObject.Headers.Add("API-key", ShipEngineUI.apiKey);
+
+                //RESPONSE
+                HttpWebResponse responseObjectGet = null;
+                responseObjectGet = (HttpWebResponse)requestObject.GetResponse();
+                string streamResponse = null;
+
+                using (Stream stream = responseObjectGet.GetResponseStream())
+                {
+                    StreamReader responseRead = new StreamReader(stream);
+                    streamResponse = responseRead.ReadToEnd();
+
+                    using (var reader = new StringReader(streamResponse))
+                    {
+
+                        for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                        {
+
+
+                        }
+
+                    }
+
+                    update_carrier_richTextBox.Text = streamResponse;
+
+                }
+
+            }
+            catch (WebException Exception)
+            {
+
+                using (WebResponse ShipEngineErrorResponse = Exception.Response)
+                {
+                    HttpWebResponse ShipEngineResponse = (HttpWebResponse)ShipEngineErrorResponse;
+                    Console.WriteLine("Error code: {0}", ShipEngineResponse.StatusCode);
+                    using (Stream parseResponse = ShipEngineErrorResponse.GetResponseStream())
+
+                    using (var reader = new StreamReader(parseResponse))
+                    {
+
+                        for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                        {
+
+                            if (currentLine.Contains("message") == true)
+                            {
+
+                                string ShipEngineErrorBody1 = currentLine.Replace("\"message\": \"", "");
+                                string ShipEngineErrorBody = ShipEngineErrorBody1.Replace("\",", "");
+
+                                MessageBox.Show(ShipEngineErrorBody.Trim(), "ERROR GETTING SETTINGS");
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void delete_carrier_button_Click(object sender, EventArgs e)
+        {
+
+            string carrier_id1 = update_carrier_listBox.SelectedItem.ToString();
+            carrier_id1 = carrier_id1.Remove(carrier_id1.IndexOf("|") + 1);
+            string carrier_id = carrier_id1.Replace("|", "");
+
+            string carrier_name1 = update_carrier_listBox.SelectedItem.ToString();
+            carrier_name1 = carrier_name1.Substring(carrier_name1.IndexOf("|"));
+            string carrier_name = carrier_name1.Replace("|", "");
+
+            DialogResult dialogResult = MessageBox.Show("Are you sure you would like to delete " + carrier_id + "?" + "\n" + "This action cannot be undone.", "DELETE CARRIER ACCOUNT", MessageBoxButtons.YesNo);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+
+                try
+                {
+
+                    //URI - POST
+                    ShipEngineUI.urlString = "https://api.shipengine.com/v1/connections/carriers/" + carrier_name + "/" + carrier_id.Trim();
+
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(ShipEngineUI.urlString);
+
+                    request.Method = "DELETE";
+
+                    //API Key
+                    request.Headers.Add("API-key", ShipEngineUI.apiKey);
+
+                    //POST REQUEST
+                    string update_carrier_request = update_carrier_richTextBox.Text;
+
+                    ASCIIEncoding encoding = new ASCIIEncoding();
+                    byte[] data = encoding.GetBytes(update_carrier_request);
+
+                    request.ContentType = "application/json";
+                    request.ContentLength = data.Length;
+
+                    Stream stream = request.GetRequestStream();
+
+                    stream.Write(data, 0, data.Length);
+                    stream.Close();
+
+                    HttpWebResponse requestResponse = (HttpWebResponse)request.GetResponse();
+                    stream = requestResponse.GetResponseStream();
+
+                    if (requestResponse.StatusCode == HttpStatusCode.NoContent)
+                    {
+
+                        MessageBox.Show("Carrier account has been deleted.", "DELETE CARRIER ACCOUNT");
+
+                    }
+
+                    StreamReader parseResponse = new StreamReader(stream);
+                    update_carrier_response_richTextBox.Text = parseResponse.ReadToEnd();
+                    string responseBodyText = update_carrier_response_richTextBox.Text;
+
+                    //GET RESPONSE
+                    using (var reader = new StringReader(responseBodyText))
+                    {
+
+                        for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                        {
+
+
+                        }
+                    }
+
+                    stream.Close();
+
+                    //CLOSE STREAM
+                    parseResponse.Close();
+                    stream.Close();
+
+                }
+                catch (WebException Exception)
+                {
+
+                    using (WebResponse ShipEngineErrorResponse = Exception.Response)
+                    {
+                        HttpWebResponse ShipEngineResponse = (HttpWebResponse)ShipEngineErrorResponse;
+                        Console.WriteLine("Error code: {0}", ShipEngineResponse.StatusCode);
+                        using (Stream parseResponse = ShipEngineErrorResponse.GetResponseStream())
+
+                        using (var reader = new StreamReader(parseResponse))
+                        {
+
+                            for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                            {
+
+                                if (currentLine.Contains("message") == true)
+                                {
+
+                                    string ShipEngineErrorBody1 = currentLine.Replace("\"message\": \"", "");
+                                    string ShipEngineErrorBody = ShipEngineErrorBody1.Replace("\",", "");
+
+                                    MessageBox.Show(ShipEngineErrorBody.Trim(), "ERROR DELETING" + carrier_name.ToUpper() + "ACCOUNT");
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+
+                MessageBox.Show("You canceled the delete request for " + carrier_id + ".");
+
             }
         }
     }
