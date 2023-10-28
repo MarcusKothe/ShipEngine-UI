@@ -74,9 +74,103 @@ namespace ShipEngine_UI
             //GET ONE BALANCE
             GetCarrierBalance();
 
+            //GET ORDER SOURCES
+            GetOrderSources();
+
         }
 
         #region Form Load methods
+
+        public void GetOrderSources()
+        {
+            //GET ORDER SOURCES
+            try
+            {
+                //URL SOURCE
+                ShipEngineUI.urlString = "https://api.shipengine.com/v-beta/order_sources";
+
+                //REQUEST
+                WebRequest requestObject = WebRequest.Create(ShipEngineUI.urlString);
+                requestObject.Method = "GET";
+
+                //ADD API KEY TO HEADER
+                requestObject.Headers.Add("API-key", ShipEngineUI.apiKey);
+
+                //RESPONSE
+                HttpWebResponse responseObjectGet = null;
+                responseObjectGet = (HttpWebResponse)requestObject.GetResponse();
+                string streamResponse = null;
+
+                using (Stream stream = responseObjectGet.GetResponseStream())
+                {
+                    StreamReader responseRead = new StreamReader(stream);
+                    streamResponse = responseRead.ReadToEnd();
+
+                    using (var reader = new StringReader(streamResponse))
+                    {
+
+                        for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                        {
+
+                            if (currentLine.Contains("order_source_id") == true)
+                            {
+
+                                string order_source_id1 = currentLine.Replace(" \"order_source_id\": \"", "");
+                                string order_source_id = order_source_id1.Replace("\",", "");
+
+                                //add to textbox
+                                order_source_richTextBox.Text = order_source_richTextBox.Text.Trim() + "," + Environment.NewLine + order_source_id.Trim() + "|";
+
+                            }
+                            else if (currentLine.Contains("order_source_nickname") == true)
+                            {
+                                string order_source_nickname1 = currentLine.Replace("\"order_source_nickname\": \"", "");
+                                string order_source_nickname = order_source_nickname1.Replace("\",", "");
+
+                                order_source_richTextBox.Text = order_source_richTextBox.Text + order_source_nickname.Trim() + " | ";
+                            }
+                            else if (currentLine.Contains("order_source_code") == true)
+                            {
+                                string order_source_code1 = currentLine.Replace("\"order_source_code\": \"", "");
+                                string order_source_code = order_source_code1.Replace("\",", "");
+
+                                order_source_richTextBox.Text = order_source_richTextBox.Text + order_source_code.Trim();
+                            }
+                            else
+                            {
+                                currentLine.Replace(currentLine, "");
+                            }
+                        }
+
+                        //PARSE AND ADD OrderSources
+                        string[] order_source_id_list1 = order_source_richTextBox.Text.Split(',');
+                        string[] order_source_id_list = order_source_id_list1.Distinct().ToArray();
+                        foreach (string order_source in order_source_id_list)
+                        {
+                            if (order_source.Trim() == "")
+                                continue;
+
+                            //_ComboBox.Items.Add(carrier_id.Trim());
+                            manage_order_sources_listBox.Items.Add(order_source.Trim());
+                        }
+                    }
+                }
+            }
+            catch (Exception HTTPexception)
+            {
+                this.Close();
+
+                if (HTTPexception.Message.Contains("401"))
+                {
+                    
+                    //MessageBox.Show("ShipEngine returned 401 Unauthorized, please check your API Key.", "AUTHENTICATION ERROR");
+
+                    ShipEngineUI.has_error = true;
+
+                }
+
+            }
+        }
 
         public void GetCarrierAccounts()
         {

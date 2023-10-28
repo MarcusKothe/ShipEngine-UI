@@ -9,7 +9,7 @@ namespace ShipEngine_UI.Resources.Classes
     public class SE_Carrier_Connection
     {
 
-        public static string connections_baseURL = "/v1/connections/carriers/";
+        public static string connections_baseURL = "https://api.shipengine.com/v1/connections/carriers/";
         public static bool has_settings = false;
 
         //STAMPS x USPS

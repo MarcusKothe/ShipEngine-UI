@@ -222,6 +222,12 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.add_funds_account_ComboBox = new System.Windows.Forms.ComboBox();
+            this.tabPage13 = new System.Windows.Forms.TabPage();
+            this.connect_order_source_ComboBox = new System.Windows.Forms.ComboBox();
+            this.connect_order_source_button = new System.Windows.Forms.Button();
+            this.connect_order_source_richTextBox = new System.Windows.Forms.RichTextBox();
+            this.manage_order_sources_listBox = new System.Windows.Forms.ListBox();
+            this.order_source_richTextBox = new System.Windows.Forms.RichTextBox();
             this.shipment_Config_GroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.insured_value_amont_numericUpDown)).BeginInit();
@@ -246,6 +252,8 @@
             this.tabPage6.SuspendLayout();
             this.tabPage7.SuspendLayout();
             this.tabControl2.SuspendLayout();
+            this.tabPage10.SuspendLayout();
+            this.tabPage11.SuspendLayout();
             this.carrier_connection_tabControl.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.tabPage9.SuspendLayout();
@@ -2416,7 +2424,7 @@
             // 
             this.tabControl2.Controls.Add(this.tabPage10);
             this.tabControl2.Controls.Add(this.tabPage11);
-            this.tabControl2.Enabled = false;
+            this.tabControl2.Controls.Add(this.tabPage13);
             this.tabControl2.Location = new System.Drawing.Point(6, 365);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
@@ -2425,6 +2433,9 @@
             // 
             // tabPage10
             // 
+            this.tabPage10.Controls.Add(this.connect_order_source_richTextBox);
+            this.tabPage10.Controls.Add(this.connect_order_source_button);
+            this.tabPage10.Controls.Add(this.connect_order_source_ComboBox);
             this.tabPage10.Location = new System.Drawing.Point(4, 22);
             this.tabPage10.Name = "tabPage10";
             this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
@@ -2435,6 +2446,7 @@
             // 
             // tabPage11
             // 
+            this.tabPage11.Controls.Add(this.manage_order_sources_listBox);
             this.tabPage11.Location = new System.Drawing.Point(4, 22);
             this.tabPage11.Name = "tabPage11";
             this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
@@ -2721,11 +2733,73 @@
             this.add_funds_account_ComboBox.Size = new System.Drawing.Size(121, 21);
             this.add_funds_account_ComboBox.TabIndex = 8;
             // 
+            // tabPage13
+            // 
+            this.tabPage13.Location = new System.Drawing.Point(4, 22);
+            this.tabPage13.Name = "tabPage13";
+            this.tabPage13.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage13.Size = new System.Drawing.Size(431, 319);
+            this.tabPage13.TabIndex = 2;
+            this.tabPage13.Text = "Update Order Source Connections";
+            this.tabPage13.UseVisualStyleBackColor = true;
+            // 
+            // connect_order_source_ComboBox
+            // 
+            this.connect_order_source_ComboBox.FormattingEnabled = true;
+            this.connect_order_source_ComboBox.Items.AddRange(new object[] {
+            "amazon",
+            "brightpearl",
+            "cratejoy",
+            "channeladvisor",
+            "magento",
+            "volusion",
+            "walmart",
+            "woocommerce"});
+            this.connect_order_source_ComboBox.Location = new System.Drawing.Point(6, 6);
+            this.connect_order_source_ComboBox.Name = "connect_order_source_ComboBox";
+            this.connect_order_source_ComboBox.Size = new System.Drawing.Size(182, 21);
+            this.connect_order_source_ComboBox.TabIndex = 0;
+            // 
+            // connect_order_source_button
+            // 
+            this.connect_order_source_button.Location = new System.Drawing.Point(350, 6);
+            this.connect_order_source_button.Name = "connect_order_source_button";
+            this.connect_order_source_button.Size = new System.Drawing.Size(75, 21);
+            this.connect_order_source_button.TabIndex = 132;
+            this.connect_order_source_button.Text = "connect";
+            this.connect_order_source_button.UseVisualStyleBackColor = true;
+            // 
+            // connect_order_source_richTextBox
+            // 
+            this.connect_order_source_richTextBox.Location = new System.Drawing.Point(6, 33);
+            this.connect_order_source_richTextBox.Name = "connect_order_source_richTextBox";
+            this.connect_order_source_richTextBox.Size = new System.Drawing.Size(419, 280);
+            this.connect_order_source_richTextBox.TabIndex = 133;
+            this.connect_order_source_richTextBox.Text = "";
+            // 
+            // manage_order_sources_listBox
+            // 
+            this.manage_order_sources_listBox.FormattingEnabled = true;
+            this.manage_order_sources_listBox.Location = new System.Drawing.Point(6, 6);
+            this.manage_order_sources_listBox.Name = "manage_order_sources_listBox";
+            this.manage_order_sources_listBox.Size = new System.Drawing.Size(419, 134);
+            this.manage_order_sources_listBox.TabIndex = 0;
+            // 
+            // order_source_richTextBox
+            // 
+            this.order_source_richTextBox.Location = new System.Drawing.Point(1353, 648);
+            this.order_source_richTextBox.Name = "order_source_richTextBox";
+            this.order_source_richTextBox.ReadOnly = true;
+            this.order_source_richTextBox.Size = new System.Drawing.Size(100, 100);
+            this.order_source_richTextBox.TabIndex = 134;
+            this.order_source_richTextBox.Text = "";
+            // 
             // ShippingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1125, 755);
+            this.ClientSize = new System.Drawing.Size(1671, 755);
+            this.Controls.Add(this.order_source_richTextBox);
             this.Controls.Add(this.update_carrier_response_richTextBox);
             this.Controls.Add(this.shipment_Config_GroupBox);
             this.Controls.Add(this.tabControl1);
@@ -2785,6 +2859,8 @@
             this.tabPage6.PerformLayout();
             this.tabPage7.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
+            this.tabPage10.ResumeLayout(false);
+            this.tabPage11.ResumeLayout(false);
             this.carrier_connection_tabControl.ResumeLayout(false);
             this.tabPage8.ResumeLayout(false);
             this.tabPage9.ResumeLayout(false);
@@ -2990,6 +3066,12 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.ComboBox add_funds_account_ComboBox;
+        private System.Windows.Forms.TabPage tabPage13;
+        private System.Windows.Forms.RichTextBox connect_order_source_richTextBox;
+        private System.Windows.Forms.Button connect_order_source_button;
+        private System.Windows.Forms.ComboBox connect_order_source_ComboBox;
+        private System.Windows.Forms.ListBox manage_order_sources_listBox;
+        private System.Windows.Forms.RichTextBox order_source_richTextBox;
     }
 }
 
