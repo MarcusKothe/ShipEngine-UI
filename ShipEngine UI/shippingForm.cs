@@ -2123,7 +2123,7 @@ namespace ShipEngine_UI
                     "\r\n        \"confirmation\": \"" + delivery_confirmation_ComboBox.SelectedItem.ToString() + "\"," +
                     "\r\n        \"advanced_options\": {" +
                     "\r\n            \"bill_to_account\": \"" + ShipEngineUI.advanced_options_bill_to_account + "\"," +
-                    "\r\n            \"bill_to_country_code\": " + ShipEngineUI.advanced_options_bill_to_party + "," +
+                    "\r\n            \"bill_to_country_code\": " + ShipEngineUI.advanced_options_bill_to_country_code + "," +
                     "\r\n            \"bill_to_party\": null," +
                     "\r\n            \"bill_to_postal_code\": \"" + ShipEngineUI.advanced_options_bill_to_postal_code + "\"," +
                     "\r\n            \"canada_delivered_duty\": null," +
@@ -2486,6 +2486,8 @@ namespace ShipEngine_UI
 
         }
 
+        #region visual click event methods
+
         private void advanced_options_groupBox_Click(object sender, EventArgs e)
         {
 
@@ -2534,6 +2536,8 @@ namespace ShipEngine_UI
         {
 
         }
+
+        #endregion
 
         private void label_history_listbox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -3366,6 +3370,113 @@ namespace ShipEngine_UI
                                 string ShipEngineErrorBody = ShipEngineErrorBody1.Replace("\",", "");
 
                                 MessageBox.Show(ShipEngineErrorBody.Trim(), "ERROR CONNECTING ORDER SOURCE");
+
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+
+        private void import_orders_button_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+
+                //GET order_source_id
+
+                string order_source_id1 = manage_order_sources_listBox.SelectedItem.ToString();
+                order_source_id1 = order_source_id1.Remove(order_source_id1.IndexOf("|") + 1);
+                string order_source_id = order_source_id1.Replace("|", "");
+
+                //GET order_source_name
+                string order_source_name1 = manage_order_sources_listBox.SelectedItem.ToString();
+                order_source_name1 = order_source_name1.Substring(order_source_name1.LastIndexOf("|") + 1);
+                string order_source_name = order_source_name1.Replace("|", "");
+
+
+                //URI - POST
+                ShipEngineUI.urlString = "https://api.shipengine.com/v-beta/order_sources/" + order_source_id + "/refresh";
+
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(ShipEngineUI.urlString);
+
+                request.Method = "PUT";
+
+                //API Key
+                request.Headers.Add("API-key", ShipEngineUI.apiKey);
+
+                //POST REQUEST
+                string order_source_import_request = ShipEngineUI.urlString;
+
+                ASCIIEncoding encoding = new ASCIIEncoding();
+                byte[] data = encoding.GetBytes(order_source_import_request);
+
+                request.ContentType = "application/json";
+                request.ContentLength = data.Length;
+
+                Stream stream = request.GetRequestStream();
+
+                stream.Write(data, 0, data.Length);
+                stream.Close();
+
+                HttpWebResponse requestResponse = (HttpWebResponse)request.GetResponse();
+                stream = requestResponse.GetResponseStream();
+
+                StreamReader parseResponse = new StreamReader(stream);
+                order_source_refresh_richTextBox.Text = parseResponse.ReadToEnd();
+                string responseBodyText = order_source_refresh_richTextBox.Text;
+
+                //GET RESPONSE
+                using (var reader = new StringReader(responseBodyText))
+                {
+
+                    for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                    {
+
+                        if (currentLine.Contains("status"))
+                        {
+
+                            string order_source_status1 = currentLine.Replace("\"status\": \"", "");
+                            string order_source_status = order_source_status1.Replace("\",", "");
+
+                            MessageBox.Show("Your" + order_source_name.ToUpper() + " store is " + order_source_status.Trim(), "IMPORT ORDERS");
+
+                        }
+
+                    }
+                }
+
+                stream.Close();
+
+                //CLOSE STREAM
+                parseResponse.Close();
+                stream.Close();
+
+            }
+            catch (WebException Exception)
+            {
+
+                using (WebResponse ShipEngineErrorResponse = Exception.Response)
+                {
+                    HttpWebResponse ShipEngineResponse = (HttpWebResponse)ShipEngineErrorResponse;
+                    Console.WriteLine("Error code: {0}", ShipEngineResponse.StatusCode);
+                    using (Stream parseResponse = ShipEngineErrorResponse.GetResponseStream())
+
+                    using (var reader = new StreamReader(parseResponse))
+                    {
+
+                        for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                        {
+
+                            if (currentLine.Contains("message") == true)
+                            {
+
+                                string ShipEngineErrorBody1 = currentLine.Replace("\"message\": \"", "");
+                                string ShipEngineErrorBody = ShipEngineErrorBody1.Replace("\",", "");
+
+                                MessageBox.Show(ShipEngineErrorBody.Trim(), "ERROR IMPORTING ORDERS");
 
                             }
                         }

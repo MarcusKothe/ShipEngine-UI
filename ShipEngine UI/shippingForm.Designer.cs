@@ -200,7 +200,7 @@
             this.tabPage11 = new System.Windows.Forms.TabPage();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.import_orders_button = new System.Windows.Forms.Button();
             this.manage_order_sources_listBox = new System.Windows.Forms.ListBox();
             this.carrier_connection_tabControl = new System.Windows.Forms.TabControl();
             this.tabPage8 = new System.Windows.Forms.TabPage();
@@ -231,6 +231,7 @@
             this.update_carrier_response_richTextBox = new System.Windows.Forms.RichTextBox();
             this.order_source_richTextBox = new System.Windows.Forms.RichTextBox();
             this.connect_order_source_response_richTextBox = new System.Windows.Forms.RichTextBox();
+            this.order_source_refresh_richTextBox = new System.Windows.Forms.RichTextBox();
             this.shipment_Config_GroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.insured_value_amont_numericUpDown)).BeginInit();
@@ -2486,7 +2487,7 @@
             // 
             this.tabPage11.Controls.Add(this.button3);
             this.tabPage11.Controls.Add(this.button2);
-            this.tabPage11.Controls.Add(this.button1);
+            this.tabPage11.Controls.Add(this.import_orders_button);
             this.tabPage11.Controls.Add(this.manage_order_sources_listBox);
             this.tabPage11.Location = new System.Drawing.Point(4, 22);
             this.tabPage11.Name = "tabPage11";
@@ -2514,14 +2515,15 @@
             this.button2.Text = "Test Order Source";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // import_orders_button
             // 
-            this.button1.Location = new System.Drawing.Point(6, 68);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Import Orders";
-            this.button1.UseVisualStyleBackColor = true;
+            this.import_orders_button.Location = new System.Drawing.Point(6, 68);
+            this.import_orders_button.Name = "import_orders_button";
+            this.import_orders_button.Size = new System.Drawing.Size(92, 23);
+            this.import_orders_button.TabIndex = 1;
+            this.import_orders_button.Text = "Import Orders";
+            this.import_orders_button.UseVisualStyleBackColor = true;
+            this.import_orders_button.Click += new System.EventHandler(this.import_orders_button_Click);
             // 
             // manage_order_sources_listBox
             // 
@@ -2827,11 +2829,21 @@
             this.connect_order_source_response_richTextBox.TabIndex = 135;
             this.connect_order_source_response_richTextBox.Text = "";
             // 
+            // order_source_refresh_richTextBox
+            // 
+            this.order_source_refresh_richTextBox.Location = new System.Drawing.Point(1207, 118);
+            this.order_source_refresh_richTextBox.Name = "order_source_refresh_richTextBox";
+            this.order_source_refresh_richTextBox.ReadOnly = true;
+            this.order_source_refresh_richTextBox.Size = new System.Drawing.Size(100, 100);
+            this.order_source_refresh_richTextBox.TabIndex = 136;
+            this.order_source_refresh_richTextBox.Text = "";
+            // 
             // ShippingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1674, 755);
+            this.ClientSize = new System.Drawing.Size(1292, 755);
+            this.Controls.Add(this.order_source_refresh_richTextBox);
             this.Controls.Add(this.connect_order_source_response_richTextBox);
             this.Controls.Add(this.order_source_richTextBox);
             this.Controls.Add(this.update_carrier_response_richTextBox);
@@ -3107,8 +3119,9 @@
         private System.Windows.Forms.RichTextBox order_source_richTextBox;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button import_orders_button;
         private System.Windows.Forms.RichTextBox connect_order_source_response_richTextBox;
+        private System.Windows.Forms.RichTextBox order_source_refresh_richTextBox;
     }
 }
 
