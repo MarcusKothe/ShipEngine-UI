@@ -78,6 +78,18 @@ namespace ShipEngine_UI
             //GET ORDER SOURCES
             GetOrderSources();
 
+            
+        }
+
+        private void shippingForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            System.Windows.Forms.Application.OpenForms["apiKeyPrompt"].Close();
+
+            for (int i = System.Windows.Forms.Application.OpenForms.Count - 1; i >= 0; i--)
+            {
+                System.Windows.Forms.Application.OpenForms[i].Close();
+            }
+
         }
 
         #region Form Load methods
@@ -2523,15 +2535,6 @@ namespace ShipEngine_UI
 
         }
 
-        private void exit_button_Click(object sender, EventArgs e)
-        {
-
-            for (int i = System.Windows.Forms.Application.OpenForms.Count - 1; i >= 0; i--)
-            {
-                System.Windows.Forms.Application.OpenForms[i].Close();
-            }
-        }
-
         private void package_code_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -3280,6 +3283,7 @@ namespace ShipEngine_UI
 
         }
 
+        //No route matched with those values - research error.
         private void connect_order_source_button_Click(object sender, EventArgs e)
         {
 
@@ -3484,6 +3488,105 @@ namespace ShipEngine_UI
                 }
             }
 
+        }
+
+        //No route matched with those values - research error.
+        private void test_order_source_buttom_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+
+                //GET order_source_id
+
+                string order_source_id1 = manage_order_sources_listBox.SelectedItem.ToString();
+                order_source_id1 = order_source_id1.Remove(order_source_id1.IndexOf("|") + 1);
+                string order_source_id = order_source_id1.Replace("|", "");
+
+                //GET order_source_name
+                string order_source_name1 = manage_order_sources_listBox.SelectedItem.ToString();
+                order_source_name1 = order_source_name1.Substring(order_source_name1.LastIndexOf("|") + 1);
+                string order_source_name = order_source_name1.Replace("|", "");
+
+
+                //URI - POST
+                ShipEngineUI.urlString = "https://api.shipengine.com/v-beta/connections/order_sources/" + order_source_name.Trim() + "/" + order_source_id + "/test";
+
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(ShipEngineUI.urlString);
+
+                request.Method = "GET";
+
+                //API Key
+                //ADD API KEY TO HEADER
+                request.Headers.Add("API-key", ShipEngineUI.apiKey);
+
+                //RESPONSE
+                HttpWebResponse responseObjectGet = null;
+                responseObjectGet = (HttpWebResponse)request.GetResponse();
+                string streamResponse = null;
+
+                if (responseObjectGet.StatusCode == HttpStatusCode.NoContent)
+                {
+
+                    MessageBox.Show("Connection to Order Source was successful", "TEST ORDER SOURCE");
+
+                }
+                else if (responseObjectGet.StatusCode != HttpStatusCode.NoContent)
+                {
+
+                    MessageBox.Show("Connection to Order Source was not successful " + responseObjectGet.StatusCode.ToString(), "TEST ORDER SOURCE FAILED");
+
+                }
+
+                using (Stream stream = responseObjectGet.GetResponseStream())
+                {
+                    StreamReader responseRead = new StreamReader(stream);
+                    streamResponse = responseRead.ReadToEnd();
+
+                    using (var reader = new StringReader(streamResponse))
+                    {
+
+                        for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                        {
+
+                        }
+                    }
+                    stream.Close();
+
+                    //CLOSE STREAM
+                   
+                    stream.Close();
+                }
+               
+            }
+            catch (WebException Exception)
+            {
+
+                using (WebResponse ShipEngineErrorResponse = Exception.Response)
+                {
+                    HttpWebResponse ShipEngineResponse = (HttpWebResponse)ShipEngineErrorResponse;
+                    Console.WriteLine("Error code: {0}", ShipEngineResponse.StatusCode);
+                    using (Stream parseResponse = ShipEngineErrorResponse.GetResponseStream())
+
+                    using (var reader = new StreamReader(parseResponse))
+                    {
+
+                        for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                        {
+
+                            if (currentLine.Contains("message") == true)
+                            {
+
+                                string ShipEngineErrorBody1 = currentLine.Replace("\"message\": \"", "");
+                                string ShipEngineErrorBody = ShipEngineErrorBody1.Replace("\",", "");
+
+                                MessageBox.Show(ShipEngineErrorBody.Trim(), "TEST ORDER SOURCE FAILED");
+
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

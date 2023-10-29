@@ -199,7 +199,7 @@
             this.connect_order_source_ComboBox = new System.Windows.Forms.ComboBox();
             this.tabPage11 = new System.Windows.Forms.TabPage();
             this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.test_order_source_buttom = new System.Windows.Forms.Button();
             this.import_orders_button = new System.Windows.Forms.Button();
             this.manage_order_sources_listBox = new System.Windows.Forms.ListBox();
             this.carrier_connection_tabControl = new System.Windows.Forms.TabControl();
@@ -224,7 +224,6 @@
             this.current_balance_label = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.exit_button = new System.Windows.Forms.Button();
             this.notify_shipped_checkBox = new System.Windows.Forms.CheckBox();
             this.create_label_from_Order_Button = new System.Windows.Forms.Button();
             this.sales_order_ListBox = new System.Windows.Forms.ListBox();
@@ -232,6 +231,7 @@
             this.order_source_richTextBox = new System.Windows.Forms.RichTextBox();
             this.connect_order_source_response_richTextBox = new System.Windows.Forms.RichTextBox();
             this.order_source_refresh_richTextBox = new System.Windows.Forms.RichTextBox();
+            this.order_source_test_richTextBox = new System.Windows.Forms.RichTextBox();
             this.shipment_Config_GroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.insured_value_amont_numericUpDown)).BeginInit();
@@ -2486,7 +2486,7 @@
             // tabPage11
             // 
             this.tabPage11.Controls.Add(this.button3);
-            this.tabPage11.Controls.Add(this.button2);
+            this.tabPage11.Controls.Add(this.test_order_source_buttom);
             this.tabPage11.Controls.Add(this.import_orders_button);
             this.tabPage11.Controls.Add(this.manage_order_sources_listBox);
             this.tabPage11.Location = new System.Drawing.Point(4, 22);
@@ -2499,25 +2499,26 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(263, 68);
+            this.button3.Location = new System.Drawing.Point(263, 129);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(162, 23);
             this.button3.TabIndex = 3;
             this.button3.Text = "De/Re Activate Order Source";
             this.button3.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // test_order_source_buttom
             // 
-            this.button2.Location = new System.Drawing.Point(104, 68);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(102, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Test Order Source";
-            this.button2.UseVisualStyleBackColor = true;
+            this.test_order_source_buttom.Location = new System.Drawing.Point(104, 129);
+            this.test_order_source_buttom.Name = "test_order_source_buttom";
+            this.test_order_source_buttom.Size = new System.Drawing.Size(102, 23);
+            this.test_order_source_buttom.TabIndex = 2;
+            this.test_order_source_buttom.Text = "Test Order Source";
+            this.test_order_source_buttom.UseVisualStyleBackColor = true;
+            this.test_order_source_buttom.Click += new System.EventHandler(this.test_order_source_buttom_Click);
             // 
             // import_orders_button
             // 
-            this.import_orders_button.Location = new System.Drawing.Point(6, 68);
+            this.import_orders_button.Location = new System.Drawing.Point(6, 129);
             this.import_orders_button.Name = "import_orders_button";
             this.import_orders_button.Size = new System.Drawing.Size(92, 23);
             this.import_orders_button.TabIndex = 1;
@@ -2530,7 +2531,7 @@
             this.manage_order_sources_listBox.FormattingEnabled = true;
             this.manage_order_sources_listBox.Location = new System.Drawing.Point(6, 6);
             this.manage_order_sources_listBox.Name = "manage_order_sources_listBox";
-            this.manage_order_sources_listBox.Size = new System.Drawing.Size(419, 56);
+            this.manage_order_sources_listBox.Size = new System.Drawing.Size(419, 121);
             this.manage_order_sources_listBox.TabIndex = 0;
             // 
             // carrier_connection_tabControl
@@ -2760,18 +2761,6 @@
             this.label19.TabIndex = 0;
             this.label19.Text = "One-Time Purchase";
             // 
-            // exit_button
-            // 
-            this.exit_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exit_button.ForeColor = System.Drawing.Color.DarkRed;
-            this.exit_button.Location = new System.Drawing.Point(163, 402);
-            this.exit_button.Name = "exit_button";
-            this.exit_button.Size = new System.Drawing.Size(22, 23);
-            this.exit_button.TabIndex = 131;
-            this.exit_button.Text = "X";
-            this.exit_button.UseVisualStyleBackColor = true;
-            this.exit_button.Click += new System.EventHandler(this.exit_button_Click);
-            // 
             // notify_shipped_checkBox
             // 
             this.notify_shipped_checkBox.AutoSize = true;
@@ -2838,11 +2827,21 @@
             this.order_source_refresh_richTextBox.TabIndex = 136;
             this.order_source_refresh_richTextBox.Text = "";
             // 
+            // order_source_test_richTextBox
+            // 
+            this.order_source_test_richTextBox.Location = new System.Drawing.Point(1207, 224);
+            this.order_source_test_richTextBox.Name = "order_source_test_richTextBox";
+            this.order_source_test_richTextBox.ReadOnly = true;
+            this.order_source_test_richTextBox.Size = new System.Drawing.Size(100, 100);
+            this.order_source_test_richTextBox.TabIndex = 137;
+            this.order_source_test_richTextBox.Text = "";
+            // 
             // ShippingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1292, 755);
+            this.ClientSize = new System.Drawing.Size(1125, 755);
+            this.Controls.Add(this.order_source_test_richTextBox);
             this.Controls.Add(this.order_source_refresh_richTextBox);
             this.Controls.Add(this.connect_order_source_response_richTextBox);
             this.Controls.Add(this.order_source_richTextBox);
@@ -2850,7 +2849,6 @@
             this.Controls.Add(this.shipment_Config_GroupBox);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label_Tab_Control);
-            this.Controls.Add(this.exit_button);
             this.Controls.Add(this.notify_shipped_checkBox);
             this.Controls.Add(this.create_label_from_Order_Button);
             this.Controls.Add(this.sales_order_ListBox);
@@ -2872,6 +2870,7 @@
             this.Name = "ShippingForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SHIPENGINE";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.shippingForm_FormClosing);
             this.Load += new System.EventHandler(this.shippingForm_Load);
             this.shipment_Config_GroupBox.ResumeLayout(false);
             this.shipment_Config_GroupBox.PerformLayout();
@@ -3075,7 +3074,6 @@
         private System.Windows.Forms.Button void_label_id_Button;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.RichTextBox rate_response_RichTextBox;
-        private System.Windows.Forms.Button exit_button;
         private System.Windows.Forms.CheckBox notify_shipped_checkBox;
         private System.Windows.Forms.Button create_label_from_Order_Button;
         private System.Windows.Forms.ListBox sales_order_ListBox;
@@ -3118,10 +3116,11 @@
         private System.Windows.Forms.ListBox manage_order_sources_listBox;
         private System.Windows.Forms.RichTextBox order_source_richTextBox;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button test_order_source_buttom;
         private System.Windows.Forms.Button import_orders_button;
         private System.Windows.Forms.RichTextBox connect_order_source_response_richTextBox;
         private System.Windows.Forms.RichTextBox order_source_refresh_richTextBox;
+        private System.Windows.Forms.RichTextBox order_source_test_richTextBox;
     }
 }
 
