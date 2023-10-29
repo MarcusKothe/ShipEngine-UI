@@ -56,6 +56,7 @@ namespace ShipEngine_UI
             shipTo_address_residential_indicator_comboBox.SelectedIndex = 1;
             carrier_code_comboBox.SelectedIndex = 0;
             connect_carrier_ComboBox.SelectedIndex = 0;
+            connect_order_source_ComboBox.SelectedIndex= 0;
 
             ship_date_TextBox.Text = DateTime.Today.ToString();
 
@@ -119,7 +120,7 @@ namespace ShipEngine_UI
                                 string order_source_id = order_source_id1.Replace("\",", "");
 
                                 //add to textbox
-                                order_source_richTextBox.Text = order_source_richTextBox.Text.Trim() + "," + Environment.NewLine + order_source_id.Trim() + "|";
+                                order_source_richTextBox.Text = order_source_richTextBox.Text.Trim() + "," + Environment.NewLine + order_source_id.Trim() + "| ";
 
                             }
                             else if (currentLine.Contains("order_source_nickname") == true)
@@ -2799,7 +2800,7 @@ namespace ShipEngine_UI
                 carrier_name1 = carrier_name1.Substring(carrier_name1.IndexOf("|"));
                 string carrier_name = carrier_name1.Replace("|", "");
 
-                //URI - POST
+                //URI - PUT
                 ShipEngineUI.urlString = "https://api.shipengine.com/v1/connections/carriers/" + carrier_name + "/" + carrier_id + "/settings".Trim();
 
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(ShipEngineUI.urlString);
@@ -2809,7 +2810,7 @@ namespace ShipEngine_UI
                 //API Key
                 request.Headers.Add("API-key", ShipEngineUI.apiKey);
 
-                //POST REQUEST
+                //PUT REQUEST
                 string update_carrier_request = update_carrier_richTextBox.Text;
 
                 ASCIIEncoding encoding = new ASCIIEncoding();
@@ -3219,6 +3220,159 @@ namespace ShipEngine_UI
                     }
                 }
             }
+        }
+
+        private void connect_order_source_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            string selected_order_source = connect_order_source_ComboBox.SelectedItem.ToString();
+
+            if (selected_order_source.Contains("amazon"))
+            {
+                connect_order_source_richTextBox.Enabled = true;
+                connect_order_source_richTextBox.Text = SE_Order_Source_Connection.Order_Source_Connection_amazon;
+            }
+            else if (selected_order_source.Contains("brightpearl"))
+            {
+                connect_order_source_richTextBox.Enabled = true;
+                connect_order_source_richTextBox.Text = SE_Order_Source_Connection.Order_Source_Connection_brightpearl;
+            }
+            else if (selected_order_source.Contains("cratejoy"))
+            {
+                connect_order_source_richTextBox.Enabled = true;
+                connect_order_source_richTextBox.Text = SE_Order_Source_Connection.Order_Source_Connection_cratejoy;
+            }
+            else if (selected_order_source.Contains("channeladvisor"))
+            {
+                connect_order_source_richTextBox.Enabled = true;
+                connect_order_source_richTextBox.Text = SE_Order_Source_Connection.Order_Source_Connection_channeladvisor;
+            }
+            else if (selected_order_source.Contains("magento"))
+            {
+                connect_order_source_richTextBox.Enabled = true;
+                connect_order_source_richTextBox.Text = SE_Order_Source_Connection.Order_Source_Connection_magento;
+            }
+            else if (selected_order_source.Contains("volusion"))
+            {
+                connect_order_source_richTextBox.Enabled = true;
+                connect_order_source_richTextBox.Text = SE_Order_Source_Connection.Order_Source_Connection_volusion;
+            }
+            else if (selected_order_source.Contains("walmart"))
+            {
+                connect_order_source_richTextBox.Enabled = true;
+                connect_order_source_richTextBox.Text = SE_Order_Source_Connection.Order_Source_Connection_walmart;
+            }
+            else if (selected_order_source.Contains("woocommerce"))
+            {
+                connect_order_source_richTextBox.Enabled = true;
+                connect_order_source_richTextBox.Text = SE_Order_Source_Connection.Order_Source_Connection_woocommerce;
+            }
+
+            //else if (selected_order_source.Contains(""))
+            //{
+            //    connect_order_source_richTextBox.Enabled = true;
+            //    connect_order_source_richTextBox.Text = SE_Order_Source_Connection.;
+            //}
+
+        }
+
+        private void connect_order_source_button_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                string ordersource_name = connect_order_source_ComboBox.SelectedItem.ToString().Trim();
+
+                //URI - POST
+                ShipEngineUI.urlString = "https://api.shipengine.com/v-beta/connections/order_sources/" + ordersource_name;
+
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(ShipEngineUI.urlString);
+
+                request.Method = "POST";
+
+                //API Key
+                request.Headers.Add("API-key", ShipEngineUI.apiKey);
+
+                //POST REQUEST
+                string connect_order_source_request = connect_order_source_richTextBox.Text;
+
+                ASCIIEncoding encoding = new ASCIIEncoding();
+                byte[] data = encoding.GetBytes(connect_order_source_request);
+
+                request.ContentType = "application/json";
+                request.ContentLength = data.Length;
+
+                Stream stream = request.GetRequestStream();
+
+                stream.Write(data, 0, data.Length);
+                stream.Close();
+
+                HttpWebResponse requestResponse = (HttpWebResponse)request.GetResponse();
+                stream = requestResponse.GetResponseStream();
+
+                StreamReader parseResponse = new StreamReader(stream);
+                connect_order_source_response_richTextBox.Text = parseResponse.ReadToEnd();
+                string responseBodyText = connect_order_source_response_richTextBox.Text;
+
+                //GET RESPONSE
+                using (var reader = new StringReader(responseBodyText))
+                {
+
+                    for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                    {
+
+                        if (currentLine.Contains("order_source_id"))
+                        {
+
+                            string order_source_id1 = currentLine.Replace("\"order_source_id\": \"", "");
+                            string order_source_id = order_source_id1.Replace("\",", "");
+
+                            MessageBox.Show("You have successfully added your" + ordersource_name + "account." + "\n" + order_source_id);
+
+                            //refresh order sources
+                            GetOrderSources();
+
+                        }
+
+                    }
+                }
+
+                stream.Close();
+
+                //CLOSE STREAM
+                parseResponse.Close();
+                stream.Close();
+
+            }
+            catch (WebException Exception)
+            {
+
+                using (WebResponse ShipEngineErrorResponse = Exception.Response)
+                {
+                    HttpWebResponse ShipEngineResponse = (HttpWebResponse)ShipEngineErrorResponse;
+                    Console.WriteLine("Error code: {0}", ShipEngineResponse.StatusCode);
+                    using (Stream parseResponse = ShipEngineErrorResponse.GetResponseStream())
+
+                    using (var reader = new StreamReader(parseResponse))
+                    {
+
+                        for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                        {
+
+                            if (currentLine.Contains("message") == true)
+                            {
+
+                                string ShipEngineErrorBody1 = currentLine.Replace("\"message\": \"", "");
+                                string ShipEngineErrorBody = ShipEngineErrorBody1.Replace("\",", "");
+
+                                MessageBox.Show(ShipEngineErrorBody.Trim(), "ERROR CONNECTING ORDER SOURCE");
+
+                            }
+                        }
+                    }
+                }
+            }
+
         }
     }
 }
