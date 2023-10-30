@@ -2056,11 +2056,9 @@ namespace ShipEngine_UI
                                 TextBoxes.Text = TextBoxes.Text.Replace("    ", "");
                             }
 
-
                         }
                     }
                 }
-
             }
             catch (Exception HTTPexception)
             {
@@ -2450,7 +2448,6 @@ namespace ShipEngine_UI
 
         private void void_label_id_Button_Click(object sender, EventArgs e)
         {
-
 
             string label_id_entered = void_label_id_TextBox.Text;
 
