@@ -57,6 +57,7 @@ namespace ShipEngine_UI
             carrier_code_comboBox.SelectedIndex = 0;
             connect_carrier_ComboBox.SelectedIndex = 0;
             connect_order_source_ComboBox.SelectedIndex= 0;
+            rate_request_RichTextBox.Enabled = true;
 
             ship_date_TextBox.Text = DateTime.Today.ToString();
 
@@ -1429,7 +1430,13 @@ namespace ShipEngine_UI
                     rate_response_RichTextBox.Text = rate_response_RichTextBox.Text.Replace(" ", "");
                     rate_response_RichTextBox.Text = rate_response_RichTextBox.Text.Replace("\"", "");
                     rate_response_RichTextBox.Text = rate_response_RichTextBox.Text.Replace("0~", "");
+
                     FixRate();
+
+                    //Fixes Fedex having multiple amount properties.
+                    FedexRateFix();
+
+                    rate_request_RichTextBox.Text = rateRequestBody;
 
                 }
 
@@ -1467,6 +1474,22 @@ namespace ShipEngine_UI
             {
                 MessageBox.Show(exeption.ToString());
             }
+        }
+
+        private void rate_response_RichTextBox_Click(object sender, EventArgs e)
+        {
+
+            rate_response_RichTextBox.Visible = false;
+
+            rate_request_RichTextBox.Visible = true;
+
+        }
+
+        private void rate_request_RichTextBox_Click(object sender, EventArgs e)
+        {
+            rate_response_RichTextBox.Visible = true;
+
+            rate_request_RichTextBox.Visible = false;
         }
 
         private void create_label_Button_Click(object sender, EventArgs e)
@@ -1783,6 +1806,35 @@ namespace ShipEngine_UI
             catch (Exception Exception)
             {
                 MessageBox.Show(Exception.Message);
+            }
+        }
+
+        public void FedexRateFix()
+        {
+            using (var reader = new StringReader(rate_response_RichTextBox.Text))
+            {
+
+                string fixed_rate_response = "";
+
+                for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                {
+
+                    if (currentLine.Contains("~"))
+                    {
+
+                        currentLine = currentLine.Substring(0, currentLine.IndexOf("~") + 1);
+
+                        fixed_rate_response += currentLine + Environment.NewLine; 
+
+                    }
+                    else
+                    {
+                        fixed_rate_response += currentLine + Environment.NewLine;
+                    }
+                }
+
+                rate_response_RichTextBox.Text = fixed_rate_response;
+                rate_response_RichTextBox.Text = rate_response_RichTextBox.Text.Replace("~", "");
             }
         }
 
@@ -3588,5 +3640,7 @@ namespace ShipEngine_UI
                 }
             }
         }
+
+        
     }
 }

@@ -232,6 +232,7 @@
             this.connect_order_source_response_richTextBox = new System.Windows.Forms.RichTextBox();
             this.order_source_refresh_richTextBox = new System.Windows.Forms.RichTextBox();
             this.order_source_test_richTextBox = new System.Windows.Forms.RichTextBox();
+            this.rate_request_RichTextBox = new System.Windows.Forms.RichTextBox();
             this.shipment_Config_GroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.insured_value_amont_numericUpDown)).BeginInit();
@@ -868,7 +869,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(6, 6);
+            this.tabControl1.Location = new System.Drawing.Point(9, 5);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(322, 381);
@@ -2175,6 +2176,7 @@
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.rate_response_RichTextBox);
+            this.tabPage5.Controls.Add(this.rate_request_RichTextBox);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Size = new System.Drawing.Size(451, 716);
@@ -2187,9 +2189,10 @@
             this.rate_response_RichTextBox.Location = new System.Drawing.Point(3, 3);
             this.rate_response_RichTextBox.Name = "rate_response_RichTextBox";
             this.rate_response_RichTextBox.ReadOnly = true;
-            this.rate_response_RichTextBox.Size = new System.Drawing.Size(445, 710);
+            this.rate_response_RichTextBox.Size = new System.Drawing.Size(443, 710);
             this.rate_response_RichTextBox.TabIndex = 115;
             this.rate_response_RichTextBox.Text = "";
+            this.rate_response_RichTextBox.Click += new System.EventHandler(this.rate_response_RichTextBox_Click);
             // 
             // tabPage4
             // 
@@ -2428,7 +2431,7 @@
             // 
             this.tabControl2.Controls.Add(this.tabPage10);
             this.tabControl2.Controls.Add(this.tabPage11);
-            this.tabControl2.Location = new System.Drawing.Point(6, 365);
+            this.tabControl2.Location = new System.Drawing.Point(9, 365);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
             this.tabControl2.Size = new System.Drawing.Size(439, 345);
@@ -2836,6 +2839,17 @@
             this.order_source_test_richTextBox.TabIndex = 137;
             this.order_source_test_richTextBox.Text = "";
             // 
+            // rate_request_RichTextBox
+            // 
+            this.rate_request_RichTextBox.Enabled = false;
+            this.rate_request_RichTextBox.Location = new System.Drawing.Point(3, 3);
+            this.rate_request_RichTextBox.Name = "rate_request_RichTextBox";
+            this.rate_request_RichTextBox.ReadOnly = true;
+            this.rate_request_RichTextBox.Size = new System.Drawing.Size(443, 710);
+            this.rate_request_RichTextBox.TabIndex = 116;
+            this.rate_request_RichTextBox.Text = "";
+            this.rate_request_RichTextBox.Click += new System.EventHandler(this.rate_request_RichTextBox_Click);
+            // 
             // ShippingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3121,6 +3135,7 @@
         private System.Windows.Forms.RichTextBox connect_order_source_response_richTextBox;
         private System.Windows.Forms.RichTextBox order_source_refresh_richTextBox;
         private System.Windows.Forms.RichTextBox order_source_test_richTextBox;
+        private System.Windows.Forms.RichTextBox rate_request_RichTextBox;
     }
 }
 

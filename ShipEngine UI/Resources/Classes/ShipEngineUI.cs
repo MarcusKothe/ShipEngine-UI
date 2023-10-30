@@ -21,6 +21,8 @@ namespace ShipEngine_UI
 
         public static string branded_tracking_url = "";
 
+        public static string rate_response = "";
+
         //Numbers
 
         public static string[] Numbers = new string[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "."};
