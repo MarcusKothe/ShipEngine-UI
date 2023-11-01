@@ -174,6 +174,7 @@
             this.label_RichTextBox = new System.Windows.Forms.RichTextBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.rate_response_RichTextBox = new System.Windows.Forms.RichTextBox();
+            this.rate_request_RichTextBox = new System.Windows.Forms.RichTextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tracking_number_textBox = new System.Windows.Forms.TextBox();
             this.label57 = new System.Windows.Forms.Label();
@@ -199,7 +200,6 @@
             this.connect_order_source_ComboBox = new System.Windows.Forms.ComboBox();
             this.tabPage11 = new System.Windows.Forms.TabPage();
             this.button3 = new System.Windows.Forms.Button();
-            this.test_order_source_buttom = new System.Windows.Forms.Button();
             this.import_orders_button = new System.Windows.Forms.Button();
             this.manage_order_sources_listBox = new System.Windows.Forms.ListBox();
             this.carrier_connection_tabControl = new System.Windows.Forms.TabControl();
@@ -232,7 +232,6 @@
             this.connect_order_source_response_richTextBox = new System.Windows.Forms.RichTextBox();
             this.order_source_refresh_richTextBox = new System.Windows.Forms.RichTextBox();
             this.order_source_test_richTextBox = new System.Windows.Forms.RichTextBox();
-            this.rate_request_RichTextBox = new System.Windows.Forms.RichTextBox();
             this.shipment_Config_GroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.insured_value_amont_numericUpDown)).BeginInit();
@@ -2194,6 +2193,17 @@
             this.rate_response_RichTextBox.Text = "";
             this.rate_response_RichTextBox.Click += new System.EventHandler(this.rate_response_RichTextBox_Click);
             // 
+            // rate_request_RichTextBox
+            // 
+            this.rate_request_RichTextBox.Enabled = false;
+            this.rate_request_RichTextBox.Location = new System.Drawing.Point(3, 3);
+            this.rate_request_RichTextBox.Name = "rate_request_RichTextBox";
+            this.rate_request_RichTextBox.ReadOnly = true;
+            this.rate_request_RichTextBox.Size = new System.Drawing.Size(443, 710);
+            this.rate_request_RichTextBox.TabIndex = 116;
+            this.rate_request_RichTextBox.Text = "";
+            this.rate_request_RichTextBox.Click += new System.EventHandler(this.rate_request_RichTextBox_Click);
+            // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.tracking_number_textBox);
@@ -2489,7 +2499,6 @@
             // tabPage11
             // 
             this.tabPage11.Controls.Add(this.button3);
-            this.tabPage11.Controls.Add(this.test_order_source_buttom);
             this.tabPage11.Controls.Add(this.import_orders_button);
             this.tabPage11.Controls.Add(this.manage_order_sources_listBox);
             this.tabPage11.Location = new System.Drawing.Point(4, 22);
@@ -2508,16 +2517,6 @@
             this.button3.TabIndex = 3;
             this.button3.Text = "De/Re Activate Order Source";
             this.button3.UseVisualStyleBackColor = true;
-            // 
-            // test_order_source_buttom
-            // 
-            this.test_order_source_buttom.Location = new System.Drawing.Point(104, 129);
-            this.test_order_source_buttom.Name = "test_order_source_buttom";
-            this.test_order_source_buttom.Size = new System.Drawing.Size(102, 23);
-            this.test_order_source_buttom.TabIndex = 2;
-            this.test_order_source_buttom.Text = "Test Order Source";
-            this.test_order_source_buttom.UseVisualStyleBackColor = true;
-            this.test_order_source_buttom.Click += new System.EventHandler(this.test_order_source_buttom_Click);
             // 
             // import_orders_button
             // 
@@ -2839,17 +2838,6 @@
             this.order_source_test_richTextBox.TabIndex = 137;
             this.order_source_test_richTextBox.Text = "";
             // 
-            // rate_request_RichTextBox
-            // 
-            this.rate_request_RichTextBox.Enabled = false;
-            this.rate_request_RichTextBox.Location = new System.Drawing.Point(3, 3);
-            this.rate_request_RichTextBox.Name = "rate_request_RichTextBox";
-            this.rate_request_RichTextBox.ReadOnly = true;
-            this.rate_request_RichTextBox.Size = new System.Drawing.Size(443, 710);
-            this.rate_request_RichTextBox.TabIndex = 116;
-            this.rate_request_RichTextBox.Text = "";
-            this.rate_request_RichTextBox.Click += new System.EventHandler(this.rate_request_RichTextBox_Click);
-            // 
             // ShippingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3130,7 +3118,6 @@
         private System.Windows.Forms.ListBox manage_order_sources_listBox;
         private System.Windows.Forms.RichTextBox order_source_richTextBox;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button test_order_source_buttom;
         private System.Windows.Forms.Button import_orders_button;
         private System.Windows.Forms.RichTextBox connect_order_source_response_richTextBox;
         private System.Windows.Forms.RichTextBox order_source_refresh_richTextBox;

@@ -3332,7 +3332,7 @@ namespace ShipEngine_UI
 
         }
 
-        //No route matched with those values - research error.
+        //No route matched with those values - research error. -UPDATE- OAuth order sources are not connectable at this time :/
         private void connect_order_source_button_Click(object sender, EventArgs e)
         {
 
@@ -3539,7 +3539,7 @@ namespace ShipEngine_UI
 
         }
 
-        //No route matched with those values - research error.
+        //No route matched with those values - research error. -UPDATE- This endpoint has been depreciated. 
         private void test_order_source_buttom_Click(object sender, EventArgs e)
         {
 

@@ -69,7 +69,7 @@ namespace ShipEngine_UI
         public static string sales_order_status_fulfillment_status = ""; //enumerated string, unknown, fulfilled, unfulfilled, partially_fulfilled, on_hold.
         public static string sales_order_status_is_cancelled = "";
 
-        //SALES ORDER PAYMENT DETAILS ----------------------------------------------------------------------------------------------------------------------------
+        //SALES ORDER PAYMENT DETAILS ------------------------------------------------------------------------------------------------------------------------
 
         public static string sales_order_subtotal = "";
         public static string sales_order_estimated_shipping = "";
