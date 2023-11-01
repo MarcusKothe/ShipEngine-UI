@@ -11,7 +11,7 @@ but also an easy to follow UI and source code that can help users to understand 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-MUST HAVE/OPEN A SHIPENGINE ACCOUNT - https://www.shipengine.com/signup/
+MUST HAVE/OPEN A SHIPENGINE ACCOUNT - https://www.shipengine.com/signup/ - YOU MAY USE THE FOLLOWING TEST KEY "TEST_ih19OEx3wVBhCUjTINHcKUfK4qevhTtSjDqV+T2RaK0"
 
 A ShipEngine API Key is needed to utilize this application, sandbox or production. Currently, I have not added a add carrier function.
 You must also add your carrier accounts on ShipEngine, (dashboard.shipengine.com)
