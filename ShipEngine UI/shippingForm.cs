@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlTypes;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Drawing.Design;
 using System.Drawing.Printing;
@@ -74,7 +75,7 @@ namespace ShipEngine_UI
             GetLabelHistory();
 
             //GET ONE BALANCE
-            GetCarrierBalance();
+            //GetCarrierBalance();
 
             //GET ORDER SOURCES
             GetOrderSources();
@@ -250,7 +251,38 @@ namespace ShipEngine_UI
 
                             carrier_id_ComboBox.Items.Add(carrier_id.Trim());
                             update_carrier_listBox.Items.Add(carrier_id.Trim());
+                            
                         }
+
+                        //PARSE AND ADD CARRIER FOR ADD FUNDS, USPS, STAMPS, ENDICIA
+                        string[] carrier_id_list2 = carrier_id_RichTextBox.Text.Split(',');
+                        string[] carrier_id_list3 = carrier_id_list2.Distinct().ToArray();
+                        foreach (string carrier_id_add_funds in carrier_id_list3)
+                        {
+                            if (carrier_id_add_funds.Trim() == "")
+                                continue;
+
+                            if (carrier_id_add_funds.Contains("usps") || carrier_id_add_funds.Contains("stamps") || carrier_id_add_funds.Contains("endicia"))
+                            {
+                                add_funds_account_ComboBox.Items.Add(carrier_id_add_funds.Trim());
+                            }
+                            else
+                            {
+                                add_funds_account_ComboBox.Items.Remove(carrier_id_add_funds.Trim());
+                            }
+
+                            
+                        }
+                    }
+
+                    if (add_funds_account_ComboBox.Items.Count == 0)
+                    {
+                        add_funds_account_ComboBox.Enabled = false;
+                    }
+                    else
+                    {
+                        add_funds_account_ComboBox.SelectedIndex = 0;
+                        add_funds_account_ComboBox.Enabled = true;
                     }
                 }
             }
@@ -447,14 +479,20 @@ namespace ShipEngine_UI
 
                             sales_order_ListBox.Items.Add(sales_order.Trim());
                         }
+
+                        if (sales_order_ListBox.Items.Count == 0)
+                        {
+                            sales_order_ListBox.Items.Add("ShipEngine found no sales orders to import at this time.");
+                            sales_order_ListBox.Enabled = false;
+                            notify_shipped_checkBox.Enabled = false;
+                            create_label_from_Order_Button.Enabled = false;
+                        }
                     }
                 }
             }
             catch (Exception HTTPexception)
             {
-                sales_order_ListBox.Items.Add("ShipEngine found no sales orders to import at this time.");
-                sales_order_ListBox.Enabled = false;
-                notify_shipped_checkBox.Enabled = false;
+               
             }
         }
 
@@ -608,10 +646,18 @@ namespace ShipEngine_UI
         public void GetCarrierBalance()
         {
             //GET CARRIER ACCOUNTS
+
+            //GET CARRIER ID
+            string carrier_id1 = add_funds_account_ComboBox.SelectedItem.ToString();
+            carrier_id1 = carrier_id1.Remove(carrier_id1.IndexOf("|") + 1);
+            string carrier_id = carrier_id1.Replace("|", "");
+
+            current_balance_label.Text = "No Balance returned";
+
             try
             {
                 //URL SOURCE
-                ShipEngineUI.urlString = "https://api.shipengine.com/v1/carriers";
+                ShipEngineUI.urlString = "https://api.shipengine.com/v1/carriers/" + carrier_id;
 
                 //REQUEST
                 WebRequest requestObject = WebRequest.Create(ShipEngineUI.urlString);
@@ -639,12 +685,12 @@ namespace ShipEngine_UI
                             if (currentLine.Contains("balance") == true)
                             {
 
-                                string carrier_balance1 = currentLine.Replace(" \"balance\": \"", "");
-                                string carrier_balance = carrier_balance1.Replace("\",", "");
+                                string carrier_balance1 = currentLine.Replace("\"balance\": ", "");
+                                string carrier_balance = carrier_balance1.Replace(",", "");
 
                                 //add to textbox
                                 carrier_balance_richTextBox.Text = carrier_balance_richTextBox.Text.Trim() + "," + Environment.NewLine + carrier_balance.Trim() + "|";
-                                current_balance_label.Text = carrier_balance;
+                                current_balance_label.Text = "$" + carrier_balance.Trim();
                             }
                             else
                             {
@@ -1862,7 +1908,7 @@ namespace ShipEngine_UI
                 pdoc.PrintPage += new PrintPageEventHandler(LabelImage);
 
                 pdoc.Print();
-
+              
             }
         }
 
@@ -3638,6 +3684,113 @@ namespace ShipEngine_UI
             }
         }
 
-        
+        private void ordersource_activation_button_Click(object sender, EventArgs e)
+        {
+
+
+
+        }
+
+        private void refresh_orders_button_Click(object sender, EventArgs e)
+        {
+            sales_order_ListBox.Items.Clear();
+
+            GetSalesOrders();
+
+        }
+
+        private void add_funds_account_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            GetCarrierBalance();
+
+            purchase_postage_numericUpDown_ValueChanged(sender, e);
+
+        }
+
+        private void purchase_postage_button_Click(object sender, EventArgs e)
+        {
+            //GET CARRIER ID
+            string carrier_id1 = add_funds_account_ComboBox.SelectedItem.ToString();
+            carrier_id1 = carrier_id1.Remove(carrier_id1.IndexOf("|") + 1);
+            string carrier_id = carrier_id1.Replace("|", "");
+
+            try
+            {
+                
+                //URI - POST
+                WebRequest purchase_postage_request = WebRequest.Create("https://api.shipengine.com/v1/carriers/" + carrier_id + "/add_funds");
+                purchase_postage_request.Method = "PUT";
+
+                //API Key
+                purchase_postage_request.Headers.Add("API-key", ShipEngineUI.apiKey);
+
+                //POST REQUEST
+                string purchase_postage_requestBody = "" +
+                    "{\r\n" +
+                    "  \"currency\": \"usd\"," +
+                    "\r\n  \"amount\": " + purchase_postage_numericUpDown.Value +
+                    "\r\n}";
+
+                ASCIIEncoding purchase_postage_encoding = new ASCIIEncoding();
+                byte[] purchase_postage_data = purchase_postage_encoding.GetBytes(purchase_postage_requestBody);
+
+                purchase_postage_request.ContentType = "application/json";
+                purchase_postage_request.ContentLength = purchase_postage_data.Length;
+
+                Stream purchase_postage_stream = purchase_postage_request.GetRequestStream();
+
+                //Documents path REQUEST LOG
+                string purchase_postage_docPath = @"..\..\Resources\Logs";
+
+
+                purchase_postage_stream.Write(purchase_postage_data, 0, purchase_postage_data.Length);
+                purchase_postage_stream.Close();
+
+                WebResponse purchase_postage_request_response = purchase_postage_request.GetResponse();
+                purchase_postage_stream = purchase_postage_request_response.GetResponseStream();
+
+            }
+            catch (WebException Exception)
+            {
+
+                using (WebResponse ShipEngineErrorResponse = Exception.Response)
+                {
+                    HttpWebResponse ShipEngineResponse = (HttpWebResponse)ShipEngineErrorResponse;
+                    Console.WriteLine("Error code: {0}", ShipEngineResponse.StatusCode);
+                    using (Stream parseResponse1 = ShipEngineErrorResponse.GetResponseStream())
+
+                    using (var reader = new StreamReader(parseResponse1))
+                    {
+
+                        for (string currentLine = reader.ReadLine(); currentLine != null; currentLine = reader.ReadLine())
+                        {
+
+                            if (currentLine.Contains("message") == true)
+                            {
+
+                                string ShipEngineErrorBody1 = currentLine.Replace("\"message\": \"", "");
+                                string ShipEngineErrorBody = ShipEngineErrorBody1.Replace("\",", "");
+
+                                MessageBox.Show(ShipEngineErrorBody.Trim(), "ERROR PURCHASING POSTAGE");
+
+                            }
+                        }
+                    }
+                }
+            }
+
+            GetCarrierBalance();
+        }
+
+        private void purchase_postage_numericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            string current_balance = current_balance_label.Text.Replace("$", "");
+
+            float current_balance_amount = float.Parse(current_balance) + float.Parse(purchase_postage_numericUpDown.Value.ToString());
+
+            resulting_balance_label.Text =  "$" + current_balance_amount.ToString();
+
+        }
     }
 }

@@ -148,7 +148,6 @@ namespace ShipEngine_UI
         public static string packages_label_messages_reference3 = "";
         public static string packages_external_package_id = "";
 
-
         public static string is_return_label = "";
         public static string rma_number = "";
         public static string charge_event = "";
@@ -156,7 +155,6 @@ namespace ShipEngine_UI
         public static string validate_address = "";
 
         //Branded Tracking
-
         public static string bTracking_carrier_code = "";
         public static string bTracking_service_code = "";
         public static string bTracking_to_city_locality = "";
@@ -167,6 +165,9 @@ namespace ShipEngine_UI
         public static string bTracking_from_state_province = ""; 
         public static string bTracking_from_postal_code = "";
         public static string bTracking_from_country_code = "";
+
+        //SHIPMENT ITEMS ARRAY
+
 
     }
 }

@@ -70,6 +70,8 @@
             this.create_label_Button = new System.Windows.Forms.Button();
             this.get_Rates_Button = new System.Windows.Forms.Button();
             this.print_Button = new System.Windows.Forms.Button();
+            this.notify_shipped_checkBox = new System.Windows.Forms.CheckBox();
+            this.create_label_from_Order_Button = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.advanced_options_groupBox = new System.Windows.Forms.GroupBox();
@@ -199,7 +201,7 @@
             this.connect_order_source_button = new System.Windows.Forms.Button();
             this.connect_order_source_ComboBox = new System.Windows.Forms.ComboBox();
             this.tabPage11 = new System.Windows.Forms.TabPage();
-            this.button3 = new System.Windows.Forms.Button();
+            this.ordersource_activation_button = new System.Windows.Forms.Button();
             this.import_orders_button = new System.Windows.Forms.Button();
             this.manage_order_sources_listBox = new System.Windows.Forms.ListBox();
             this.carrier_connection_tabControl = new System.Windows.Forms.TabControl();
@@ -215,23 +217,23 @@
             this.update_carrier_listBox = new System.Windows.Forms.ListBox();
             this.tabPage12 = new System.Windows.Forms.TabPage();
             this.add_funds_groupBox = new System.Windows.Forms.GroupBox();
+            this.purchase_postage_button = new System.Windows.Forms.Button();
+            this.purchase_postage_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.add_funds_account_ComboBox = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.resulting_balance_label = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.current_balance_label = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.notify_shipped_checkBox = new System.Windows.Forms.CheckBox();
-            this.create_label_from_Order_Button = new System.Windows.Forms.Button();
             this.sales_order_ListBox = new System.Windows.Forms.ListBox();
             this.update_carrier_response_richTextBox = new System.Windows.Forms.RichTextBox();
             this.order_source_richTextBox = new System.Windows.Forms.RichTextBox();
             this.connect_order_source_response_richTextBox = new System.Windows.Forms.RichTextBox();
             this.order_source_refresh_richTextBox = new System.Windows.Forms.RichTextBox();
             this.order_source_test_richTextBox = new System.Windows.Forms.RichTextBox();
+            this.refresh_orders_button = new System.Windows.Forms.Button();
             this.shipment_Config_GroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.insured_value_amont_numericUpDown)).BeginInit();
@@ -263,6 +265,7 @@
             this.tabPage9.SuspendLayout();
             this.tabPage12.SuspendLayout();
             this.add_funds_groupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.purchase_postage_numericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // carrier_id_RichTextBox
@@ -373,6 +376,8 @@
             this.shipment_Config_GroupBox.Controls.Add(this.create_label_Button);
             this.shipment_Config_GroupBox.Controls.Add(this.get_Rates_Button);
             this.shipment_Config_GroupBox.Controls.Add(this.print_Button);
+            this.shipment_Config_GroupBox.Controls.Add(this.notify_shipped_checkBox);
+            this.shipment_Config_GroupBox.Controls.Add(this.create_label_from_Order_Button);
             this.shipment_Config_GroupBox.Location = new System.Drawing.Point(334, 6);
             this.shipment_Config_GroupBox.Name = "shipment_Config_GroupBox";
             this.shipment_Config_GroupBox.Size = new System.Drawing.Size(320, 427);
@@ -846,7 +851,7 @@
             // 
             // get_Rates_Button
             // 
-            this.get_Rates_Button.Location = new System.Drawing.Point(234, 381);
+            this.get_Rates_Button.Location = new System.Drawing.Point(6, 335);
             this.get_Rates_Button.Name = "get_Rates_Button";
             this.get_Rates_Button.Size = new System.Drawing.Size(80, 40);
             this.get_Rates_Button.TabIndex = 114;
@@ -856,19 +861,40 @@
             // 
             // print_Button
             // 
-            this.print_Button.Location = new System.Drawing.Point(92, 381);
+            this.print_Button.Location = new System.Drawing.Point(234, 335);
             this.print_Button.Name = "print_Button";
-            this.print_Button.Size = new System.Drawing.Size(136, 40);
+            this.print_Button.Size = new System.Drawing.Size(80, 40);
             this.print_Button.TabIndex = 117;
             this.print_Button.Text = "Print Label";
             this.print_Button.UseVisualStyleBackColor = true;
             this.print_Button.Click += new System.EventHandler(this.print_Button_Click);
             // 
+            // notify_shipped_checkBox
+            // 
+            this.notify_shipped_checkBox.AutoSize = true;
+            this.notify_shipped_checkBox.Location = new System.Drawing.Point(92, 400);
+            this.notify_shipped_checkBox.Name = "notify_shipped_checkBox";
+            this.notify_shipped_checkBox.Size = new System.Drawing.Size(141, 17);
+            this.notify_shipped_checkBox.TabIndex = 130;
+            this.notify_shipped_checkBox.Text = "Notify The Order Source";
+            this.notify_shipped_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // create_label_from_Order_Button
+            // 
+            this.create_label_from_Order_Button.Enabled = false;
+            this.create_label_from_Order_Button.Location = new System.Drawing.Point(234, 381);
+            this.create_label_from_Order_Button.Name = "create_label_from_Order_Button";
+            this.create_label_from_Order_Button.Size = new System.Drawing.Size(80, 40);
+            this.create_label_from_Order_Button.TabIndex = 129;
+            this.create_label_from_Order_Button.Text = "Create Label for Order";
+            this.create_label_from_Order_Button.UseVisualStyleBackColor = true;
+            this.create_label_from_Order_Button.Click += new System.EventHandler(this.create_label_from_Order_Button_Click);
+            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(9, 5);
+            this.tabControl1.Location = new System.Drawing.Point(10, 6);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(322, 381);
@@ -2482,7 +2508,6 @@
             // 
             this.connect_order_source_ComboBox.FormattingEnabled = true;
             this.connect_order_source_ComboBox.Items.AddRange(new object[] {
-            "amazon",
             "brightpearl",
             "cratejoy",
             "channeladvisor",
@@ -2498,7 +2523,7 @@
             // 
             // tabPage11
             // 
-            this.tabPage11.Controls.Add(this.button3);
+            this.tabPage11.Controls.Add(this.ordersource_activation_button);
             this.tabPage11.Controls.Add(this.import_orders_button);
             this.tabPage11.Controls.Add(this.manage_order_sources_listBox);
             this.tabPage11.Location = new System.Drawing.Point(4, 22);
@@ -2509,14 +2534,15 @@
             this.tabPage11.Text = "Manage Order Sources";
             this.tabPage11.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // ordersource_activation_button
             // 
-            this.button3.Location = new System.Drawing.Point(263, 129);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(162, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "De/Re Activate Order Source";
-            this.button3.UseVisualStyleBackColor = true;
+            this.ordersource_activation_button.Location = new System.Drawing.Point(263, 129);
+            this.ordersource_activation_button.Name = "ordersource_activation_button";
+            this.ordersource_activation_button.Size = new System.Drawing.Size(162, 23);
+            this.ordersource_activation_button.TabIndex = 3;
+            this.ordersource_activation_button.Text = "De/Re Activate Order Source";
+            this.ordersource_activation_button.UseVisualStyleBackColor = true;
+            this.ordersource_activation_button.Click += new System.EventHandler(this.ordersource_activation_button_Click);
             // 
             // import_orders_button
             // 
@@ -2667,16 +2693,16 @@
             // 
             // add_funds_groupBox
             // 
+            this.add_funds_groupBox.Controls.Add(this.purchase_postage_button);
+            this.add_funds_groupBox.Controls.Add(this.purchase_postage_numericUpDown);
             this.add_funds_groupBox.Controls.Add(this.add_funds_account_ComboBox);
-            this.add_funds_groupBox.Controls.Add(this.label11);
+            this.add_funds_groupBox.Controls.Add(this.resulting_balance_label);
             this.add_funds_groupBox.Controls.Add(this.label14);
             this.add_funds_groupBox.Controls.Add(this.label15);
-            this.add_funds_groupBox.Controls.Add(this.textBox2);
             this.add_funds_groupBox.Controls.Add(this.label16);
             this.add_funds_groupBox.Controls.Add(this.current_balance_label);
             this.add_funds_groupBox.Controls.Add(this.label18);
             this.add_funds_groupBox.Controls.Add(this.label19);
-            this.add_funds_groupBox.Enabled = false;
             this.add_funds_groupBox.Location = new System.Drawing.Point(6, 6);
             this.add_funds_groupBox.Name = "add_funds_groupBox";
             this.add_funds_groupBox.Size = new System.Drawing.Size(419, 165);
@@ -2684,22 +2710,56 @@
             this.add_funds_groupBox.TabStop = false;
             this.add_funds_groupBox.Text = "Add Funds";
             // 
+            // purchase_postage_button
+            // 
+            this.purchase_postage_button.Location = new System.Drawing.Point(307, 136);
+            this.purchase_postage_button.Name = "purchase_postage_button";
+            this.purchase_postage_button.Size = new System.Drawing.Size(106, 23);
+            this.purchase_postage_button.TabIndex = 10;
+            this.purchase_postage_button.Text = "Purchase Postage";
+            this.purchase_postage_button.UseVisualStyleBackColor = true;
+            this.purchase_postage_button.Click += new System.EventHandler(this.purchase_postage_button_Click);
+            // 
+            // purchase_postage_numericUpDown
+            // 
+            this.purchase_postage_numericUpDown.DecimalPlaces = 2;
+            this.purchase_postage_numericUpDown.Location = new System.Drawing.Point(105, 87);
+            this.purchase_postage_numericUpDown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.purchase_postage_numericUpDown.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.purchase_postage_numericUpDown.Name = "purchase_postage_numericUpDown";
+            this.purchase_postage_numericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.purchase_postage_numericUpDown.TabIndex = 9;
+            this.purchase_postage_numericUpDown.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.purchase_postage_numericUpDown.ValueChanged += new System.EventHandler(this.purchase_postage_numericUpDown_ValueChanged);
+            // 
             // add_funds_account_ComboBox
             // 
             this.add_funds_account_ComboBox.FormattingEnabled = true;
-            this.add_funds_account_ComboBox.Location = new System.Drawing.Point(292, 11);
+            this.add_funds_account_ComboBox.Location = new System.Drawing.Point(260, 11);
             this.add_funds_account_ComboBox.Name = "add_funds_account_ComboBox";
-            this.add_funds_account_ComboBox.Size = new System.Drawing.Size(121, 21);
+            this.add_funds_account_ComboBox.Size = new System.Drawing.Size(153, 21);
             this.add_funds_account_ComboBox.TabIndex = 8;
+            this.add_funds_account_ComboBox.SelectedIndexChanged += new System.EventHandler(this.add_funds_account_ComboBox_SelectedIndexChanged);
             // 
-            // label11
+            // resulting_balance_label
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(109, 141);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(41, 13);
-            this.label11.TabIndex = 7;
-            this.label11.Text = "label11";
+            this.resulting_balance_label.AutoSize = true;
+            this.resulting_balance_label.Location = new System.Drawing.Point(109, 141);
+            this.resulting_balance_label.Name = "resulting_balance_label";
+            this.resulting_balance_label.Size = new System.Drawing.Size(0, 13);
+            this.resulting_balance_label.TabIndex = 7;
             // 
             // label14
             // 
@@ -2718,13 +2778,6 @@
             this.label15.Size = new System.Drawing.Size(161, 13);
             this.label15.TabIndex = 5;
             this.label15.Text = "Minimum Purchase $10.00 USD ";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(105, 86);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(158, 20);
-            this.textBox2.TabIndex = 4;
             // 
             // label16
             // 
@@ -2762,27 +2815,6 @@
             this.label19.Size = new System.Drawing.Size(127, 16);
             this.label19.TabIndex = 0;
             this.label19.Text = "One-Time Purchase";
-            // 
-            // notify_shipped_checkBox
-            // 
-            this.notify_shipped_checkBox.AutoSize = true;
-            this.notify_shipped_checkBox.Location = new System.Drawing.Point(10, 406);
-            this.notify_shipped_checkBox.Name = "notify_shipped_checkBox";
-            this.notify_shipped_checkBox.Size = new System.Drawing.Size(141, 17);
-            this.notify_shipped_checkBox.TabIndex = 130;
-            this.notify_shipped_checkBox.Text = "Notify The Order Source";
-            this.notify_shipped_checkBox.UseVisualStyleBackColor = true;
-            // 
-            // create_label_from_Order_Button
-            // 
-            this.create_label_from_Order_Button.Enabled = false;
-            this.create_label_from_Order_Button.Location = new System.Drawing.Point(200, 393);
-            this.create_label_from_Order_Button.Name = "create_label_from_Order_Button";
-            this.create_label_from_Order_Button.Size = new System.Drawing.Size(128, 40);
-            this.create_label_from_Order_Button.TabIndex = 129;
-            this.create_label_from_Order_Button.Text = "Create Label for Order";
-            this.create_label_from_Order_Button.UseVisualStyleBackColor = true;
-            this.create_label_from_Order_Button.Click += new System.EventHandler(this.create_label_from_Order_Button_Click);
             // 
             // sales_order_ListBox
             // 
@@ -2838,11 +2870,22 @@
             this.order_source_test_richTextBox.TabIndex = 137;
             this.order_source_test_richTextBox.Text = "";
             // 
+            // refresh_orders_button
+            // 
+            this.refresh_orders_button.Location = new System.Drawing.Point(10, 393);
+            this.refresh_orders_button.Name = "refresh_orders_button";
+            this.refresh_orders_button.Size = new System.Drawing.Size(126, 40);
+            this.refresh_orders_button.TabIndex = 138;
+            this.refresh_orders_button.Text = "Refresh orders";
+            this.refresh_orders_button.UseVisualStyleBackColor = true;
+            this.refresh_orders_button.Click += new System.EventHandler(this.refresh_orders_button_Click);
+            // 
             // ShippingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1125, 755);
+            this.Controls.Add(this.refresh_orders_button);
             this.Controls.Add(this.order_source_test_richTextBox);
             this.Controls.Add(this.order_source_refresh_richTextBox);
             this.Controls.Add(this.connect_order_source_response_richTextBox);
@@ -2851,8 +2894,6 @@
             this.Controls.Add(this.shipment_Config_GroupBox);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label_Tab_Control);
-            this.Controls.Add(this.notify_shipped_checkBox);
-            this.Controls.Add(this.create_label_from_Order_Button);
             this.Controls.Add(this.sales_order_ListBox);
             this.Controls.Add(this.rate_RichTextBox);
             this.Controls.Add(this.carrier_balance_richTextBox);
@@ -2914,8 +2955,8 @@
             this.tabPage12.ResumeLayout(false);
             this.add_funds_groupBox.ResumeLayout(false);
             this.add_funds_groupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.purchase_postage_numericUpDown)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -3103,10 +3144,9 @@
         private System.Windows.Forms.Button current_carrier_settings_button;
         private System.Windows.Forms.TabPage tabPage12;
         private System.Windows.Forms.GroupBox add_funds_groupBox;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label resulting_balance_label;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label current_balance_label;
         private System.Windows.Forms.Label label18;
@@ -3117,12 +3157,15 @@
         private System.Windows.Forms.ComboBox connect_order_source_ComboBox;
         private System.Windows.Forms.ListBox manage_order_sources_listBox;
         private System.Windows.Forms.RichTextBox order_source_richTextBox;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button ordersource_activation_button;
         private System.Windows.Forms.Button import_orders_button;
         private System.Windows.Forms.RichTextBox connect_order_source_response_richTextBox;
         private System.Windows.Forms.RichTextBox order_source_refresh_richTextBox;
         private System.Windows.Forms.RichTextBox order_source_test_richTextBox;
         private System.Windows.Forms.RichTextBox rate_request_RichTextBox;
+        private System.Windows.Forms.Button refresh_orders_button;
+        private System.Windows.Forms.NumericUpDown purchase_postage_numericUpDown;
+        private System.Windows.Forms.Button purchase_postage_button;
     }
 }
 
