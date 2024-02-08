@@ -3785,12 +3785,18 @@ namespace ShipEngine_UI
 
         private void purchase_postage_numericUpDown_ValueChanged(object sender, EventArgs e)
         {
-            string current_balance = current_balance_label.Text.Replace("$", "");
+            try
+            {
+                string current_balance = current_balance_label.Text.Replace("$", "");
 
-            float current_balance_amount = float.Parse(current_balance) + float.Parse(purchase_postage_numericUpDown.Value.ToString());
+                float current_balance_amount = float.Parse(current_balance) + float.Parse(purchase_postage_numericUpDown.Value.ToString());
 
-            resulting_balance_label.Text =  "$" + current_balance_amount.ToString();
+                resulting_balance_label.Text = "$" + current_balance_amount.ToString();
+            }catch
+            {
 
+            }
+            
         }
     }
 }
