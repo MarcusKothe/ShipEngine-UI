@@ -81,6 +81,7 @@ namespace ShipEngine_UI
             if (ShipEngineUI.apiKey.Contains("TEST"))
             {
                 //ShipEngine Sandbox does not initialize properly when ordersources are queried. Added Check to allow sandbox use in the application.
+                carrier_connection_tabControl.Enabled = false;
             }
             else
             {
@@ -1810,7 +1811,7 @@ namespace ShipEngine_UI
                 //Save image in logging
                 using (WebClient client = new WebClient())
                 {
-                    client.DownloadFileAsync(new Uri(imgURL3 + ".png"), @"..\..\Resources\Labels\Label-" + labelLogId + ".png");
+                    //client.DownloadFileAsync(new Uri(imgURL3 + ".png"), @"..\..\Resources\Labels\Label-" + labelLogId + ".png");
                 }
 
                 labelImageBox.Load(imgURL3 + ".png");
