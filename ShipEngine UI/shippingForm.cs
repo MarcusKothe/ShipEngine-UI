@@ -78,8 +78,14 @@ namespace ShipEngine_UI
             //GetCarrierBalance();
 
             //GET ORDER SOURCES
-            GetOrderSources();
-
+            if (ShipEngineUI.apiKey.Contains("TEST"))
+            {
+                //ShipEngine Sandbox does not initialize properly when ordersources are queried. Added Check to allow sandbox use in the application.
+            }
+            else
+            {
+                GetOrderSources();
+            }
             
         }
 
@@ -697,8 +703,6 @@ namespace ShipEngine_UI
                                 currentLine.Replace(currentLine, "");
                             }
                         }
-
-
                     }
                 }
             }
@@ -3792,11 +3796,11 @@ namespace ShipEngine_UI
                 float current_balance_amount = float.Parse(current_balance) + float.Parse(purchase_postage_numericUpDown.Value.ToString());
 
                 resulting_balance_label.Text = "$" + current_balance_amount.ToString();
-            }catch
+            }
+            catch
             {
 
             }
-            
         }
     }
 }

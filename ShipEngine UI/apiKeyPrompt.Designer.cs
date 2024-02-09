@@ -44,7 +44,7 @@
             this.label1.Size = new System.Drawing.Size(230, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Enter your API Key to begin";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+
             // 
             // apiKeyTextBox
             // 
@@ -55,7 +55,7 @@
             this.apiKeyTextBox.TabIndex = 1;
             this.apiKeyTextBox.Text = "ENTER API KEY TO BEGIN";
             this.apiKeyTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.apiKeyTextBox.TextChanged += new System.EventHandler(this.apiKeyTextBox_TextChanged);
+
             // 
             // doneButton
             // 
@@ -94,7 +94,7 @@
             this.Name = "apiKeyPrompt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SHIPENGINE";
-            this.Load += new System.EventHandler(this.apiKeyPrompt_Load);
+
             this.ResumeLayout(false);
             this.PerformLayout();
 

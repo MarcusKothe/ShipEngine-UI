@@ -17,13 +17,6 @@ namespace ShipEngine_UI
             InitializeComponent();
         }
 
-        private void apiKeyPrompt_Load(object sender, EventArgs e)
-        {
-
-
-
-        }
-       
         private void doneButton_Click(object sender, EventArgs e)
         {
             //SET API KEY
@@ -43,14 +36,5 @@ namespace ShipEngine_UI
 
         }
 
-        private void apiKeyTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
