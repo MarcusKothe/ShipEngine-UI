@@ -3261,20 +3261,17 @@ namespace ShipEngine_UI
 
         private void connect_carrier_button_Click(object sender, EventArgs e)
         {
+            string carrier_name = connect_carrier_ComboBox.SelectedItem.ToString();
 
             try
             {
-
-                string carrier_name1 = connect_carrier_ComboBox.SelectedItem.ToString();
-                carrier_name1 = carrier_name1.Substring(carrier_name1.IndexOf("|"));
-                string carrier_name = carrier_name1.Replace("|", "");
 
                 //URI - POST
                 ShipEngineUI.urlString = "https://api.shipengine.com/v1/connections/carriers/" + carrier_name;
 
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(ShipEngineUI.urlString);
 
-                request.Method = "PUT";
+                request.Method = "POST";
 
                 //API Key
                 request.Headers.Add("API-key", ShipEngineUI.apiKey);
