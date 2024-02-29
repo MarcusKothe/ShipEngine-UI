@@ -81,12 +81,43 @@ namespace ShipEngine_UI
             if (ShipEngineUI.apiKey.Contains("TEST"))
             {
                 //ShipEngine Sandbox does not initialize properly when ordersources are queried. Added Check to allow sandbox use in the application.
-                carrier_connection_tabControl.Enabled = false;
+                //carrier_connection_tabControl.Enabled = false;
+
+                tabControl2.Enabled = false;
+                ordersource_resize();
             }
             else
             {
                 GetOrderSources();
+
+                if (sales_order_ListBox.Items.Count == 0)
+                {
+                    ordersource_resize();
+                }
+                else
+                {
+
+                }
+
             }
+            
+        }
+
+        public void ordersource_resize()
+        {
+            shipment_Config_GroupBox.Location = new Point(10, 389);
+            shipment_Config_GroupBox.Size = new Size(320, 361);
+            refresh_orders_button.Hide();
+            sales_order_ListBox.Hide();
+            label_Tab_Control.Location = new Point(338, 6);
+            create_label_from_Order_Button.Hide();
+            notify_shipped_checkBox.Hide();
+            create_label_Button.Location = new Point(92, 317);
+            create_label_Button.Size = new Size(136, 40);
+            get_Rates_Button.Location = new Point(6, 317);
+            print_Button.Location = new Point(234, 317);
+            this.Size = new Size(816, 794);
+            this.CenterToScreen();
             
         }
 
@@ -3754,6 +3785,16 @@ namespace ShipEngine_UI
 
                 WebResponse purchase_postage_request_response = purchase_postage_request.GetResponse();
                 purchase_postage_stream = purchase_postage_request_response.GetResponseStream();
+
+                HttpWebResponse requestResponse = (HttpWebResponse)purchase_postage_request.GetResponse();
+                purchase_postage_stream = requestResponse.GetResponseStream();
+
+                if (requestResponse.StatusCode == HttpStatusCode.OK)
+                {
+
+                    MessageBox.Show("$"  + purchase_postage_numericUpDown.Value.ToString().Trim() + " Has been added to your account.", "PURCHASE POSTAGE");
+
+                }
 
             }
             catch (WebException Exception)

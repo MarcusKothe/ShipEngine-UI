@@ -2460,7 +2460,7 @@
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage7.Size = new System.Drawing.Size(451, 716);
             this.tabPage7.TabIndex = 4;
-            this.tabPage7.Text = "ShipEngine Account";
+            this.tabPage7.Text = "Account";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
             // tabControl2
@@ -2911,8 +2911,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ShippingForm";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SHIPENGINE";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.shippingForm_FormClosing);
             this.Load += new System.EventHandler(this.shippingForm_Load);
             this.shipment_Config_GroupBox.ResumeLayout(false);
