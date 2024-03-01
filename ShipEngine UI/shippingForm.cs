@@ -1,4 +1,5 @@
 ﻿using ShipEngine_UI.Resources.Classes;
+using SixLabors.ImageSharp;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -69,7 +70,7 @@ namespace ShipEngine_UI
             GetWarehouses();
 
             //GET SALES ORDERS
-            GetSalesOrders();
+            GetSalesOrders(string.Empty);
 
             //GET LABEL HISTORY
             GetLabelHistory();
@@ -105,18 +106,19 @@ namespace ShipEngine_UI
 
         public void ordersource_resize()
         {
-            shipment_Config_GroupBox.Location = new Point(10, 389);
-            shipment_Config_GroupBox.Size = new Size(320, 361);
+            shipment_Config_GroupBox.Location = new System.Drawing.Point(10, 389);
+            shipment_Config_GroupBox.Size = new System.Drawing.Size(320, 361);
             refresh_orders_button.Hide();
+            order_source_ComboBox.Hide();
             sales_order_ListBox.Hide();
-            label_Tab_Control.Location = new Point(338, 6);
+            label_Tab_Control.Location = new System.Drawing.Point(338, 6);
             create_label_from_Order_Button.Hide();
             notify_shipped_checkBox.Hide();
-            create_label_Button.Location = new Point(92, 317);
-            create_label_Button.Size = new Size(136, 40);
-            get_Rates_Button.Location = new Point(6, 317);
-            print_Button.Location = new Point(234, 317);
-            this.Size = new Size(816, 794);
+            create_label_Button.Location = new System.Drawing.Point(92, 317);
+            create_label_Button.Size = new System.Drawing.Size(136, 40);
+            get_Rates_Button.Location = new System.Drawing.Point(6, 317);
+            print_Button.Location = new System.Drawing.Point(234, 317);
+            this.Size = new System.Drawing.Size(816, 794);
             this.CenterToScreen();
             
         }
@@ -136,6 +138,8 @@ namespace ShipEngine_UI
 
         public void GetOrderSources()
         {
+
+
             //GET ORDER SOURCES
             try
             {
@@ -205,7 +209,10 @@ namespace ShipEngine_UI
 
                             //_ComboBox.Items.Add(carrier_id.Trim());
                             manage_order_sources_listBox.Items.Add(order_source.Trim());
+                            order_source_ComboBox.Items.Add(order_source.Trim());
                         }
+
+                        order_source_ComboBox.SelectedIndex = 0;
                     }
                 }
             }
@@ -418,13 +425,15 @@ namespace ShipEngine_UI
             }
         }
 
-        public void GetSalesOrders()
+        public void GetSalesOrders(string order_source_id)
         {
+
+
             //GET SALES ORDERS
             try
             {
                 //URL SOURCE
-                string URLstring = "https://api.shipengine.com/v-beta/sales_orders";
+                string URLstring = "https://api.shipengine.com/v-beta/sales_orders?order_source_id=" + order_source_id;
 
                 //REQUEST
                 WebRequest requestObject = WebRequest.Create(URLstring);
@@ -500,6 +509,14 @@ namespace ShipEngine_UI
                                 currentLine.Replace(currentLine, "");
                             }
 
+                            if (currentLine.Contains("pages") == true)
+                            {
+                                string number_of_pages1 = currentLine.Replace("\"pages\": ", "");
+                                string number_of_pages = number_of_pages1.Replace(",", "");
+
+                                number_of_pages_richTextBox.Text = number_of_pages.Trim();
+                            }
+
                             //string line = ShipEngineUI.external_order_number.Trim() + " - " + ShipEngineUI.fulfillment_status.Trim() + " | " +
                             // ShipEngineUI.sales_order_id.Trim() + Environment.NewLine + ",";
 
@@ -525,14 +542,21 @@ namespace ShipEngine_UI
                             notify_shipped_checkBox.Enabled = false;
                             create_label_from_Order_Button.Enabled = false;
                         }
+                        else
+                        {
+                            sales_order_ListBox.Enabled = true;
+                            notify_shipped_checkBox.Enabled = true;
+                            create_label_from_Order_Button.Enabled = true;
+                        }
                     }
                 }
             }
             catch (Exception HTTPexception)
             {
-               
+
             }
         }
+    
 
         public void GetLabelHistory()
         {
@@ -2629,50 +2653,6 @@ namespace ShipEngine_UI
 
         }
 
-        #region visual click event methods
-
-        private void advanced_options_groupBox_Click(object sender, EventArgs e)
-        {
-
-            shipTogroupBox.Visible = true;
-            advanced_options_groupBox.Visible = false;
-
-        }
-
-        private void shipTogroupBox_Click(object sender, EventArgs e)
-        {
-
-            shipTogroupBox.Visible = false;
-            advanced_options_groupBox.Visible = true;
-
-
-        }
-
-        private void shipFromgroupBox_Click(object sender, EventArgs e)
-        {
-
-            shipFromgroupBox.Visible = false;
-            advanced_options_groupBox1.Visible = true;
-
-
-        }
-
-        private void advanced_options_groupBox1_Click(object sender, EventArgs e)
-        {
-
-            shipFromgroupBox.Visible = true;
-
-            advanced_options_groupBox1.Visible = false;
-
-        }
-
-        private void package_code_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        #endregion
-
         private void label_history_listbox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -3518,7 +3498,6 @@ namespace ShipEngine_UI
             {
 
                 //GET order_source_id
-
                 string order_source_id1 = manage_order_sources_listBox.SelectedItem.ToString();
                 order_source_id1 = order_source_id1.Remove(order_source_id1.IndexOf("|") + 1);
                 string order_source_id = order_source_id1.Replace("|", "");
@@ -3728,7 +3707,12 @@ namespace ShipEngine_UI
         {
             sales_order_ListBox.Items.Clear();
 
-            GetSalesOrders();
+            //GET order_source_id
+            string order_source_id1 = order_source_ComboBox.SelectedItem.ToString();
+            order_source_id1 = order_source_id1.Remove(order_source_id1.IndexOf("|") + 1);
+            string order_source_id = order_source_id1.Replace("|", "");
+
+            GetSalesOrders(order_source_id);
 
         }
 
@@ -3841,5 +3825,23 @@ namespace ShipEngine_UI
 
             }
         }
+
+
+
+        private void order_source_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            //GET order_source_id
+            string order_source_id1 = order_source_ComboBox.SelectedItem.ToString();
+            order_source_id1 = order_source_id1.Remove(order_source_id1.IndexOf("|") + 1);
+            string order_source_id = order_source_id1.Replace("|", "");
+
+            sales_order_RichTextBox.Text = string.Empty;
+            sales_order_ListBox.Items.Clear();
+            
+            GetSalesOrders(order_source_id);
+
+        }
+
     }
 }

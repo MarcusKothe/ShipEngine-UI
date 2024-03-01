@@ -42,6 +42,7 @@
             this.carrier_balance_richTextBox = new System.Windows.Forms.RichTextBox();
             this.rate_RichTextBox = new System.Windows.Forms.RichTextBox();
             this.shipment_Config_GroupBox = new System.Windows.Forms.GroupBox();
+            this.number_of_pages_richTextBox = new System.Windows.Forms.RichTextBox();
             this.carrier_id_ComboBox = new System.Windows.Forms.ComboBox();
             this.service_code_ComboBox = new System.Windows.Forms.ComboBox();
             this.ship_Date_DateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -74,30 +75,6 @@
             this.create_label_from_Order_Button = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.advanced_options_groupBox = new System.Windows.Forms.GroupBox();
-            this.bill_to_party_comboBox = new System.Windows.Forms.ComboBox();
-            this.origin_type_comboBox = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.saturday_delivery_comboBox = new System.Windows.Forms.ComboBox();
-            this.non_machinable_comboBox = new System.Windows.Forms.ComboBox();
-            this.dry_ice_weight_comboBox = new System.Windows.Forms.ComboBox();
-            this.dry_ice_weight_numericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.dry_ice_comboBox = new System.Windows.Forms.ComboBox();
-            this.delivered_duty_paid_comboBox = new System.Windows.Forms.ComboBox();
-            this.contains_alcohol_comboBox = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.bill_to_country_code_textBox = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.bill_to_account_textBox = new System.Windows.Forms.TextBox();
-            this.bill_to_postal_code_textBox = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
             this.shipTogroupBox = new System.Windows.Forms.GroupBox();
             this.shipTo_address_residential_indicator_comboBox = new System.Windows.Forms.ComboBox();
             this.shipTo_address_line3_TextBox = new System.Windows.Forms.TextBox();
@@ -122,30 +99,6 @@
             this.label73 = new System.Windows.Forms.Label();
             this.label74 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.advanced_options_groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label51 = new System.Windows.Forms.Label();
-            this.label50 = new System.Windows.Forms.Label();
-            this.label49 = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
-            this.label46 = new System.Windows.Forms.Label();
-            this.label45 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
-            this.freight_class_textBox = new System.Windows.Forms.TextBox();
-            this.label43 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
-            this.third_party_consignee_comboBox = new System.Windows.Forms.ComboBox();
-            this.collect_on_delivery_payment_amount_numericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.collect_on_delivery_payment_currency_comboBox = new System.Windows.Forms.ComboBox();
-            this.collect_on_delivery_payment_type_comboBox = new System.Windows.Forms.ComboBox();
-            this.shipper_release_comboBox = new System.Windows.Forms.ComboBox();
-            this.custom_field3_textBox = new System.Windows.Forms.TextBox();
-            this.custom_field2_textBox = new System.Windows.Forms.TextBox();
-            this.custom_field1_textBox = new System.Windows.Forms.TextBox();
-            this.use_ups_ground_freight_pricing_comboBox = new System.Windows.Forms.ComboBox();
-            this.booking_confirmation_textBox = new System.Windows.Forms.TextBox();
-            this.shipper_load_and_count_textBox = new System.Windows.Forms.TextBox();
             this.shipFromgroupBox = new System.Windows.Forms.GroupBox();
             this.shipFrom_address_residential_indicator_comboBox = new System.Windows.Forms.ComboBox();
             this.label75 = new System.Windows.Forms.Label();
@@ -170,6 +123,54 @@
             this.label84 = new System.Windows.Forms.Label();
             this.label85 = new System.Windows.Forms.Label();
             this.warehouse_id_ComboBox = new System.Windows.Forms.ComboBox();
+            this.tabPage13 = new System.Windows.Forms.TabPage();
+            this.label7 = new System.Windows.Forms.Label();
+            this.origin_type_comboBox = new System.Windows.Forms.ComboBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.dry_ice_weight_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label22 = new System.Windows.Forms.Label();
+            this.bill_to_party_comboBox = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.bill_to_account_textBox = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
+            this.saturday_delivery_comboBox = new System.Windows.Forms.ComboBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.bill_to_country_code_textBox = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.non_machinable_comboBox = new System.Windows.Forms.ComboBox();
+            this.bill_to_postal_code_textBox = new System.Windows.Forms.TextBox();
+            this.dry_ice_weight_comboBox = new System.Windows.Forms.ComboBox();
+            this.contains_alcohol_comboBox = new System.Windows.Forms.ComboBox();
+            this.booking_confirmation_textBox = new System.Windows.Forms.TextBox();
+            this.delivered_duty_paid_comboBox = new System.Windows.Forms.ComboBox();
+            this.shipper_load_and_count_textBox = new System.Windows.Forms.TextBox();
+            this.dry_ice_comboBox = new System.Windows.Forms.ComboBox();
+            this.tabPage14 = new System.Windows.Forms.TabPage();
+            this.label51 = new System.Windows.Forms.Label();
+            this.use_ups_ground_freight_pricing_comboBox = new System.Windows.Forms.ComboBox();
+            this.label50 = new System.Windows.Forms.Label();
+            this.freight_class_textBox = new System.Windows.Forms.TextBox();
+            this.label49 = new System.Windows.Forms.Label();
+            this.custom_field1_textBox = new System.Windows.Forms.TextBox();
+            this.label48 = new System.Windows.Forms.Label();
+            this.custom_field2_textBox = new System.Windows.Forms.TextBox();
+            this.label47 = new System.Windows.Forms.Label();
+            this.custom_field3_textBox = new System.Windows.Forms.TextBox();
+            this.label45 = new System.Windows.Forms.Label();
+            this.label46 = new System.Windows.Forms.Label();
+            this.shipper_release_comboBox = new System.Windows.Forms.ComboBox();
+            this.collect_on_delivery_payment_type_comboBox = new System.Windows.Forms.ComboBox();
+            this.label44 = new System.Windows.Forms.Label();
+            this.collect_on_delivery_payment_currency_comboBox = new System.Windows.Forms.ComboBox();
+            this.label43 = new System.Windows.Forms.Label();
+            this.collect_on_delivery_payment_amount_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.third_party_consignee_comboBox = new System.Windows.Forms.ComboBox();
             this.label_Tab_Control = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.labelImageBox = new System.Windows.Forms.PictureBox();
@@ -234,6 +235,8 @@
             this.order_source_refresh_richTextBox = new System.Windows.Forms.RichTextBox();
             this.order_source_test_richTextBox = new System.Windows.Forms.RichTextBox();
             this.refresh_orders_button = new System.Windows.Forms.Button();
+            this.order_source_ComboBox = new System.Windows.Forms.ComboBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.shipment_Config_GroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.insured_value_amont_numericUpDown)).BeginInit();
@@ -243,13 +246,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.packages_weight_value_numericUpDown)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.advanced_options_groupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dry_ice_weight_numericUpDown)).BeginInit();
             this.shipTogroupBox.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.advanced_options_groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.collect_on_delivery_payment_amount_numericUpDown)).BeginInit();
             this.shipFromgroupBox.SuspendLayout();
+            this.tabPage13.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dry_ice_weight_numericUpDown)).BeginInit();
+            this.tabPage14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.collect_on_delivery_payment_amount_numericUpDown)).BeginInit();
             this.label_Tab_Control.SuspendLayout();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.labelImageBox)).BeginInit();
@@ -375,21 +378,30 @@
             this.shipment_Config_GroupBox.Controls.Add(this.label56);
             this.shipment_Config_GroupBox.Controls.Add(this.create_label_Button);
             this.shipment_Config_GroupBox.Controls.Add(this.get_Rates_Button);
-            this.shipment_Config_GroupBox.Controls.Add(this.print_Button);
             this.shipment_Config_GroupBox.Controls.Add(this.notify_shipped_checkBox);
+            this.shipment_Config_GroupBox.Controls.Add(this.print_Button);
             this.shipment_Config_GroupBox.Controls.Add(this.create_label_from_Order_Button);
             this.shipment_Config_GroupBox.Location = new System.Drawing.Point(334, 6);
             this.shipment_Config_GroupBox.Name = "shipment_Config_GroupBox";
-            this.shipment_Config_GroupBox.Size = new System.Drawing.Size(320, 427);
+            this.shipment_Config_GroupBox.Size = new System.Drawing.Size(320, 346);
             this.shipment_Config_GroupBox.TabIndex = 127;
             this.shipment_Config_GroupBox.TabStop = false;
             this.shipment_Config_GroupBox.Text = "Shipment Configuration";
+            // 
+            // number_of_pages_richTextBox
+            // 
+            this.number_of_pages_richTextBox.Location = new System.Drawing.Point(1155, 396);
+            this.number_of_pages_richTextBox.Name = "number_of_pages_richTextBox";
+            this.number_of_pages_richTextBox.Size = new System.Drawing.Size(60, 64);
+            this.number_of_pages_richTextBox.TabIndex = 131;
+            this.number_of_pages_richTextBox.Text = "";
+            this.number_of_pages_richTextBox.Visible = false;
             // 
             // carrier_id_ComboBox
             // 
             this.carrier_id_ComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.carrier_id_ComboBox.FormattingEnabled = true;
-            this.carrier_id_ComboBox.Location = new System.Drawing.Point(6, 19);
+            this.carrier_id_ComboBox.Location = new System.Drawing.Point(8, 16);
             this.carrier_id_ComboBox.Name = "carrier_id_ComboBox";
             this.carrier_id_ComboBox.Size = new System.Drawing.Size(308, 21);
             this.carrier_id_ComboBox.TabIndex = 107;
@@ -400,7 +412,7 @@
             // 
             this.service_code_ComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.service_code_ComboBox.FormattingEnabled = true;
-            this.service_code_ComboBox.Location = new System.Drawing.Point(6, 46);
+            this.service_code_ComboBox.Location = new System.Drawing.Point(8, 40);
             this.service_code_ComboBox.Name = "service_code_ComboBox";
             this.service_code_ComboBox.Size = new System.Drawing.Size(308, 21);
             this.service_code_ComboBox.TabIndex = 106;
@@ -410,16 +422,16 @@
             // ship_Date_DateTimePicker
             // 
             this.ship_Date_DateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ship_Date_DateTimePicker.Location = new System.Drawing.Point(68, 72);
+            this.ship_Date_DateTimePicker.Location = new System.Drawing.Point(64, 64);
             this.ship_Date_DateTimePicker.Name = "ship_Date_DateTimePicker";
-            this.ship_Date_DateTimePicker.Size = new System.Drawing.Size(246, 20);
+            this.ship_Date_DateTimePicker.Size = new System.Drawing.Size(252, 20);
             this.ship_Date_DateTimePicker.TabIndex = 112;
             this.ship_Date_DateTimePicker.ValueChanged += new System.EventHandler(this.ship_Date_DateTimePicker_ValueChanged);
             // 
             // ship_date_TextBox
             // 
             this.ship_date_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ship_date_TextBox.Location = new System.Drawing.Point(278, 72);
+            this.ship_date_TextBox.Location = new System.Drawing.Point(280, 64);
             this.ship_date_TextBox.Name = "ship_date_TextBox";
             this.ship_date_TextBox.Size = new System.Drawing.Size(10, 20);
             this.ship_date_TextBox.TabIndex = 113;
@@ -446,7 +458,7 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label24);
-            this.groupBox1.Location = new System.Drawing.Point(6, 136);
+            this.groupBox1.Location = new System.Drawing.Point(8, 88);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(308, 175);
             this.groupBox1.TabIndex = 123;
@@ -471,7 +483,6 @@
             this.package_code_ComboBox.Size = new System.Drawing.Size(213, 21);
             this.package_code_ComboBox.TabIndex = 63;
             this.package_code_ComboBox.Text = "Select packaging";
-            this.package_code_ComboBox.SelectedIndexChanged += new System.EventHandler(this.package_code_ComboBox_SelectedIndexChanged);
             // 
             // label54
             // 
@@ -833,7 +844,7 @@
             // 
             this.label56.AutoSize = true;
             this.label56.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label56.Location = new System.Drawing.Point(7, 75);
+            this.label56.Location = new System.Drawing.Point(8, 67);
             this.label56.Name = "label56";
             this.label56.Size = new System.Drawing.Size(54, 13);
             this.label56.TabIndex = 124;
@@ -841,9 +852,9 @@
             // 
             // create_label_Button
             // 
-            this.create_label_Button.Location = new System.Drawing.Point(6, 381);
+            this.create_label_Button.Location = new System.Drawing.Point(237, 264);
             this.create_label_Button.Name = "create_label_Button";
-            this.create_label_Button.Size = new System.Drawing.Size(80, 40);
+            this.create_label_Button.Size = new System.Drawing.Size(80, 24);
             this.create_label_Button.TabIndex = 116;
             this.create_label_Button.Text = "Create Label";
             this.create_label_Button.UseVisualStyleBackColor = true;
@@ -851,9 +862,9 @@
             // 
             // get_Rates_Button
             // 
-            this.get_Rates_Button.Location = new System.Drawing.Point(6, 335);
+            this.get_Rates_Button.Location = new System.Drawing.Point(8, 264);
             this.get_Rates_Button.Name = "get_Rates_Button";
-            this.get_Rates_Button.Size = new System.Drawing.Size(80, 40);
+            this.get_Rates_Button.Size = new System.Drawing.Size(80, 24);
             this.get_Rates_Button.TabIndex = 114;
             this.get_Rates_Button.Text = "Get Rates";
             this.get_Rates_Button.UseVisualStyleBackColor = true;
@@ -861,9 +872,9 @@
             // 
             // print_Button
             // 
-            this.print_Button.Location = new System.Drawing.Point(234, 335);
+            this.print_Button.Location = new System.Drawing.Point(120, 264);
             this.print_Button.Name = "print_Button";
-            this.print_Button.Size = new System.Drawing.Size(80, 40);
+            this.print_Button.Size = new System.Drawing.Size(80, 24);
             this.print_Button.TabIndex = 117;
             this.print_Button.Text = "Print Label";
             this.print_Button.UseVisualStyleBackColor = true;
@@ -872,7 +883,7 @@
             // notify_shipped_checkBox
             // 
             this.notify_shipped_checkBox.AutoSize = true;
-            this.notify_shipped_checkBox.Location = new System.Drawing.Point(92, 400);
+            this.notify_shipped_checkBox.Location = new System.Drawing.Point(8, 312);
             this.notify_shipped_checkBox.Name = "notify_shipped_checkBox";
             this.notify_shipped_checkBox.Size = new System.Drawing.Size(141, 17);
             this.notify_shipped_checkBox.TabIndex = 130;
@@ -882,7 +893,7 @@
             // create_label_from_Order_Button
             // 
             this.create_label_from_Order_Button.Enabled = false;
-            this.create_label_from_Order_Button.Location = new System.Drawing.Point(234, 381);
+            this.create_label_from_Order_Button.Location = new System.Drawing.Point(237, 296);
             this.create_label_from_Order_Button.Name = "create_label_from_Order_Button";
             this.create_label_from_Order_Button.Size = new System.Drawing.Size(80, 40);
             this.create_label_from_Order_Button.TabIndex = 129;
@@ -894,294 +905,24 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(10, 6);
+            this.tabControl1.Controls.Add(this.tabPage13);
+            this.tabControl1.Controls.Add(this.tabPage14);
+            this.tabControl1.Location = new System.Drawing.Point(8, 8);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(322, 381);
+            this.tabControl1.Size = new System.Drawing.Size(322, 344);
             this.tabControl1.TabIndex = 126;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.advanced_options_groupBox);
+            this.tabPage1.Controls.Add(this.comboBox1);
             this.tabPage1.Controls.Add(this.shipTogroupBox);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(314, 355);
+            this.tabPage1.Size = new System.Drawing.Size(314, 318);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "ShipTo";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // advanced_options_groupBox
-            // 
-            this.advanced_options_groupBox.Controls.Add(this.bill_to_party_comboBox);
-            this.advanced_options_groupBox.Controls.Add(this.origin_type_comboBox);
-            this.advanced_options_groupBox.Controls.Add(this.label7);
-            this.advanced_options_groupBox.Controls.Add(this.saturday_delivery_comboBox);
-            this.advanced_options_groupBox.Controls.Add(this.non_machinable_comboBox);
-            this.advanced_options_groupBox.Controls.Add(this.dry_ice_weight_comboBox);
-            this.advanced_options_groupBox.Controls.Add(this.dry_ice_weight_numericUpDown);
-            this.advanced_options_groupBox.Controls.Add(this.dry_ice_comboBox);
-            this.advanced_options_groupBox.Controls.Add(this.delivered_duty_paid_comboBox);
-            this.advanced_options_groupBox.Controls.Add(this.contains_alcohol_comboBox);
-            this.advanced_options_groupBox.Controls.Add(this.label8);
-            this.advanced_options_groupBox.Controls.Add(this.label9);
-            this.advanced_options_groupBox.Controls.Add(this.bill_to_country_code_textBox);
-            this.advanced_options_groupBox.Controls.Add(this.label10);
-            this.advanced_options_groupBox.Controls.Add(this.label12);
-            this.advanced_options_groupBox.Controls.Add(this.bill_to_account_textBox);
-            this.advanced_options_groupBox.Controls.Add(this.bill_to_postal_code_textBox);
-            this.advanced_options_groupBox.Controls.Add(this.label13);
-            this.advanced_options_groupBox.Controls.Add(this.label20);
-            this.advanced_options_groupBox.Controls.Add(this.label21);
-            this.advanced_options_groupBox.Controls.Add(this.label22);
-            this.advanced_options_groupBox.Controls.Add(this.label23);
-            this.advanced_options_groupBox.Controls.Add(this.label37);
-            this.advanced_options_groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.advanced_options_groupBox.Location = new System.Drawing.Point(2, 3);
-            this.advanced_options_groupBox.Name = "advanced_options_groupBox";
-            this.advanced_options_groupBox.Size = new System.Drawing.Size(308, 324);
-            this.advanced_options_groupBox.TabIndex = 128;
-            this.advanced_options_groupBox.TabStop = false;
-            this.advanced_options_groupBox.Text = "Advanced Options";
-            this.advanced_options_groupBox.Visible = false;
-            this.advanced_options_groupBox.Click += new System.EventHandler(this.advanced_options_groupBox_Click);
-            // 
-            // bill_to_party_comboBox
-            // 
-            this.bill_to_party_comboBox.FormattingEnabled = true;
-            this.bill_to_party_comboBox.Items.AddRange(new object[] {
-            "null",
-            "\"recipient\"",
-            "\"third_party\""});
-            this.bill_to_party_comboBox.Location = new System.Drawing.Point(127, 76);
-            this.bill_to_party_comboBox.Name = "bill_to_party_comboBox";
-            this.bill_to_party_comboBox.Size = new System.Drawing.Size(170, 21);
-            this.bill_to_party_comboBox.TabIndex = 3;
-            // 
-            // origin_type_comboBox
-            // 
-            this.origin_type_comboBox.FormattingEnabled = true;
-            this.origin_type_comboBox.Items.AddRange(new object[] {
-            "null",
-            "\"pickup\"",
-            "\"drop_off\""});
-            this.origin_type_comboBox.Location = new System.Drawing.Point(127, 286);
-            this.origin_type_comboBox.Name = "origin_type_comboBox";
-            this.origin_type_comboBox.Size = new System.Drawing.Size(170, 21);
-            this.origin_type_comboBox.TabIndex = 12;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(18, 289);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(61, 13);
-            this.label7.TabIndex = 65;
-            this.label7.Text = "Origin Type";
-            // 
-            // saturday_delivery_comboBox
-            // 
-            this.saturday_delivery_comboBox.FormattingEnabled = true;
-            this.saturday_delivery_comboBox.Items.AddRange(new object[] {
-            "false",
-            "true"});
-            this.saturday_delivery_comboBox.Location = new System.Drawing.Point(127, 259);
-            this.saturday_delivery_comboBox.Name = "saturday_delivery_comboBox";
-            this.saturday_delivery_comboBox.Size = new System.Drawing.Size(170, 21);
-            this.saturday_delivery_comboBox.TabIndex = 11;
-            // 
-            // non_machinable_comboBox
-            // 
-            this.non_machinable_comboBox.FormattingEnabled = true;
-            this.non_machinable_comboBox.Items.AddRange(new object[] {
-            "false",
-            "true"});
-            this.non_machinable_comboBox.Location = new System.Drawing.Point(127, 232);
-            this.non_machinable_comboBox.Name = "non_machinable_comboBox";
-            this.non_machinable_comboBox.Size = new System.Drawing.Size(170, 21);
-            this.non_machinable_comboBox.TabIndex = 10;
-            // 
-            // dry_ice_weight_comboBox
-            // 
-            this.dry_ice_weight_comboBox.FormattingEnabled = true;
-            this.dry_ice_weight_comboBox.Items.AddRange(new object[] {
-            "pound",
-            "ounce",
-            "gram",
-            "kilogram"});
-            this.dry_ice_weight_comboBox.Location = new System.Drawing.Point(173, 205);
-            this.dry_ice_weight_comboBox.Name = "dry_ice_weight_comboBox";
-            this.dry_ice_weight_comboBox.Size = new System.Drawing.Size(124, 21);
-            this.dry_ice_weight_comboBox.TabIndex = 9;
-            // 
-            // dry_ice_weight_numericUpDown
-            // 
-            this.dry_ice_weight_numericUpDown.DecimalPlaces = 1;
-            this.dry_ice_weight_numericUpDown.Location = new System.Drawing.Point(127, 206);
-            this.dry_ice_weight_numericUpDown.Name = "dry_ice_weight_numericUpDown";
-            this.dry_ice_weight_numericUpDown.Size = new System.Drawing.Size(40, 20);
-            this.dry_ice_weight_numericUpDown.TabIndex = 8;
-            // 
-            // dry_ice_comboBox
-            // 
-            this.dry_ice_comboBox.FormattingEnabled = true;
-            this.dry_ice_comboBox.Items.AddRange(new object[] {
-            "false",
-            "true"});
-            this.dry_ice_comboBox.Location = new System.Drawing.Point(127, 179);
-            this.dry_ice_comboBox.Name = "dry_ice_comboBox";
-            this.dry_ice_comboBox.Size = new System.Drawing.Size(170, 21);
-            this.dry_ice_comboBox.TabIndex = 7;
-            // 
-            // delivered_duty_paid_comboBox
-            // 
-            this.delivered_duty_paid_comboBox.FormattingEnabled = true;
-            this.delivered_duty_paid_comboBox.Items.AddRange(new object[] {
-            "false",
-            "true"});
-            this.delivered_duty_paid_comboBox.Location = new System.Drawing.Point(127, 152);
-            this.delivered_duty_paid_comboBox.Name = "delivered_duty_paid_comboBox";
-            this.delivered_duty_paid_comboBox.Size = new System.Drawing.Size(170, 21);
-            this.delivered_duty_paid_comboBox.TabIndex = 6;
-            // 
-            // contains_alcohol_comboBox
-            // 
-            this.contains_alcohol_comboBox.FormattingEnabled = true;
-            this.contains_alcohol_comboBox.Items.AddRange(new object[] {
-            "false",
-            "true"});
-            this.contains_alcohol_comboBox.Location = new System.Drawing.Point(127, 127);
-            this.contains_alcohol_comboBox.Name = "contains_alcohol_comboBox";
-            this.contains_alcohol_comboBox.Size = new System.Drawing.Size(170, 21);
-            this.contains_alcohol_comboBox.TabIndex = 5;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(17, 157);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(95, 13);
-            this.label8.TabIndex = 55;
-            this.label8.Text = "Deliverd Duty Paid";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(18, 79);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(63, 13);
-            this.label9.TabIndex = 54;
-            this.label9.Text = "Bill To Party";
-            // 
-            // bill_to_country_code_textBox
-            // 
-            this.bill_to_country_code_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
-            this.bill_to_country_code_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bill_to_country_code_textBox.Location = new System.Drawing.Point(127, 50);
-            this.bill_to_country_code_textBox.Name = "bill_to_country_code_textBox";
-            this.bill_to_country_code_textBox.Size = new System.Drawing.Size(170, 20);
-            this.bill_to_country_code_textBox.TabIndex = 2;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(17, 53);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(103, 13);
-            this.label10.TabIndex = 51;
-            this.label10.Text = "Bill To Country Code";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(17, 27);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(79, 13);
-            this.label12.TabIndex = 36;
-            this.label12.Text = "Bill To Account";
-            // 
-            // bill_to_account_textBox
-            // 
-            this.bill_to_account_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
-            this.bill_to_account_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bill_to_account_textBox.Location = new System.Drawing.Point(127, 24);
-            this.bill_to_account_textBox.Name = "bill_to_account_textBox";
-            this.bill_to_account_textBox.Size = new System.Drawing.Size(170, 20);
-            this.bill_to_account_textBox.TabIndex = 1;
-            // 
-            // bill_to_postal_code_textBox
-            // 
-            this.bill_to_postal_code_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
-            this.bill_to_postal_code_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bill_to_postal_code_textBox.Location = new System.Drawing.Point(127, 102);
-            this.bill_to_postal_code_textBox.Name = "bill_to_postal_code_textBox";
-            this.bill_to_postal_code_textBox.Size = new System.Drawing.Size(170, 20);
-            this.bill_to_postal_code_textBox.TabIndex = 4;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(17, 209);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(78, 13);
-            this.label13.TabIndex = 49;
-            this.label13.Text = "Dry Ice Weight";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(17, 262);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(90, 13);
-            this.label20.TabIndex = 48;
-            this.label20.Text = "Saturday Delivery";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(17, 105);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(96, 13);
-            this.label21.TabIndex = 46;
-            this.label21.Text = "Bill To Postal Code";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(17, 235);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(85, 13);
-            this.label22.TabIndex = 45;
-            this.label22.Text = "Non Machinable";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(17, 132);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(86, 13);
-            this.label23.TabIndex = 41;
-            this.label23.Text = "Contains Alcohol";
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label37.Location = new System.Drawing.Point(17, 183);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(41, 13);
-            this.label37.TabIndex = 44;
-            this.label37.Text = "Dry Ice";
             // 
             // shipTogroupBox
             // 
@@ -1210,11 +951,10 @@
             this.shipTogroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.shipTogroupBox.Location = new System.Drawing.Point(3, 3);
             this.shipTogroupBox.Name = "shipTogroupBox";
-            this.shipTogroupBox.Size = new System.Drawing.Size(308, 324);
+            this.shipTogroupBox.Size = new System.Drawing.Size(308, 285);
             this.shipTogroupBox.TabIndex = 127;
             this.shipTogroupBox.TabStop = false;
             this.shipTogroupBox.Text = "Ship To";
-            this.shipTogroupBox.Click += new System.EventHandler(this.shipTogroupBox_Click);
             // 
             // shipTo_address_residential_indicator_comboBox
             // 
@@ -1223,7 +963,7 @@
             this.shipTo_address_residential_indicator_comboBox.Items.AddRange(new object[] {
             "Yes",
             "No"});
-            this.shipTo_address_residential_indicator_comboBox.Location = new System.Drawing.Point(102, 294);
+            this.shipTo_address_residential_indicator_comboBox.Location = new System.Drawing.Point(104, 256);
             this.shipTo_address_residential_indicator_comboBox.Name = "shipTo_address_residential_indicator_comboBox";
             this.shipTo_address_residential_indicator_comboBox.Size = new System.Drawing.Size(194, 21);
             this.shipTo_address_residential_indicator_comboBox.TabIndex = 56;
@@ -1233,7 +973,7 @@
             // 
             this.shipTo_address_line3_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
             this.shipTo_address_line3_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipTo_address_line3_TextBox.Location = new System.Drawing.Point(102, 159);
+            this.shipTo_address_line3_TextBox.Location = new System.Drawing.Point(104, 136);
             this.shipTo_address_line3_TextBox.Name = "shipTo_address_line3_TextBox";
             this.shipTo_address_line3_TextBox.Size = new System.Drawing.Size(194, 20);
             this.shipTo_address_line3_TextBox.TabIndex = 56;
@@ -1243,7 +983,7 @@
             // 
             this.label64.AutoSize = true;
             this.label64.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label64.Location = new System.Drawing.Point(14, 162);
+            this.label64.Location = new System.Drawing.Point(16, 137);
             this.label64.Name = "label64";
             this.label64.Size = new System.Drawing.Size(77, 13);
             this.label64.TabIndex = 55;
@@ -1253,7 +993,7 @@
             // 
             this.label65.AutoSize = true;
             this.label65.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label65.Location = new System.Drawing.Point(15, 82);
+            this.label65.Location = new System.Drawing.Point(16, 65);
             this.label65.Name = "label65";
             this.label65.Size = new System.Drawing.Size(78, 13);
             this.label65.TabIndex = 54;
@@ -1263,7 +1003,7 @@
             // 
             this.shipTo_phone_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
             this.shipTo_phone_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipTo_phone_TextBox.Location = new System.Drawing.Point(102, 78);
+            this.shipTo_phone_TextBox.Location = new System.Drawing.Point(104, 64);
             this.shipTo_phone_TextBox.Name = "shipTo_phone_TextBox";
             this.shipTo_phone_TextBox.Size = new System.Drawing.Size(194, 20);
             this.shipTo_phone_TextBox.TabIndex = 53;
@@ -1272,7 +1012,7 @@
             // 
             this.shipTo_company_name_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
             this.shipTo_company_name_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipTo_company_name_TextBox.Location = new System.Drawing.Point(102, 51);
+            this.shipTo_company_name_TextBox.Location = new System.Drawing.Point(104, 40);
             this.shipTo_company_name_TextBox.Name = "shipTo_company_name_TextBox";
             this.shipTo_company_name_TextBox.Size = new System.Drawing.Size(194, 20);
             this.shipTo_company_name_TextBox.TabIndex = 52;
@@ -1281,7 +1021,7 @@
             // 
             this.label66.AutoSize = true;
             this.label66.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label66.Location = new System.Drawing.Point(14, 56);
+            this.label66.Location = new System.Drawing.Point(16, 41);
             this.label66.Name = "label66";
             this.label66.Size = new System.Drawing.Size(82, 13);
             this.label66.TabIndex = 51;
@@ -1291,7 +1031,7 @@
             // 
             this.label67.AutoSize = true;
             this.label67.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label67.Location = new System.Drawing.Point(17, 27);
+            this.label67.Location = new System.Drawing.Point(16, 17);
             this.label67.Name = "label67";
             this.label67.Size = new System.Drawing.Size(35, 13);
             this.label67.TabIndex = 36;
@@ -1301,7 +1041,7 @@
             // 
             this.shipTo_name_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
             this.shipTo_name_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipTo_name_TextBox.Location = new System.Drawing.Point(102, 24);
+            this.shipTo_name_TextBox.Location = new System.Drawing.Point(104, 16);
             this.shipTo_name_TextBox.Name = "shipTo_name_TextBox";
             this.shipTo_name_TextBox.Size = new System.Drawing.Size(194, 20);
             this.shipTo_name_TextBox.TabIndex = 8;
@@ -1310,7 +1050,7 @@
             // 
             this.shipTo_address_line1_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
             this.shipTo_address_line1_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipTo_address_line1_TextBox.Location = new System.Drawing.Point(102, 105);
+            this.shipTo_address_line1_TextBox.Location = new System.Drawing.Point(104, 88);
             this.shipTo_address_line1_TextBox.Name = "shipTo_address_line1_TextBox";
             this.shipTo_address_line1_TextBox.Size = new System.Drawing.Size(194, 20);
             this.shipTo_address_line1_TextBox.TabIndex = 9;
@@ -1319,7 +1059,7 @@
             // 
             this.shipTo_city_locality_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
             this.shipTo_city_locality_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipTo_city_locality_TextBox.Location = new System.Drawing.Point(102, 186);
+            this.shipTo_city_locality_TextBox.Location = new System.Drawing.Point(104, 160);
             this.shipTo_city_locality_TextBox.Name = "shipTo_city_locality_TextBox";
             this.shipTo_city_locality_TextBox.Size = new System.Drawing.Size(194, 20);
             this.shipTo_city_locality_TextBox.TabIndex = 10;
@@ -1328,7 +1068,7 @@
             // 
             this.shipTo_address_line2_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
             this.shipTo_address_line2_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipTo_address_line2_TextBox.Location = new System.Drawing.Point(102, 132);
+            this.shipTo_address_line2_TextBox.Location = new System.Drawing.Point(104, 112);
             this.shipTo_address_line2_TextBox.Name = "shipTo_address_line2_TextBox";
             this.shipTo_address_line2_TextBox.Size = new System.Drawing.Size(194, 20);
             this.shipTo_address_line2_TextBox.TabIndex = 11;
@@ -1338,7 +1078,7 @@
             // 
             this.label68.AutoSize = true;
             this.label68.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label68.Location = new System.Drawing.Point(17, 216);
+            this.label68.Location = new System.Drawing.Point(16, 185);
             this.label68.Name = "label68";
             this.label68.Size = new System.Drawing.Size(77, 13);
             this.label68.TabIndex = 49;
@@ -1348,7 +1088,7 @@
             // 
             this.shipTo_state_province_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
             this.shipTo_state_province_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipTo_state_province_TextBox.Location = new System.Drawing.Point(102, 213);
+            this.shipTo_state_province_TextBox.Location = new System.Drawing.Point(104, 184);
             this.shipTo_state_province_TextBox.MaxLength = 100;
             this.shipTo_state_province_TextBox.Name = "shipTo_state_province_TextBox";
             this.shipTo_state_province_TextBox.Size = new System.Drawing.Size(194, 20);
@@ -1358,7 +1098,7 @@
             // 
             this.label69.AutoSize = true;
             this.label69.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label69.Location = new System.Drawing.Point(17, 270);
+            this.label69.Location = new System.Drawing.Point(16, 233);
             this.label69.Name = "label69";
             this.label69.Size = new System.Drawing.Size(71, 13);
             this.label69.TabIndex = 48;
@@ -1368,7 +1108,7 @@
             // 
             this.shipTo_postal_code_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
             this.shipTo_postal_code_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipTo_postal_code_TextBox.Location = new System.Drawing.Point(102, 240);
+            this.shipTo_postal_code_TextBox.Location = new System.Drawing.Point(104, 208);
             this.shipTo_postal_code_TextBox.Name = "shipTo_postal_code_TextBox";
             this.shipTo_postal_code_TextBox.Size = new System.Drawing.Size(194, 20);
             this.shipTo_postal_code_TextBox.TabIndex = 13;
@@ -1377,7 +1117,7 @@
             // 
             this.label70.AutoSize = true;
             this.label70.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label70.Location = new System.Drawing.Point(17, 297);
+            this.label70.Location = new System.Drawing.Point(16, 257);
             this.label70.Name = "label70";
             this.label70.Size = new System.Drawing.Size(65, 13);
             this.label70.TabIndex = 47;
@@ -1387,7 +1127,7 @@
             // 
             this.shipTo_country_code_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
             this.shipTo_country_code_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipTo_country_code_TextBox.Location = new System.Drawing.Point(102, 267);
+            this.shipTo_country_code_TextBox.Location = new System.Drawing.Point(104, 232);
             this.shipTo_country_code_TextBox.Name = "shipTo_country_code_TextBox";
             this.shipTo_country_code_TextBox.Size = new System.Drawing.Size(194, 20);
             this.shipTo_country_code_TextBox.TabIndex = 14;
@@ -1396,7 +1136,7 @@
             // 
             this.label71.AutoSize = true;
             this.label71.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label71.Location = new System.Drawing.Point(14, 108);
+            this.label71.Location = new System.Drawing.Point(16, 89);
             this.label71.Name = "label71";
             this.label71.Size = new System.Drawing.Size(77, 13);
             this.label71.TabIndex = 46;
@@ -1406,7 +1146,7 @@
             // 
             this.label72.AutoSize = true;
             this.label72.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label72.Location = new System.Drawing.Point(17, 243);
+            this.label72.Location = new System.Drawing.Point(16, 209);
             this.label72.Name = "label72";
             this.label72.Size = new System.Drawing.Size(64, 13);
             this.label72.TabIndex = 45;
@@ -1416,7 +1156,7 @@
             // 
             this.label73.AutoSize = true;
             this.label73.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label73.Location = new System.Drawing.Point(14, 136);
+            this.label73.Location = new System.Drawing.Point(16, 113);
             this.label73.Name = "label73";
             this.label73.Size = new System.Drawing.Size(77, 13);
             this.label73.TabIndex = 41;
@@ -1426,7 +1166,7 @@
             // 
             this.label74.AutoSize = true;
             this.label74.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label74.Location = new System.Drawing.Point(17, 189);
+            this.label74.Location = new System.Drawing.Point(16, 161);
             this.label74.Name = "label74";
             this.label74.Size = new System.Drawing.Size(63, 13);
             this.label74.TabIndex = 44;
@@ -1434,188 +1174,770 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.advanced_options_groupBox1);
             this.tabPage2.Controls.Add(this.shipFromgroupBox);
             this.tabPage2.Controls.Add(this.warehouse_id_ComboBox);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(314, 355);
+            this.tabPage2.Size = new System.Drawing.Size(314, 318);
             this.tabPage2.TabIndex = 0;
             this.tabPage2.Text = "Ship From";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // advanced_options_groupBox1
+            // shipFromgroupBox
             // 
-            this.advanced_options_groupBox1.Controls.Add(this.label51);
-            this.advanced_options_groupBox1.Controls.Add(this.label50);
-            this.advanced_options_groupBox1.Controls.Add(this.label49);
-            this.advanced_options_groupBox1.Controls.Add(this.label48);
-            this.advanced_options_groupBox1.Controls.Add(this.label47);
-            this.advanced_options_groupBox1.Controls.Add(this.label46);
-            this.advanced_options_groupBox1.Controls.Add(this.label45);
-            this.advanced_options_groupBox1.Controls.Add(this.label44);
-            this.advanced_options_groupBox1.Controls.Add(this.freight_class_textBox);
-            this.advanced_options_groupBox1.Controls.Add(this.label43);
-            this.advanced_options_groupBox1.Controls.Add(this.label42);
-            this.advanced_options_groupBox1.Controls.Add(this.label41);
-            this.advanced_options_groupBox1.Controls.Add(this.third_party_consignee_comboBox);
-            this.advanced_options_groupBox1.Controls.Add(this.collect_on_delivery_payment_amount_numericUpDown);
-            this.advanced_options_groupBox1.Controls.Add(this.collect_on_delivery_payment_currency_comboBox);
-            this.advanced_options_groupBox1.Controls.Add(this.collect_on_delivery_payment_type_comboBox);
-            this.advanced_options_groupBox1.Controls.Add(this.shipper_release_comboBox);
-            this.advanced_options_groupBox1.Controls.Add(this.custom_field3_textBox);
-            this.advanced_options_groupBox1.Controls.Add(this.custom_field2_textBox);
-            this.advanced_options_groupBox1.Controls.Add(this.custom_field1_textBox);
-            this.advanced_options_groupBox1.Controls.Add(this.use_ups_ground_freight_pricing_comboBox);
-            this.advanced_options_groupBox1.Controls.Add(this.booking_confirmation_textBox);
-            this.advanced_options_groupBox1.Controls.Add(this.shipper_load_and_count_textBox);
-            this.advanced_options_groupBox1.Location = new System.Drawing.Point(2, 1);
-            this.advanced_options_groupBox1.Name = "advanced_options_groupBox1";
-            this.advanced_options_groupBox1.Size = new System.Drawing.Size(308, 324);
-            this.advanced_options_groupBox1.TabIndex = 129;
-            this.advanced_options_groupBox1.TabStop = false;
-            this.advanced_options_groupBox1.Text = "Advanced Options";
-            this.advanced_options_groupBox1.Visible = false;
-            this.advanced_options_groupBox1.Click += new System.EventHandler(this.advanced_options_groupBox1_Click);
+            this.shipFromgroupBox.Controls.Add(this.shipFrom_address_residential_indicator_comboBox);
+            this.shipFromgroupBox.Controls.Add(this.label75);
+            this.shipFromgroupBox.Controls.Add(this.shipFrom_address_line3_TextBox);
+            this.shipFromgroupBox.Controls.Add(this.shipFrom_name_TextBox);
+            this.shipFromgroupBox.Controls.Add(this.shipFrom_company_name_TextBox);
+            this.shipFromgroupBox.Controls.Add(this.label76);
+            this.shipFromgroupBox.Controls.Add(this.shipFrom_address_line1_TextBox);
+            this.shipFromgroupBox.Controls.Add(this.label77);
+            this.shipFromgroupBox.Controls.Add(this.shipFrom_phone_TextBox);
+            this.shipFromgroupBox.Controls.Add(this.label78);
+            this.shipFromgroupBox.Controls.Add(this.shipFrom_address_line2_TextBox);
+            this.shipFromgroupBox.Controls.Add(this.label79);
+            this.shipFromgroupBox.Controls.Add(this.shipFrom_city_locality_TextBox);
+            this.shipFromgroupBox.Controls.Add(this.label80);
+            this.shipFromgroupBox.Controls.Add(this.shipFrom_postal_code_TextBox);
+            this.shipFromgroupBox.Controls.Add(this.label81);
+            this.shipFromgroupBox.Controls.Add(this.shipFrom_state_province_TextBox);
+            this.shipFromgroupBox.Controls.Add(this.label82);
+            this.shipFromgroupBox.Controls.Add(this.label83);
+            this.shipFromgroupBox.Controls.Add(this.shipFrom_country_code_TextBox);
+            this.shipFromgroupBox.Controls.Add(this.label84);
+            this.shipFromgroupBox.Controls.Add(this.label85);
+            this.shipFromgroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.shipFromgroupBox.Location = new System.Drawing.Point(3, 3);
+            this.shipFromgroupBox.Name = "shipFromgroupBox";
+            this.shipFromgroupBox.Size = new System.Drawing.Size(308, 285);
+            this.shipFromgroupBox.TabIndex = 126;
+            this.shipFromgroupBox.TabStop = false;
+            this.shipFromgroupBox.Text = "Ship From";
+            // 
+            // shipFrom_address_residential_indicator_comboBox
+            // 
+            this.shipFrom_address_residential_indicator_comboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.shipFrom_address_residential_indicator_comboBox.FormattingEnabled = true;
+            this.shipFrom_address_residential_indicator_comboBox.Items.AddRange(new object[] {
+            "Yes",
+            "No"});
+            this.shipFrom_address_residential_indicator_comboBox.Location = new System.Drawing.Point(104, 256);
+            this.shipFrom_address_residential_indicator_comboBox.Name = "shipFrom_address_residential_indicator_comboBox";
+            this.shipFrom_address_residential_indicator_comboBox.Size = new System.Drawing.Size(194, 21);
+            this.shipFrom_address_residential_indicator_comboBox.TabIndex = 57;
+            this.shipFrom_address_residential_indicator_comboBox.Text = "(Defualt) No";
+            // 
+            // label75
+            // 
+            this.label75.AutoSize = true;
+            this.label75.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label75.Location = new System.Drawing.Point(16, 137);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(77, 13);
+            this.label75.TabIndex = 55;
+            this.label75.Text = "Address Line 3";
+            // 
+            // shipFrom_address_line3_TextBox
+            // 
+            this.shipFrom_address_line3_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
+            this.shipFrom_address_line3_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.shipFrom_address_line3_TextBox.Location = new System.Drawing.Point(104, 136);
+            this.shipFrom_address_line3_TextBox.Name = "shipFrom_address_line3_TextBox";
+            this.shipFrom_address_line3_TextBox.Size = new System.Drawing.Size(194, 20);
+            this.shipFrom_address_line3_TextBox.TabIndex = 54;
+            this.shipFrom_address_line3_TextBox.Text = " ";
+            // 
+            // shipFrom_name_TextBox
+            // 
+            this.shipFrom_name_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
+            this.shipFrom_name_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.shipFrom_name_TextBox.Location = new System.Drawing.Point(104, 16);
+            this.shipFrom_name_TextBox.Name = "shipFrom_name_TextBox";
+            this.shipFrom_name_TextBox.Size = new System.Drawing.Size(194, 20);
+            this.shipFrom_name_TextBox.TabIndex = 17;
+            // 
+            // shipFrom_company_name_TextBox
+            // 
+            this.shipFrom_company_name_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
+            this.shipFrom_company_name_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.shipFrom_company_name_TextBox.Location = new System.Drawing.Point(104, 40);
+            this.shipFrom_company_name_TextBox.Name = "shipFrom_company_name_TextBox";
+            this.shipFrom_company_name_TextBox.Size = new System.Drawing.Size(194, 20);
+            this.shipFrom_company_name_TextBox.TabIndex = 18;
+            // 
+            // label76
+            // 
+            this.label76.AutoSize = true;
+            this.label76.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label76.Location = new System.Drawing.Point(16, 233);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(71, 13);
+            this.label76.TabIndex = 53;
+            this.label76.Text = "Country Code";
+            // 
+            // shipFrom_address_line1_TextBox
+            // 
+            this.shipFrom_address_line1_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
+            this.shipFrom_address_line1_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.shipFrom_address_line1_TextBox.Location = new System.Drawing.Point(104, 88);
+            this.shipFrom_address_line1_TextBox.Name = "shipFrom_address_line1_TextBox";
+            this.shipFrom_address_line1_TextBox.Size = new System.Drawing.Size(194, 20);
+            this.shipFrom_address_line1_TextBox.TabIndex = 19;
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label77.Location = new System.Drawing.Point(16, 257);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(65, 13);
+            this.label77.TabIndex = 52;
+            this.label77.Text = "Residential?";
+            // 
+            // shipFrom_phone_TextBox
+            // 
+            this.shipFrom_phone_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
+            this.shipFrom_phone_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.shipFrom_phone_TextBox.Location = new System.Drawing.Point(104, 64);
+            this.shipFrom_phone_TextBox.Name = "shipFrom_phone_TextBox";
+            this.shipFrom_phone_TextBox.Size = new System.Drawing.Size(194, 20);
+            this.shipFrom_phone_TextBox.TabIndex = 20;
+            this.shipFrom_phone_TextBox.Text = " ";
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label78.Location = new System.Drawing.Point(16, 185);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(77, 13);
+            this.label78.TabIndex = 51;
+            this.label78.Text = "State Province";
+            // 
+            // shipFrom_address_line2_TextBox
+            // 
+            this.shipFrom_address_line2_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
+            this.shipFrom_address_line2_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.shipFrom_address_line2_TextBox.Location = new System.Drawing.Point(104, 112);
+            this.shipFrom_address_line2_TextBox.Name = "shipFrom_address_line2_TextBox";
+            this.shipFrom_address_line2_TextBox.Size = new System.Drawing.Size(194, 20);
+            this.shipFrom_address_line2_TextBox.TabIndex = 21;
+            this.shipFrom_address_line2_TextBox.Text = " ";
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label79.Location = new System.Drawing.Point(16, 209);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(64, 13);
+            this.label79.TabIndex = 50;
+            this.label79.Text = "Postal Code";
+            // 
+            // shipFrom_city_locality_TextBox
+            // 
+            this.shipFrom_city_locality_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
+            this.shipFrom_city_locality_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.shipFrom_city_locality_TextBox.Location = new System.Drawing.Point(104, 160);
+            this.shipFrom_city_locality_TextBox.Name = "shipFrom_city_locality_TextBox";
+            this.shipFrom_city_locality_TextBox.Size = new System.Drawing.Size(194, 20);
+            this.shipFrom_city_locality_TextBox.TabIndex = 22;
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label80.Location = new System.Drawing.Point(16, 113);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(77, 13);
+            this.label80.TabIndex = 43;
+            this.label80.Text = "Address Line 2";
+            // 
+            // shipFrom_postal_code_TextBox
+            // 
+            this.shipFrom_postal_code_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
+            this.shipFrom_postal_code_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.shipFrom_postal_code_TextBox.Location = new System.Drawing.Point(104, 208);
+            this.shipFrom_postal_code_TextBox.Name = "shipFrom_postal_code_TextBox";
+            this.shipFrom_postal_code_TextBox.Size = new System.Drawing.Size(194, 20);
+            this.shipFrom_postal_code_TextBox.TabIndex = 23;
+            // 
+            // label81
+            // 
+            this.label81.AutoSize = true;
+            this.label81.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label81.Location = new System.Drawing.Point(16, 17);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(35, 13);
+            this.label81.TabIndex = 42;
+            this.label81.Text = "Name";
+            // 
+            // shipFrom_state_province_TextBox
+            // 
+            this.shipFrom_state_province_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
+            this.shipFrom_state_province_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.shipFrom_state_province_TextBox.Location = new System.Drawing.Point(104, 184);
+            this.shipFrom_state_province_TextBox.Name = "shipFrom_state_province_TextBox";
+            this.shipFrom_state_province_TextBox.Size = new System.Drawing.Size(194, 20);
+            this.shipFrom_state_province_TextBox.TabIndex = 24;
+            // 
+            // label82
+            // 
+            this.label82.AutoSize = true;
+            this.label82.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label82.Location = new System.Drawing.Point(16, 65);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(78, 13);
+            this.label82.TabIndex = 40;
+            this.label82.Text = "Phone Number";
+            // 
+            // label83
+            // 
+            this.label83.AutoSize = true;
+            this.label83.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label83.Location = new System.Drawing.Point(16, 41);
+            this.label83.Name = "label83";
+            this.label83.Size = new System.Drawing.Size(82, 13);
+            this.label83.TabIndex = 39;
+            this.label83.Text = "Company Name";
+            // 
+            // shipFrom_country_code_TextBox
+            // 
+            this.shipFrom_country_code_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
+            this.shipFrom_country_code_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.shipFrom_country_code_TextBox.Location = new System.Drawing.Point(104, 232);
+            this.shipFrom_country_code_TextBox.Name = "shipFrom_country_code_TextBox";
+            this.shipFrom_country_code_TextBox.Size = new System.Drawing.Size(194, 20);
+            this.shipFrom_country_code_TextBox.TabIndex = 29;
+            // 
+            // label84
+            // 
+            this.label84.AutoSize = true;
+            this.label84.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label84.Location = new System.Drawing.Point(16, 89);
+            this.label84.Name = "label84";
+            this.label84.Size = new System.Drawing.Size(77, 13);
+            this.label84.TabIndex = 38;
+            this.label84.Text = "Address Line 1";
+            // 
+            // label85
+            // 
+            this.label85.AutoSize = true;
+            this.label85.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label85.Location = new System.Drawing.Point(16, 161);
+            this.label85.Name = "label85";
+            this.label85.Size = new System.Drawing.Size(63, 13);
+            this.label85.TabIndex = 37;
+            this.label85.Text = "City Locality";
+            // 
+            // warehouse_id_ComboBox
+            // 
+            this.warehouse_id_ComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.warehouse_id_ComboBox.FormattingEnabled = true;
+            this.warehouse_id_ComboBox.Location = new System.Drawing.Point(8, 290);
+            this.warehouse_id_ComboBox.Name = "warehouse_id_ComboBox";
+            this.warehouse_id_ComboBox.Size = new System.Drawing.Size(298, 21);
+            this.warehouse_id_ComboBox.TabIndex = 110;
+            this.warehouse_id_ComboBox.Text = "Warehouses (Autofill ShipFrom)";
+            this.warehouse_id_ComboBox.SelectedIndexChanged += new System.EventHandler(this.warehouse_id_ComboBox_SelectedIndexChanged);
+            // 
+            // tabPage13
+            // 
+            this.tabPage13.Controls.Add(this.label7);
+            this.tabPage13.Controls.Add(this.origin_type_comboBox);
+            this.tabPage13.Controls.Add(this.label20);
+            this.tabPage13.Controls.Add(this.dry_ice_weight_numericUpDown);
+            this.tabPage13.Controls.Add(this.label22);
+            this.tabPage13.Controls.Add(this.bill_to_party_comboBox);
+            this.tabPage13.Controls.Add(this.label13);
+            this.tabPage13.Controls.Add(this.label8);
+            this.tabPage13.Controls.Add(this.bill_to_account_textBox);
+            this.tabPage13.Controls.Add(this.label9);
+            this.tabPage13.Controls.Add(this.label42);
+            this.tabPage13.Controls.Add(this.label37);
+            this.tabPage13.Controls.Add(this.label41);
+            this.tabPage13.Controls.Add(this.saturday_delivery_comboBox);
+            this.tabPage13.Controls.Add(this.label21);
+            this.tabPage13.Controls.Add(this.label23);
+            this.tabPage13.Controls.Add(this.label10);
+            this.tabPage13.Controls.Add(this.bill_to_country_code_textBox);
+            this.tabPage13.Controls.Add(this.label12);
+            this.tabPage13.Controls.Add(this.non_machinable_comboBox);
+            this.tabPage13.Controls.Add(this.bill_to_postal_code_textBox);
+            this.tabPage13.Controls.Add(this.dry_ice_weight_comboBox);
+            this.tabPage13.Controls.Add(this.contains_alcohol_comboBox);
+            this.tabPage13.Controls.Add(this.booking_confirmation_textBox);
+            this.tabPage13.Controls.Add(this.delivered_duty_paid_comboBox);
+            this.tabPage13.Controls.Add(this.shipper_load_and_count_textBox);
+            this.tabPage13.Controls.Add(this.dry_ice_comboBox);
+            this.tabPage13.Location = new System.Drawing.Point(4, 22);
+            this.tabPage13.Name = "tabPage13";
+            this.tabPage13.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage13.Size = new System.Drawing.Size(314, 318);
+            this.tabPage13.TabIndex = 1;
+            this.tabPage13.Text = "Advanced Options";
+            this.tabPage13.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(12, 249);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(61, 13);
+            this.label7.TabIndex = 65;
+            this.label7.Text = "Origin Type";
+            // 
+            // origin_type_comboBox
+            // 
+            this.origin_type_comboBox.FormattingEnabled = true;
+            this.origin_type_comboBox.Items.AddRange(new object[] {
+            "null",
+            "\"pickup\"",
+            "\"drop_off\""});
+            this.origin_type_comboBox.Location = new System.Drawing.Point(136, 248);
+            this.origin_type_comboBox.Name = "origin_type_comboBox";
+            this.origin_type_comboBox.Size = new System.Drawing.Size(170, 21);
+            this.origin_type_comboBox.TabIndex = 12;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(12, 225);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(90, 13);
+            this.label20.TabIndex = 48;
+            this.label20.Text = "Saturday Delivery";
+            // 
+            // dry_ice_weight_numericUpDown
+            // 
+            this.dry_ice_weight_numericUpDown.DecimalPlaces = 1;
+            this.dry_ice_weight_numericUpDown.Location = new System.Drawing.Point(136, 176);
+            this.dry_ice_weight_numericUpDown.Name = "dry_ice_weight_numericUpDown";
+            this.dry_ice_weight_numericUpDown.Size = new System.Drawing.Size(58, 20);
+            this.dry_ice_weight_numericUpDown.TabIndex = 8;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(12, 201);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(85, 13);
+            this.label22.TabIndex = 45;
+            this.label22.Text = "Non Machinable";
+            // 
+            // bill_to_party_comboBox
+            // 
+            this.bill_to_party_comboBox.FormattingEnabled = true;
+            this.bill_to_party_comboBox.Items.AddRange(new object[] {
+            "null",
+            "\"recipient\"",
+            "\"third_party\""});
+            this.bill_to_party_comboBox.Location = new System.Drawing.Point(136, 56);
+            this.bill_to_party_comboBox.Name = "bill_to_party_comboBox";
+            this.bill_to_party_comboBox.Size = new System.Drawing.Size(170, 21);
+            this.bill_to_party_comboBox.TabIndex = 3;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(12, 177);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(78, 13);
+            this.label13.TabIndex = 49;
+            this.label13.Text = "Dry Ice Weight";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(12, 129);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(95, 13);
+            this.label8.TabIndex = 55;
+            this.label8.Text = "Deliverd Duty Paid";
+            // 
+            // bill_to_account_textBox
+            // 
+            this.bill_to_account_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
+            this.bill_to_account_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bill_to_account_textBox.Location = new System.Drawing.Point(136, 8);
+            this.bill_to_account_textBox.Name = "bill_to_account_textBox";
+            this.bill_to_account_textBox.Size = new System.Drawing.Size(170, 20);
+            this.bill_to_account_textBox.TabIndex = 1;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(12, 57);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(63, 13);
+            this.label9.TabIndex = 54;
+            this.label9.Text = "Bill To Party";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label42.Location = new System.Drawing.Point(12, 297);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(107, 13);
+            this.label42.TabIndex = 77;
+            this.label42.Text = "Booking Confirmation";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.Location = new System.Drawing.Point(12, 155);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(41, 13);
+            this.label37.TabIndex = 44;
+            this.label37.Text = "Dry Ice";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label41.Location = new System.Drawing.Point(12, 273);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(118, 13);
+            this.label41.TabIndex = 67;
+            this.label41.Text = "Freight Load and Count";
+            // 
+            // saturday_delivery_comboBox
+            // 
+            this.saturday_delivery_comboBox.FormattingEnabled = true;
+            this.saturday_delivery_comboBox.Items.AddRange(new object[] {
+            "false",
+            "true"});
+            this.saturday_delivery_comboBox.Location = new System.Drawing.Point(136, 224);
+            this.saturday_delivery_comboBox.Name = "saturday_delivery_comboBox";
+            this.saturday_delivery_comboBox.Size = new System.Drawing.Size(170, 21);
+            this.saturday_delivery_comboBox.TabIndex = 11;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(12, 81);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(96, 13);
+            this.label21.TabIndex = 46;
+            this.label21.Text = "Bill To Postal Code";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(12, 107);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(86, 13);
+            this.label23.TabIndex = 41;
+            this.label23.Text = "Contains Alcohol";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(12, 33);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(103, 13);
+            this.label10.TabIndex = 51;
+            this.label10.Text = "Bill To Country Code";
+            // 
+            // bill_to_country_code_textBox
+            // 
+            this.bill_to_country_code_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
+            this.bill_to_country_code_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bill_to_country_code_textBox.Location = new System.Drawing.Point(136, 32);
+            this.bill_to_country_code_textBox.Name = "bill_to_country_code_textBox";
+            this.bill_to_country_code_textBox.Size = new System.Drawing.Size(170, 20);
+            this.bill_to_country_code_textBox.TabIndex = 2;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(12, 9);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(79, 13);
+            this.label12.TabIndex = 36;
+            this.label12.Text = "Bill To Account";
+            // 
+            // non_machinable_comboBox
+            // 
+            this.non_machinable_comboBox.FormattingEnabled = true;
+            this.non_machinable_comboBox.Items.AddRange(new object[] {
+            "false",
+            "true"});
+            this.non_machinable_comboBox.Location = new System.Drawing.Point(136, 200);
+            this.non_machinable_comboBox.Name = "non_machinable_comboBox";
+            this.non_machinable_comboBox.Size = new System.Drawing.Size(170, 21);
+            this.non_machinable_comboBox.TabIndex = 10;
+            // 
+            // bill_to_postal_code_textBox
+            // 
+            this.bill_to_postal_code_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
+            this.bill_to_postal_code_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bill_to_postal_code_textBox.Location = new System.Drawing.Point(136, 80);
+            this.bill_to_postal_code_textBox.Name = "bill_to_postal_code_textBox";
+            this.bill_to_postal_code_textBox.Size = new System.Drawing.Size(170, 20);
+            this.bill_to_postal_code_textBox.TabIndex = 4;
+            // 
+            // dry_ice_weight_comboBox
+            // 
+            this.dry_ice_weight_comboBox.FormattingEnabled = true;
+            this.dry_ice_weight_comboBox.Items.AddRange(new object[] {
+            "pound",
+            "ounce",
+            "gram",
+            "kilogram"});
+            this.dry_ice_weight_comboBox.Location = new System.Drawing.Point(200, 176);
+            this.dry_ice_weight_comboBox.Name = "dry_ice_weight_comboBox";
+            this.dry_ice_weight_comboBox.Size = new System.Drawing.Size(106, 21);
+            this.dry_ice_weight_comboBox.TabIndex = 9;
+            // 
+            // contains_alcohol_comboBox
+            // 
+            this.contains_alcohol_comboBox.FormattingEnabled = true;
+            this.contains_alcohol_comboBox.Items.AddRange(new object[] {
+            "false",
+            "true"});
+            this.contains_alcohol_comboBox.Location = new System.Drawing.Point(136, 104);
+            this.contains_alcohol_comboBox.Name = "contains_alcohol_comboBox";
+            this.contains_alcohol_comboBox.Size = new System.Drawing.Size(170, 21);
+            this.contains_alcohol_comboBox.TabIndex = 5;
+            // 
+            // booking_confirmation_textBox
+            // 
+            this.booking_confirmation_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
+            this.booking_confirmation_textBox.Enabled = false;
+            this.booking_confirmation_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.booking_confirmation_textBox.Location = new System.Drawing.Point(136, 295);
+            this.booking_confirmation_textBox.Name = "booking_confirmation_textBox";
+            this.booking_confirmation_textBox.Size = new System.Drawing.Size(170, 20);
+            this.booking_confirmation_textBox.TabIndex = 14;
+            // 
+            // delivered_duty_paid_comboBox
+            // 
+            this.delivered_duty_paid_comboBox.FormattingEnabled = true;
+            this.delivered_duty_paid_comboBox.Items.AddRange(new object[] {
+            "false",
+            "true"});
+            this.delivered_duty_paid_comboBox.Location = new System.Drawing.Point(136, 128);
+            this.delivered_duty_paid_comboBox.Name = "delivered_duty_paid_comboBox";
+            this.delivered_duty_paid_comboBox.Size = new System.Drawing.Size(170, 21);
+            this.delivered_duty_paid_comboBox.TabIndex = 6;
+            // 
+            // shipper_load_and_count_textBox
+            // 
+            this.shipper_load_and_count_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
+            this.shipper_load_and_count_textBox.Enabled = false;
+            this.shipper_load_and_count_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.shipper_load_and_count_textBox.Location = new System.Drawing.Point(136, 272);
+            this.shipper_load_and_count_textBox.Name = "shipper_load_and_count_textBox";
+            this.shipper_load_and_count_textBox.Size = new System.Drawing.Size(170, 20);
+            this.shipper_load_and_count_textBox.TabIndex = 13;
+            // 
+            // dry_ice_comboBox
+            // 
+            this.dry_ice_comboBox.FormattingEnabled = true;
+            this.dry_ice_comboBox.Items.AddRange(new object[] {
+            "false",
+            "true"});
+            this.dry_ice_comboBox.Location = new System.Drawing.Point(136, 152);
+            this.dry_ice_comboBox.Name = "dry_ice_comboBox";
+            this.dry_ice_comboBox.Size = new System.Drawing.Size(170, 21);
+            this.dry_ice_comboBox.TabIndex = 7;
+            // 
+            // tabPage14
+            // 
+            this.tabPage14.Controls.Add(this.label51);
+            this.tabPage14.Controls.Add(this.use_ups_ground_freight_pricing_comboBox);
+            this.tabPage14.Controls.Add(this.label50);
+            this.tabPage14.Controls.Add(this.freight_class_textBox);
+            this.tabPage14.Controls.Add(this.label49);
+            this.tabPage14.Controls.Add(this.custom_field1_textBox);
+            this.tabPage14.Controls.Add(this.label48);
+            this.tabPage14.Controls.Add(this.custom_field2_textBox);
+            this.tabPage14.Controls.Add(this.label47);
+            this.tabPage14.Controls.Add(this.custom_field3_textBox);
+            this.tabPage14.Controls.Add(this.label45);
+            this.tabPage14.Controls.Add(this.label46);
+            this.tabPage14.Controls.Add(this.shipper_release_comboBox);
+            this.tabPage14.Controls.Add(this.collect_on_delivery_payment_type_comboBox);
+            this.tabPage14.Controls.Add(this.label44);
+            this.tabPage14.Controls.Add(this.collect_on_delivery_payment_currency_comboBox);
+            this.tabPage14.Controls.Add(this.label43);
+            this.tabPage14.Controls.Add(this.collect_on_delivery_payment_amount_numericUpDown);
+            this.tabPage14.Controls.Add(this.third_party_consignee_comboBox);
+            this.tabPage14.Location = new System.Drawing.Point(4, 22);
+            this.tabPage14.Name = "tabPage14";
+            this.tabPage14.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage14.Size = new System.Drawing.Size(314, 318);
+            this.tabPage14.TabIndex = 2;
+            this.tabPage14.Text = "Advanced Options";
+            this.tabPage14.UseVisualStyleBackColor = true;
             // 
             // label51
             // 
             this.label51.AutoSize = true;
             this.label51.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label51.Location = new System.Drawing.Point(8, 297);
+            this.label51.Location = new System.Drawing.Point(12, 201);
             this.label51.Name = "label51";
             this.label51.Size = new System.Drawing.Size(105, 13);
             this.label51.TabIndex = 87;
             this.label51.Text = "Third Party Cosignee";
             // 
+            // use_ups_ground_freight_pricing_comboBox
+            // 
+            this.use_ups_ground_freight_pricing_comboBox.Enabled = false;
+            this.use_ups_ground_freight_pricing_comboBox.FormattingEnabled = true;
+            this.use_ups_ground_freight_pricing_comboBox.Items.AddRange(new object[] {
+            "false",
+            "true"});
+            this.use_ups_ground_freight_pricing_comboBox.Location = new System.Drawing.Point(136, 8);
+            this.use_ups_ground_freight_pricing_comboBox.Name = "use_ups_ground_freight_pricing_comboBox";
+            this.use_ups_ground_freight_pricing_comboBox.Size = new System.Drawing.Size(170, 21);
+            this.use_ups_ground_freight_pricing_comboBox.TabIndex = 15;
+            // 
             // label50
             // 
             this.label50.AutoSize = true;
             this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label50.Location = new System.Drawing.Point(7, 270);
+            this.label50.Location = new System.Drawing.Point(12, 177);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(113, 13);
             this.label50.TabIndex = 86;
             this.label50.Text = "COD Payment Amount";
-            // 
-            // label49
-            // 
-            this.label49.AutoSize = true;
-            this.label49.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label49.Location = new System.Drawing.Point(7, 243);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(101, 13);
-            this.label49.TabIndex = 85;
-            this.label49.Text = "COD Payment Type";
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label48.Location = new System.Drawing.Point(6, 216);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(85, 13);
-            this.label48.TabIndex = 84;
-            this.label48.Text = "Shipper Release";
-            // 
-            // label47
-            // 
-            this.label47.AutoSize = true;
-            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label47.Location = new System.Drawing.Point(6, 187);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(76, 13);
-            this.label47.TabIndex = 83;
-            this.label47.Text = "Custom Field 3";
-            // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label46.Location = new System.Drawing.Point(6, 136);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(76, 13);
-            this.label46.TabIndex = 82;
-            this.label46.Text = "Custom Field 1";
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label45.Location = new System.Drawing.Point(6, 162);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(76, 13);
-            this.label45.TabIndex = 81;
-            this.label45.Text = "Custom Field 2";
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label44.Location = new System.Drawing.Point(6, 108);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(67, 13);
-            this.label44.TabIndex = 80;
-            this.label44.Text = "Freight Class";
             // 
             // freight_class_textBox
             // 
             this.freight_class_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
             this.freight_class_textBox.Enabled = false;
             this.freight_class_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.freight_class_textBox.Location = new System.Drawing.Point(132, 105);
+            this.freight_class_textBox.Location = new System.Drawing.Point(136, 32);
             this.freight_class_textBox.Name = "freight_class_textBox";
             this.freight_class_textBox.Size = new System.Drawing.Size(170, 20);
             this.freight_class_textBox.TabIndex = 16;
             // 
-            // label43
+            // label49
             // 
-            this.label43.AutoSize = true;
-            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label43.Location = new System.Drawing.Point(6, 81);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(121, 13);
-            this.label43.TabIndex = 78;
-            this.label43.Text = "Use UPS Freight Pricing";
+            this.label49.AutoSize = true;
+            this.label49.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label49.Location = new System.Drawing.Point(12, 155);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(101, 13);
+            this.label49.TabIndex = 85;
+            this.label49.Text = "COD Payment Type";
             // 
-            // label42
+            // custom_field1_textBox
             // 
-            this.label42.AutoSize = true;
-            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label42.Location = new System.Drawing.Point(6, 53);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(107, 13);
-            this.label42.TabIndex = 77;
-            this.label42.Text = "Booking Confirmation";
+            this.custom_field1_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
+            this.custom_field1_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.custom_field1_textBox.Location = new System.Drawing.Point(136, 56);
+            this.custom_field1_textBox.Name = "custom_field1_textBox";
+            this.custom_field1_textBox.Size = new System.Drawing.Size(170, 20);
+            this.custom_field1_textBox.TabIndex = 17;
             // 
-            // label41
+            // label48
             // 
-            this.label41.AutoSize = true;
-            this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label41.Location = new System.Drawing.Point(6, 27);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(118, 13);
-            this.label41.TabIndex = 67;
-            this.label41.Text = "Freight Load and Count";
+            this.label48.AutoSize = true;
+            this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label48.Location = new System.Drawing.Point(12, 129);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(85, 13);
+            this.label48.TabIndex = 84;
+            this.label48.Text = "Shipper Release";
             // 
-            // third_party_consignee_comboBox
+            // custom_field2_textBox
             // 
-            this.third_party_consignee_comboBox.FormattingEnabled = true;
-            this.third_party_consignee_comboBox.Items.AddRange(new object[] {
+            this.custom_field2_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
+            this.custom_field2_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.custom_field2_textBox.Location = new System.Drawing.Point(136, 80);
+            this.custom_field2_textBox.Name = "custom_field2_textBox";
+            this.custom_field2_textBox.Size = new System.Drawing.Size(170, 20);
+            this.custom_field2_textBox.TabIndex = 18;
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label47.Location = new System.Drawing.Point(12, 107);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(76, 13);
+            this.label47.TabIndex = 83;
+            this.label47.Text = "Custom Field 3";
+            // 
+            // custom_field3_textBox
+            // 
+            this.custom_field3_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
+            this.custom_field3_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.custom_field3_textBox.Location = new System.Drawing.Point(136, 104);
+            this.custom_field3_textBox.Name = "custom_field3_textBox";
+            this.custom_field3_textBox.Size = new System.Drawing.Size(170, 20);
+            this.custom_field3_textBox.TabIndex = 19;
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label45.Location = new System.Drawing.Point(12, 81);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(76, 13);
+            this.label45.TabIndex = 81;
+            this.label45.Text = "Custom Field 2";
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label46.Location = new System.Drawing.Point(12, 57);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(76, 13);
+            this.label46.TabIndex = 82;
+            this.label46.Text = "Custom Field 1";
+            // 
+            // shipper_release_comboBox
+            // 
+            this.shipper_release_comboBox.Enabled = false;
+            this.shipper_release_comboBox.FormattingEnabled = true;
+            this.shipper_release_comboBox.Items.AddRange(new object[] {
             "false",
             "true"});
-            this.third_party_consignee_comboBox.Location = new System.Drawing.Point(132, 294);
-            this.third_party_consignee_comboBox.Name = "third_party_consignee_comboBox";
-            this.third_party_consignee_comboBox.Size = new System.Drawing.Size(170, 21);
-            this.third_party_consignee_comboBox.TabIndex = 26;
+            this.shipper_release_comboBox.Location = new System.Drawing.Point(136, 128);
+            this.shipper_release_comboBox.Name = "shipper_release_comboBox";
+            this.shipper_release_comboBox.Size = new System.Drawing.Size(170, 21);
+            this.shipper_release_comboBox.TabIndex = 20;
             // 
-            // collect_on_delivery_payment_amount_numericUpDown
+            // collect_on_delivery_payment_type_comboBox
             // 
-            this.collect_on_delivery_payment_amount_numericUpDown.DecimalPlaces = 1;
-            this.collect_on_delivery_payment_amount_numericUpDown.Location = new System.Drawing.Point(132, 267);
-            this.collect_on_delivery_payment_amount_numericUpDown.Name = "collect_on_delivery_payment_amount_numericUpDown";
-            this.collect_on_delivery_payment_amount_numericUpDown.Size = new System.Drawing.Size(40, 20);
-            this.collect_on_delivery_payment_amount_numericUpDown.TabIndex = 23;
+            this.collect_on_delivery_payment_type_comboBox.FormattingEnabled = true;
+            this.collect_on_delivery_payment_type_comboBox.Items.AddRange(new object[] {
+            "none",
+            "any",
+            "cash",
+            "cash_equivalent"});
+            this.collect_on_delivery_payment_type_comboBox.Location = new System.Drawing.Point(136, 152);
+            this.collect_on_delivery_payment_type_comboBox.Name = "collect_on_delivery_payment_type_comboBox";
+            this.collect_on_delivery_payment_type_comboBox.Size = new System.Drawing.Size(170, 21);
+            this.collect_on_delivery_payment_type_comboBox.TabIndex = 21;
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label44.Location = new System.Drawing.Point(12, 33);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(67, 13);
+            this.label44.TabIndex = 80;
+            this.label44.Text = "Freight Class";
             // 
             // collect_on_delivery_payment_currency_comboBox
             // 
@@ -1801,354 +2123,39 @@
             "ZAR",
             "ZMW",
             "ZWL"});
-            this.collect_on_delivery_payment_currency_comboBox.Location = new System.Drawing.Point(178, 267);
+            this.collect_on_delivery_payment_currency_comboBox.Location = new System.Drawing.Point(200, 176);
             this.collect_on_delivery_payment_currency_comboBox.Name = "collect_on_delivery_payment_currency_comboBox";
-            this.collect_on_delivery_payment_currency_comboBox.Size = new System.Drawing.Size(124, 21);
+            this.collect_on_delivery_payment_currency_comboBox.Size = new System.Drawing.Size(106, 21);
             this.collect_on_delivery_payment_currency_comboBox.TabIndex = 25;
             // 
-            // collect_on_delivery_payment_type_comboBox
+            // label43
             // 
-            this.collect_on_delivery_payment_type_comboBox.FormattingEnabled = true;
-            this.collect_on_delivery_payment_type_comboBox.Items.AddRange(new object[] {
-            "none",
-            "any",
-            "cash",
-            "cash_equivalent"});
-            this.collect_on_delivery_payment_type_comboBox.Location = new System.Drawing.Point(132, 240);
-            this.collect_on_delivery_payment_type_comboBox.Name = "collect_on_delivery_payment_type_comboBox";
-            this.collect_on_delivery_payment_type_comboBox.Size = new System.Drawing.Size(170, 21);
-            this.collect_on_delivery_payment_type_comboBox.TabIndex = 21;
+            this.label43.AutoSize = true;
+            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label43.Location = new System.Drawing.Point(12, 9);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(121, 13);
+            this.label43.TabIndex = 78;
+            this.label43.Text = "Use UPS Freight Pricing";
             // 
-            // shipper_release_comboBox
+            // collect_on_delivery_payment_amount_numericUpDown
             // 
-            this.shipper_release_comboBox.Enabled = false;
-            this.shipper_release_comboBox.FormattingEnabled = true;
-            this.shipper_release_comboBox.Items.AddRange(new object[] {
+            this.collect_on_delivery_payment_amount_numericUpDown.DecimalPlaces = 1;
+            this.collect_on_delivery_payment_amount_numericUpDown.Location = new System.Drawing.Point(136, 176);
+            this.collect_on_delivery_payment_amount_numericUpDown.Name = "collect_on_delivery_payment_amount_numericUpDown";
+            this.collect_on_delivery_payment_amount_numericUpDown.Size = new System.Drawing.Size(58, 20);
+            this.collect_on_delivery_payment_amount_numericUpDown.TabIndex = 23;
+            // 
+            // third_party_consignee_comboBox
+            // 
+            this.third_party_consignee_comboBox.FormattingEnabled = true;
+            this.third_party_consignee_comboBox.Items.AddRange(new object[] {
             "false",
             "true"});
-            this.shipper_release_comboBox.Location = new System.Drawing.Point(132, 213);
-            this.shipper_release_comboBox.Name = "shipper_release_comboBox";
-            this.shipper_release_comboBox.Size = new System.Drawing.Size(170, 21);
-            this.shipper_release_comboBox.TabIndex = 20;
-            // 
-            // custom_field3_textBox
-            // 
-            this.custom_field3_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
-            this.custom_field3_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.custom_field3_textBox.Location = new System.Drawing.Point(132, 186);
-            this.custom_field3_textBox.Name = "custom_field3_textBox";
-            this.custom_field3_textBox.Size = new System.Drawing.Size(170, 20);
-            this.custom_field3_textBox.TabIndex = 19;
-            // 
-            // custom_field2_textBox
-            // 
-            this.custom_field2_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
-            this.custom_field2_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.custom_field2_textBox.Location = new System.Drawing.Point(132, 159);
-            this.custom_field2_textBox.Name = "custom_field2_textBox";
-            this.custom_field2_textBox.Size = new System.Drawing.Size(170, 20);
-            this.custom_field2_textBox.TabIndex = 18;
-            // 
-            // custom_field1_textBox
-            // 
-            this.custom_field1_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
-            this.custom_field1_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.custom_field1_textBox.Location = new System.Drawing.Point(132, 132);
-            this.custom_field1_textBox.Name = "custom_field1_textBox";
-            this.custom_field1_textBox.Size = new System.Drawing.Size(170, 20);
-            this.custom_field1_textBox.TabIndex = 17;
-            // 
-            // use_ups_ground_freight_pricing_comboBox
-            // 
-            this.use_ups_ground_freight_pricing_comboBox.Enabled = false;
-            this.use_ups_ground_freight_pricing_comboBox.FormattingEnabled = true;
-            this.use_ups_ground_freight_pricing_comboBox.Items.AddRange(new object[] {
-            "false",
-            "true"});
-            this.use_ups_ground_freight_pricing_comboBox.Location = new System.Drawing.Point(132, 78);
-            this.use_ups_ground_freight_pricing_comboBox.Name = "use_ups_ground_freight_pricing_comboBox";
-            this.use_ups_ground_freight_pricing_comboBox.Size = new System.Drawing.Size(170, 21);
-            this.use_ups_ground_freight_pricing_comboBox.TabIndex = 15;
-            // 
-            // booking_confirmation_textBox
-            // 
-            this.booking_confirmation_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
-            this.booking_confirmation_textBox.Enabled = false;
-            this.booking_confirmation_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.booking_confirmation_textBox.Location = new System.Drawing.Point(132, 51);
-            this.booking_confirmation_textBox.Name = "booking_confirmation_textBox";
-            this.booking_confirmation_textBox.Size = new System.Drawing.Size(170, 20);
-            this.booking_confirmation_textBox.TabIndex = 14;
-            // 
-            // shipper_load_and_count_textBox
-            // 
-            this.shipper_load_and_count_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
-            this.shipper_load_and_count_textBox.Enabled = false;
-            this.shipper_load_and_count_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipper_load_and_count_textBox.Location = new System.Drawing.Point(132, 24);
-            this.shipper_load_and_count_textBox.Name = "shipper_load_and_count_textBox";
-            this.shipper_load_and_count_textBox.Size = new System.Drawing.Size(170, 20);
-            this.shipper_load_and_count_textBox.TabIndex = 13;
-            // 
-            // shipFromgroupBox
-            // 
-            this.shipFromgroupBox.Controls.Add(this.shipFrom_address_residential_indicator_comboBox);
-            this.shipFromgroupBox.Controls.Add(this.label75);
-            this.shipFromgroupBox.Controls.Add(this.shipFrom_address_line3_TextBox);
-            this.shipFromgroupBox.Controls.Add(this.shipFrom_name_TextBox);
-            this.shipFromgroupBox.Controls.Add(this.shipFrom_company_name_TextBox);
-            this.shipFromgroupBox.Controls.Add(this.label76);
-            this.shipFromgroupBox.Controls.Add(this.shipFrom_address_line1_TextBox);
-            this.shipFromgroupBox.Controls.Add(this.label77);
-            this.shipFromgroupBox.Controls.Add(this.shipFrom_phone_TextBox);
-            this.shipFromgroupBox.Controls.Add(this.label78);
-            this.shipFromgroupBox.Controls.Add(this.shipFrom_address_line2_TextBox);
-            this.shipFromgroupBox.Controls.Add(this.label79);
-            this.shipFromgroupBox.Controls.Add(this.shipFrom_city_locality_TextBox);
-            this.shipFromgroupBox.Controls.Add(this.label80);
-            this.shipFromgroupBox.Controls.Add(this.shipFrom_postal_code_TextBox);
-            this.shipFromgroupBox.Controls.Add(this.label81);
-            this.shipFromgroupBox.Controls.Add(this.shipFrom_state_province_TextBox);
-            this.shipFromgroupBox.Controls.Add(this.label82);
-            this.shipFromgroupBox.Controls.Add(this.label83);
-            this.shipFromgroupBox.Controls.Add(this.shipFrom_country_code_TextBox);
-            this.shipFromgroupBox.Controls.Add(this.label84);
-            this.shipFromgroupBox.Controls.Add(this.label85);
-            this.shipFromgroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipFromgroupBox.Location = new System.Drawing.Point(3, 1);
-            this.shipFromgroupBox.Name = "shipFromgroupBox";
-            this.shipFromgroupBox.Size = new System.Drawing.Size(308, 324);
-            this.shipFromgroupBox.TabIndex = 126;
-            this.shipFromgroupBox.TabStop = false;
-            this.shipFromgroupBox.Text = "Ship From";
-            this.shipFromgroupBox.Click += new System.EventHandler(this.shipFromgroupBox_Click);
-            // 
-            // shipFrom_address_residential_indicator_comboBox
-            // 
-            this.shipFrom_address_residential_indicator_comboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipFrom_address_residential_indicator_comboBox.FormattingEnabled = true;
-            this.shipFrom_address_residential_indicator_comboBox.Items.AddRange(new object[] {
-            "Yes",
-            "No"});
-            this.shipFrom_address_residential_indicator_comboBox.Location = new System.Drawing.Point(103, 294);
-            this.shipFrom_address_residential_indicator_comboBox.Name = "shipFrom_address_residential_indicator_comboBox";
-            this.shipFrom_address_residential_indicator_comboBox.Size = new System.Drawing.Size(195, 21);
-            this.shipFrom_address_residential_indicator_comboBox.TabIndex = 57;
-            this.shipFrom_address_residential_indicator_comboBox.Text = "(Defualt) No";
-            // 
-            // label75
-            // 
-            this.label75.AutoSize = true;
-            this.label75.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label75.Location = new System.Drawing.Point(14, 162);
-            this.label75.Name = "label75";
-            this.label75.Size = new System.Drawing.Size(77, 13);
-            this.label75.TabIndex = 55;
-            this.label75.Text = "Address Line 3";
-            // 
-            // shipFrom_address_line3_TextBox
-            // 
-            this.shipFrom_address_line3_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
-            this.shipFrom_address_line3_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipFrom_address_line3_TextBox.Location = new System.Drawing.Point(103, 159);
-            this.shipFrom_address_line3_TextBox.Name = "shipFrom_address_line3_TextBox";
-            this.shipFrom_address_line3_TextBox.Size = new System.Drawing.Size(195, 20);
-            this.shipFrom_address_line3_TextBox.TabIndex = 54;
-            this.shipFrom_address_line3_TextBox.Text = " ";
-            // 
-            // shipFrom_name_TextBox
-            // 
-            this.shipFrom_name_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
-            this.shipFrom_name_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipFrom_name_TextBox.Location = new System.Drawing.Point(103, 24);
-            this.shipFrom_name_TextBox.Name = "shipFrom_name_TextBox";
-            this.shipFrom_name_TextBox.Size = new System.Drawing.Size(195, 20);
-            this.shipFrom_name_TextBox.TabIndex = 17;
-            // 
-            // shipFrom_company_name_TextBox
-            // 
-            this.shipFrom_company_name_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
-            this.shipFrom_company_name_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipFrom_company_name_TextBox.Location = new System.Drawing.Point(103, 51);
-            this.shipFrom_company_name_TextBox.Name = "shipFrom_company_name_TextBox";
-            this.shipFrom_company_name_TextBox.Size = new System.Drawing.Size(195, 20);
-            this.shipFrom_company_name_TextBox.TabIndex = 18;
-            // 
-            // label76
-            // 
-            this.label76.AutoSize = true;
-            this.label76.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label76.Location = new System.Drawing.Point(15, 270);
-            this.label76.Name = "label76";
-            this.label76.Size = new System.Drawing.Size(71, 13);
-            this.label76.TabIndex = 53;
-            this.label76.Text = "Country Code";
-            // 
-            // shipFrom_address_line1_TextBox
-            // 
-            this.shipFrom_address_line1_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
-            this.shipFrom_address_line1_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipFrom_address_line1_TextBox.Location = new System.Drawing.Point(103, 105);
-            this.shipFrom_address_line1_TextBox.Name = "shipFrom_address_line1_TextBox";
-            this.shipFrom_address_line1_TextBox.Size = new System.Drawing.Size(195, 20);
-            this.shipFrom_address_line1_TextBox.TabIndex = 19;
-            // 
-            // label77
-            // 
-            this.label77.AutoSize = true;
-            this.label77.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label77.Location = new System.Drawing.Point(15, 297);
-            this.label77.Name = "label77";
-            this.label77.Size = new System.Drawing.Size(65, 13);
-            this.label77.TabIndex = 52;
-            this.label77.Text = "Residential?";
-            // 
-            // shipFrom_phone_TextBox
-            // 
-            this.shipFrom_phone_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
-            this.shipFrom_phone_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipFrom_phone_TextBox.Location = new System.Drawing.Point(103, 78);
-            this.shipFrom_phone_TextBox.Name = "shipFrom_phone_TextBox";
-            this.shipFrom_phone_TextBox.Size = new System.Drawing.Size(195, 20);
-            this.shipFrom_phone_TextBox.TabIndex = 20;
-            this.shipFrom_phone_TextBox.Text = " ";
-            // 
-            // label78
-            // 
-            this.label78.AutoSize = true;
-            this.label78.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label78.Location = new System.Drawing.Point(15, 216);
-            this.label78.Name = "label78";
-            this.label78.Size = new System.Drawing.Size(77, 13);
-            this.label78.TabIndex = 51;
-            this.label78.Text = "State Province";
-            // 
-            // shipFrom_address_line2_TextBox
-            // 
-            this.shipFrom_address_line2_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
-            this.shipFrom_address_line2_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipFrom_address_line2_TextBox.Location = new System.Drawing.Point(103, 132);
-            this.shipFrom_address_line2_TextBox.Name = "shipFrom_address_line2_TextBox";
-            this.shipFrom_address_line2_TextBox.Size = new System.Drawing.Size(195, 20);
-            this.shipFrom_address_line2_TextBox.TabIndex = 21;
-            this.shipFrom_address_line2_TextBox.Text = " ";
-            // 
-            // label79
-            // 
-            this.label79.AutoSize = true;
-            this.label79.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label79.Location = new System.Drawing.Point(16, 243);
-            this.label79.Name = "label79";
-            this.label79.Size = new System.Drawing.Size(64, 13);
-            this.label79.TabIndex = 50;
-            this.label79.Text = "Postal Code";
-            // 
-            // shipFrom_city_locality_TextBox
-            // 
-            this.shipFrom_city_locality_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
-            this.shipFrom_city_locality_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipFrom_city_locality_TextBox.Location = new System.Drawing.Point(103, 186);
-            this.shipFrom_city_locality_TextBox.Name = "shipFrom_city_locality_TextBox";
-            this.shipFrom_city_locality_TextBox.Size = new System.Drawing.Size(195, 20);
-            this.shipFrom_city_locality_TextBox.TabIndex = 22;
-            // 
-            // label80
-            // 
-            this.label80.AutoSize = true;
-            this.label80.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label80.Location = new System.Drawing.Point(14, 135);
-            this.label80.Name = "label80";
-            this.label80.Size = new System.Drawing.Size(77, 13);
-            this.label80.TabIndex = 43;
-            this.label80.Text = "Address Line 2";
-            // 
-            // shipFrom_postal_code_TextBox
-            // 
-            this.shipFrom_postal_code_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
-            this.shipFrom_postal_code_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipFrom_postal_code_TextBox.Location = new System.Drawing.Point(103, 240);
-            this.shipFrom_postal_code_TextBox.Name = "shipFrom_postal_code_TextBox";
-            this.shipFrom_postal_code_TextBox.Size = new System.Drawing.Size(195, 20);
-            this.shipFrom_postal_code_TextBox.TabIndex = 23;
-            // 
-            // label81
-            // 
-            this.label81.AutoSize = true;
-            this.label81.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label81.Location = new System.Drawing.Point(16, 27);
-            this.label81.Name = "label81";
-            this.label81.Size = new System.Drawing.Size(35, 13);
-            this.label81.TabIndex = 42;
-            this.label81.Text = "Name";
-            // 
-            // shipFrom_state_province_TextBox
-            // 
-            this.shipFrom_state_province_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
-            this.shipFrom_state_province_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipFrom_state_province_TextBox.Location = new System.Drawing.Point(103, 213);
-            this.shipFrom_state_province_TextBox.Name = "shipFrom_state_province_TextBox";
-            this.shipFrom_state_province_TextBox.Size = new System.Drawing.Size(195, 20);
-            this.shipFrom_state_province_TextBox.TabIndex = 24;
-            // 
-            // label82
-            // 
-            this.label82.AutoSize = true;
-            this.label82.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label82.Location = new System.Drawing.Point(16, 82);
-            this.label82.Name = "label82";
-            this.label82.Size = new System.Drawing.Size(78, 13);
-            this.label82.TabIndex = 40;
-            this.label82.Text = "Phone Number";
-            // 
-            // label83
-            // 
-            this.label83.AutoSize = true;
-            this.label83.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label83.Location = new System.Drawing.Point(16, 54);
-            this.label83.Name = "label83";
-            this.label83.Size = new System.Drawing.Size(82, 13);
-            this.label83.TabIndex = 39;
-            this.label83.Text = "Company Name";
-            // 
-            // shipFrom_country_code_TextBox
-            // 
-            this.shipFrom_country_code_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
-            this.shipFrom_country_code_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shipFrom_country_code_TextBox.Location = new System.Drawing.Point(103, 267);
-            this.shipFrom_country_code_TextBox.Name = "shipFrom_country_code_TextBox";
-            this.shipFrom_country_code_TextBox.Size = new System.Drawing.Size(195, 20);
-            this.shipFrom_country_code_TextBox.TabIndex = 29;
-            // 
-            // label84
-            // 
-            this.label84.AutoSize = true;
-            this.label84.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label84.Location = new System.Drawing.Point(16, 108);
-            this.label84.Name = "label84";
-            this.label84.Size = new System.Drawing.Size(77, 13);
-            this.label84.TabIndex = 38;
-            this.label84.Text = "Address Line 1";
-            // 
-            // label85
-            // 
-            this.label85.AutoSize = true;
-            this.label85.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label85.Location = new System.Drawing.Point(15, 189);
-            this.label85.Name = "label85";
-            this.label85.Size = new System.Drawing.Size(63, 13);
-            this.label85.TabIndex = 37;
-            this.label85.Text = "City Locality";
-            // 
-            // warehouse_id_ComboBox
-            // 
-            this.warehouse_id_ComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.warehouse_id_ComboBox.FormattingEnabled = true;
-            this.warehouse_id_ComboBox.Location = new System.Drawing.Point(3, 331);
-            this.warehouse_id_ComboBox.Name = "warehouse_id_ComboBox";
-            this.warehouse_id_ComboBox.Size = new System.Drawing.Size(308, 21);
-            this.warehouse_id_ComboBox.TabIndex = 110;
-            this.warehouse_id_ComboBox.Text = "Warehouses (Autofill ShipFrom)";
-            this.warehouse_id_ComboBox.SelectedIndexChanged += new System.EventHandler(this.warehouse_id_ComboBox_SelectedIndexChanged);
+            this.third_party_consignee_comboBox.Location = new System.Drawing.Point(136, 200);
+            this.third_party_consignee_comboBox.Name = "third_party_consignee_comboBox";
+            this.third_party_consignee_comboBox.Size = new System.Drawing.Size(170, 21);
+            this.third_party_consignee_comboBox.TabIndex = 26;
             // 
             // label_Tab_Control
             // 
@@ -2160,7 +2167,7 @@
             this.label_Tab_Control.Location = new System.Drawing.Point(663, 6);
             this.label_Tab_Control.Name = "label_Tab_Control";
             this.label_Tab_Control.SelectedIndex = 0;
-            this.label_Tab_Control.Size = new System.Drawing.Size(459, 742);
+            this.label_Tab_Control.Size = new System.Drawing.Size(459, 738);
             this.label_Tab_Control.TabIndex = 132;
             // 
             // tabPage3
@@ -2170,7 +2177,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(451, 716);
+            this.tabPage3.Size = new System.Drawing.Size(451, 712);
             this.tabPage3.TabIndex = 0;
             this.tabPage3.Text = "Shipping Label";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -2819,9 +2826,9 @@
             // sales_order_ListBox
             // 
             this.sales_order_ListBox.FormattingEnabled = true;
-            this.sales_order_ListBox.Location = new System.Drawing.Point(10, 439);
+            this.sales_order_ListBox.Location = new System.Drawing.Point(8, 384);
             this.sales_order_ListBox.Name = "sales_order_ListBox";
-            this.sales_order_ListBox.Size = new System.Drawing.Size(644, 303);
+            this.sales_order_ListBox.Size = new System.Drawing.Size(644, 355);
             this.sales_order_ListBox.TabIndex = 128;
             this.sales_order_ListBox.SelectedIndexChanged += new System.EventHandler(this.sales_order_ListBox_SelectedIndexChanged);
             // 
@@ -2872,19 +2879,42 @@
             // 
             // refresh_orders_button
             // 
-            this.refresh_orders_button.Location = new System.Drawing.Point(10, 393);
+            this.refresh_orders_button.Location = new System.Drawing.Point(560, 360);
             this.refresh_orders_button.Name = "refresh_orders_button";
-            this.refresh_orders_button.Size = new System.Drawing.Size(126, 40);
+            this.refresh_orders_button.Size = new System.Drawing.Size(94, 21);
             this.refresh_orders_button.TabIndex = 138;
             this.refresh_orders_button.Text = "Refresh orders";
             this.refresh_orders_button.UseVisualStyleBackColor = true;
             this.refresh_orders_button.Click += new System.EventHandler(this.refresh_orders_button_Click);
             // 
+            // order_source_ComboBox
+            // 
+            this.order_source_ComboBox.FormattingEnabled = true;
+            this.order_source_ComboBox.Location = new System.Drawing.Point(8, 360);
+            this.order_source_ComboBox.Name = "order_source_ComboBox";
+            this.order_source_ComboBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.order_source_ComboBox.Size = new System.Drawing.Size(320, 21);
+            this.order_source_ComboBox.TabIndex = 139;
+            this.order_source_ComboBox.Text = "FILTER BY STORE";
+            this.order_source_ComboBox.SelectedIndexChanged += new System.EventHandler(this.order_source_ComboBox_SelectedIndexChanged);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Enabled = false;
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(8, 290);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(298, 21);
+            this.comboBox1.TabIndex = 140;
+            // 
             // ShippingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1125, 755);
+            this.ClientSize = new System.Drawing.Size(1124, 745);
+            this.Controls.Add(this.number_of_pages_richTextBox);
+            this.Controls.Add(this.order_source_ComboBox);
             this.Controls.Add(this.refresh_orders_button);
             this.Controls.Add(this.order_source_test_richTextBox);
             this.Controls.Add(this.order_source_refresh_richTextBox);
@@ -2926,17 +2956,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.packages_weight_value_numericUpDown)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.advanced_options_groupBox.ResumeLayout(false);
-            this.advanced_options_groupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dry_ice_weight_numericUpDown)).EndInit();
             this.shipTogroupBox.ResumeLayout(false);
             this.shipTogroupBox.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            this.advanced_options_groupBox1.ResumeLayout(false);
-            this.advanced_options_groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.collect_on_delivery_payment_amount_numericUpDown)).EndInit();
             this.shipFromgroupBox.ResumeLayout(false);
             this.shipFromgroupBox.PerformLayout();
+            this.tabPage13.ResumeLayout(false);
+            this.tabPage13.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dry_ice_weight_numericUpDown)).EndInit();
+            this.tabPage14.ResumeLayout(false);
+            this.tabPage14.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.collect_on_delivery_payment_amount_numericUpDown)).EndInit();
             this.label_Tab_Control.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.labelImageBox)).EndInit();
@@ -3004,7 +3034,6 @@
         private System.Windows.Forms.Button print_Button;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.GroupBox advanced_options_groupBox;
         private System.Windows.Forms.ComboBox bill_to_party_comboBox;
         private System.Windows.Forms.ComboBox origin_type_comboBox;
         private System.Windows.Forms.Label label7;
@@ -3052,7 +3081,6 @@
         private System.Windows.Forms.Label label73;
         private System.Windows.Forms.Label label74;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.GroupBox advanced_options_groupBox1;
         private System.Windows.Forms.Label label51;
         private System.Windows.Forms.Label label50;
         private System.Windows.Forms.Label label49;
@@ -3166,6 +3194,11 @@
         private System.Windows.Forms.Button refresh_orders_button;
         private System.Windows.Forms.NumericUpDown purchase_postage_numericUpDown;
         private System.Windows.Forms.Button purchase_postage_button;
+        private System.Windows.Forms.ComboBox order_source_ComboBox;
+        private System.Windows.Forms.RichTextBox number_of_pages_richTextBox;
+        private System.Windows.Forms.TabPage tabPage13;
+        private System.Windows.Forms.TabPage tabPage14;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 
