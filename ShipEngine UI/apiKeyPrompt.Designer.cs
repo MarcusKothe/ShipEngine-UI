@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(apiKeyPrompt));
             this.label1 = new System.Windows.Forms.Label();
             this.apiKeyTextBox = new System.Windows.Forms.TextBox();
             this.doneButton = new System.Windows.Forms.Button();
@@ -44,7 +43,6 @@
             this.label1.Size = new System.Drawing.Size(230, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Enter your API Key to begin";
-
             // 
             // apiKeyTextBox
             // 
@@ -55,7 +53,6 @@
             this.apiKeyTextBox.TabIndex = 1;
             this.apiKeyTextBox.Text = "ENTER API KEY TO BEGIN";
             this.apiKeyTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-
             // 
             // doneButton
             // 
@@ -90,11 +87,9 @@
             this.Controls.Add(this.apiKeyTextBox);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "apiKeyPrompt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SHIPENGINE";
-
+            this.Text = "WINSHIP";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -42,7 +42,6 @@
             this.carrier_balance_richTextBox = new System.Windows.Forms.RichTextBox();
             this.rate_RichTextBox = new System.Windows.Forms.RichTextBox();
             this.shipment_Config_GroupBox = new System.Windows.Forms.GroupBox();
-            this.number_of_pages_richTextBox = new System.Windows.Forms.RichTextBox();
             this.carrier_id_ComboBox = new System.Windows.Forms.ComboBox();
             this.service_code_ComboBox = new System.Windows.Forms.ComboBox();
             this.ship_Date_DateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -70,11 +69,13 @@
             this.label56 = new System.Windows.Forms.Label();
             this.create_label_Button = new System.Windows.Forms.Button();
             this.get_Rates_Button = new System.Windows.Forms.Button();
-            this.print_Button = new System.Windows.Forms.Button();
             this.notify_shipped_checkBox = new System.Windows.Forms.CheckBox();
+            this.print_Button = new System.Windows.Forms.Button();
             this.create_label_from_Order_Button = new System.Windows.Forms.Button();
+            this.number_of_pages_richTextBox = new System.Windows.Forms.RichTextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.shipTogroupBox = new System.Windows.Forms.GroupBox();
             this.shipTo_address_residential_indicator_comboBox = new System.Windows.Forms.ComboBox();
             this.shipTo_address_line3_TextBox = new System.Windows.Forms.TextBox();
@@ -179,6 +180,10 @@
             this.rate_response_RichTextBox = new System.Windows.Forms.RichTextBox();
             this.rate_request_RichTextBox = new System.Windows.Forms.RichTextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.to_dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.from_dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.tracking_number_textBox = new System.Windows.Forms.TextBox();
             this.label57 = new System.Windows.Forms.Label();
             this.manifest_textBox = new System.Windows.Forms.TextBox();
@@ -236,7 +241,7 @@
             this.order_source_test_richTextBox = new System.Windows.Forms.RichTextBox();
             this.refresh_orders_button = new System.Windows.Forms.Button();
             this.order_source_ComboBox = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.get_label_custom_button = new System.Windows.Forms.Button();
             this.shipment_Config_GroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.insured_value_amont_numericUpDown)).BeginInit();
@@ -387,15 +392,6 @@
             this.shipment_Config_GroupBox.TabIndex = 127;
             this.shipment_Config_GroupBox.TabStop = false;
             this.shipment_Config_GroupBox.Text = "Shipment Configuration";
-            // 
-            // number_of_pages_richTextBox
-            // 
-            this.number_of_pages_richTextBox.Location = new System.Drawing.Point(1155, 396);
-            this.number_of_pages_richTextBox.Name = "number_of_pages_richTextBox";
-            this.number_of_pages_richTextBox.Size = new System.Drawing.Size(60, 64);
-            this.number_of_pages_richTextBox.TabIndex = 131;
-            this.number_of_pages_richTextBox.Text = "";
-            this.number_of_pages_richTextBox.Visible = false;
             // 
             // carrier_id_ComboBox
             // 
@@ -870,16 +866,6 @@
             this.get_Rates_Button.UseVisualStyleBackColor = true;
             this.get_Rates_Button.Click += new System.EventHandler(this.get_Rates_Button_Click);
             // 
-            // print_Button
-            // 
-            this.print_Button.Location = new System.Drawing.Point(120, 264);
-            this.print_Button.Name = "print_Button";
-            this.print_Button.Size = new System.Drawing.Size(80, 24);
-            this.print_Button.TabIndex = 117;
-            this.print_Button.Text = "Print Label";
-            this.print_Button.UseVisualStyleBackColor = true;
-            this.print_Button.Click += new System.EventHandler(this.print_Button_Click);
-            // 
             // notify_shipped_checkBox
             // 
             this.notify_shipped_checkBox.AutoSize = true;
@@ -889,6 +875,16 @@
             this.notify_shipped_checkBox.TabIndex = 130;
             this.notify_shipped_checkBox.Text = "Notify The Order Source";
             this.notify_shipped_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // print_Button
+            // 
+            this.print_Button.Location = new System.Drawing.Point(120, 264);
+            this.print_Button.Name = "print_Button";
+            this.print_Button.Size = new System.Drawing.Size(80, 24);
+            this.print_Button.TabIndex = 117;
+            this.print_Button.Text = "Print Label";
+            this.print_Button.UseVisualStyleBackColor = true;
+            this.print_Button.Click += new System.EventHandler(this.print_Button_Click);
             // 
             // create_label_from_Order_Button
             // 
@@ -900,6 +896,15 @@
             this.create_label_from_Order_Button.Text = "Create Label for Order";
             this.create_label_from_Order_Button.UseVisualStyleBackColor = true;
             this.create_label_from_Order_Button.Click += new System.EventHandler(this.create_label_from_Order_Button_Click);
+            // 
+            // number_of_pages_richTextBox
+            // 
+            this.number_of_pages_richTextBox.Location = new System.Drawing.Point(1155, 396);
+            this.number_of_pages_richTextBox.Name = "number_of_pages_richTextBox";
+            this.number_of_pages_richTextBox.Size = new System.Drawing.Size(60, 64);
+            this.number_of_pages_richTextBox.TabIndex = 131;
+            this.number_of_pages_richTextBox.Text = "";
+            this.number_of_pages_richTextBox.Visible = false;
             // 
             // tabControl1
             // 
@@ -923,6 +928,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "ShipTo";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Enabled = false;
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(8, 290);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(298, 21);
+            this.comboBox1.TabIndex = 140;
             // 
             // shipTogroupBox
             // 
@@ -2211,7 +2226,7 @@
             this.tabPage5.Controls.Add(this.rate_request_RichTextBox);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(451, 716);
+            this.tabPage5.Size = new System.Drawing.Size(451, 712);
             this.tabPage5.TabIndex = 2;
             this.tabPage5.Text = "Rates";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -2239,6 +2254,11 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.get_label_custom_button);
+            this.tabPage4.Controls.Add(this.label17);
+            this.tabPage4.Controls.Add(this.label11);
+            this.tabPage4.Controls.Add(this.to_dateTimePicker);
+            this.tabPage4.Controls.Add(this.from_dateTimePicker);
             this.tabPage4.Controls.Add(this.tracking_number_textBox);
             this.tabPage4.Controls.Add(this.label57);
             this.tabPage4.Controls.Add(this.manifest_textBox);
@@ -2252,14 +2272,46 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(451, 716);
+            this.tabPage4.Size = new System.Drawing.Size(451, 712);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "Label History";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(208, 12);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(72, 13);
+            this.label17.TabIndex = 115;
+            this.label17.Text = "Created End :";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 12);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(66, 13);
+            this.label11.TabIndex = 114;
+            this.label11.Text = "Created At : ";
+            // 
+            // to_dateTimePicker
+            // 
+            this.to_dateTimePicker.Location = new System.Drawing.Point(280, 8);
+            this.to_dateTimePicker.Name = "to_dateTimePicker";
+            this.to_dateTimePicker.Size = new System.Drawing.Size(128, 20);
+            this.to_dateTimePicker.TabIndex = 113;
+            // 
+            // from_dateTimePicker
+            // 
+            this.from_dateTimePicker.Location = new System.Drawing.Point(72, 8);
+            this.from_dateTimePicker.Name = "from_dateTimePicker";
+            this.from_dateTimePicker.Size = new System.Drawing.Size(128, 20);
+            this.from_dateTimePicker.TabIndex = 112;
+            // 
             // tracking_number_textBox
             // 
-            this.tracking_number_textBox.Location = new System.Drawing.Point(6, 438);
+            this.tracking_number_textBox.Location = new System.Drawing.Point(8, 462);
             this.tracking_number_textBox.Name = "tracking_number_textBox";
             this.tracking_number_textBox.ReadOnly = true;
             this.tracking_number_textBox.Size = new System.Drawing.Size(439, 20);
@@ -2270,7 +2322,7 @@
             // label57
             // 
             this.label57.AutoSize = true;
-            this.label57.Location = new System.Drawing.Point(170, 600);
+            this.label57.Location = new System.Drawing.Point(172, 670);
             this.label57.Name = "label57";
             this.label57.Size = new System.Drawing.Size(121, 13);
             this.label57.TabIndex = 109;
@@ -2278,7 +2330,7 @@
             // 
             // manifest_textBox
             // 
-            this.manifest_textBox.Location = new System.Drawing.Point(6, 616);
+            this.manifest_textBox.Location = new System.Drawing.Point(8, 686);
             this.manifest_textBox.Name = "manifest_textBox";
             this.manifest_textBox.ReadOnly = true;
             this.manifest_textBox.Size = new System.Drawing.Size(439, 20);
@@ -2287,7 +2339,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(6, 466);
+            this.label25.Location = new System.Drawing.Point(8, 536);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(339, 13);
             this.label25.TabIndex = 105;
@@ -2295,7 +2347,7 @@
             // 
             // clear_manifest_textBox_button
             // 
-            this.clear_manifest_textBox_button.Location = new System.Drawing.Point(342, 587);
+            this.clear_manifest_textBox_button.Location = new System.Drawing.Point(344, 657);
             this.clear_manifest_textBox_button.Name = "clear_manifest_textBox_button";
             this.clear_manifest_textBox_button.Size = new System.Drawing.Size(103, 23);
             this.clear_manifest_textBox_button.TabIndex = 104;
@@ -2305,7 +2357,7 @@
             // 
             // create_manifest_button
             // 
-            this.create_manifest_button.Location = new System.Drawing.Point(6, 587);
+            this.create_manifest_button.Location = new System.Drawing.Point(8, 657);
             this.create_manifest_button.Name = "create_manifest_button";
             this.create_manifest_button.Size = new System.Drawing.Size(103, 23);
             this.create_manifest_button.TabIndex = 101;
@@ -2315,7 +2367,7 @@
             // 
             // manifest_label_id_richTextBox
             // 
-            this.manifest_label_id_richTextBox.Location = new System.Drawing.Point(6, 482);
+            this.manifest_label_id_richTextBox.Location = new System.Drawing.Point(8, 552);
             this.manifest_label_id_richTextBox.Name = "manifest_label_id_richTextBox";
             this.manifest_label_id_richTextBox.ReadOnly = true;
             this.manifest_label_id_richTextBox.Size = new System.Drawing.Size(439, 100);
@@ -2325,7 +2377,7 @@
             // label_history_listbox
             // 
             this.label_history_listbox.FormattingEnabled = true;
-            this.label_history_listbox.Location = new System.Drawing.Point(6, 8);
+            this.label_history_listbox.Location = new System.Drawing.Point(8, 32);
             this.label_history_listbox.Name = "label_history_listbox";
             this.label_history_listbox.Size = new System.Drawing.Size(439, 394);
             this.label_history_listbox.TabIndex = 99;
@@ -2334,7 +2386,7 @@
             // void_label_id_TextBox
             // 
             this.void_label_id_TextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(172)))), ((int)(((byte)(164)))));
-            this.void_label_id_TextBox.Location = new System.Drawing.Point(6, 411);
+            this.void_label_id_TextBox.Location = new System.Drawing.Point(8, 435);
             this.void_label_id_TextBox.Name = "void_label_id_TextBox";
             this.void_label_id_TextBox.Size = new System.Drawing.Size(354, 20);
             this.void_label_id_TextBox.TabIndex = 89;
@@ -2343,7 +2395,7 @@
             // void_label_id_Button
             // 
             this.void_label_id_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.void_label_id_Button.Location = new System.Drawing.Point(366, 411);
+            this.void_label_id_Button.Location = new System.Drawing.Point(368, 435);
             this.void_label_id_Button.Name = "void_label_id_Button";
             this.void_label_id_Button.Size = new System.Drawing.Size(79, 23);
             this.void_label_id_Button.TabIndex = 90;
@@ -2360,7 +2412,7 @@
             this.tabPage6.Controls.Add(this.track_shipment_TextBox);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(451, 716);
+            this.tabPage6.Size = new System.Drawing.Size(451, 712);
             this.tabPage6.TabIndex = 3;
             this.tabPage6.Text = "Track Package";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -2465,7 +2517,7 @@
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(451, 716);
+            this.tabPage7.Size = new System.Drawing.Size(451, 712);
             this.tabPage7.TabIndex = 4;
             this.tabPage7.Text = "Account";
             this.tabPage7.UseVisualStyleBackColor = true;
@@ -2898,15 +2950,16 @@
             this.order_source_ComboBox.Text = "FILTER BY STORE";
             this.order_source_ComboBox.SelectedIndexChanged += new System.EventHandler(this.order_source_ComboBox_SelectedIndexChanged);
             // 
-            // comboBox1
+            // get_label_custom_button
             // 
-            this.comboBox1.Enabled = false;
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(8, 290);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(298, 21);
-            this.comboBox1.TabIndex = 140;
+            this.get_label_custom_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.get_label_custom_button.Location = new System.Drawing.Point(424, 8);
+            this.get_label_custom_button.Name = "get_label_custom_button";
+            this.get_label_custom_button.Size = new System.Drawing.Size(20, 20);
+            this.get_label_custom_button.TabIndex = 116;
+            this.get_label_custom_button.Text = ">";
+            this.get_label_custom_button.UseVisualStyleBackColor = true;
+            this.get_label_custom_button.Click += new System.EventHandler(this.get_label_custom_button_Click);
             // 
             // ShippingForm
             // 
@@ -2943,6 +2996,7 @@
             this.Name = "ShippingForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "WINSHIP";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.shippingForm_FormClosing);
             this.Load += new System.EventHandler(this.shippingForm_Load);
             this.shipment_Config_GroupBox.ResumeLayout(false);
@@ -3199,6 +3253,11 @@
         private System.Windows.Forms.TabPage tabPage13;
         private System.Windows.Forms.TabPage tabPage14;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.DateTimePicker to_dateTimePicker;
+        private System.Windows.Forms.DateTimePicker from_dateTimePicker;
+        private System.Windows.Forms.Button get_label_custom_button;
     }
 }
 

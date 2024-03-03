@@ -72,8 +72,9 @@ namespace ShipEngine_UI
             //GET SALES ORDERS
             GetSalesOrders(string.Empty);
 
+
             //GET LABEL HISTORY
-            GetLabelHistory();
+            GetLabelHistory(DateTime.Today.Date.ToString(), DateTime.Today.Date.AddDays(1).ToString());
 
             //GET ONE BALANCE
             //GetCarrierBalance();
@@ -558,18 +559,17 @@ namespace ShipEngine_UI
         }
     
 
-        public void GetLabelHistory()
+        public void GetLabelHistory(string created_at_start, string created_at_end)
         {
             label_id_richTextBox.Text = string.Empty;
+            label_history_listbox.Items.Clear();
 
             //GET LABELS
             try
             {
-                string todaysDate = DateTime.Today.ToString();
-                string last7Days = DateTime.Today.AddDays(-7).ToString();
 
                 //URL SOURCE
-                string URLstring = "https://api.shipengine.com/v1/labels?created_at_start=" + last7Days + "&created_at_end" + todaysDate + "&page_size=100";
+                string URLstring = "https://api.shipengine.com/v1/labels?created_at_start=" + created_at_start + "&created_at_end=" + created_at_end + "&page_size=100";
                 ShipEngineUI.get_label_URL = URLstring;
 
                 //REQUEST
@@ -1879,7 +1879,7 @@ namespace ShipEngine_UI
 
                 label_history_listbox.Items.Clear();
                 GetCurrentTrackingNumber();
-                GetLabelHistory();
+                GetLabelHistory(string.Empty, string.Empty);
             }
             catch (WebException Exception)
             {
@@ -2498,7 +2498,7 @@ namespace ShipEngine_UI
 
                 label_history_listbox.Items.Clear();
                 GetCurrentTrackingNumber();
-                GetLabelHistory();
+                GetLabelHistory(string.Empty, string.Empty);
 
                 //CLOSE STREAM
                 parseResponse.Close();
@@ -2626,7 +2626,7 @@ namespace ShipEngine_UI
                         stream.Close();
 
                         label_history_listbox.Items.Clear();
-                        GetLabelHistory();
+                        GetLabelHistory(string.Empty, string.Empty);
 
                     }
                     catch (Exception void_label_id_response_Error)
@@ -3843,5 +3843,14 @@ namespace ShipEngine_UI
 
         }
 
+        private void get_label_custom_button_Click(object sender, EventArgs e)
+        {
+
+            string date1 = from_dateTimePicker.Value.Date.ToString();
+            string date2 = to_dateTimePicker.Value.Date.ToString();
+
+
+            GetLabelHistory(date1,date2);
+        }
     }
 }
