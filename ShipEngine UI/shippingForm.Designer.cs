@@ -180,6 +180,7 @@
             this.rate_response_RichTextBox = new System.Windows.Forms.RichTextBox();
             this.rate_request_RichTextBox = new System.Windows.Forms.RichTextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.get_label_custom_button = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.to_dateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -241,7 +242,6 @@
             this.order_source_test_richTextBox = new System.Windows.Forms.RichTextBox();
             this.refresh_orders_button = new System.Windows.Forms.Button();
             this.order_source_ComboBox = new System.Windows.Forms.ComboBox();
-            this.get_label_custom_button = new System.Windows.Forms.Button();
             this.shipment_Config_GroupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.insured_value_amont_numericUpDown)).BeginInit();
@@ -2277,6 +2277,17 @@
             this.tabPage4.Text = "Label History";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // get_label_custom_button
+            // 
+            this.get_label_custom_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.get_label_custom_button.Location = new System.Drawing.Point(424, 8);
+            this.get_label_custom_button.Name = "get_label_custom_button";
+            this.get_label_custom_button.Size = new System.Drawing.Size(20, 20);
+            this.get_label_custom_button.TabIndex = 116;
+            this.get_label_custom_button.Text = ">";
+            this.get_label_custom_button.UseVisualStyleBackColor = true;
+            this.get_label_custom_button.Click += new System.EventHandler(this.get_label_custom_button_Click);
+            // 
             // label17
             // 
             this.label17.AutoSize = true;
@@ -2949,17 +2960,6 @@
             this.order_source_ComboBox.TabIndex = 139;
             this.order_source_ComboBox.Text = "FILTER BY STORE";
             this.order_source_ComboBox.SelectedIndexChanged += new System.EventHandler(this.order_source_ComboBox_SelectedIndexChanged);
-            // 
-            // get_label_custom_button
-            // 
-            this.get_label_custom_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.get_label_custom_button.Location = new System.Drawing.Point(424, 8);
-            this.get_label_custom_button.Name = "get_label_custom_button";
-            this.get_label_custom_button.Size = new System.Drawing.Size(20, 20);
-            this.get_label_custom_button.TabIndex = 116;
-            this.get_label_custom_button.Text = ">";
-            this.get_label_custom_button.UseVisualStyleBackColor = true;
-            this.get_label_custom_button.Click += new System.EventHandler(this.get_label_custom_button_Click);
             // 
             // ShippingForm
             // 

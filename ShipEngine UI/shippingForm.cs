@@ -70,7 +70,7 @@ namespace ShipEngine_UI
             GetWarehouses();
 
             //GET SALES ORDERS
-            GetSalesOrders(string.Empty);
+            GetSalesOrders(string.Empty, 1);
 
 
             //GET LABEL HISTORY
@@ -426,15 +426,14 @@ namespace ShipEngine_UI
             }
         }
 
-        public void GetSalesOrders(string order_source_id)
+        public void GetSalesOrders(string order_source_id, int pages)
         {
-
 
             //GET SALES ORDERS
             try
             {
                 //URL SOURCE
-                string URLstring = "https://api.shipengine.com/v-beta/sales_orders?order_source_id=" + order_source_id;
+                string URLstring = "https://api.shipengine.com/v-beta/sales_orders?order_source_id=" + order_source_id + "&page=" + pages;
 
                 //REQUEST
                 WebRequest requestObject = WebRequest.Create(URLstring);
@@ -518,20 +517,19 @@ namespace ShipEngine_UI
                                 number_of_pages_richTextBox.Text = number_of_pages.Trim();
                             }
 
-                            //string line = ShipEngineUI.external_order_number.Trim() + " - " + ShipEngineUI.fulfillment_status.Trim() + " | " +
-                            // ShipEngineUI.sales_order_id.Trim() + Environment.NewLine + ",";
-
-                            // sales_order_RichTextBox.Text += line;
-
                         }
 
                         //PARSE AND ADD SALES ORDERS
                         string[] sales_order_list1 = sales_order_RichTextBox.Text.Split(',');
+
+                        sales_order_RichTextBox.Text = string.Join(Environment.NewLine, sales_order_RichTextBox.Lines.Distinct());
                         string[] sales_order_list = sales_order_list1.Distinct().ToArray();
+
                         foreach (string sales_order in sales_order_list)
                         {
                             if (sales_order.Trim() == "")
                                 continue;
+
 
                             sales_order_ListBox.Items.Add(sales_order.Trim());
                         }
@@ -549,6 +547,8 @@ namespace ShipEngine_UI
                             notify_shipped_checkBox.Enabled = true;
                             create_label_from_Order_Button.Enabled = true;
                         }
+
+
                     }
                 }
             }
@@ -556,6 +556,7 @@ namespace ShipEngine_UI
             {
 
             }
+
         }
     
 
@@ -3712,7 +3713,7 @@ namespace ShipEngine_UI
             order_source_id1 = order_source_id1.Remove(order_source_id1.IndexOf("|") + 1);
             string order_source_id = order_source_id1.Replace("|", "");
 
-            GetSalesOrders(order_source_id);
+            GetSalesOrders(order_source_id, 1);
 
         }
 
@@ -3839,7 +3840,30 @@ namespace ShipEngine_UI
             sales_order_RichTextBox.Text = string.Empty;
             sales_order_ListBox.Items.Clear();
             
-            GetSalesOrders(order_source_id);
+            GetSalesOrders(order_source_id, 1);
+
+            int number_of_pages = int.Parse(number_of_pages_richTextBox.Text);
+
+            if (number_of_pages > 1)
+            {
+
+                for (int i = 1; i < number_of_pages; i++)
+                {
+                    GetSalesOrders(order_source_id, i);
+                }
+
+            }
+
+            string[] clean_dupes = new string[sales_order_ListBox.Items.Count];
+            sales_order_ListBox.Items.CopyTo(clean_dupes, 0);
+
+            var clean_dupes1 = clean_dupes.Distinct();
+
+            sales_order_ListBox.Items.Clear();
+            foreach (string s in clean_dupes1)
+            {
+                sales_order_ListBox.Items.Add(s);
+            }
 
         }
 
